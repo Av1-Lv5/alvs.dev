@@ -1,0 +1,9 @@
+extends ../../pug/templates/project-page
+block title
+    - projectTitle = 'Tic Tac Toe';
+    title #{projectTitle} • Projects
+block page-intro
+    h1 #{projectTitle}
+block technical 
+    ul 
+        li This app is built in plain HTML, CSS and JS.

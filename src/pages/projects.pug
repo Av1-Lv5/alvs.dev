@@ -1,0 +1,16 @@
+extends ../pug/templates/layout.pug
+
+block title 
+    title Projects • alvs 
+
+block nav-links
+    - let currentPage = 'projects'
+    include ../pug/includes/nav-links
+
+block page-intro 
+    h1 Things I've built
+
+block main
+    include ../pug/includes/projectsDb
+    each project in projectsDb 
+        include ../pug/includes/project-card

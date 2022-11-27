@@ -1,0 +1,22 @@
+extends ../../pug/templates/project-page
+
+block title
+    - projectTitle = 'Samwyle';
+    title #{projectTitle} • Projects
+block page-intro
+    h1 #{projectTitle}
+
+block technical
+    ul
+        li Plain HTML and CSS is all i used for this project. 
+        li The designs are grabbed from 
+            a(href='https://www.figma.com/community/file/997834539634615226') Figma community 
+            | designed by 
+            a(href='https://www.figma.com/@rengen_ill') Illia Frunza
+
+block facts
+    ul
+        li This is the very first project that i have built while learning CSS.
+        li Took me around 5 days to complete. 
+    
+
