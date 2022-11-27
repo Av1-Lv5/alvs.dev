@@ -50,11 +50,11 @@ function watchTask() {
     watch("src/assets/styles/*.css", series(cssMinify, browserSyncReload));
 }
 
+function build(cb) {
+    series(buildHTML, cssMinify, optimiseImg);
+    cb();
+}
+
 // Default gulp task
-exports.default = series(
-    buildHTML,
-    cssMinify,
-    optimiseImg,
-    browserSyncServe,
-    watchTask
-);
+exports.default = series(build, browserSyncServe, watchTask);
+exports.build = build;
