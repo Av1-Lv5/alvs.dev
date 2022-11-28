@@ -46,7 +46,7 @@ function browserSyncReload(cb) {
 // watch for changes in .pug, .css files.
 function watchTask() {
     watch("src/**/*.pug", series(buildHTML, browserSyncReload));
-    watch("src/assets/styles/*.png", series(optimiseImg, browserSyncReload));
+    watch("src/assets/img/*.png", series(optimiseImg, browserSyncReload));
     watch("src/assets/styles/*.css", series(cssMinify, browserSyncReload));
 }
 
