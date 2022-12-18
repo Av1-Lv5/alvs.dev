@@ -1,14 +1,10 @@
-extends ../pug/templates/layout.pug
-
+extends ../pug/layouts/page.pug
+block frontmatter 
+    - pageTitle = "Get in touch"
+    - currentPage = 'contact'
 block title 
     title Contact • alvs 
 
-block nav-links
-    - var currentPage = 'contact'
-    include ../pug/includes/nav-links
-
-block page-intro 
-    h1 Get in touch
 block main 
     main
         p: b Got an interesting project you're working on, or just want to say hi?

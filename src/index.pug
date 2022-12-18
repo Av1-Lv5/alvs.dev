@@ -1,14 +1,11 @@
-extends pug/templates/layout
+extends pug/layouts/page.pug
+
+block frontmatter 
+    - pageTitle = "Hi I'm Avinash"
+    - currentPage = 'home'
 
 block title 
     title Welcome! • alvs
-
-block nav-links
-    - var currentPage = 'home'
-    include pug/includes/nav-links
-
-block page-intro 
-    h1 Hi I'm Avinash
 
 block main
     main
@@ -27,21 +24,25 @@ block main
         
         h3  Languages and Tools 
         #skills 
-            span#s-html HTML
-            span#s-css CSS
-            span#s-js Javascript
-            span#s-bs Bootstrap
-            span#s-tw Tailwind CSS
-            span#s-react React
-            span#s-jkl Jekyll
-            span#s-pug Pug
-            span#s-git Git 
+            span HTML
+            span CSS
+            span Javascript
+            span Typescript
+            span React
+            span Bootstrap
+            span Tailwind CSS
+            span Jekyll
+            span Astro
+            span Scss 
+            span Postcss
+            span Pug
+            span Git 
             span Vite 
             span Gulp
         
         h3 About this site 
         p This site is built with plain HTML and CSS. Used Pug templating and Gulp for ease of maintaining and hosted on netlify.
-        p Every section of this site has long changelogs. I am completely unsure of what goes in
+        p Every section of this site has long changelogs. I am completely unsure of what goes in.
         //- article
         //-    p This site is part of the fediverse webring. Get a hit of web 1.0 nostalgia, visit some of my neighbours in this webring.
         //-    br

@@ -1,14 +1,10 @@
-extends ../pug/templates/layout.pug
+extends ../pug/layouts/page.pug
+block frontmatter 
+    - pageTitle = "Know me more?"
+    - currentPage = 'about'
 
 block title 
     title About • alvs
-
-block nav-links
-    - var currentPage = 'about'
-    include ../pug/includes/nav-links
-
-block page-intro 
-    h1 Know me more?
 
 block main 
     main 
