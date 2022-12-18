@@ -64,4 +64,4 @@ exports.default = series(
     browserSyncServe,
     watchTask
 );
-exports.build = series(buildHTML, cssMinify, optimiseImg);
+exports.build = series(buildHTML, cssMinify, optimiseImg, js);
