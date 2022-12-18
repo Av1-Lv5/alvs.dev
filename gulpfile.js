@@ -18,6 +18,10 @@ function buildHTML() {
 function optimiseImg() {
     return src("src/assets/img/*.png").pipe(dest("dist/assets/img"));
 }
+// javascript
+function js() {
+    return src("src/**/*.js").pipe(dest("dist/"));
+}
 
 // CSS minification
 
@@ -48,12 +52,14 @@ function watchTask() {
     watch("src/**/*.pug", series(buildHTML, browserSyncReload));
     watch("src/assets/img/*.png", series(optimiseImg, browserSyncReload));
     watch("src/assets/styles/*.css", series(cssMinify, browserSyncReload));
+    watch("src/**/*.js", series(js, browserSyncReload));
 }
 
 // Default gulp task
 exports.default = series(
     buildHTML,
     cssMinify,
+    js,
     optimiseImg,
     browserSyncServe,
     watchTask
