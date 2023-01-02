@@ -6,10 +6,13 @@ My name is _Avinash_. I am a frontend web developer for time being.
 
 -   HTML, CSS, JS
 -   React JS
--   Tailwind CSS, SCSS
+-   Tailwind CSS
 -   Pug JS
--   Vitejs, Gulp, Webpack
+-   Vitejs
 -   Figma
+
+**no longer prefer to use**
+- SCSS, Gulp, Webpack.
 
 🌱 I’m currently learning [Astro.js](https://astro.build)
 
