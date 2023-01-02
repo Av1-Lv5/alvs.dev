@@ -11,8 +11,8 @@ My name is _Avinash_. I am a frontend web developer for time being.
 -   Vitejs
 -   Figma
 
-**no longer prefer to use**
-- SCSS, Gulp, Webpack.
+> **no longer prefer to use**
+> - SCSS, Gulp, Webpack.
 
 🌱 I’m currently learning [Astro.js](https://astro.build)
 
