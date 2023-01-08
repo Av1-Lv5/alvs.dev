@@ -1,0 +1,23 @@
+---
+// This is the layout for the root pages ex: '/[pageName]'.
+
+import Layout from "./Layout.astro";
+
+// types
+export interface Props {
+    tabTitle: string;
+    title: string;
+}
+
+// props
+const { tabTitle, title } = Astro.props;
+---
+
+<Layout
+    categoryTabTitle="alvs"
+    pageTabTitle={tabTitle}
+    pageTitle={title}
+    showNav={true}
+>
+    <slot />
+</Layout>

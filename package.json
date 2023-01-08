@@ -1,18 +1,16 @@
 {
-    "name": "pug-practice",
-    "version": "1.0.0",
-    "description": "writing multi-page website using pug template engine.",
-    "main": "gulpfile.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-        "browser-sync": "^2.27.10",
-        "cssnano": "^5.1.14",
-        "gulp": "^4.0.2",
-        "gulp-postcss": "^9.0.1",
-        "gulp-pug": "^5.0.0"
-    }
+  "name": "@example/basics",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^1.8.0"
+  }
 }

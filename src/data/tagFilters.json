@@ -1,0 +1,7 @@
+{
+    "JS Framework": ["React", "Preact", "Svelte", "Solid"],
+    "Meta Framework": ["Astro", "Next"],
+    "CSS Library": ["Tailwind", "Bootstrap"],
+    "Build tool": ["Vite", "Webpack", "Gulp"],
+    "JS Transpiler": ["Babel", "Typescript", "Typescript + Babel"]
+}

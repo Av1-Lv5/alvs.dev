@@ -1,0 +1,37 @@
+---
+// This the base layout designed for differen pages
+
+// components
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+// styles
+import '../styles/simple.css'
+import '../styles/custom.css'
+
+// Types
+export interface Props {
+    pageTabTitle: string;
+    categoryTabTitle: string;
+    pageTitle: string;
+    showNav: boolean;
+}
+
+// props
+const { pageTabTitle, pageTitle, categoryTabTitle, showNav } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{`${pageTabTitle} • ${categoryTabTitle}`}</title>
+    </head>
+    <body>
+        <Header title={pageTitle} showNav={showNav} />
+        <slot />
+        <Footer />
+    </body>
+</html>

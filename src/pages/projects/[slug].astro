@@ -1,0 +1,29 @@
+---
+// Layout
+import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
+
+// Types
+import type { ProjectDetailsFrontmatter } from "../../types/ProjectDetailsFrontmatter";
+
+export async function getStaticPaths() {
+    const projects = await Astro.glob<ProjectDetailsFrontmatter>(
+        "../../projectDetails/**/*.md"
+    );
+
+    return projects.map((project) => ({
+        params: {
+            slug: project.frontmatter.repoId,
+        },
+        props: {
+            projectDetails: project,
+        },
+    }));
+}
+
+// Props
+const { Content, frontmatter } = Astro.props.projectDetails;
+---
+
+<ProjectPageLayout frontmatter={frontmatter}>
+    <Content />
+</ProjectPageLayout>

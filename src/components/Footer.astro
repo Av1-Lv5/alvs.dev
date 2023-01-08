@@ -1,0 +1,16 @@
+---
+import socials from "../data/socials.json";
+---
+
+<footer>
+    <p>
+        Built with <a href="https://astro.build/" target="_blank">Astro</a>
+    </p>
+    <div class="socials">
+        <a
+            href={`https://github.com/${socials.githubUsername}/`}
+            target="_blank">Github</a
+        >
+        <a href={`mailto:${socials.email}`}>Email</a>
+    </div>
+</footer>

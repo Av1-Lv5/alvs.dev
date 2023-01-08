@@ -1,0 +1,62 @@
+---
+// Page layout for the .md files containing content to readmore about a 'project'.
+
+// Layout dependency
+import Layout from "./Layout.astro";
+
+// Components
+import BackInHistory from "../components/BackInHistory.astro";
+
+// Types
+import type { ProjectDetailsFrontmatter } from "../types/ProjectDetailsFrontmatter";
+interface Props {
+    frontmatter: ProjectDetailsFrontmatter;
+}
+
+// props
+const { frontmatter } = Astro.props;
+
+/* this variable is used by commented out code below
+const tags = frontmatter.tags.split(" "); 
+*/
+---
+
+<Layout
+    categoryTabTitle="project"
+    pageTabTitle={frontmatter.title}
+    pageTitle={frontmatter.title}
+    showNav={false}
+>
+    <main>
+        <div class="links-container project-page">
+            <BackInHistory />
+            <span>
+                <a
+                    href={`https://github.com/av1-lv5/${frontmatter.repoId}/`}
+                    target="_blank"
+                >
+                    Code
+                </a>
+                <a href={`https://${frontmatter.liveAt}/`} target="_blank">
+                    Live
+                </a>
+            </span>
+        </div>
+
+        {
+            /*  
+                a container that shows all the tags 
+                present on that project.
+            */
+        }
+        <!-- 
+            <div class="stack-tags-container">
+            {
+                tags.map((tag) => {
+                    return <span class="stack-tag">{tag}</span>;
+                })
+            }
+        </div> -->
+        <slot />
+    </main>
+</Layout>

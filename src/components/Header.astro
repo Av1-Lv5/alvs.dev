@@ -1,0 +1,44 @@
+---
+// types
+export interface Props {
+    title: string;
+    showNav: boolean;
+}
+
+// props
+const { title, showNav } = Astro.props;
+
+// data
+import socials from "../data/socials.json";
+
+const pathName = Astro.url.pathname;
+import rootNav from "../data/rootNav.json";
+---
+
+<header>
+    {
+        showNav && (
+            <nav>
+                {rootNav.map((navItem) => {
+                    return (
+                        <a
+                            href={navItem.path}
+                            class={pathName === navItem.path ? "active" : ""}
+                        >
+                            {navItem.title}
+                        </a>
+                    );
+                })}
+                <a
+                    href={`https://github.com/${socials.githubUsername}`}
+                    target="_blank"
+                >
+                    Github
+                </a>
+            </nav>
+        )
+    }
+    <h1>
+        {title}
+    </h1>
+</header>

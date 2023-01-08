@@ -1,0 +1,56 @@
+---
+// layout
+import PageLayout from "../layouts/PageLayout.astro";
+
+// data
+import skills from "../data/skills.json";
+import socials from "../data/socials.json";
+---
+
+<PageLayout tabTitle="Welcome!" title="Hi I'm Avinash">
+    <main>
+        <p>
+            Welcome to my little corner of the Internet. Here I share my work,
+            thoughts, other places you can find me at.
+        </p>
+
+        <h3>I Create</h3>
+        <p>
+            Webpages and Webapps. The main area of my focus is in front-end
+            development. Check out
+            <a href="/projects.html">projects</a>
+            I've built so far. I also tend to create Happiness around me.
+        </p>
+
+        <h3>Languages and Tools</h3>
+        <div id="skills">
+            {
+                skills.map((skill) => {
+                    return <span>{skill}</span>;
+                })
+            }
+        </div>
+        <h3>About this site</h3>
+        <p>
+            This site uses
+            <a href="https://simplecss.org/">simplecss</a>
+            as base styling, re-built with
+            <a href="https://astro.build/" target="_blank">Astro</a>, and hosted
+            on
+            <a href="https://netlify.com/" target="_blank">Netlify</a>. You can
+            checkout the source
+            <a
+                href={`https://github.com/${socials.githubUsername}/${socials.githubUsername}`}
+                target="_blank">@github</a
+            >.
+        </p>
+        <p>
+            You can read more about the build process, and plans for this site
+            <a href="./projects/alvs/">here</a>
+        </p>
+        <p>
+            Every section of this site has long changelogs. I am completely
+            unsure of what goes in.
+        </p>
+    </main>
+</PageLayout>

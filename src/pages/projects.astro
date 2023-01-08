@@ -1,0 +1,73 @@
+---
+// layout
+import PageLayout from "../layouts/PageLayout.astro";
+
+// components
+import ProjectCard from "../components/ProjectCard.astro";
+
+// types
+import type { ProjectDetailsFrontmatter } from "../types/ProjectDetailsFrontmatter";
+
+const projects = await Astro.glob<ProjectDetailsFrontmatter>(
+    "../projectDetails/**/*.md"
+);
+---
+
+<PageLayout tabTitle="Projects" title="Things I'vs built">
+    <main>
+        <div id="tags-container">
+            <span class="tag selected" tabindex="0">All</span>
+            <span class="tag" tabindex="0">React</span>
+            <span class="tag" tabindex="0">Typescript</span>
+            <span class="tag" tabindex="0">Javascript</span>
+            <span class="tag" tabindex="0">Astro</span>
+        </div>
+        {
+            projects.map((project) => {
+                return <ProjectCard project={project.frontmatter} />;
+            })
+        }
+    </main>
+</PageLayout>
+
+<script>
+    const tagFilters = document.querySelectorAll("#tags-container .tag");
+
+    tagFilters.forEach((tagEl) => {
+        tagEl.addEventListener("click", (e) => {
+            filterProjects((e.target as HTMLElement).innerText);
+            updateSelectedTag(e.target as HTMLElement, tagFilters);
+        });
+    });
+
+    // adds "selected" class to 'selectedTagEl' and removes "selected" class for the rest if exists.
+    function updateSelectedTag(
+        selectedTagEl: HTMLElement,
+        allTagEl: NodeListOf<Element>
+    ): void {
+        allTagEl.forEach((tagEl) => {
+            if (tagEl === selectedTagEl) tagEl.classList.add("selected");
+            else if (tagEl.classList.contains("selected"))
+                tagEl.classList.remove("selected");
+        });
+    }
+
+    // adds "hide" class to 'projectCard' if the customHTML Attribute 'tags' does not include the 'filter'
+    function filterProjects(filter: string): void {
+        const allProjectCards = document.querySelectorAll(".project-card");
+        filter = filter.toLowerCase();
+
+        allProjectCards.forEach((projectCard) => {
+            const tags = projectCard
+                .getAttribute("tags")
+                ?.toLowerCase()
+                .split(" ");
+
+            if (filter === "all" || tags?.includes(filter)) {
+                projectCard.classList.remove("hide");
+            } else {
+                projectCard.classList.add("hide");
+            }
+        });
+    }
+</script>

@@ -1,0 +1,42 @@
+---
+// layout
+import PageLayout from "../layouts/PageLayout.astro";
+
+// components
+import Form from "../components/Form.astro";
+
+import EmailSVG from "../icons/EmailSVG.astro";
+
+// data
+import socials from "../data/socials.json";
+---
+
+<PageLayout title="Get in touch" tabTitle="Contact">
+    <main>
+        <b>
+            Got an interesting project you're working on, or just want to say
+            hi?
+        </b>
+        <p>
+            I'd love to hear from you! The best way to reach me is through an
+            email.
+        </p>
+        <h3 class="contact">
+            <EmailSVG />
+            <span>Email:</span>
+            <a href={`mailto:${socials.email}`}>{socials.email}</a>
+        </h3>
+
+        <p class="notice">
+            <small>
+                <b>Please Note :</b>
+                This is a randomly generated email that I change regularly to prevent
+                spam. So saving this as a contact for future communications is not
+                suggested.
+            </small>
+        </p>
+        <hr />
+        <h3>Contact form</h3>
+        <Form />
+    </main>
+</PageLayout>
