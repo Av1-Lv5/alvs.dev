@@ -1,7 +1,20 @@
 ---
 // This is the layout for the root pages ex: '/[pageName]'.
 
-import Layout from "./Layout.astro";
+/*
+    NOTE: Avoiding nested layouts as the astro build is currently having a 🐛 bug, 
+    
+    🐛 : Duplicate css and js <link> are being inserted in sub-layout in production #5715 
+*/
+// import Layout from "./Layout.astro";
+
+// components
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+// styles
+import "../styles/simple.css";
+import "../styles/custom.css";
 
 // types
 export interface Props {
@@ -13,11 +26,28 @@ export interface Props {
 const { tabTitle, title } = Astro.props;
 ---
 
-<Layout
-    categoryTabTitle="alvs"
-    pageTabTitle={tabTitle}
-    pageTitle={title}
-    showNav={true}
->
-    <slot />
-</Layout>
+{
+    /* <Layout
+            categoryTabTitle="alvs"
+            pageTabTitle={tabTitle}
+            pageTitle={title}
+            showNav={true}
+        >
+            <slot />
+        </Layout> 
+    */
+}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{`${tabTitle} • alvs`}</title>
+    </head>
+    <body>
+        <Header title={title} showNav={true} />
+        <slot />
+        <Footer />
+    </body>
+</html>
