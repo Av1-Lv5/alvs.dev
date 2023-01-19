@@ -1,15 +1,54 @@
 [
-    "HTML",
-    "CSS",
-    "Javascript",
-    "Typescript",
-    "React js",
-    "Astro",
-    "Tailwind CSS",
-    "Bootstrap",
-    "SCSS",
-    "Pug js",
-    "Git",
-    "Vite",
-    "Figma"
+    {
+        "title": "HTML",
+        "icon": "/assets/devIcons/HTML.svg"
+    },
+    {
+        "title": "CSS",
+        "icon": "/assets/devIcons/CSS.svg"
+    },
+    {
+        "title": "Javascript",
+        "icon": "/assets/devIcons/Javascript.svg"
+    },
+    {
+        "title": "Typescript",
+        "icon": "/assets/devIcons/TypeScript.svg"
+    },
+    {
+        "title": "React",
+        "icon": "/assets/devIcons/React-Dark.svg"
+    },
+    {
+        "title": "Astro",
+        "icon": "/assets/devIcons/Astro.svg"
+    },
+    {
+        "title": "Tailwind",
+        "icon": "/assets/devIcons/TailwindCSS-Dark.svg"
+    },
+    {
+        "title": "Bootstrap",
+        "icon": "/assets/devIcons/Bootstrap.svg"
+    },
+    {
+        "title": "SCSS",
+        "icon": "/assets/devIcons/Sass.svg"
+    },
+    {
+        "title": "Pug",
+        "icon": "/assets/devIcons/Pug-Dark.svg"
+    },
+    {
+        "title": "Git",
+        "icon": "/assets/devIcons/Git.svg"
+    },
+    {
+        "title": "Vite",
+        "icon": "/assets/devIcons/Vite-Dark.svg"
+    },
+    {
+        "title": "Figma",
+        "icon": "/assets/devIcons/Figma-Dark.svg"
+    }
 ]

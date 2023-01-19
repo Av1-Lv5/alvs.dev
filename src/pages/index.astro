@@ -2,8 +2,10 @@
 // layout
 import PageLayout from "../layouts/PageLayout.astro";
 
+// Components
+import Skills from "../components/Skills.astro";
+
 // data
-import skills from "../data/skills.json";
 import socials from "../data/socials.json";
 ---
 
@@ -23,13 +25,7 @@ import socials from "../data/socials.json";
         </p>
 
         <h3>Languages and Tools</h3>
-        <div id="skills">
-            {
-                skills.map((skill) => {
-                    return <span>{skill}</span>;
-                })
-            }
-        </div>
+        <Skills />
         <h3>About this site</h3>
         <p>
             This site uses
