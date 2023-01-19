@@ -14,7 +14,7 @@ liveAt: "todo.alvs.dev"
 ### Random facts
 
 -   My first ever CURD application using JS.
--   Learnt using Local storage browser API.
+-   Learnt to use Local storage browser API.
 
 ### Attributions
 

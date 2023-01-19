@@ -10,26 +10,25 @@ const { title, showNav } = Astro.props;
 
 // data
 import socials from "../data/socials.json";
+import rootNav from "../data/rootNav.json";
 
 const pathName = Astro.url.pathname;
-import rootNav from "../data/rootNav.json";
 ---
 
 <header>
     {
         showNav && (
             <nav>
-                {rootNav.map((navItem) => {
-                    return (
-                        <a
-                            href={navItem.path}
-                            class={pathName === navItem.path ? "active" : ""}
-                        >
-                            {navItem.title}
-                        </a>
-                    );
-                })}
+                {rootNav.map((navItem) => (
+                    <a
+                        href={navItem.path}
+                        class={pathName === navItem.path ? "active" : ""}
+                    >
+                        {navItem.title}
+                    </a>
+                ))}
                 <a
+                    class="social"
                     href={`https://github.com/${socials.githubUsername}`}
                     target="_blank"
                 >

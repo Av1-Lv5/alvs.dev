@@ -8,19 +8,26 @@ import ProjectCard from "../components/ProjectCard.astro";
 // types
 import type { ProjectDetailsFrontmatter } from "../types/ProjectDetailsFrontmatter";
 
+// data
+const tags = ["All", "React", "Typescript", "Javascript", "Astro"];
 const projects = await Astro.glob<ProjectDetailsFrontmatter>(
     "../projectDetails/**/*.md"
 );
 ---
 
-<PageLayout tabTitle="Projects" title="Things I'vs built">
+<PageLayout tabTitle="Projects" title="Things I've built">
     <main>
         <div id="tags-container">
-            <span class="tag selected" tabindex="0">All</span>
-            <span class="tag" tabindex="0">React</span>
-            <span class="tag" tabindex="0">Typescript</span>
-            <span class="tag" tabindex="0">Javascript</span>
-            <span class="tag" tabindex="0">Astro</span>
+            {
+                tags.map((tag) => (
+                    <span
+                        class={`tag ${tag === "All" && "selected"}`}
+                        tabindex="0"
+                    >
+                        {tag}
+                    </span>
+                ))
+            }
         </div>
         {
             projects.map((project) => {
@@ -58,6 +65,7 @@ const projects = await Astro.glob<ProjectDetailsFrontmatter>(
 <script>
     const tagFilters = document.querySelectorAll("#tags-container .tag");
 
+    // Event listners
     tagFilters.forEach((tagEl) => {
         tagEl.addEventListener("click", (e) => {
             filterProjects((e.target as HTMLElement).innerText);
@@ -65,6 +73,7 @@ const projects = await Astro.glob<ProjectDetailsFrontmatter>(
         });
     });
 
+    // FUNCTIONS
     // adds "selected" class to 'selectedTagEl' and removes "selected" class for the rest if exists.
     function updateSelectedTag(
         selectedTagEl: HTMLElement,

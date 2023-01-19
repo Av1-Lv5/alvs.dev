@@ -11,6 +11,6 @@ liveAt: "coffee-station.alvs.dev"
 
 -   Plain HTML and CSS is all i used for this project.
 
-### Random facts
-
 ### Attributions
+
+-   The designs are from a fellow redditor, couldn't recall the name.
