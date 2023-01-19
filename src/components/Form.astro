@@ -42,3 +42,25 @@
     <button type="submit">Send</button>
     <button type="reset">Reset</button>
 </form>
+
+<style>
+    form .flex {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1em;
+    }
+
+    form .flex p {
+        flex-grow: 1;
+        margin: 0;
+    }
+    form input,
+    form textarea {
+        width: 100%;
+    }
+
+    form button {
+        margin-inline-end: 20px;
+    }
+</style>

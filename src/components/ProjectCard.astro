@@ -35,3 +35,53 @@ const { project } = Astro.props as Props;
         </div>
     </div>
 </div>
+
+<style>
+    /* ------ Projects cards ---------- */
+
+    .project-card {
+        border: 1px solid rgba(207, 207, 207, 0.8);
+        border-radius: 10px;
+        display: flex;
+        margin-top: 3rem;
+    }
+    .project-card > div {
+        width: 100%;
+        padding: 15px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .project-card h3 {
+        margin: 0;
+    }
+    .project-card .links-container a {
+        margin-inline-start: 1em;
+        margin-inline-end: 0;
+    }
+    .project-card .links-container {
+        justify-content: end;
+    }
+    .project-card.hide {
+        display: none;
+    }
+
+    @media screen and (max-width: 680px) {
+        .project-card {
+            flex-direction: column;
+        }
+        .project-card img {
+            max-height: 350px;
+        }
+    }
+    .project-card img {
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    @media screen and (min-width: 680px) {
+        .project-card img {
+            width: 300px;
+            height: 250px;
+        }
+    }
+</style>

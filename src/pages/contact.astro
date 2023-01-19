@@ -40,3 +40,29 @@ import socials from "../data/socials.json";
         <Form />
     </main>
 </PageLayout>
+
+<style>
+    /* contact email */
+    .contact {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        align-items: center;
+    }
+    @media screen and (max-width: 650px) {
+        .contact :global(svg),
+        .contact span {
+            display: none;
+        }
+    }
+    .contact > * {
+        margin-right: 0.7rem;
+    }
+    .notice {
+        background: var(--accent-bg);
+        border: 2px solid var(--border);
+        border-radius: 5px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+    }
+</style>
