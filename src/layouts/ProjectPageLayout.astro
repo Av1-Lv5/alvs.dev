@@ -13,9 +13,6 @@ import BackInHistory from "../components/BackInHistory.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
-// styles
-import "../styles/custom.css";
-
 // Types
 import type { ProjectDetailsFrontmatter } from "../types/ProjectDetailsFrontmatter";
 interface Props {
@@ -47,6 +44,7 @@ const { frontmatter } = Astro.props;
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <link rel="stylesheet" href="/styles/simple.css" />
+        <link rel="stylesheet" href="/styles/custom.css" />
         <title>{`${frontmatter.title} • "project"`}</title>
     </head>
     <body>
