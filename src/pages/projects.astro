@@ -29,6 +29,7 @@ const projects = await Astro.glob<ProjectDetailsFrontmatter>(
                 ))
             }
         </div>
+        <p id="result-msg" class="hide"></p>
         {
             projects.map((project) => {
                 return <ProjectCard project={project.frontmatter} />;
@@ -38,6 +39,17 @@ const projects = await Astro.glob<ProjectDetailsFrontmatter>(
 </PageLayout>
 
 <style>
+    .hide {
+        display: none;
+    }
+    #result-msg {
+        color: var(--text-light);
+        font-size: 1rem;
+        font-style: italic;
+    }
+    #result-msg :global(#built-with) {
+        font-weight: bold;
+    }
     #tags-container {
         padding: 1rem 0;
         position: sticky;
@@ -68,8 +80,11 @@ const projects = await Astro.glob<ProjectDetailsFrontmatter>(
     // Event listners
     tagFilters.forEach((tagEl) => {
         tagEl.addEventListener("click", (e) => {
-            filterProjects((e.target as HTMLElement).innerText);
-            updateSelectedTag(e.target as HTMLElement, tagFilters);
+            const target = e.target as HTMLElement;
+
+            filterProjects(target.innerText);
+            updateSelectedTag(target, tagFilters);
+            updateResultMsg(target.innerText);
         });
     });
 
@@ -103,5 +118,20 @@ const projects = await Astro.glob<ProjectDetailsFrontmatter>(
                 projectCard.classList.add("hide");
             }
         });
+    }
+
+    function updateResultMsg(filter: string) {
+        const resultMsgEl = document.querySelector(
+            "#result-msg"
+        ) as HTMLParagraphElement;
+
+        if (filter !== "All") {
+            resultMsgEl.classList.remove("hide");
+            resultMsgEl.innerHTML = `"Showing results for projects built with <span id="built-with"
+            >${filter}</span>"`;
+        } else {
+            resultMsgEl.innerHTML = `"Showing results for <span id="built-with"
+            >${filter}</span> projects"`;
+        }
     }
 </script>
