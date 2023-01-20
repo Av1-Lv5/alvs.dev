@@ -14,23 +14,3 @@ import socials from "../data/socials.json";
         <a href={`mailto:${socials.email}`}>Email</a>
     </div>
 </footer>
-
-<style>
-    footer {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 25px;
-    }
-
-    .socials > a {
-        padding-right: 10px;
-    }
-
-    @media screen and (max-width: 670px) {
-        footer {
-            justify-content: center;
-        }
-    }
-</style>
