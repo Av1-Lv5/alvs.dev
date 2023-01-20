@@ -13,7 +13,6 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
 // styles
-import "../styles/simple.css";
 import "../styles/custom.css";
 
 // types
@@ -43,6 +42,7 @@ const { tabTitle, title } = Astro.props;
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
+        <link rel="stylesheet" href="/styles/simple.css" />
         <title>{`${tabTitle} • alvs`}</title>
     </head>
     <body>
