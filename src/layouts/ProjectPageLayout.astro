@@ -12,6 +12,7 @@
 import BackInHistory from "../components/BackInHistory.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import ProjectLinks from "../components/ProjectLinks.astro";
 
 // Types
 import type { ProjectDetailsFrontmatter } from "../types/ProjectDetailsFrontmatter";
@@ -45,27 +46,30 @@ const { frontmatter } = Astro.props;
         <meta name="generator" content={Astro.generator} />
         <link rel="stylesheet" href="/styles/simple.css" />
         <link rel="stylesheet" href="/styles/custom.css" />
-        <title>{`${frontmatter.title} • "project"`}</title>
+        <title>{`${frontmatter.title} • project`}</title>
     </head>
     <body>
         <Header title={frontmatter.title} showNav={false} />
         <main>
-            <div class="links-container project-page">
+            <div>
                 <BackInHistory />
-                <span>
-                    <a
-                        href={`https://github.com/av1-lv5/${frontmatter.repoId}/`}
-                        target="_blank"
-                    >
-                        Code
-                    </a>
-                    <a href={`https://${frontmatter.liveAt}/`} target="_blank">
-                        Live</a
-                    >
-                </span>
+                <ProjectLinks
+                    projectLiveAt={frontmatter.liveAt}
+                    projectRepoId={frontmatter.repoId}
+                />
             </div>
             <slot />
         </main>
         <Footer />
     </body>
 </html>
+<style>
+    div {
+        display: flex;
+        justify-content: space-between;
+    }
+    div :global(a.nav-like) {
+        border-color: var(--accent);
+        color: var(--accent);
+    }
+</style>

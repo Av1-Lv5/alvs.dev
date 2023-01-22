@@ -1,12 +1,9 @@
 nav a.active,
-nav a:hover,
-main > .links-container a,
-article > .links-container a {
-    color: var(--accent) !important;
-    border-color: var(--accent) !important;
+nav a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
 }
-
-.links-container a {
+a.nav-like {
     border: 1px solid var(--border);
     border-radius: 5px;
     color: var(--text);
@@ -15,18 +12,9 @@ article > .links-container a {
     text-decoration: none;
     font-size: 1rem;
     line-height: 2;
-    text-align: center;
     margin-inline-end: 1em;
 }
-.project-page.links-container {
-    display: flex;
-    justify-content: space-between;
-}
 
-.links-container {
-    display: flex;
-    align-items: center;
-}
 footer {
     display: flex;
     align-items: center;

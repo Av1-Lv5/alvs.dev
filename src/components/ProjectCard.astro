@@ -5,8 +5,8 @@ export interface Props {
     project: ProjectDetailsFrontmatter;
 }
 
-// data
-import social from "../data/socials.json";
+// Components
+import ProjectLinks from "./ProjectLinks.astro";
 
 // props
 const { project } = Astro.props as Props;
@@ -26,19 +26,19 @@ const { project } = Astro.props as Props;
                 <a href={`/projects/${project.repoId}`}>...read more</a>
             </p>
         </div>
-        <div class="links-container">
-            <a
-                href={`https://github.com/${social.githubUsername}/${project.id}`}
-                target="_blank">Code</a
-            >
-            <a href={`https://${project.id}.alvs.dev`} target="_blank">Live</a>
-        </div>
+        <ProjectLinks
+            projectRepoId={project.repoId}
+            projectLiveAt={project.liveAt}
+        />
     </div>
 </div>
 
 <style>
     /* ------ Projects cards ---------- */
-
+    .project-card :global(.project-links) {
+        display: flex;
+        justify-content: flex-end;
+    }
     .project-card {
         border: 1px solid rgba(207, 207, 207, 0.8);
         border-radius: 10px;
@@ -46,7 +46,6 @@ const { project } = Astro.props as Props;
         margin-top: 3rem;
     }
     .project-card > div {
-        width: 100%;
         padding: 15px 20px;
         display: flex;
         flex-direction: column;
@@ -54,13 +53,6 @@ const { project } = Astro.props as Props;
     }
     .project-card h3 {
         margin: 0;
-    }
-    .project-card .links-container a {
-        margin-inline-start: 1em;
-        margin-inline-end: 0;
-    }
-    .project-card .links-container {
-        justify-content: end;
     }
     .project-card.hide {
         display: none;
