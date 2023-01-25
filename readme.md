@@ -7,7 +7,8 @@ My name is _Avinash_. I am a frontend web developer for time being.
 -   HTML, CSS, JS
 -   React JS
 -   Astro JS
--   Tailwind CSS
+-   Typescript
+-   Tailwind CSS, Bootstrap
 -   Pug JS
 -   Vitejs
 -   Figma
@@ -16,6 +17,10 @@ My name is _Avinash_. I am a frontend web developer for time being.
 > - SCSS, Gulp, Webpack.
 
 🌱 I’m currently learning [Next js](https://nextjs.org/)
+
+### Technologies i am excited about
+-   [Zod](https://zod.dev/)
+-   [Solid js](https://solidjs.com/)
 
 ### Facts about me
 
