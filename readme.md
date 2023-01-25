@@ -9,12 +9,11 @@ My name is _Avinash_. I am a frontend web developer for time being.
 -   Astro JS
 -   Typescript
 -   Tailwind CSS, Bootstrap
+-   SCSS
 -   Pug JS
 -   Vitejs
 -   Figma
 
-> **no longer prefer to use**
-> - SCSS, Gulp, Webpack.
 
 🌱 I’m currently learning [Next js](https://nextjs.org/)
 
