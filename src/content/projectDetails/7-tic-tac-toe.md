@@ -2,7 +2,7 @@
 id: "tic-tac-toe"
 title: "Tic Tac Toe"
 description: "Simple tic tac toe game, lets be strong and not get addicted."
-tags: "javascript html css"
+tags: ["javascript", "html", "css"]
 repoId: "tic-tac-toe"
 liveAt: "tic-tac-toe.alvs.dev"
 ---
@@ -10,7 +10,7 @@ liveAt: "tic-tac-toe.alvs.dev"
 ### Technical sheet code
 
 -   This app is built in plain HTML, CSS and JS.
--   Though the app seems like a Single Page Application, it isn't. The implementation is just switching between '.show' & '.hide' css classes for blocks of html.
+-   Though the app seems like a Single Page Application, it isn't using any spa frameworks/libraries. The implementation is just switching between '.show' & '.hide' css classes for blocks of html.
 
 ### Random facts
 

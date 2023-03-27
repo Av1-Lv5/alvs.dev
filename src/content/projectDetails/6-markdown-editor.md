@@ -2,7 +2,7 @@
 id: "mde"
 title: "Markdown editor"
 description: "Lets practice writing markdown in this elegant markdown editor"
-tags: "react javascript vite"
+tags: ["react", "javascript", "vite"]
 repoId: "markdown-editor"
 liveAt: "mde.alvs.dev"
 ---
