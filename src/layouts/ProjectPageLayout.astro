@@ -1,75 +1,45 @@
 ---
-// Page layout for the .md files containing content to readmore about a 'project'.
-
-/*
-    NOTE: Avoiding nested layouts as the astro build is currently having a 🐛 bug, 
-    
-    🐛 : Duplicate css and js <link> are being inserted in sub-layout in production #5715 
-*/
-// import Layout from "./Layout.astro";
+import Layout from "./Layout.astro";
 
 // Components
-import BackInHistory from "../components/BackInHistory.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import ProjectLinks from "../components/ProjectLinks.astro";
+import BackInHistory from "../components/projectPage/BackInHistory.astro";
+import ProjectLinks from "../components/projectPage/ProjectLinks.astro";
 
 // Types
 import type { ProjectDetailsFrontmatter } from "../types/ProjectDetailsFrontmatter";
 interface Props {
-    frontmatter: ProjectDetailsFrontmatter;
+	frontmatter: ProjectDetailsFrontmatter;
 }
 
 // props
 const { frontmatter } = Astro.props;
-
-// NOTE: this variable is used by commented out code below
-// const tags = frontmatter.tags.split(" ");
 ---
 
-{
-    /*
-        <Layout
-            categoryTabTitle="project"
-            pageTabTitle={frontmatter.title}
-            pageTitle={frontmatter.title}
-            showNav={false}
-        >
-            <main>main content goes here</main>
-        </Layout>
-*/
-}
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <link rel="stylesheet" href="/styles/simple.css" />
-        <link rel="stylesheet" href="/styles/custom.css" />
-        <title>{`${frontmatter.title} • project`}</title>
-    </head>
-    <body>
-        <Header title={frontmatter.title} showNav={false} />
-        <main>
-            <div>
-                <BackInHistory />
-                <ProjectLinks
-                    projectLiveAt={frontmatter.liveAt}
-                    projectRepoId={frontmatter.repoId}
-                />
-            </div>
-            <slot />
-        </main>
-        <Footer />
-    </body>
-</html>
+<Layout
+	categoryTabTitle="Projects"
+	pageTabTitle={frontmatter.title}
+	pageTitle={frontmatter.title}
+	showNav={false}
+>
+	<main>
+		<div>
+			<BackInHistory />
+			<ProjectLinks
+				projectLiveAt={frontmatter.liveAt}
+				projectRepoId={frontmatter.repoId}
+			/>
+		</div>
+		<slot />
+	</main>
+</Layout>
+
 <style>
-    div {
-        display: flex;
-        justify-content: space-between;
-    }
-    div :global(a.nav-like) {
-        border-color: var(--accent);
-        color: var(--accent);
-    }
+	div {
+		display: flex;
+		justify-content: space-between;
+	}
+	div :global(a.nav-like) {
+		border-color: var(--accent);
+		color: var(--accent);
+	}
 </style>
