@@ -1,79 +1,105 @@
 ---
 // types
-import type { ProjectDetailsFrontmatter } from "../types/ProjectDetailsFrontmatter";
-export interface Props {
-    project: ProjectDetailsFrontmatter;
-}
+import type { CollectionEntry } from "astro:content";
 
 // Components
 import ProjectLinks from "./ProjectLinks.astro";
+
+// Utils
+import arrayToLongString from "../utils/arrayToLongString";
+
+// types
+export interface Props {
+	project: CollectionEntry<"projectDetails">;
+}
 
 // props
 const { project } = Astro.props as Props;
 ---
 
-<div class="project-card" tags={project.tags}>
-    <img
-        loading="lazy"
-        src={`/assets/img/${project.id}-thumb.png`}
-        alt={`a preivew for ${project.title}`}
-    />
-    <div>
-        <div>
-            <h3>{project.title}</h3>
-            <p>
-                {project.description}
-                <a href={`/projects/${project.repoId}`}>...read more</a>
-            </p>
-        </div>
-        <ProjectLinks
-            projectRepoId={project.repoId}
-            projectLiveAt={project.liveAt}
-        />
-    </div>
+<div class="project-card" tags={arrayToLongString(project.data.tags)}>
+	<img
+		loading="lazy"
+		src={`/assets/img/${project.data.id}-thumb.png`}
+		alt={`a preivew for ${project.data.title}`}
+	/>
+	<div>
+		<div>
+			<h3>{project.data.title}</h3>
+			<div class="tags">
+				{
+					project.data.tags.map((tag) => {
+						return <span class="tag">{tag}</span>;
+					})
+				}
+			</div>
+			<p>
+				{project.data.description}
+				<a href={`/projects/${project.data.repoId}`}>...read more</a>
+			</p>
+		</div>
+		<ProjectLinks
+			projectRepoId={project.data.repoId}
+			projectLiveAt={project.data.liveAt}
+		/>
+	</div>
 </div>
 
 <style>
-    /* ------ Projects cards ---------- */
-    .project-card :global(.project-links) {
-        display: flex;
-        justify-content: flex-end;
-    }
-    .project-card {
-        border: 1px solid rgba(207, 207, 207, 0.8);
-        border-radius: 10px;
-        display: flex;
-        margin-top: 3rem;
-    }
-    .project-card > div {
-        padding: 15px 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    .project-card h3 {
-        margin: 0;
-    }
-    .project-card.hide {
-        display: none;
-    }
+	/* ------ Projects cards ---------- */
+	.project-card :global(.project-links) {
+		display: flex;
+		justify-content: flex-end;
+	}
+	.project-card {
+		border: 1px solid rgba(207, 207, 207, 0.8);
+		border-radius: 10px;
+		display: flex;
+		margin-top: 3rem;
+	}
+	.project-card > div {
+		padding: 15px 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	.project-card h3 {
+		margin: 0;
+	}
+	.project-card.hide {
+		display: none;
+	}
 
-    @media screen and (max-width: 680px) {
-        .project-card {
-            flex-direction: column;
-        }
-        .project-card img {
-            max-height: 350px;
-        }
-    }
-    .project-card img {
-        object-fit: cover;
-        border-radius: 10px;
-    }
-    @media screen and (min-width: 680px) {
-        .project-card img {
-            width: 300px;
-            height: 250px;
-        }
-    }
+	@media screen and (max-width: 680px) {
+		.project-card {
+			flex-direction: column;
+		}
+		.project-card img {
+			max-height: 350px;
+		}
+	}
+	.project-card img {
+		object-fit: cover;
+		border-radius: 10px;
+	}
+	@media screen and (min-width: 680px) {
+		.project-card img {
+			width: 300px;
+			height: 250px;
+		}
+	}
+	/* Tags */
+	.tags {
+		margin-top: 0.5rem;
+	}
+	.tag {
+		padding: 2px 15px;
+		border-inline-start: 1px solid grey;
+		text-transform: uppercase;
+		font-size: 0.8rem;
+	}
+	.tag:first-of-type {
+		border-inline-start: none;
+		padding-left: 0;
+	}
 </style>

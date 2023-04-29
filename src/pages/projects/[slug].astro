@@ -1,29 +1,32 @@
 ---
 // Layout
+import { CollectionEntry, getEntryBySlug } from "astro:content";
 import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
 
-// Types
-import type { ProjectDetailsFrontmatter } from "../../types/ProjectDetailsFrontmatter";
-
 export async function getStaticPaths() {
-    const projects = await Astro.glob<ProjectDetailsFrontmatter>(
-        "../../projectDetails/**/*.md"
-    );
+	const projects: CollectionEntry<"projectDetails">[] = [];
+	projects[0] = await getEntryBySlug("projectDetails", "6-markdown-editor");
 
-    return projects.map((project) => ({
-        params: {
-            slug: project.frontmatter.repoId,
-        },
-        props: {
-            projectDetails: project,
-        },
-    }));
+	return projects.map((project) => ({
+		params: {
+			slug: project.data.repoId,
+		},
+		props: {
+			project,
+		},
+	}));
 }
 
+// types
+export type Props = {
+	project: CollectionEntry<"projectDetails">;
+};
+
 // Props
-const { Content, frontmatter } = Astro.props.projectDetails;
+const { project } = Astro.props;
+const { Content } = await project.render();
 ---
 
-<ProjectPageLayout frontmatter={frontmatter}>
-    <Content />
+<ProjectPageLayout project={project}>
+	<Content />
 </ProjectPageLayout>

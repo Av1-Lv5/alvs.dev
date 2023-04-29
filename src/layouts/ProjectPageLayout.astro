@@ -1,32 +1,31 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import Layout from "./Layout.astro";
 
 // Components
-import BackInHistory from "../components/projectPage/BackInHistory.astro";
-import ProjectLinks from "../components/projectPage/ProjectLinks.astro";
+import BackInHistory from "../components/BackInHistory.astro";
+import ProjectLinks from "../components/ProjectLinks.astro";
 
-// Types
-import type { ProjectDetailsFrontmatter } from "../types/ProjectDetailsFrontmatter";
 interface Props {
-	frontmatter: ProjectDetailsFrontmatter;
+	project: CollectionEntry<"projectDetails">;
 }
 
 // props
-const { frontmatter } = Astro.props;
+const { project } = Astro.props;
 ---
 
 <Layout
 	categoryTabTitle="Projects"
-	pageTabTitle={frontmatter.title}
-	pageTitle={frontmatter.title}
+	pageTabTitle={project.data.title}
+	pageTitle={project.data.title}
 	showNav={false}
 >
 	<main>
 		<div>
 			<BackInHistory />
 			<ProjectLinks
-				projectLiveAt={frontmatter.liveAt}
-				projectRepoId={frontmatter.repoId}
+				projectLiveAt={project.data.liveAt}
+				projectRepoId={project.data.repoId}
 			/>
 		</div>
 		<slot />
