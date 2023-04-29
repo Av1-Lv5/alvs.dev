@@ -2,7 +2,7 @@
 id: "coffee-station"
 title: "Coffee station"
 description: "Yet another imaginary coffee shop gets a website."
-tags: ["html", "css"]
+tags: []
 repoId: "coffee-station"
 liveAt: "coffee-station.alvs.dev"
 ---

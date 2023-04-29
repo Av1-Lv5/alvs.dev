@@ -2,7 +2,7 @@
 id: "av1-lv5"
 title: "Personal site"
 description: "My personal/portfolio website"
-tags: ["html", "css"]
+tags: ["astro"]
 repoId: "personal-site-archive"
 liveAt: "alvs.dev"
 ---

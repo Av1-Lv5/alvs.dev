@@ -2,7 +2,7 @@
 id: "tic-tac-toe"
 title: "Tic Tac Toe"
 description: "Simple tic tac toe game, lets be strong and not get addicted."
-tags: ["javascript", "html", "css"]
+tags: ["javascript"]
 repoId: "tic-tac-toe"
 liveAt: "tic-tac-toe.alvs.dev"
 ---
