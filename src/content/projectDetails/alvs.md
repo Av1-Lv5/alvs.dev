@@ -1,8 +1,8 @@
 ---
-layout: "../../layouts/ProjectPageLayout.astro"
 id: "av1-lv5"
 title: "Personal site"
-tags: "html css"
+description: "My personal/portfolio website"
+tags: ["html", "css"]
 repoId: "personal-site-archive"
 liveAt: "alvs.dev"
 ---

@@ -35,7 +35,7 @@ const { project } = Astro.props as Props;
 			</div>
 			<p>
 				{project.data.description}
-				<a href={`/projects/${project.data.repoId}`}>...read more</a>
+				<a href={`/projects/${project.slug}`}>...read more</a>
 			</p>
 		</div>
 		<ProjectLinks

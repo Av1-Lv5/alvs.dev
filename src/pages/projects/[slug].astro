@@ -5,11 +5,12 @@ import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
 
 export async function getStaticPaths() {
 	const projects: CollectionEntry<"projectDetails">[] = [];
-	projects[0] = await getEntryBySlug("projectDetails", "6-markdown-editor");
+	projects[0] = await getEntryBySlug("projectDetails", "markdown-editor");
+	projects[1] = await getEntryBySlug("projectDetails", "alvs");
 
 	return projects.map((project) => ({
 		params: {
-			slug: project.data.repoId,
+			slug: project.slug,
 		},
 		props: {
 			project,
