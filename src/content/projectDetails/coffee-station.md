@@ -4,7 +4,7 @@ title: "Coffee station"
 description: "Yet another imaginary coffee shop gets a website."
 tags: []
 repoId: "coffee-station"
-liveAt: "coffee-station.alvs.dev"
+liveAt: "coffee-station-alvs.netlify.com"
 ---
 
 ### Technical sheet code

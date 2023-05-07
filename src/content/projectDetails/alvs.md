@@ -1,10 +1,9 @@
 ---
-id: "av1-lv5"
-title: "Personal site"
+id: "personal-site-archive"
+title: "Personal site archive"
 description: "My personal/portfolio website"
 tags: ["astro"]
 repoId: "personal-site-archive"
-liveAt: "alvs.dev"
 ---
 
 ### Design decisions
