@@ -4,21 +4,22 @@ My name is _Avinash_. I am a frontend web developer for time being.
 
 ### Skills and tools
 
--   HTML, CSS, JS
--   React JS
--   Astro JS
--   Typescript
--   Tailwind CSS, Bootstrap
--   SCSS
--   Pug JS
--   Vitejs
--   Figma
-
+-   **Web basics:** HTML, CSS, Javascript
+-   **Programming languages:** Typescript,
+-   **UI frameworks:** React JS, Preact JS
+-   **Rendering frameworks:** Astro JS
+-   **Headless CMS:** Sanity
+-   **CSS Frameworks:** Tailwind CSS, Bootstrap
+-   **CSS++** SCSS, PostCSS
+-   **Templating lang:** Pug JS
+-   **Build tools:** Vitejs, Gulp, npm scripts
+-   **JS Libraries:** Zod,
+-   **Design tools:** Figma
 
 🌱 I’m currently learning [Next js](https://nextjs.org/)
 
 ### Technologies i am excited about
--   [Zod](https://zod.dev/)
+
 -   [Solid js](https://solidjs.com/)
 
 ### Facts about me
