@@ -14,7 +14,6 @@ Sometimes it does confuse me, do I even like minimal design or am I just too laz
 
 ### Plans
 
-No plans for now.
 
 ### Archives
 

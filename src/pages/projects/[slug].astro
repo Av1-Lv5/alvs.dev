@@ -4,9 +4,9 @@ import { CollectionEntry, getEntryBySlug } from "astro:content";
 import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
 
 export async function getStaticPaths() {
-	const projects: CollectionEntry<"projectDetails">[] = [];
-	projects[0] = await getEntryBySlug("projectDetails", "markdown-editor");
-	projects[1] = await getEntryBySlug("projectDetails", "alvs");
+	const projects: CollectionEntry<"projects">[] = [];
+	projects[0] = await getEntryBySlug("projects", "markdown-editor");
+	projects[1] = await getEntryBySlug("projects", "alvs");
 
 	return projects.map((project) => ({
 		params: {
@@ -20,7 +20,7 @@ export async function getStaticPaths() {
 
 // types
 export type Props = {
-	project: CollectionEntry<"projectDetails">;
+	project: CollectionEntry<"projects">;
 };
 
 // Props

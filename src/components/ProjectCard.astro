@@ -1,17 +1,15 @@
 ---
 // types
 import type { CollectionEntry } from "astro:content";
+export interface Props {
+	project: CollectionEntry<"projects">;
+}
 
 // Components
 import ProjectLinks from "./ProjectLinks.astro";
 
 // Utils
 import arrayToLongString from "../utils/arrayToLongString";
-
-// types
-export interface Props {
-	project: CollectionEntry<"projectDetails">;
-}
 
 // props
 const { project } = Astro.props as Props;
