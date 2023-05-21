@@ -1,34 +1,20 @@
 nav a.active,
 nav a:hover {
-    color: var(--accent);
-    border-color: var(--accent);
+	color: var(--accent);
+	border-color: var(--accent);
 }
 a.nav-like {
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    color: var(--text);
-    display: inline-block;
-    padding: 0.1rem 1rem;
-    text-decoration: none;
-    font-size: 1rem;
-    line-height: 2;
-    margin-inline-end: 1em;
-}
-
-footer {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 25px;
+	border: 1px solid var(--border);
+	border-radius: 5px;
+	color: var(--text);
+	display: inline-block;
+	padding: 0.1rem 1rem;
+	text-decoration: none;
+	font-size: 1rem;
+	line-height: 2;
+	margin-inline-end: 1em;
 }
 
 .socials > a {
-    padding-right: 10px;
-}
-
-@media screen and (max-width: 670px) {
-    footer {
-        justify-content: center;
-    }
+	padding-right: 10px;
 }
