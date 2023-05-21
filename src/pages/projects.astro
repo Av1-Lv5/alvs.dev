@@ -8,11 +8,14 @@ import PageLayout from "../layouts/PageLayout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 
 // data
-const tags = ["All", "React", "Typescript", "Javascript", "Astro"];
-const markdownEditorProject = await getEntryBySlug(
-	"projectDetails",
-	"markdown-editor"
-);
+const tags = ["All", "React", "Typescript", "Next", "Astro"];
+
+// fetching projects to display
+const fetchedProjects = [];
+
+fetchedProjects[0] = await getEntryBySlug("projects", "audiophile");
+fetchedProjects[1] = await getEntryBySlug("projects", "photosnap");
+fetchedProjects[2] = await getEntryBySlug("projects", "markdown-editor");
 ---
 
 <PageLayout tabTitle="Projects" title="Things I've built">
@@ -30,7 +33,14 @@ const markdownEditorProject = await getEntryBySlug(
 			}
 		</div>
 		<p id="result-msg" class="hide"></p>
+		{
+			fetchedProjects.map((project) => {
+				return <ProjectCard project={project} />;
+			})
+		}
+		<!-- <ProjectCard project={photosnapProject} />
 		<ProjectCard project={markdownEditorProject} />
+		<ProjectCard project={audiophileProject} /> -->
 	</main>
 </PageLayout>
 

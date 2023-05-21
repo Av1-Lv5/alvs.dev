@@ -5,6 +5,7 @@ description: "A simple todo app, lets make a list and forget forever."
 tags: ["javascript"]
 repoId: "simple-todo"
 liveAt: "todo-alvs.netlify.com"
+isDraft: true
 ---
 
 ### Technical sheet code

@@ -5,6 +5,7 @@ description: "Yet another imaginary coffee shop gets a website."
 tags: []
 repoId: "coffee-station"
 liveAt: "coffee-station-alvs.netlify.com"
+isDraft: true
 ---
 
 ### Technical sheet code

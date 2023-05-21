@@ -7,6 +7,8 @@ export async function getStaticPaths() {
 	const projects: CollectionEntry<"projects">[] = [];
 	projects[0] = await getEntryBySlug("projects", "markdown-editor");
 	projects[1] = await getEntryBySlug("projects", "alvs");
+	projects[2] = await getEntryBySlug("projects", "photosnap");
+	projects[3] = await getEntryBySlug("projects", "audiophile");
 
 	return projects.map((project) => ({
 		params: {

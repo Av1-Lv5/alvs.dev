@@ -4,6 +4,7 @@ title: "Personal site archive"
 description: "My personal/portfolio website"
 tags: ["astro"]
 repoId: "personal-site-archive"
+isDraft: false
 ---
 
 ### Design decisions
@@ -14,6 +15,7 @@ Sometimes it does confuse me, do I even like minimal design or am I just too laz
 
 ### Plans
 
+-   Like to have a blog, to write about my learnings, personal endeavours, critical decisions, software comparisions, and tech niche my workflows and setups.
 
 ### Archives
 
