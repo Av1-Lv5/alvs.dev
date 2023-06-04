@@ -1,0 +1,154 @@
+---
+import { getEntry } from "astro:content";
+
+// layout
+import PageLayout from "../../layouts/PageLayout.astro";
+
+// components
+import ProjectCard from "../../components/ProjectCard.astro";
+
+// data
+const tags = ["All", "React", "Typescript", "Next", "Astro"];
+
+// fetching projects to display
+const fetchedProjects = [];
+
+fetchedProjects[0] = await getEntry("projects", "audiophile");
+fetchedProjects[1] = await getEntry("projects", "photosnap");
+fetchedProjects[2] = await getEntry("projects", "markdown-editor");
+fetchedProjects[3] = await getEntry("projects", "tic-tac-toe");
+---
+
+<PageLayout tabTitle="Projects" title="Things I've built">
+    <main>
+        <div id="tags-container">
+            {
+                tags.map((tag) => (
+                    <span
+                        class={`tag ${tag === "All" && "selected"}`}
+                        tabindex="0"
+                    >
+                        {tag}
+                    </span>
+                ))
+            }
+        </div>
+        <p id="result-msg" class="hide"></p>
+        {
+            fetchedProjects.map((project) => {
+                return <ProjectCard project={project} />;
+            })
+        }
+    </main>
+</PageLayout>
+
+<style>
+    .hide {
+        display: none;
+    }
+    #result-msg {
+        color: var(--text-light);
+        font-size: 1rem;
+        font-style: italic;
+    }
+    #result-msg :global(#built-with),
+    #result-msg :global(#projects-count) {
+        font-weight: bold;
+        text-decoration: underline;
+        color: var(--accent);
+        opacity: 0.7;
+    }
+    #tags-container {
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        display: flex;
+        overflow-x: scroll;
+        gap: 15px;
+        z-index: 1;
+        background-color: var(--bg);
+        border-bottom: 1px dashed var(--border);
+    }
+    #tags-container .tag {
+        border: 1px solid var(--border);
+        cursor: pointer;
+        border-radius: 10px;
+        padding: 5px 15px;
+    }
+    #tags-container .tag.selected,
+    #tags-container .tag:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+    }
+</style>
+
+<script>
+    // SELECTORS
+    const tagFilters = document.querySelectorAll("#tags-container .tag");
+    const allProjectCards = document.querySelectorAll(".project-card");
+
+    // Variables
+    let projectsHiddenCount = 0;
+    const projectsCount = allProjectCards.length;
+
+    // Event listners
+    tagFilters.forEach((tagEl) => {
+        tagEl.addEventListener("click", (e) => {
+            const target = e.target as HTMLElement;
+
+            filterProjects(target.innerText);
+            updateSelectedTag(target, tagFilters);
+            updateResultMsg(target.innerText);
+        });
+    });
+
+    // FUNCTIONS
+    // adds "selected" class to 'selectedTagEl' and removes "selected" class for the rest if exists.
+    function updateSelectedTag(
+        selectedTagEl: HTMLElement,
+        allTagEl: NodeListOf<Element>
+    ): void {
+        allTagEl.forEach((tagEl) => {
+            if (tagEl === selectedTagEl) tagEl.classList.add("selected");
+            else if (tagEl.classList.contains("selected"))
+                tagEl.classList.remove("selected");
+        });
+    }
+
+    // adds "hide" class to 'projectCard' if the customHTML Attribute 'tags' does not include the 'filter'
+    function filterProjects(filter: string): void {
+        filter = filter.toLowerCase();
+        projectsHiddenCount = 0;
+        allProjectCards.forEach((projectCard) => {
+            const tags = projectCard
+                .getAttribute("tags")
+                ?.toLowerCase()
+                .split(" ");
+
+            if (filter === "all" || tags?.includes(filter)) {
+                projectCard.classList.remove("hide");
+            } else {
+                projectCard.classList.add("hide");
+                projectsHiddenCount++;
+            }
+        });
+    }
+
+    function updateResultMsg(filter: string) {
+        const resultMsgEl = document.querySelector(
+            "#result-msg"
+        ) as HTMLParagraphElement;
+
+        if (filter !== "All") {
+            resultMsgEl.classList.remove("hide");
+            resultMsgEl.innerHTML = `"Showing <span id="projects-count">${
+                projectsCount - projectsHiddenCount
+            }</span> results for projects built with <span id="built-with"
+            >${filter}</span>"`;
+            console.log(projectsHiddenCount);
+        } else {
+            resultMsgEl.innerHTML = `"Showing <span id="projects-count">${projectsCount}</span> results for <span id="built-with"
+            >${filter}</span> projects"`;
+        }
+    }
+</script>

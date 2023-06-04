@@ -1,28 +1,29 @@
 ---
 // Layout
-import { CollectionEntry, getEntryBySlug } from "astro:content";
+import { CollectionEntry, getEntry } from "astro:content";
 import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
 
 export async function getStaticPaths() {
-	const projects: CollectionEntry<"projects">[] = [];
-	projects[0] = await getEntryBySlug("projects", "markdown-editor");
-	projects[1] = await getEntryBySlug("projects", "alvs");
-	projects[2] = await getEntryBySlug("projects", "photosnap");
-	projects[3] = await getEntryBySlug("projects", "audiophile");
+    const projects: CollectionEntry<"projects">[] = [];
+    projects[0] = await getEntry("projects", "markdown-editor");
+    projects[1] = await getEntry("projects", "alvs");
+    projects[2] = await getEntry("projects", "photosnap");
+    projects[3] = await getEntry("projects", "audiophile");
+    projects[4] = await getEntry("projects", "tic-tac-toe");
 
-	return projects.map((project) => ({
-		params: {
-			slug: project.slug,
-		},
-		props: {
-			project,
-		},
-	}));
+    return projects.map((project) => ({
+        params: {
+            slug: project.slug,
+        },
+        props: {
+            project,
+        },
+    }));
 }
 
 // types
 export type Props = {
-	project: CollectionEntry<"projects">;
+    project: CollectionEntry<"projects">;
 };
 
 // Props
@@ -31,5 +32,5 @@ const { Content } = await project.render();
 ---
 
 <ProjectPageLayout project={project}>
-	<Content />
+    <Content />
 </ProjectPageLayout>
