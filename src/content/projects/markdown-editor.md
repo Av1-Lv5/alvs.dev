@@ -23,8 +23,6 @@ isDraft: false
 
 ### Learnings
 
--   Faced the issue of prop drilling, later implemented state management using native context api.
-
 -   Faced the [issue of prop drilling](https://www.freecodecamp.org/news/avoid-prop-drilling-with-react-context-api/), later implemented state management using native context api.
 
 ### Plans

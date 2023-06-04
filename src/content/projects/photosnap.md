@@ -10,11 +10,11 @@ isDraft: false
 
 ### About
 
-Photosnap is a multi-page marketing site of a photo-sharing platform.
+Photosnap is a multi-page marketing site for a photo-sharing platform built with [Astro](https://astro.build) most styling is done using [Astro scoped styles](https://docs.astro.build/en/guides/styling/#scoped-styles).
 
 ### Learnings
 
--   Implementing the responsive design to the pricing, and features table has been a great learning experience.
+-   Implementing the responsive design to the pricing, and features table took a bit of time to plan.
 -   Got a bit more familiarised with [Astro](https://astro.build)
 
 ### Attributions

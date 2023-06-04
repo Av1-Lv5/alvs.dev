@@ -12,7 +12,7 @@ isDraft: false
 
 -   Add / Remove products from the cart.
 -   Generates the total price on checkout.
--   Validates checkout form.
+-   Validates checkout form on client and also on server.
 
 ### Technical sheet code
 
@@ -22,7 +22,7 @@ isDraft: false
 ### Plans
 
 -   Implement a headless CMS like [Sanity](https://sanity.io/) to make adding, updating, and removing products seameless.
--   Implement [stripe payments](https://stripe.com/) just as a working example on a seperate git branch doesn't have to make it to production.
+-   Implement [stripe payments](https://stripe.com/) just as a working example.
 -   Write end to end tests and unit tests.
 
 ### Attributions
