@@ -9,7 +9,7 @@
 	--text: #212121;
 	--text-light: #27374d;
 	--border: #9ba4b5;
-	--accent: #3e54ac;
+	--accent: #2c49bc;
 	--code: #d81b60;
 	--preformatted: #444;
 	--marked: #ffdd33;
@@ -236,6 +236,7 @@ header > nav a:hover {
 		padding: 0;
 		text-decoration: underline;
 		line-height: 1;
+		font-weight: 600;
 	}
 }
 aside,

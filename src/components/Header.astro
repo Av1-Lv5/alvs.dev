@@ -1,8 +1,8 @@
 ---
 // types
 export interface Props {
-	title: string;
-	showNav: boolean;
+    title: string;
+    showNav: boolean;
 }
 
 // props
@@ -16,28 +16,30 @@ const pathName = Astro.url.pathname;
 ---
 
 <header aria-label="header">
-	{
-		showNav && (
-			<nav aria-label="main navigation">
-				{rootNav.map((navItem) => (
-					<a
-						href={navItem.path}
-						class={pathName === navItem.path ? "active" : ""}
-					>
-						{navItem.title}
-					</a>
-				))}
-				<a
-					class="social"
-					href={`https://github.com/${socials.githubUsername}`}
-					target="_blank"
-				>
-					Github
-				</a>
-			</nav>
-		)
-	}
-	<h1>
-		{title}
-	</h1>
+    {
+        showNav && (
+            <>
+                <nav aria-label="main navigation">
+                    {rootNav.map((navItem) => (
+                        <a
+                            href={navItem.path}
+                            class={pathName === navItem.path ? "active" : ""}
+                        >
+                            {navItem.title}
+                        </a>
+                    ))}
+                    <a
+                        class="social"
+                        href={`https://github.com/${socials.githubUsername}`}
+                        target="_blank"
+                    >
+                        Github
+                    </a>
+                </nav>
+            </>
+        )
+    }
+    <h1>
+        {title}
+    </h1>
 </header>

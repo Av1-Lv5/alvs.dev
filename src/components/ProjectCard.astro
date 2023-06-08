@@ -50,9 +50,10 @@ const { project } = Astro.props as Props;
 		justify-content: flex-end;
 	}
 	.project-card {
+		display: flex;
+		flex-direction: column;
 		border: 1px solid rgba(207, 207, 207, 0.8);
 		border-radius: 10px;
-		display: flex;
 		margin-top: 3rem;
 	}
 	.project-card > div {
@@ -67,23 +68,19 @@ const { project } = Astro.props as Props;
 	.project-card.hide {
 		display: none;
 	}
-
-	@media screen and (max-width: 680px) {
-		.project-card {
-			flex-direction: column;
-		}
-		.project-card img {
-			max-height: 350px;
-		}
-	}
 	.project-card img {
 		object-fit: cover;
+		height: auto;
+		max-height: 300px;
 		border-radius: 10px;
 	}
 	@media screen and (min-width: 680px) {
+		.project-card {
+			flex-direction: row;
+		}
 		.project-card img {
 			width: 300px;
-			height: 250px;
+			max-height: none;
 		}
 	}
 	/* Tags */
