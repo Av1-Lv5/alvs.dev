@@ -1,5 +1,9 @@
-nav a.active,
-nav a:hover {
+a {
+	text-underline-offset: 5%;
+}
+
+header > nav a.active,
+header > nav a:hover {
 	color: var(--accent);
 	border-color: var(--accent);
 }
