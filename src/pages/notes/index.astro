@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+
+// layout
+import PageLayout from "../../layouts/PageLayout.astro";
+
+// fetching notes to display
+const allNotes = await getCollection("notes");
+---
+
+<PageLayout tabTitle="Notes" title="My public notes">
+	<main>
+		<p>
+			The content in my notes gets often updated to my current opinions.
+			Notes may be unfinished, unpolished. I write to record my thoughts,
+			ideas and opinions.
+		</p>
+		<ul>
+			{
+				allNotes.map((note) => {
+					return (
+						<li>
+							<a href={`/notes/${note.slug}`}>
+								{note.data.title}
+							</a>
+						</li>
+					);
+				})
+			}
+		</ul>
+	</main>
+</PageLayout>
+<style>
+	div :global(a.nav-like) {
+		border-color: var(--accent);
+		color: var(--accent);
+	}
+</style>

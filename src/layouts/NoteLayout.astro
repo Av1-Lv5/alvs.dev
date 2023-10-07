@@ -1,0 +1,44 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Layout from "./Layout.astro";
+
+// Components
+import BackInHistory from "../components/BackInHistory.astro";
+
+interface Props {
+	note: CollectionEntry<"notes">;
+}
+
+// props
+const { note } = Astro.props;
+---
+
+<Layout
+	categoryTabTitle="Note"
+	pageTabTitle={note.data.title}
+	pageTitle={note.data.title}
+	showNav={false}
+>
+	<main>
+		<div class="sub-navigation">
+			<BackInHistory />
+			<div>
+				<a href="/" class="nav-like">Home</a>
+				<a href="/notes" class="nav-like">Notes</a>
+			</div>
+		</div>
+		<slot />
+	</main>
+</Layout>
+
+<style>
+	.sub-navigation {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 45px;
+	}
+	div :global(a.nav-like) {
+		border-color: var(--accent);
+		color: var(--accent);
+	}
+</style>
