@@ -13,6 +13,8 @@ export default {
 				.or(z.literal("preact"))
 				.or(z.literal("astro"))
 				.or(z.literal("next"))
+			.or(z.literal("html"))
+			.or(z.literal("css"))
 		)
 		.max(4),
 	repoId: z.string().optional(),
