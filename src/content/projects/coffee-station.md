@@ -2,11 +2,13 @@
 id: "coffee-station"
 title: "Coffee station"
 description: "Yet another imaginary coffee shop gets a website."
-tags: []
+tags: ["html", "css"]
 repoId: "coffee-station"
-liveAt: "coffee-station-alvs.netlify.com"
+liveAt: "coffee-station-alvs.netlify.app"
 isDraft: true
 ---
+
+![Coffee station project preview image](/assets/img/coffee-station-thumb.png)
 
 ### Technical sheet code
 

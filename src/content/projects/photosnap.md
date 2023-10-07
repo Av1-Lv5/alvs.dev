@@ -4,9 +4,11 @@ title: Photosnap
 description: A multi-page marketing site for a photosharing platform.
 tags: ["astro", "typescript"]
 repoId: "photosnap-FM"
-liveAt: "photosnap-fm-alvs.netlify.com"
+liveAt: "photosnap-fm-alvs.netlify.app"
 isDraft: false
 ---
+
+![Photosnap project preview image](/assets/img/photosnap-thumb.png)
 
 ### About
 

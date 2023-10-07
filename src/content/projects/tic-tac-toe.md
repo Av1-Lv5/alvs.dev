@@ -4,9 +4,11 @@ title: "Tic Tac Toe"
 description: "Simple tic tac toe game, lets be strong and not get addicted."
 tags: ["javascript"]
 repoId: "Tic-Tac-Toe-FM"
-liveAt: "tictactoe-fm-alvs.netlify.com"
+liveAt: "tictactoe-fm-alvs.netlify.app"
 isDraft: true
 ---
+
+![TicTacToe project preview image](/assets/img/tic-tac-toe-thumb.png)
 
 ### Features Implemented
 

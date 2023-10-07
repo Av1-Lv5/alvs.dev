@@ -4,9 +4,11 @@ title: "Markdown editor"
 description: "Lets practice writing markdown in this elegant markdown editor"
 tags: ["react", "typescript"]
 repoId: "markdown-editor-FM"
-liveAt: "mde-fm-alvs.netlify.com"
+liveAt: "mde-fm-alvs.netlify.app"
 isDraft: false
 ---
+
+![Markdown Editor project preview image](/assets/img/markdown-editor-thumb.png)
 
 ### Features implemented
 

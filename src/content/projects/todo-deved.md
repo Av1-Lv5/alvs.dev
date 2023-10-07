@@ -4,9 +4,11 @@ title: "Todo"
 description: "A simple todo app, lets make a list and forget forever."
 tags: ["javascript"]
 repoId: "simple-todo"
-liveAt: "todo-alvs.netlify.com"
+liveAt: "todo-alvs.netlify.app"
 isDraft: true
 ---
+
+![Todo project preview image](/assets/img/todo-deved-thumb.png)
 
 ### Technical sheet code
 
