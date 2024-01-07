@@ -1,45 +1,54 @@
 ---
 // data
-import skills from "../data/skills.json";
+import skills from "@data/skills.json";
 ---
 
 <div id="skills">
-    {
-        skills.map((skill) => {
-            return (
-                <span class="skill">
-                    <label>{skill.title}</label>
-                    <img src={skill.icon} alt="" />
-                </span>
-            );
-        })
-    }
+	{
+		skills.map((skill, index) => {
+			const skillUniqueID = `skill-${skill.title
+				.replace(" ", "-")
+				.toLowerCase()}-${index}`;
+			return (
+				<span class="skill">
+					<label for={skillUniqueID}>{skill.title}</label>
+					<img
+						id={skillUniqueID}
+						width="27"
+						height="27"
+						src={skill.icon}
+						alt=""
+					/>
+				</span>
+			);
+		})
+	}
 </div>
 
 <style>
-    #skills {
-        display: flex;
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    #skills span {
-        border-radius: 5px;
-        padding: 5px 15px;
-        border: 1px dashed var(--border);
-    }
-    #skills .skill {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        height: 50px;
-    }
-    #skills .skill img {
-        height: 1.5rem;
-    }
-    @media screen and (max-width: 600px) {
-        #skills .skill label {
-            display: none;
-        }
-    }
+	#skills {
+		display: flex;
+		gap: 15px;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	#skills span {
+		border-radius: 5px;
+		padding: 5px 15px;
+		border: 1px dashed var(--border);
+	}
+	#skills .skill {
+		display: flex;
+		align-items: center;
+		gap: 15px;
+		height: 50px;
+	}
+	#skills .skill img {
+		height: 1.5rem;
+	}
+	@media screen and (max-width: 600px) {
+		#skills .skill label {
+			display: none;
+		}
+	}
 </style>

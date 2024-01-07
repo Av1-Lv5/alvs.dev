@@ -1,9 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import Layout from "./Layout.astro";
+import Layout from "@layouts/Layout.astro";
 
 // Components
-import BackInHistory from "../components/BackInHistory.astro";
+import BackInHistory from "@components/BackInHistory.astro";
 
 interface Props {
 	note: CollectionEntry<"notes">;

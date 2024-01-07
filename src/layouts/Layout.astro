@@ -2,8 +2,8 @@
 // This the base layout designed for differen pages
 
 // components
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
 
 // Types
 export interface Props {
@@ -14,8 +14,8 @@ export interface Props {
 }
 
 // styles
-import "../styles/simple.css";
-import "../styles/custom.css";
+import "@styles/simple.css";
+import "@styles/custom.css";
 
 // props
 const { pageTabTitle, pageTitle, categoryTabTitle, showNav } = Astro.props;

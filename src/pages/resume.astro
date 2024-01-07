@@ -1,0 +1,21 @@
+---
+import resume from "@docs/Avinash_Lvs-Resume.pdf";
+import PageLayout from "@layouts/PageLayout.astro";
+---
+
+<PageLayout tabTitle="Resume" title="Resume">
+	<iframe src={resume}></iframe>
+</PageLayout>
+
+<style>
+	iframe {
+		width: 100%;
+		margin-top: 4rem;
+		height: 100vh;
+		max-height: 500px;
+		border: none;
+		-webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
+		background-color: #ba3b3b; /* Set to match your page's background */
+		border-radius: 10px;
+	}
+</style>

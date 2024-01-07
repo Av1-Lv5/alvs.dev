@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 
 // layout
-import PageLayout from "../../layouts/PageLayout.astro";
+import PageLayout from "@layouts/PageLayout.astro";
 
 // fetching notes to display
 const allNotes = await getCollection("notes");

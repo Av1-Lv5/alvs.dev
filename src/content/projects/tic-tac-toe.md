@@ -8,7 +8,7 @@ liveAt: "tictactoe-fm-alvs.netlify.app"
 isDraft: true
 ---
 
-![TicTacToe project preview image](/assets/img/tic-tac-toe-thumb.png)
+![TicTacToe project preview](/src/assets/img/tic-tac-toe-thumb.png)
 
 ### Features Implemented
 

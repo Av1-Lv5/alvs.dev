@@ -6,7 +6,7 @@ export interface Props {
 }
 
 // Components
-import ProjectLinks from "./ProjectLinks.astro";
+import ProjectLinks from "@components/ProjectLinks.astro";
 
 // Utils
 import arrayToLongString from "../utils/arrayToLongString";
@@ -21,7 +21,8 @@ const { project } = Astro.props as Props;
 		src={`/assets/img/${project.data.id}-thumb.png`}
 		alt={`a preivew for ${project.data.title}`}
 	/>
-	<div>
+
+	<div class="project-content-container">
 		<div>
 			<h3>{project.data.title}</h3>
 			<div class="tags">
@@ -56,7 +57,7 @@ const { project } = Astro.props as Props;
 		border-radius: 10px;
 		margin-top: 3rem;
 	}
-	.project-card > div {
+	.project-content-container {
 		padding: 15px 20px;
 		display: flex;
 		flex-direction: column;

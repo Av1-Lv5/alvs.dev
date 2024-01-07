@@ -1,10 +1,10 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import Layout from "./Layout.astro";
+import Layout from "@layouts/Layout.astro";
 
 // Components
-import BackInHistory from "../components/BackInHistory.astro";
-import ProjectLinks from "../components/ProjectLinks.astro";
+import BackInHistory from "@components/BackInHistory.astro";
+import ProjectLinks from "@components/ProjectLinks.astro";
 
 interface Props {
 	project: CollectionEntry<"projects">;
