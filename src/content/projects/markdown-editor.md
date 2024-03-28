@@ -8,7 +8,7 @@ liveAt: "mde-fm-alvs.netlify.app"
 isDraft: false
 ---
 
-![Markdown Editor project preview](/src/assets/img/markdown-editor-thumb.png)
+![Markdown Editor project preview](/assets/img/markdown-editor-thumb.png)
 
 ### Features implemented
 

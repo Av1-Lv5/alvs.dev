@@ -6,12 +6,12 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 
 // Types
-export interface Props {
-    pageTabTitle: string;
-    categoryTabTitle: string;
-    pageTitle: string;
-    showNav: boolean;
-}
+type Props = {
+	pageTabTitle: string;
+	categoryTabTitle: string;
+	pageTitle: string;
+	showNav: boolean;
+};
 
 // styles
 import "@styles/simple.css";
@@ -21,17 +21,19 @@ import "@styles/custom.css";
 const { pageTabTitle, pageTitle, categoryTabTitle, showNav } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{`${pageTabTitle} • ${categoryTabTitle}`}</title>
-    </head>
-    <body>
-        <Header title={pageTitle} showNav={showNav} />
-        <slot />
-        <Footer />
-    </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{`${pageTabTitle} • ${categoryTabTitle}`}</title>
+	</head>
+	<body>
+		<Header title={pageTitle} showNav={showNav} />
+		<main>
+			<slot />
+		</main>
+		<Footer />
+	</body>
 </html>

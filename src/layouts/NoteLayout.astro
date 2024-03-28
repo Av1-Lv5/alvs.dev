@@ -5,9 +5,9 @@ import Layout from "@layouts/Layout.astro";
 // Components
 import BackInHistory from "@components/BackInHistory.astro";
 
-interface Props {
+type Props = {
 	note: CollectionEntry<"notes">;
-}
+};
 
 // props
 const { note } = Astro.props;
@@ -19,16 +19,14 @@ const { note } = Astro.props;
 	pageTitle={note.data.title}
 	showNav={false}
 >
-	<main>
-		<div class="sub-navigation">
-			<BackInHistory />
-			<div>
-				<a href="/" class="nav-like">Home</a>
-				<a href="/notes" class="nav-like">Notes</a>
-			</div>
+	<div class="sub-navigation">
+		<BackInHistory />
+		<div>
+			<a href="/" class="nav-like">Home</a>
+			<a href="/notes" class="nav-like">Notes</a>
 		</div>
-		<slot />
-	</main>
+	</div>
+	<slot />
 </Layout>
 
 <style>

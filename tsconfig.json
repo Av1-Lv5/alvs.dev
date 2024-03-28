@@ -3,15 +3,16 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"@docs/*": ["src/assets/docs/*"],
+			"@docs/*": ["public/assets/docs/*"],
 			"@components/*": ["src/components/*"],
 			"@layouts/*": ["src/layouts/*"],
 			"@images/*": ["public/assets/img/*"],
-			"@devicons/*": ["src/assets/devIcons/*"],
-			"@icons/*": ["src/assets/icons/*"],
+			"@devicons/*": ["public/assets/devIcons/*"],
+			"@icons/*": ["public/assets/icons/*"],
 			"@custom-types/*": ["src/types/*"],
 			"@data/*": ["src/data/*"],
-			"@styles/*": ["src/styles/*"]
+			"@styles/*": ["src/styles/*"],
+			"@schemas/*": ["src/schemas/*"]
 		}
 	}
 }

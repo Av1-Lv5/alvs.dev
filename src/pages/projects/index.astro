@@ -20,24 +20,20 @@ fetchedProjects[3] = await getEntry("projects", "tic-tac-toe");
 ---
 
 <PageLayout tabTitle="Projects" title="Things I've built">
-	<main>
-		<div id="tags-container">
-			{
-				tags.map((tag) => (
-					<span class={`tag ${tag === "All" && "selected"}`}>
-						{tag}
-					</span>
-				))
-			}
-		</div>
-		<p id="result-msg" class="hide"></p>
+	<div id="tags-container">
 		{
-			fetchedProjects.map((project) => {
-				return <ProjectCard project={project} />;
-			})
+			tags.map((tag) => (
+				<span class={`tag ${tag === "All" && "selected"}`}>{tag}</span>
+			))
 		}
-		<!-- <a id="view-all-projects">View all projects</a> -->
-	</main>
+	</div>
+	<p id="result-msg" class="hide"></p>
+	{
+		fetchedProjects.map((project) => {
+			return <ProjectCard project={project} />;
+		})
+	}
+	<!-- <a id="view-all-projects">View all projects</a> -->
 </PageLayout>
 
 <style>
@@ -91,26 +87,25 @@ fetchedProjects[3] = await getEntry("projects", "tic-tac-toe");
 
 <script>
 	// SELECTORS
-	const tagFilters = document.querySelectorAll("#tags-container .tag");
-	const allProjectCards = document.querySelectorAll(".project-card");
+	const tagFilterEls = document.querySelectorAll("#tags-container .tag");
+	const allProjectCardEls = document.querySelectorAll(".project-card");
 
 	// Variables
 	let projectsHiddenCount = 0;
-	const projectsCount = allProjectCards.length;
 
 	// Event listners
-	tagFilters.forEach((tagEl) => {
+	tagFilterEls.forEach((tagEl) => {
 		tagEl.addEventListener("click", (e) => {
 			const target = e.target as HTMLElement;
 
 			filterProjects(target.innerText);
-			updateSelectedTag(target, tagFilters);
+			updateSelectedTag(target, tagFilterEls);
 			updateResultMsg(target.innerText);
+			scrollBackToTags();
 		});
 	});
 
 	// FUNCTIONS
-	// adds "selected" class to 'selectedTagEl' and removes "selected" class for the rest if exists.
 	function updateSelectedTag(
 		selectedTagEl: HTMLElement,
 		allTagEl: NodeListOf<Element>
@@ -122,17 +117,17 @@ fetchedProjects[3] = await getEntry("projects", "tic-tac-toe");
 		});
 	}
 
-	// adds "hide" class to 'projectCard' if the customHTML Attribute 'tags' does not include the 'filter'
 	function filterProjects(filter: string): void {
 		filter = filter.toLowerCase();
 		projectsHiddenCount = 0;
-		allProjectCards.forEach((projectCard) => {
-			const tags = projectCard
+
+		allProjectCardEls.forEach((projectCard) => {
+			const tagsOnCard = projectCard
 				.getAttribute("tags")
 				?.toLowerCase()
 				.split(" ");
 
-			if (filter === "all" || tags?.includes(filter)) {
+			if (filter === "all" || tagsOnCard?.includes(filter)) {
 				projectCard.classList.remove("hide");
 			} else {
 				projectCard.classList.add("hide");
@@ -142,9 +137,13 @@ fetchedProjects[3] = await getEntry("projects", "tic-tac-toe");
 	}
 
 	function updateResultMsg(filter: string) {
+		// SELECTORS
 		const resultMsgEl = document.querySelector(
 			"#result-msg"
 		) as HTMLParagraphElement;
+
+		// VARIABLES
+		const projectsCount = allProjectCardEls.length;
 
 		if (filter !== "All") {
 			resultMsgEl.classList.remove("hide");
@@ -152,10 +151,15 @@ fetchedProjects[3] = await getEntry("projects", "tic-tac-toe");
 				projectsCount - projectsHiddenCount
 			}</span> results for projects built with <span id="built-with"
             >${filter}</span>"`;
-			console.log(projectsHiddenCount);
 		} else {
 			resultMsgEl.innerHTML = `"Showing <span id="projects-count">${projectsCount}</span> results for <span id="built-with"
             >${filter}</span> projects"`;
 		}
+	}
+
+	function scrollBackToTags() {
+		// document
+		// 	.getElementById("result-msg")
+		// 	?.scrollIntoView({ behavior: "smooth", block: "center" });
 	}
 </script>

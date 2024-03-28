@@ -23,7 +23,6 @@ _A detailed and exhaustive list of skills I have and tools I use_
 
 -   I have tried CMS like wordpress once, Not into it but familiar with using it.
 -   Loving the idea of Headless CMS, been using **[sanity](https://sanity.io)** recently.
--   Currently Learning **[Stripe](https://stripe.com/)** a payments infrastructure.
 
 ### Tools
 

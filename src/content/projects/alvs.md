@@ -1,6 +1,6 @@
 ---
 id: "personal-site-archive"
-title: "Personal site archive"
+title: "www.alvs.dev"
 description: "My personal/portfolio website"
 tags: ["astro"]
 repoId: "personal-site-archive"
@@ -9,13 +9,13 @@ isDraft: false
 
 ### Design decisions
 
-The reason i used a classless CSS library [simple.css](https://simplecss.org/) is, it forces me to use semantic HTML, and also i can worry less about the design.
+The reason to use [simple.css](https://simplecss.org/) a classless CSS library is, it forces me to use semantic HTML, also less to worry about the design.
 
-Sometimes it does confuse me, do I even like minimal design or am I just too lazy to create my own design. May be its both and it mostly worked out well for me.
+Sometimes it does confuse me, do I even like minimal design or am I just too lazy to create my own design. May be its both and it mostly worked out well for this site.
 
 ### Plans
 
--   Like to have a blog, to write about my learnings, personal endeavours, critical decisions, software comparisions, and tech niche my workflows and setups.
+-   Like to have a blog, to write about my learnings, personal endeavours, critical decisions, software comparisions, and my niche in web development, including workflows and setups..
 
 ### Archives
 

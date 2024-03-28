@@ -8,7 +8,7 @@ liveAt: "todo-alvs.netlify.app"
 isDraft: true
 ---
 
-![Todo project preview](/src/assets/img/todo-deved-thumb.png)
+![Todo project preview](/assets/img/todo-deved-thumb.png)
 
 ### Technical sheet code
 

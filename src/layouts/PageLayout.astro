@@ -3,10 +3,10 @@
 import Layout from "@layouts/Layout.astro";
 
 // types
-export interface Props {
+type Props = {
 	tabTitle: string;
 	title: string;
-}
+};
 
 // props
 const { tabTitle, title } = Astro.props;

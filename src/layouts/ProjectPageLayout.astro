@@ -6,9 +6,9 @@ import Layout from "@layouts/Layout.astro";
 import BackInHistory from "@components/BackInHistory.astro";
 import ProjectLinks from "@components/ProjectLinks.astro";
 
-interface Props {
+type Props = {
 	project: CollectionEntry<"projects">;
-}
+};
 
 // props
 const { project } = Astro.props;
@@ -20,16 +20,14 @@ const { project } = Astro.props;
 	pageTitle={project.data.title}
 	showNav={false}
 >
-	<main>
-		<div>
-			<BackInHistory />
-			<ProjectLinks
-				projectLiveAt={project.data.liveAt}
-				projectRepoId={project.data.repoId}
-			/>
-		</div>
-		<slot />
-	</main>
+	<div>
+		<BackInHistory />
+		<ProjectLinks
+			projectLiveAt={project.data.liveAt}
+			projectRepoId={project.data.repoId}
+		/>
+	</div>
+	<slot />
 </Layout>
 
 <style>

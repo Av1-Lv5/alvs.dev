@@ -8,7 +8,7 @@ liveAt: "photosnap-fm-alvs.netlify.app"
 isDraft: false
 ---
 
-![Photosnap project preview](/src/assets/img/photosnap-thumb.png)
+![Photosnap project preview](/assets/img/photosnap-thumb.png)
 
 ### About
 

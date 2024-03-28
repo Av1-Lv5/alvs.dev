@@ -8,7 +8,7 @@ liveAt: "coffee-station-alvs.netlify.app"
 isDraft: true
 ---
 
-![Coffee station project preview](/src/assets/img/coffee-station-thumb.png)
+![Coffee station project preview](/assets/img/coffee-station-thumb.png)
 
 ### Technical sheet code
 

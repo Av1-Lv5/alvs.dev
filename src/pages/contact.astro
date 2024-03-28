@@ -12,57 +12,50 @@ import socials from "@data/socials.json";
 ---
 
 <PageLayout title="Get in touch" tabTitle="Contact">
-    <main>
-        <b>
-            Got an interesting project you're working on, or just want to say
-            hi?
-        </b>
-        <p>
-            I'd love to hear from you! The best way to reach me is through an
-            email.
-        </p>
-        <h3 class="contact">
-            <EmailSVG />
-            <span>Email:</span>
-            <a href={`mailto:${socials.email}`}>{socials.email}</a>
-        </h3>
+	<b>
+		Got an interesting project you're working on, or just want to say hi?
+	</b>
+	<p>
+		I'd love to hear from you! The best way to reach me is through an email.
+	</p>
+	<h3 class="contact">
+		<EmailSVG />
+		<span>Email:</span>
+		<a href={`mailto:${socials.email}`}>{socials.email}</a>
+	</h3>
 
-        <p class="notice">
-            <small>
-                <b>Please Note :</b>
-                This is a randomly generated email that I change regularly to prevent
-                spam. So saving this as a contact for future communications is not
-                suggested.
-            </small>
-        </p>
-        <hr />
-        <h3>Contact form</h3>
-        <Form />
-    </main>
+	<p class="notice">
+		<b>Spam prevention:</b>
+		Above email address changes over time. Saving for future communication is
+		not recommended.
+	</p>
+	<!-- <hr /> -->
+	<!-- <h3>Contact form</h3>
+	<Form /> -->
 </PageLayout>
 
 <style>
-    /* contact email */
-    .contact {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        align-items: center;
-    }
-    @media screen and (max-width: 650px) {
-        .contact :global(svg),
-        .contact span {
-            display: none;
-        }
-    }
-    .contact > * {
-        margin-right: 0.7rem;
-    }
-    .notice {
-        background: var(--accent-bg);
-        border: 2px solid var(--border);
-        border-radius: 5px;
-        padding: 1.5rem;
-        margin: 2rem 0;
-    }
+	/* contact email */
+	.contact {
+		display: flex;
+		justify-content: center;
+		gap: 10px;
+		align-items: center;
+	}
+	@media screen and (max-width: 650px) {
+		.contact :global(svg),
+		.contact span {
+			display: none;
+		}
+	}
+	.contact > * {
+		margin-right: 0.7rem;
+	}
+	.notice {
+		background: var(--accent-bg);
+		border: 2px solid var(--border);
+		border-radius: 5px;
+		padding: 1.5rem;
+		/* margin: 2rem 0; */
+	}
 </style>

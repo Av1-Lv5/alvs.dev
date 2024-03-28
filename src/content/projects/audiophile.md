@@ -8,7 +8,7 @@ liveAt: "audiophile-fm-alvs.netlify.app"
 isDraft: false
 ---
 
-![Audiophile project preview](/src/assets/img/audiophile-thumb.png)
+![Audiophile project preview](/assets/img/audiophile-thumb.png)
 
 ### Features
 

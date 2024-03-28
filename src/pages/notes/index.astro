@@ -9,26 +9,22 @@ const allNotes = await getCollection("notes");
 ---
 
 <PageLayout tabTitle="Notes" title="My public notes">
-	<main>
-		<p>
-			The content in my notes gets often updated to my current opinions.
-			Notes may be unfinished, unpolished. I write to record my thoughts,
-			ideas and opinions.
-		</p>
-		<ul>
-			{
-				allNotes.map((note) => {
-					return (
-						<li>
-							<a href={`/notes/${note.slug}`}>
-								{note.data.title}
-							</a>
-						</li>
-					);
-				})
-			}
-		</ul>
-	</main>
+	<p>
+		The content in my notes gets often updated to my current opinions. Notes
+		may be unfinished, unpolished. I write to record my thoughts, ideas and
+		opinions.
+	</p>
+	<ul>
+		{
+			allNotes.map((note) => {
+				return (
+					<li>
+						<a href={`/notes/${note.slug}`}>{note.data.title}</a>
+					</li>
+				);
+			})
+		}
+	</ul>
 </PageLayout>
 <style>
 	div :global(a.nav-like) {
