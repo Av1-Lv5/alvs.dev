@@ -1,5 +1,5 @@
 ---
-import social from "@data/socials.json";
+import { socials } from "src/constants/index";
 export interface Props {
 	projectRepoId?: string;
 	projectLiveAt?: string;
@@ -12,7 +12,7 @@ const { projectRepoId, projectLiveAt } = Astro.props;
 		projectRepoId && (
 			<a
 				class="nav-like"
-				href={`https://github.com/${social.githubUsername}/${projectRepoId}`}
+				href={`https://github.com/${socials.githubUsername}/${projectRepoId}`}
 				target="_blank"
 			>
 				Code

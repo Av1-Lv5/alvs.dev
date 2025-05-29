@@ -1,8 +1,0 @@
-{
-	"JS Framework": ["React", "Preact", "Svelte", "Solid"],
-	"Rendering Framework": ["Astro", "Next"],
-	"CSS Framework": ["Tailwind", "Bootstrap"],
-	"Build tool": ["Vite", "Webpack", "Gulp"],
-	"Headless CMS": ["Sanity", "Strapi"],
-	"JS Transpiler": ["Babel", "Typescript", "Typescript + Babel"]
-}

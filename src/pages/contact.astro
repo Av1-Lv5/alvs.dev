@@ -2,13 +2,10 @@
 // layout
 import PageLayout from "@layouts/PageLayout.astro";
 
-// components
-import Form from "@components/Form.astro";
-
 import EmailSVG from "@icons/EmailSVG.astro";
 
 // data
-import socials from "@data/socials.json";
+import { socials } from "src/constants";
 ---
 
 <PageLayout title="Get in touch" tabTitle="Contact">
@@ -29,9 +26,6 @@ import socials from "@data/socials.json";
 		Above email address changes over time. Saving for future communication is
 		not recommended.
 	</p>
-	<!-- <hr /> -->
-	<!-- <h3>Contact form</h3>
-	<Form /> -->
 </PageLayout>
 
 <style>
@@ -48,14 +42,10 @@ import socials from "@data/socials.json";
 			display: none;
 		}
 	}
-	.contact > * {
-		margin-right: 0.7rem;
-	}
 	.notice {
 		background: var(--accent-bg);
 		border: 2px solid var(--border);
 		border-radius: 5px;
 		padding: 1.5rem;
-		/* margin: 2rem 0; */
 	}
 </style>

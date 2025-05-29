@@ -1,9 +1,4 @@
 ---
-import { getCollection } from "astro:content";
-
-// fetching notes to display
-const allNotes = await getCollection("notes");
-
 // layout
 import PageLayout from "@layouts/PageLayout.astro";
 ---
@@ -31,19 +26,8 @@ import PageLayout from "@layouts/PageLayout.astro";
 		<li>Fav colors: black, white, blue and gray.</li>
 		<li>Minimalist in nature</li>
 	</ul>
-
-	<h3>My notes</h3>
-
+	<h3>Other non-interesting stuff</h3>
 	<ul>
-		{
-			allNotes.slice(0, 4).map((note) => {
-				return (
-					<li>
-						<a href={`/notes/${note.slug}`}>{note.data.title}</a>
-					</li>
-				);
-			})
-		}
+		<li><a href="/notes">Read my public notes</a></li>
 	</ul>
-	<a href="/notes">View all my notes list</a>
 </PageLayout>
