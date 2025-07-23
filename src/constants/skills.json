@@ -32,18 +32,6 @@
 		"icon": "/assets/devIcons/TailwindCSS-Dark.svg"
 	},
 	{
-		"title": "Bootstrap",
-		"icon": "/assets/devIcons/Bootstrap.svg"
-	},
-	{
-		"title": "SCSS",
-		"icon": "/assets/devIcons/Sass.svg"
-	},
-	{
-		"title": "Pug",
-		"icon": "/assets/devIcons/Pug-Dark.svg"
-	},
-	{
 		"title": "Git",
 		"icon": "/assets/devIcons/Git.svg"
 	},
