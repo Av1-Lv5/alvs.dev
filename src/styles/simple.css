@@ -138,10 +138,13 @@ h3 {
 }
 a,
 a:visited {
+	text-decoration: none;
+	border-bottom: 0.12em solid transparent;
+	transition: border-color 0.2s ease;
 	color: var(--accent);
 }
 a:hover {
-	text-decoration: none;
+	border-bottom-color: var(--accent);
 }
 [role="button"],
 button,

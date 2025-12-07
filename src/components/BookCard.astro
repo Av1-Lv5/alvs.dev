@@ -1,0 +1,48 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+	book: CollectionEntry<"books">;
+}
+
+const { book } = Astro.props;
+---
+
+<div class="book-card">
+	<h3 class="book-title">{book.data.title}</h3>
+	<p class="book-author">
+		by {book.data.author}
+	</p>
+	<img
+		src={book.data.cover}
+		alt={`${book.data.title} cover`}
+		width="120"
+		loading="lazy"
+		class="book-cover"
+	/>
+	<p>{book.data.thoughts}</p>
+</div>
+
+<style>
+	.book-card {
+		display: flow-root;
+	}
+
+	.book-title {
+		margin-bottom: 0px;
+	}
+
+	.book-author {
+		font-style: italic;
+		opacity: 80%;
+	}
+
+	.book-cover {
+		float: left;
+		margin-right: 24px;
+		width: 120px;
+		height: auto;
+		border-radius: 2px;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
+</style>

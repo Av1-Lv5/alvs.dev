@@ -1,0 +1,14 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BookCard from "@components/BookCard.astro";
+
+interface Props {
+	books: CollectionEntry<"books">[];
+}
+
+const { books } = Astro.props;
+---
+
+<div>
+	{books.map((book) => <BookCard book={book} />)}
+</div>

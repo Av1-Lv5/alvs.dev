@@ -12,9 +12,8 @@ import { socials } from "src/constants";
 	<b>
 		Got an interesting project you're working on, or just want to say hi?
 	</b>
-	<p>
-		I'd love to hear from you! The best way to reach me is through an email.
-	</p>
+	<p>I'd love to hear from you! The best way to reach me is through email.</p>
+
 	<h3 class="contact">
 		<EmailSVG />
 		<span>Email:</span>
@@ -26,10 +25,27 @@ import { socials } from "src/constants";
 		Above email address changes over time. Saving for future communication is
 		not recommended.
 	</p>
+
+	<h3>What to Expect</h3>
+	<ul>
+		<li>Response within 24-48 hours</li>
+		<li>For project inquiries, include details and timeline</li>
+		<li>Open to collaboration and learning opportunities</li>
+	</ul>
+
+	<h3>Find Me Online</h3>
+	<p>
+		<a href={socials.linkedin} target="_blank" rel="noopener">LinkedIn</a> •
+		<a
+			href={`https://github.com/${socials.githubUsername}`}
+			target="_blank"
+			rel="noopener">GitHub</a
+		> •
+		<a href={socials.mastodon} target="_blank" rel="noopener">Mastodon</a>
+	</p>
 </PageLayout>
 
 <style>
-	/* contact email */
 	.contact {
 		display: flex;
 		justify-content: center;

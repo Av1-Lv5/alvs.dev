@@ -1,0 +1,44 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import type { Page } from "astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import BookList from "@components/BookList.astro";
+import BookPagination from "@components/BookPagination.astro";
+
+export async function getStaticPaths({ paginate }: any) {
+	const allBooks = await getCollection("books");
+	return paginate(allBooks, { pageSize: 6 });
+}
+
+interface Props {
+	page: Page<CollectionEntry<"books">>;
+}
+
+const { page }: Props = Astro.props;
+---
+
+<PageLayout
+	tabTitle={`Books - Page ${page.currentPage}`}
+	title="Books I Have Read"
+>
+	<p>
+		A collection of books that have left an impression on me, along with my
+		thoughts about each one.
+	</p>
+
+	<BookList books={page.data} />
+
+	<BookPagination
+		currentPage={page.currentPage}
+		totalPages={page.lastPage}
+		hasNext={!!page.url.next}
+		hasPrev={!!page.url.prev}
+		nextUrl={page.url.next}
+		prevUrl={page.url.prev}
+	/>
+
+	<blockquote>
+		If you have recommendations based on what you see here, feel free to
+		<a href="mailto:alvs.codee@slmail.me">email me</a>
+	</blockquote>
+</PageLayout>

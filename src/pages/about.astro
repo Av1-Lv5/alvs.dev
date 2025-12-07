@@ -1,33 +1,64 @@
 ---
 // layout
 import PageLayout from "@layouts/PageLayout.astro";
+import { socials } from "src/constants";
 ---
 
 <PageLayout title="Know me more?" tabTitle="About">
-	<h3>About me</h3>
-	<p>Hi,</p>
+	<div class="intro">
+		<h2>Hello 👋</h2>
+		<p>
+			I'm Avinash, someone who finds joy in the simple things: clean
+			interfaces, readable code, and that perfect moment when everything
+			just clicks into place.
+		</p>
+	</div>
+
+	<h3>A bit about me</h3>
 	<p>
-		Professionally I am a frontend web-developer for time being. Big fan of
-		Technology, Free Open source software
-		<small>(free as in freedom, not price)</small>, and loves Coco 🍫.
+		Big fan of technology and free open source software
+		<small>(free as in freedom, not price)</small>. I'm still figuring
+		myself out, evolving big time, and honestly enjoying the journey.
 	</p>
-	<p>I am still in the stage of figuring out myself. Evolving big time.</p>
+	<p>
+		I built this website as my little corner of the internet - a place to
+		share thoughts, document learnings, and maybe connect with like-minded
+		folks who appreciate the craft of building things that matter.
+	</p>
 
-	<h3>Some random facts about me.</h3>
+	<h3>What I'm up to lately</h3>
+	<p>
+		Shipping small, focused projects to sharpen the craft. Exploring
+		patterns that make things scale without the overhead. Always learning
+		something new.
+	</p>
+	<p>
+		<b>Next on my list:</b>
+		exploring the Bun + Hono + Cloudflare stack and Rust (because systems thinking
+		helps everywhere).
+	</p>
 
+	<h3>Random bits about me</h3>
 	<ul>
-		<li>I prefer Chai over Coffee ☕️. And hates green tea.</li>
 		<li>
-			My average typing speed is 70wpm.
-			<small>(i am aware its not that impressive.)</small>
-			And my best is 83wpm.
+			Prefer chai over coffee ☕️ (and honestly, green tea is overrated)
 		</li>
-		<li>Team Android.</li>
-		<li>Fav colors: black, white, blue and gray.</li>
-		<li>Minimalist in nature</li>
+		<li>Team Android, always</li>
+		<li>Favorite colors: black, white, blue, and gray</li>
+		<li>
+			Can type at
+			<a target="_blank" href="https://monkeytype.com/profile/Avi-Lvs"
+				>70wpm on average</a
+			>
+			<small>(best: 83wpm - not impressive, I know)</small>
+		</li>
+		<li>Believer in "good enough" over perfect</li>
 	</ul>
+
 	<h3>Other non-interesting stuff</h3>
-	<ul>
-		<li><a href="/notes">Read my public notes</a></li>
-	</ul>
+	<p>
+		You'll find my <a href="/notes">public notes</a> here - thoughts, learnings,
+		and random discoveries I've documented along the way. Also check out the
+		<a href="/books">books I've read</a> and my thoughts on them.
+	</p>
 </PageLayout>

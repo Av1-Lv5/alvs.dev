@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "@layouts/PageLayout.astro";
+import BookList from "@components/BookList.astro";
+import BookPagination from "@components/BookPagination.astro";
+
+const allBooks = await getCollection("books");
+const booksPerPage = 6;
+const totalPages = Math.ceil(allBooks.length / booksPerPage);
+const currentPage = 1;
+const startIndex = (currentPage - 1) * booksPerPage;
+const endIndex = startIndex + booksPerPage;
+const booksToShow = allBooks.slice(startIndex, endIndex);
+---
+
+<PageLayout tabTitle="Books" title="Books I Have Read">
+	<p>
+		A collection of books that have left an impression on me, along with my
+		thoughts about each one.
+	</p>
+
+	<BookList books={booksToShow} />
+
+	<BookPagination
+		currentPage={currentPage}
+		totalPages={totalPages}
+		hasNext={currentPage < totalPages}
+		hasPrev={currentPage > 1}
+		nextUrl={`/books/${currentPage + 1}`}
+		prevUrl="/books"
+	/>
+
+	<blockquote>
+		If you have recommendations based on what you see here, feel free to
+		<a href="mailto:alvs.codee@slmail.me">email me</a>
+	</blockquote>
+</PageLayout>
