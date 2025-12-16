@@ -10,22 +10,43 @@ isDraft: false
 
 ![Audiophile project preview](/assets/img/audiophile-thumb.png)
 
-### Features
+### Overview
 
--   Add / Remove products from the cart.
--   Generates the total price on checkout.
--   Validates checkout form on client and also on server.
+Audiophile is a fullstack e-commerce application built to explore real-world commerce flows beyond static frontend interactions. The project focuses on clean UI, structured data modeling, and realistic order lifecycles.
+
+### Current Features
+
+-   Browse products managed via **Sanity CMS**
+-   Add / remove products from cart
+-   Checkout flow with price breakdown
+-   Client-side and server-side checkout form validation
+-   Structured product, category, and content management via Sanity
 
 ### Technical sheet code
 
 -   Built with [Next JS](https://nextjs.org/), Typescript, and used [Tailwind CSS](https://tailwindcss.com/) for styling.
--   Opted for the App router in Next js.
+-   Content managed by [Sanity CMS](https://sanity.io/)
+-   Deployed on [Netlify](https://netlify.app/)
 
 ### Plans
 
--   Implement a headless CMS like [Sanity](https://sanity.io/) to make adding, updating, and removing products seameless.
--   Implement [stripe payments](https://stripe.com/) just as a working example.
--   Write end to end tests and unit tests.
+-   Razorpay payment integration with webhook-based verification
+-   Order creation and lifecycle management (`created → paid → shipped → delivered`)
+-   Inventory tracking and stock updates
+-   Authenticated user accounts via Clerk
+-   Order history and order detail pages
+-   Courier service integration for shipment and tracking metadata
+-   Transactional emails for order confirmation, shipping, and delivery updates, using react-email and resend.
+-   End-to-end tests for checkout and payment flows.
+
+### Why This Project Exists
+
+This project goes beyond a typical Frontend Mentor implementation and is being used as a learning ground for:
+
+-   Designing secure server-driven flows
+-   Handling payments and webhooks correctly
+-   Modeling real e-commerce state transitions
+-   Understanding the trade-offs of using a headless CMS as a backend
 
 ### Attributions
 
