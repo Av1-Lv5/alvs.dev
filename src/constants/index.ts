@@ -12,8 +12,8 @@ export const rootNav = [
 		title: "About",
 	},
 	{
-		path: "/contact/",
-		title: "Contact",
+		path: "/connect/",
+		title: "Connect",
 	},
 ];
 
