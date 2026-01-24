@@ -6,11 +6,12 @@ tags: ["astro", "typescript"]
 repoId: "photosnap-FM"
 liveAt: "photosnap-fm-alvs.netlify.app"
 isDraft: false
+featured: true
 ---
 
 ![Photosnap project preview](/assets/img/photosnap-thumb.png)
 
-### About
+### Overview
 
 Photosnap is a multi-page marketing site for a photo-sharing platform built with [Astro](https://astro.build) most styling is done using [Astro scoped styles](https://docs.astro.build/en/guides/styling/#scoped-styles).
 

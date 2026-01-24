@@ -5,6 +5,7 @@ description: "My personal/portfolio website"
 tags: ["astro"]
 repoId: "personal-site-archive"
 isDraft: false
+featured: false
 ---
 
 ### Design decisions
@@ -13,7 +14,7 @@ The reason to use [simple.css](https://simplecss.org/) a classless CSS library i
 
 Sometimes it does confuse me, do I even like minimal design or am I just too lazy to create my own design. May be its both and it mostly worked out well for this site.
 
-### Plans
+### Future Roadmap
 
 -   Like to have a blog, to write about my learnings, personal endeavours, critical decisions, software comparisions, and my niche in web development, including workflows and setups..
 

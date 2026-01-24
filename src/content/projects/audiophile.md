@@ -6,6 +6,7 @@ tags: ["next", "typescript"]
 repoId: "audiophile-FM"
 liveAt: "audiophile-fm-alvs.netlify.app"
 isDraft: false
+featured: true
 ---
 
 ![Audiophile project preview](/assets/img/audiophile-thumb.png)
@@ -14,7 +15,7 @@ isDraft: false
 
 Audiophile is a fullstack e-commerce application built to explore real-world commerce flows beyond static frontend interactions. The project focuses on clean UI, structured data modeling, and realistic order lifecycles.
 
-### Current Features
+### Key Features
 
 -   Browse products managed via **Sanity CMS**
 -   Add / remove products from cart
@@ -22,13 +23,13 @@ Audiophile is a fullstack e-commerce application built to explore real-world com
 -   Client-side and server-side checkout form validation
 -   Structured product, category, and content management via Sanity
 
-### Technical sheet code
+### Technical Architecture
 
 -   Built with [Next JS](https://nextjs.org/), Typescript, and used [Tailwind CSS](https://tailwindcss.com/) for styling.
 -   Content managed by [Sanity CMS](https://sanity.io/)
 -   Deployed on [Netlify](https://netlify.app/)
 
-### Plans
+### Future Roadmap
 
 -   Razorpay payment integration with webhook-based verification
 -   Order creation and lifecycle management (`created → paid → shipped → delivered`)

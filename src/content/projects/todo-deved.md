@@ -6,11 +6,12 @@ tags: ["javascript"]
 repoId: "simple-todo"
 liveAt: "todo-alvs.netlify.app"
 isDraft: true
+featured: false
 ---
 
 ![Todo project preview](/assets/img/todo-deved-thumb.png)
 
-### Technical sheet code
+### Technical Architecture
 
 -   Built using HTML, CSS, and JS.
 

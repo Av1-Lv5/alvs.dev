@@ -1,19 +1,18 @@
 ---
-id: planet-facts
-title: Planet facts
-description: Lets learn some facts about planets in our solar system
-tags: ["astro", "preact", "typescript"]
-repoId: "planet-facts-FM"
-liveAt: "planet-facts-fm-alvs.netlify.app"
+id: project-id
+title: Project Title
+description: Brief description of the project.
+tags: ["tag1", "tag2"]
+repoId: "repo-name" # or "" if private/none
+liveAt: "project-url.com" # or "" if not deployed
 isDraft: true
-featured: false
 ---
 
 ![Project preview](/assets/img/placeholder.png)
 
 ### Overview
 
-Lets learn some facts about planets in our solar system.
+A brief overview of the project, its purpose, and the problem it solves.
 
 ### Key Features
 
@@ -22,8 +21,8 @@ Lets learn some facts about planets in our solar system.
 
 ### Technical Architecture
 
--   **Frontend**: Astro, Preact, TypeScript.
--   **Backend**: N/A.
+-   **Frontend**: Tech stack details.
+-   **Backend**: Tech stack details (if applicable).
 
 ### Future Roadmap
 

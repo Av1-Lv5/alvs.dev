@@ -6,15 +6,16 @@ tags: ["javascript"]
 repoId: "Tic-Tac-Toe-FM"
 liveAt: "tictactoe-fm-alvs.netlify.app"
 isDraft: true
+featured: false
 ---
 
 ![TicTacToe project preview](/assets/img/tic-tac-toe-thumb.png)
 
-### Features Implemented
+### Key Features
 
 -   Local multi-player mode
 
-### Technical sheet code
+### Technical Architecture
 
 -   This app is built with vanilla HTML, CSS and JS, no frameworks and no external dependencies.
 -   Though the app seems like a Single Page Application, it isn't using any spa frameworks/libraries. The implementation is just switching between '.show' & '.hide' css classes for blocks of html.
@@ -25,7 +26,7 @@ isDraft: true
 -   Learnt refactoring codebase, as my first implementation was a mess, a clear example of ugly code.
 -   Realised building a game is more fun than building landing pages.
 
-### Plans
+### Future Roadmap
 
 -   Implement online multi-player mode
 -   Implement computer mode
