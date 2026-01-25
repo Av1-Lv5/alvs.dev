@@ -5,18 +5,12 @@ import Layout from "@layouts/Layout.astro";
 // types
 type Props = {
 	tabTitle: string;
-	title: string;
 };
 
 // props
-const { tabTitle, title } = Astro.props;
+const { tabTitle } = Astro.props;
 ---
 
-<Layout
-	categoryTabTitle="alvs"
-	pageTabTitle={tabTitle}
-	pageTitle={title}
-	showNav={true}
->
+<Layout categoryTabTitle="alvs" pageTabTitle={tabTitle} showNav={true}>
 	<slot />
 </Layout>

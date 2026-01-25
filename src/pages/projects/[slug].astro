@@ -1,19 +1,16 @@
 ---
 // Layout
-import { getEntry, type CollectionEntry } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import ProjectPageLayout from "@layouts/ProjectPageLayout.astro";
 
 export async function getStaticPaths() {
 	const projects: CollectionEntry<"projects">[] = [];
 
-	// all projects that are not drafts could be pulled automatically,
-	// but this approach is best for manually sorting.
-
-	projects[0] = await getEntry("projects", "markdown-editor");
-	projects[1] = await getEntry("projects", "alvs");
-	projects[2] = await getEntry("projects", "photosnap");
-	projects[3] = await getEntry("projects", "audiophile");
-	projects[4] = await getEntry("projects", "tic-tac-toe");
+	projects.push(
+		...(await getCollection("projects", ({ data }) => {
+			return !data.isDraft;
+		})),
+	);
 
 	return projects.map((project) => ({
 		params: {

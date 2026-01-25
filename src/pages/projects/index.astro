@@ -1,25 +1,23 @@
 ---
-import { getEntry } from "astro:content";
-
 // layout
 import PageLayout from "@layouts/PageLayout.astro";
 
 // components
 import ProjectCard from "@components/ProjectCard.astro";
+import { getCollection } from "astro:content";
 
 // data
-const tags = ["All", "React", "Typescript", "Next", "Astro"];
+const tags = ["All", "React", "Typescript", "Next", "Astro", "Supabase"];
 
 // fetching projects to display
-const fetchedProjects = [];
-
-fetchedProjects[0] = await getEntry("projects", "audiophile");
-fetchedProjects[1] = await getEntry("projects", "photosnap");
-fetchedProjects[2] = await getEntry("projects", "markdown-editor");
-fetchedProjects[3] = await getEntry("projects", "tic-tac-toe");
+const fetchedProjects = await getCollection("projects", ({ data }) => {
+	return !data.isDraft && data.featured;
+});
 ---
 
-<PageLayout tabTitle="Projects" title="Things I've built">
+<PageLayout tabTitle="Projects">
+	<h1>Things I've built</h1>
+	<p>Featured projects</p>
 	<div id="tags-container">
 		{
 			tags.map((tag) => (
@@ -28,11 +26,13 @@ fetchedProjects[3] = await getEntry("projects", "tic-tac-toe");
 		}
 	</div>
 	<p id="result-msg" class="hide"></p>
-	{
-		fetchedProjects.map((project) => {
-			return <ProjectCard project={project} />;
-		})
-	}
+	<div class="projects-container">
+		{
+			fetchedProjects.map((project) => {
+				return <ProjectCard project={project} />;
+			})
+		}
+	</div>
 	<!-- <a
 		id="centered-link"
 		href="https://github.com/Av1-Lv5/Frontendmentor-challenges"
@@ -41,51 +41,87 @@ fetchedProjects[3] = await getEntry("projects", "tic-tac-toe");
 </PageLayout>
 
 <style>
-	.hide {
+	:global(.project-card).hide {
 		display: none;
 	}
+
+	.projects-container {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
 	#result-msg {
 		color: var(--text-light);
-		font-size: 1rem;
+		font-size: 0.875rem;
 		font-style: italic;
+		margin: 1rem 0 1rem;
 	}
+
 	#centered-link {
 		display: block;
 		text-align: center;
-		margin-top: 3rem;
+		margin-top: 4rem;
+		font-size: 0.875rem;
 		text-transform: uppercase;
+		letter-spacing: 0.05em;
 		color: var(--accent);
-		font-weight: 500;
-		text-decoration: underline;
+		font-weight: 600;
 	}
+
 	#result-msg :global(#built-with),
 	#result-msg :global(#projects-count) {
-		font-weight: bold;
-		text-decoration: underline;
-		color: var(--accent);
-		opacity: 0.7;
+		font-weight: 700;
+		color: var(--text);
 	}
+
 	#tags-container {
-		padding: 1rem 0;
+		padding: 1.25rem 0;
 		position: sticky;
-		top: 0;
+		top: var(--header-height);
 		display: flex;
-		overflow-x: scroll;
-		gap: 15px;
-		z-index: 1;
-		background-color: var(--bg);
-		border-bottom: 1px dashed var(--border);
+		gap: 0.5rem;
+		z-index: 10;
+		background-color: var(--bg-translucent);
+		backdrop-filter: blur(16px);
+		-webkit-backdrop-filter: blur(16px);
+		border-bottom: 1px solid var(--border);
+		margin-bottom: 2rem;
+		overflow-x: auto;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
 	}
+
+	#tags-container::-webkit-scrollbar {
+		display: none;
+	}
+
 	#tags-container .tag {
 		border: 1px solid var(--border);
 		cursor: pointer;
-		border-radius: 10px;
-		padding: 5px 15px;
+		border-radius: 20px;
+		padding: 0.375rem 1rem;
+		font-size: 0.8125rem;
+		font-weight: 500;
+		white-space: nowrap;
+		transition: var(--transition);
+		color: var(--text-muted);
+		background-color: var(--bg);
 	}
+
 	#tags-container .tag.selected,
 	#tags-container .tag:hover {
 		border-color: var(--accent);
 		color: var(--accent);
+		background-color: var(--accent-bg);
+	}
+
+	@media (max-width: 640px) {
+		#tags-container {
+			top: 0; /* Header isn't sticky on mobile or different height? Actually header is sticky. */
+			margin: 0 -1rem 2rem;
+			padding: 1rem;
+		}
 	}
 </style>
 
@@ -105,14 +141,13 @@ fetchedProjects[3] = await getEntry("projects", "tic-tac-toe");
 			filterProjects(target.innerText);
 			updateSelectedTag(target, tagFilterEls);
 			updateResultMsg(target.innerText);
-			scrollBackToTags();
 		});
 	});
 
 	// FUNCTIONS
 	function updateSelectedTag(
 		selectedTagEl: HTMLElement,
-		allTagEl: NodeListOf<Element>
+		allTagEl: NodeListOf<Element>,
 	): void {
 		allTagEl.forEach((tagEl) => {
 			if (tagEl === selectedTagEl) tagEl.classList.add("selected");
@@ -143,7 +178,7 @@ fetchedProjects[3] = await getEntry("projects", "tic-tac-toe");
 	function updateResultMsg(filter: string) {
 		// SELECTORS
 		const resultMsgEl = document.querySelector(
-			"#result-msg"
+			"#result-msg",
 		) as HTMLParagraphElement;
 
 		// VARIABLES
@@ -159,11 +194,5 @@ fetchedProjects[3] = await getEntry("projects", "tic-tac-toe");
 			resultMsgEl.innerHTML = `"Showing <span id="projects-count">${projectsCount}</span> results for <span id="built-with"
             >${filter}</span> projects"`;
 		}
-	}
-
-	function scrollBackToTags() {
-		// document
-		// 	.getElementById("result-msg")
-		// 	?.scrollIntoView({ behavior: "smooth", block: "center" });
 	}
 </script>

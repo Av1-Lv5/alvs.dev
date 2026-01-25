@@ -1,7 +1,7 @@
 ---
 // types
 export interface Props {
-	title: string;
+	title?: string;
 	showNav: boolean;
 }
 
@@ -15,9 +15,10 @@ const pathName = Astro.url.pathname;
 ---
 
 <header aria-label="header">
-	{
-		showNav && (
-			<>
+	<div class="header-container">
+		{title && <h1>{title}</h1>}
+		{
+			showNav && (
 				<nav aria-label="main navigation">
 					{rootNav.map((navItem) => (
 						<a
@@ -35,11 +36,7 @@ const pathName = Astro.url.pathname;
 						Github
 					</a>
 				</nav>
-			</>
-		)
-	}
-	<h1>
-		{title}
-	</h1>
-	<div></div>
+			)
+		}
+	</div>
 </header>

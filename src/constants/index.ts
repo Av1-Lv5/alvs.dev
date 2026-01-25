@@ -21,7 +21,7 @@ export const socials = {
 	email: "alvs.codee@slmail.me",
 	githubUsername: "Av1-Lv5",
 	mastodon: "https://fosstodon.org/@Av1",
-	linkedin: "https://www.linkedin.com/in/av1-lv5/",
+	linkedin: "https://www.linkedin.com/in/av-sh/",
 };
 
 export const tagFilters = {

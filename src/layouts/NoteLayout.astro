@@ -21,7 +21,7 @@ const { note } = Astro.props;
 >
 	<div class="sub-navigation">
 		<BackInHistory />
-		<div>
+		<div class="links-container">
 			<a href="/" class="nav-like">Home</a>
 			<a href="/notes" class="nav-like">Notes</a>
 		</div>
@@ -33,9 +33,14 @@ const { note } = Astro.props;
 	.sub-navigation {
 		display: flex;
 		justify-content: space-between;
-		margin-bottom: 45px;
+		margin: 1.5rem 0;
 	}
-	div :global(a.nav-like) {
+	.links-container {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	a.nav-like {
 		border-color: var(--accent);
 		color: var(--accent);
 	}

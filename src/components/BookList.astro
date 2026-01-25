@@ -9,6 +9,15 @@ interface Props {
 const { books } = Astro.props;
 ---
 
-<div>
+<div class="books-list">
 	{books.map((book) => <BookCard book={book} />)}
 </div>
+
+<style>
+	.books-list {
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+		margin-top: 2.5rem;
+	}
+</style>

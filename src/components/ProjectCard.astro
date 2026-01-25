@@ -16,86 +16,162 @@ const { project } = Astro.props as Props;
 ---
 
 <div class="project-card" tags={arrayToLongString(project.data.tags)}>
-	<img
-		loading="lazy"
-		src={`/assets/img/${project.data.id}-thumb.png`}
-		alt={`a preivew for ${project.data.title}`}
-	/>
-
-	<div class="project-content-container">
+	<div class="project-image">
+		<img
+			loading="lazy"
+			src={`/assets/img/${project.data.id}-thumb.png`}
+			alt={project.data.title}
+		/>
+	</div>
+	<div class="project-info">
 		<div>
-			<h3>{project.data.title}</h3>
 			<div class="tags">
-				{
-					project.data.tags.map((tag) => {
-						return <span class="tag">{tag}</span>;
-					})
-				}
+				{project.data.tags.map((tag) => <span class="tag">{tag}</span>)}
 			</div>
-			<p>
+			<h3 class="title">
+				{project.data.title}
+			</h3>
+			<p class="project-description">
 				{project.data.description}
-				<a href={`/projects/${project.slug}`}>...read more</a>
 			</p>
 		</div>
-		<ProjectLinks
-			projectRepoId={project.data.repoId}
-			projectLiveAt={project.data.liveAt}
-		/>
+
+		<div class="project-footer">
+			<a href={`/projects/${project.slug}`} class="explore-link">
+				Explore Project
+				<div class="line"></div>
+			</a>
+			<ProjectLinks
+				projectRepoId={project.data.repoId}
+				projectLiveAt={project.data.liveAt}
+			/>
+		</div>
 	</div>
 </div>
 
 <style>
-	/* ------ Projects cards ---------- */
-	.project-card :global(.project-links) {
-		display: flex;
-		justify-content: flex-end;
-	}
 	.project-card {
 		display: flex;
 		flex-direction: column;
-		border: 1px solid rgba(207, 207, 207, 0.8);
-		border-radius: 10px;
-		margin-top: 3rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		overflow: hidden;
+		transition: var(--transition);
 	}
-	.project-content-container {
-		padding: 15px 20px;
+
+	/* Info Section */
+	.project-info {
+		padding: 1rem;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		gap: 1.25rem;
 	}
-	.project-card h3 {
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 1rem;
+	}
+
+	.tag {
+		font-size: 0.65rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--accent);
+		background-color: var(--accent-bg);
+		padding: 0.25rem 0.6rem;
+		border-radius: 4px;
+	}
+
+	.title {
 		margin: 0;
+		margin-bottom: 0.75rem;
+		font-size: 1.75rem;
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		line-height: 1.2;
 	}
-	.project-card.hide {
-		display: none;
+
+	.description {
+		margin: 0;
+		font-size: 1rem;
+		color: var(--text-muted);
+		line-height: 1.6;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
 	}
-	.project-card img {
+
+	/* Footer Actions */
+	.project-footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.explore-link {
+		text-decoration: none;
+		font-weight: 700;
+		font-size: 0.875rem;
+		color: var(--accent);
+	}
+
+	.explore-link .line {
+		width: 40%;
+		height: 2px;
+		background-color: var(--accent);
+		margin-top: 4px;
+		transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.explore-link:hover .line {
+		width: 100%;
+	}
+
+	/* Visual Section */
+	.project-image {
+		width: 100%;
+		height: 240px;
+		overflow: hidden;
+	}
+
+	.project-image img {
+		width: 100%;
+		height: 100%;
 		object-fit: cover;
-		height: auto;
-		max-height: 300px;
-		border-radius: 10px;
+		display: block;
+		transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 	}
-	@media screen and (min-width: 680px) {
+
+	.project-card:hover img {
+		transform: scale(1.05);
+	}
+
+	@media (min-width: 840px) {
 		.project-card {
 			flex-direction: row;
 		}
-		.project-card img {
-			width: 300px;
-			max-height: none;
+
+		.project-info {
+			padding: 1.5rem;
 		}
-	}
-	/* Tags */
-	.tags {
-		margin-top: 0.5rem;
-	}
-	.tag {
-		padding: 2px 15px;
-		border-inline-start: 1px solid grey;
-		text-transform: uppercase;
-		font-size: 0.8rem;
-	}
-	.tag:first-of-type {
-		border-inline-start: none;
-		padding-left: 0;
+
+		.project-image {
+			width: 320px;
+			height: auto; /* Stretches to full height in flex row */
+			flex-shrink: 0;
+		}
+
+		.project-image img {
+			height: 100%;
+		}
+
+		.title {
+			font-size: 2.25rem;
+		}
 	}
 </style>
