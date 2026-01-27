@@ -249,7 +249,7 @@ th {
 }
 
 /* lists */
-ul {
+ul, ol {
   color: var(--text-muted)
 }
 
