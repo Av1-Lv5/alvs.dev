@@ -2,7 +2,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import type { Page } from "astro";
 import PageLayout from "@layouts/PageLayout.astro";
-import BookList from "@components/BookList.astro";
+import BookList from "@components/BooksList.astro";
 import BookPagination from "@components/BookPagination.astro";
 
 export async function getStaticPaths({ paginate }: any) {
@@ -17,10 +17,8 @@ interface Props {
 const { page }: Props = Astro.props;
 ---
 
-<PageLayout
-	tabTitle={`Books - Page ${page.currentPage}`}
-	title="Books I Have Read"
->
+<PageLayout tabTitle={`Books - Page ${page.currentPage}`}>
+	<h1>Books I've read</h1>
 	<p>
 		A collection of books that have left an impression on me, along with my
 		thoughts about each one.

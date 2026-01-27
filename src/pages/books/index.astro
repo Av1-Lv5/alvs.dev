@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
-import BookList from "@components/BookList.astro";
+import BookList from "@components/BooksList.astro";
 import BookPagination from "@components/BookPagination.astro";
 
 const allBooks = await getCollection("books");
