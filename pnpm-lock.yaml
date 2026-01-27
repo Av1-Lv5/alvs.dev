@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@iconify-json/lucide':
-        specifier: ^1.2.87
-        version: 1.2.87
       astro:
         specifier: ^4.7.0
         version: 4.7.0(@types/node@25.0.6)
@@ -21,6 +18,9 @@ importers:
         specifier: ^0.33.3
         version: 0.33.3
     devDependencies:
+      '@iconify-json/lucide':
+        specifier: ^1.2.87
+        version: 1.2.87
       '@iconify-json/simple-icons':
         specifier: ^1.2.65
         version: 1.2.65
