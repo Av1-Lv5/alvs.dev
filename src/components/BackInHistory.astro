@@ -1,4 +1,10 @@
-<a id="back-in-history" class="nav-like">←</a>
+---
+import { Icon } from "astro-icon/components";
+---
+
+<a id="back-in-history" class="nav-like">
+	<Icon name={"lucide:arrow-left"} size={16} />
+</a>
 
 <script is:inline>
 	document
@@ -13,5 +19,8 @@
 	a.nav-like {
 		border-color: var(--accent);
 		color: var(--accent);
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 </style>

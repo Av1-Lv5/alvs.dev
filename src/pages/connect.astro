@@ -6,6 +6,7 @@ import EmailSVG from "@icons/EmailSVG.astro";
 
 // data
 import { socials } from "src/constants";
+import { Icon } from "astro-icon/components";
 ---
 
 <PageLayout tabTitle="Contact">
@@ -16,7 +17,8 @@ import { socials } from "src/constants";
 	<p>I'd love to hear from you! The best way to reach me is through email.</p>
 
 	<h3 class="contact">
-		<EmailSVG />
+		<!-- <EmailSVG /> -->
+		<Icon name={"lucide:mail"} size={24} />
 		<span>Email:</span>
 		<a href={`mailto:${socials.email}`}>{socials.email}</a>
 	</h3>
