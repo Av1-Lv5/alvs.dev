@@ -4,9 +4,14 @@ import { socials } from "src/constants";
 
 <footer aria-label="footer">
 	<p>
-		Built with <a href="https://astro.build/" target="_blank">Astro</a>
+		Built with <a href="https://astro.build/" target="_blank">Astro</a> • View
+		source on
+		<a href={`https://github.com/${socials.githubUsername}/alvs.dev`}>
+			GitHub
+		</a>
 	</p>
-	<div class="socials">
+	<p>I hope you have a very nice day :)</p>
+	<!-- <div class="socials">
 		<a
 			href={`https://github.com/${socials.githubUsername}/`}
 			target="_blank">Github</a
@@ -14,25 +19,12 @@ import { socials } from "src/constants";
 		<a href={`mailto:${socials.email}`}>Email</a>
 		<a rel="me" href={`${socials.linkedin}`}>LinkedIn</a>
 		<a rel="me" href={`${socials.mastodon}`}>Mastodon</a>
-	</div>
+	</div> -->
 </footer>
 <style>
 	.socials {
 		display: flex;
 		align-items: center;
 		gap: 12px;
-	}
-	footer {
-		display: flex;
-		flex-direction: column-reverse;
-		align-items: center;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		gap: 25px;
-	}
-	@media screen and (min-width: 480px) {
-		footer {
-			flex-direction: row;
-		}
 	}
 </style>

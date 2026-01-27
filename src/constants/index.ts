@@ -1,9 +1,5 @@
 export const rootNav = [
 	{
-		path: "/",
-		title: "Home",
-	},
-	{
 		path: "/projects/",
 		title: "Projects",
 	},

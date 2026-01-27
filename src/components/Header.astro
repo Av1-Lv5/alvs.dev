@@ -8,6 +8,7 @@ export interface Props {
 // props
 const { title, showNav } = Astro.props;
 
+import { Icon } from "astro-icon/components";
 // data
 import { socials, rootNav } from "src/constants";
 
@@ -16,10 +17,17 @@ const pathName = Astro.url.pathname;
 
 <header aria-label="header">
 	<div class="header-container">
+		{
+			showNav && (
+				<a href="/">
+					<div class="home" />
+				</a>
+			)
+		}
 		{title && <h1>{title}</h1>}
 		{
 			showNav && (
-				<nav aria-label="main navigation">
+				<nav aria-label="main navigation" class="desktop-nav">
 					{rootNav.map((navItem) => (
 						<a
 							href={navItem.path}
@@ -33,10 +41,213 @@ const pathName = Astro.url.pathname;
 						href={`https://github.com/${socials.githubUsername}`}
 						target="_blank"
 					>
-						Github
+						<Icon name={"simple-icons:github"} size={20} />
 					</a>
 				</nav>
 			)
 		}
+
+		{
+			showNav && (
+				<div
+					id="menu-btn"
+					aria-label="Open mobile menu"
+					class="mobile-menu-btn"
+				>
+					<Icon name="lucide:menu" size={24} />
+				</div>
+			)
+		}
 	</div>
 </header>
+
+<!-- Mobile navigation -->
+{
+	showNav && (
+		<div id="mobile-overlay" class="mobile-overlay">
+			<div
+				id="close-btn"
+				aria-label="Close mobile menu"
+				class="close-btn"
+			>
+				<Icon name="lucide:x" size={24} />
+			</div>
+
+			<nav class="mobile-nav">
+				{rootNav.map((navItem) => (
+					<a
+						href={navItem.path}
+						class={pathName === navItem.path ? "active" : ""}
+					>
+						{navItem.title}
+					</a>
+				))}
+				<div class="mobile-socials">
+					<a
+						href={`https://github.com/${socials.githubUsername}`}
+						target="_blank"
+						aria-label="GitHub"
+					>
+						<Icon name="simple-icons:github" size={20} />
+					</a>
+					<a
+						href={socials.mastodon}
+						target="_blank"
+						aria-label="Mastodon"
+					>
+						<Icon name="simple-icons:mastodon" size={20} />
+					</a>
+					<a
+						href={`https://linkedin.com/${socials.linkedin}`}
+						target="_blank"
+						aria-label="Linkedin"
+					>
+						<Icon name="simple-icons:linkedin" size={20} />
+					</a>
+					<a href={`mailto:${socials.email}`} aria-label="Email">
+						<Icon name="lucide:mail" size={20} />
+					</a>
+				</div>
+			</nav>
+		</div>
+	)
+}
+
+<script>
+	const menuBtn = document.getElementById("menu-btn");
+	const closeBtn = document.getElementById("close-btn");
+	const overlay = document.getElementById("mobile-overlay");
+
+	function toggleMenu() {
+		if (overlay) {
+			// Toggle is-open class instead of hidden
+			overlay.classList.toggle("is-open");
+
+			// Handle body scroll
+			document.body.style.overflow = overlay.classList.contains("is-open")
+				? "hidden"
+				: "";
+		}
+	}
+
+	menuBtn?.addEventListener("click", toggleMenu);
+	closeBtn?.addEventListener("click", toggleMenu);
+</script>
+
+<style>
+	header {
+		position: relative;
+	}
+	.header-container {
+		width: min(var(--max-width), 100%);
+		height: var(--header-height);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.home {
+		height: 24px;
+		width: 24px;
+		background-color: var(--accent);
+		border-radius: 6px;
+	}
+
+	nav a.active {
+		color: var(--accent);
+		text-decoration: underline;
+	}
+
+	.desktop-nav {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+	}
+
+	.social {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	/* Mobile Menu Styles */
+	.mobile-menu-btn {
+		display: none;
+		background: none;
+		border: none;
+		cursor: pointer;
+		color: inherit;
+	}
+
+	.mobile-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh;
+		background-color: var(--bg);
+		z-index: 2000;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 1.5rem;
+
+		transform: translateX(100%);
+		transition:
+			transform 0.3s ease-out,
+			visibility 0.4s,
+			opacity 0.2s;
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	.mobile-overlay.is-open {
+		transform: translateX(0);
+		visibility: visible;
+		opacity: 1;
+	}
+
+	.close-btn {
+		position: absolute;
+		top: 1.5rem;
+		right: 1rem;
+		cursor: pointer;
+		color: var(--text);
+	}
+
+	.mobile-nav {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		font-size: 1.2rem;
+		color: var(--text);
+	}
+
+	.mobile-nav a.active {
+		color: var(--accent);
+		text-decoration: none;
+	}
+
+	.mobile-socials {
+		display: flex;
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+
+	.mobile-socials a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 4px;
+	}
+
+	@media (max-width: 768px) {
+		.desktop-nav {
+			display: none;
+		}
+
+		.mobile-menu-btn {
+			display: block;
+		}
+	}
+</style>
