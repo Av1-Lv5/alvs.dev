@@ -13,23 +13,45 @@ featured: true
 
 ### Overview
 
-Orbit is a daily budget tracker designed to help you master your money day by day. Instead of complex categories and bank connections, it calculates a daily safe-to-spend limit based on your budget and expenses. It follows a "Philosophy of Less" no charts to analyze, no guilt to feel, just a clear daily rhythm to keep your finances in flow.
+Orbit is a daily budget tracker. Instead of complex categories and flaky bank connections, it gives you a simple daily safe-to-spend limit.
+
+You know exactly how much you can spend today without overthinking the future.
+
+### Learnings
+
+This project started with a real problem I actually cared about, which made everything that followed feel grounded. Going from “this is annoying” to “this actually works” was the most satisfying part.
+
+I had to think through the product, the edge cases, and the UX while building everything end to end. A lot of decisions felt messy while making them, but clearer once the system started taking shape.
+
+Overall, this felt less like just shipping features and more like learning how to reason through a product from idea to implementation. Loved building this.
+
 
 ### Key Features
 
--   **Daily Safe-to-Spend Limit**: Automatically calculates what you can spend today based on your budget and remaining days. If you save today, you have more for tomorrow.
--   **Zero Setup**: No bank connections to break, no complex categories to configure. Just set a budget and start tracking.
--   **Quick Entry**: A focused interface designed to let you log expenses in seconds, reducing friction and encouraging consistency.
--   **Strictly Private**: No ads, no selling data.
+- **Daily Safe-to-Spend Limit**  
+  Automatically calculates what you can safely spend today based on your budget and the remaining days. Save today, get more for tomorrow.
+
+- **Zero Setup**  
+  No bank connections to break. No complex categories to configure. Just set a budget and start tracking.
+
+- **Quick Entry**  
+  A focused interface that lets you log expenses in seconds. Less friction, more consistency.
+
+- **Strictly Private**  
+  No ads. No selling data.
 
 ### Technical Architecture
 
--   **Frontend**: Next.js, TypeScript.
--   **Backend**: Supabase.
+Next.js, Tailwind CSS, shadcn/ui, TypeScript not very interesting stuff here since this has been my core stack for a while now.
+
+That said, this was the first project where I didn’t rely only on Clerk’s pre-built components. I built custom auth flows using the SDK.
+
+Midway through, it honestly felt like a step back. Too many things to think about, too many edge cases. But after spending time with it, things started to click. A lot of it felt like basic common sense in hindsight, which made it even more interesting.
+
+Also used Zustand + TanStack Query — one for UI state, one for server state. This project really helped me get a clear understanding of the difference and where each type of state should live.
 
 ### Future Roadmap
 
-- Building Android and iOS apps
-- Export data into CSV or PDF
+- Build Android and iOS apps  
+- Export data as CSV or PDF  
 - Add your partner to a budget
-

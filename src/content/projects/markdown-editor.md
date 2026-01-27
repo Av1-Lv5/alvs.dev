@@ -31,7 +31,6 @@ featured: true
 ### Future Roadmap
 
 -   Able to select a different font.
--   Scroll sync between markdown and preview.
 -   Support for Code highlighting.
 
 ### Attributions

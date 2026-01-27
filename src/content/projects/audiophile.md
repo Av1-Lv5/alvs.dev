@@ -20,7 +20,7 @@ Audiophile is a fullstack e-commerce application built to explore real-world com
 -   Browse products managed via **Sanity CMS**
 -   Add / remove products from cart
 -   Checkout flow with price breakdown
--   Client-side and server-side checkout form validation
+-   Checkout form validation
 -   Structured product, category, and content management via Sanity
 
 ### Technical Architecture
