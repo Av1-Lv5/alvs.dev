@@ -4,16 +4,7 @@ import PageLayout from "@layouts/PageLayout.astro";
 
 // components
 import ProjectCard from "@components/ProjectCard.astro";
-import { getCollection } from "astro:content";
 import { getEntry } from "astro:content";
-
-// data
-const tags = ["All", "React", "Typescript", "Next", "Astro", "Supabase"];
-
-// fetching projects to display
-// const fetchedProjects = await getCollection("projects", ({ data }) => {
-// 	return !data.isDraft && data.featured;
-// });
 
 const fetchedProjects = [];
 fetchedProjects.push(await getEntry("projects", "orbit"));
@@ -24,15 +15,6 @@ fetchedProjects.push(await getEntry("projects", "photosnap"));
 
 <PageLayout tabTitle="Projects">
 	<h1>Things I've built</h1>
-	<!-- <p>Featured projects</p> -->
-	<!-- <div id="tags-container">
-		{
-			tags.map((tag) => (
-				<span class={`tag ${tag === "All" && "selected"}`}>{tag}</span>
-			))
-		}
-	</div>
-	<p id="result-msg" class="hide"></p> -->
 	<div class="projects-container">
 		{
 			fetchedProjects.map((project) => {
@@ -40,11 +22,6 @@ fetchedProjects.push(await getEntry("projects", "photosnap"));
 			})
 		}
 	</div>
-	<!-- <a
-		id="centered-link"
-		href="https://github.com/Av1-Lv5/Frontendmentor-challenges"
-		>Frontendmentor challenges Completed</a
-	> -->
 </PageLayout>
 
 <style>
@@ -55,151 +32,5 @@ fetchedProjects.push(await getEntry("projects", "photosnap"));
 	.projects-container {
 		display: flex;
 		flex-direction: column;
-		gap: 2rem;
-	}
-
-	#result-msg {
-		color: var(--text-light);
-		font-size: 0.875rem;
-		font-style: italic;
-		margin: 1rem 0 1rem;
-	}
-
-	#centered-link {
-		display: block;
-		text-align: center;
-		margin-top: 4rem;
-		font-size: 0.875rem;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-		color: var(--accent);
-		font-weight: 600;
-	}
-
-	#result-msg :global(#built-with),
-	#result-msg :global(#projects-count) {
-		font-weight: 700;
-		color: var(--text);
-	}
-
-	#tags-container {
-		padding: 1.25rem 0;
-		position: sticky;
-		top: var(--header-height);
-		display: flex;
-		gap: 0.5rem;
-		z-index: 10;
-		background-color: var(--bg-translucent);
-		backdrop-filter: blur(16px);
-		-webkit-backdrop-filter: blur(16px);
-		border-bottom: 1px solid var(--border);
-		margin-bottom: 2rem;
-		overflow-x: auto;
-		scrollbar-width: none;
-		-ms-overflow-style: none;
-	}
-
-	#tags-container::-webkit-scrollbar {
-		display: none;
-	}
-
-	#tags-container .tag {
-		border: 1px solid var(--border);
-		cursor: pointer;
-		border-radius: 20px;
-		padding: 0.375rem 1rem;
-		font-size: 0.8125rem;
-		font-weight: 500;
-		white-space: nowrap;
-		transition: var(--transition);
-		color: var(--text-muted);
-		background-color: var(--bg);
-	}
-
-	#tags-container .tag.selected,
-	#tags-container .tag:hover {
-		border-color: var(--accent);
-		color: var(--accent);
-		background-color: var(--accent-bg);
-	}
-
-	@media (max-width: 640px) {
-		#tags-container {
-			top: 0; /* Header isn't sticky on mobile or different height? Actually header is sticky. */
-			margin: 0 -1rem 2rem;
-			padding: 1rem;
-		}
 	}
 </style>
-
-<script>
-	// SELECTORS
-	const tagFilterEls = document.querySelectorAll("#tags-container .tag");
-	const allProjectCardEls = document.querySelectorAll(".project-card");
-
-	// Variables
-	let projectsHiddenCount = 0;
-
-	// Event listners
-	tagFilterEls.forEach((tagEl) => {
-		tagEl.addEventListener("click", (e) => {
-			const target = e.target as HTMLElement;
-
-			filterProjects(target.innerText);
-			updateSelectedTag(target, tagFilterEls);
-			updateResultMsg(target.innerText);
-		});
-	});
-
-	// FUNCTIONS
-	function updateSelectedTag(
-		selectedTagEl: HTMLElement,
-		allTagEl: NodeListOf<Element>,
-	): void {
-		allTagEl.forEach((tagEl) => {
-			if (tagEl === selectedTagEl) tagEl.classList.add("selected");
-			else if (tagEl.classList.contains("selected"))
-				tagEl.classList.remove("selected");
-		});
-	}
-
-	function filterProjects(filter: string): void {
-		filter = filter.toLowerCase();
-		projectsHiddenCount = 0;
-
-		allProjectCardEls.forEach((projectCard) => {
-			const tagsOnCard = projectCard
-				.getAttribute("tags")
-				?.toLowerCase()
-				.split(" ");
-
-			if (filter === "all" || tagsOnCard?.includes(filter)) {
-				projectCard.classList.remove("hide");
-			} else {
-				projectCard.classList.add("hide");
-				projectsHiddenCount++;
-			}
-		});
-	}
-
-	function updateResultMsg(filter: string) {
-		// SELECTORS
-		const resultMsgEl = document.querySelector(
-			"#result-msg",
-		) as HTMLParagraphElement;
-
-		// VARIABLES
-		const projectsCount = allProjectCardEls.length;
-
-		if (filter !== "All") {
-			resultMsgEl.classList.remove("hide");
-			resultMsgEl.innerHTML = `"Showing <span id="projects-count">${
-				projectsCount - projectsHiddenCount
-			}</span> results for projects built with <span id="built-with"
-            >${filter}</span>"`;
-		} else {
-			resultMsgEl.innerHTML = `"Showing <span id="projects-count">${projectsCount}</span> results for <span id="built-with"
-            >${filter}</span> projects"`;
-		}
-	}
-</script>
