@@ -5,27 +5,34 @@ import PageLayout from "@layouts/PageLayout.astro";
 // components
 import ProjectCard from "@components/ProjectCard.astro";
 import { getCollection } from "astro:content";
+import { getEntry } from "astro:content";
 
 // data
 const tags = ["All", "React", "Typescript", "Next", "Astro", "Supabase"];
 
 // fetching projects to display
-const fetchedProjects = await getCollection("projects", ({ data }) => {
-	return !data.isDraft && data.featured;
-});
+// const fetchedProjects = await getCollection("projects", ({ data }) => {
+// 	return !data.isDraft && data.featured;
+// });
+
+const fetchedProjects = [];
+fetchedProjects.push(await getEntry("projects", "orbit"));
+fetchedProjects.push(await getEntry("projects", "audiophile"));
+fetchedProjects.push(await getEntry("projects", "markdown-editor"));
+fetchedProjects.push(await getEntry("projects", "photosnap"));
 ---
 
 <PageLayout tabTitle="Projects">
 	<h1>Things I've built</h1>
-	<p>Featured projects</p>
-	<div id="tags-container">
+	<!-- <p>Featured projects</p> -->
+	<!-- <div id="tags-container">
 		{
 			tags.map((tag) => (
 				<span class={`tag ${tag === "All" && "selected"}`}>{tag}</span>
 			))
 		}
 	</div>
-	<p id="result-msg" class="hide"></p>
+	<p id="result-msg" class="hide"></p> -->
 	<div class="projects-container">
 		{
 			fetchedProjects.map((project) => {
