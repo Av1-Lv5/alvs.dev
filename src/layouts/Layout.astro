@@ -29,6 +29,21 @@ const { pageTabTitle, pageTitle, categoryTabTitle, showNav } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<title>{`${pageTabTitle} • ${categoryTabTitle}`}</title>
+		<script is:inline>
+			(function () {
+				const theme = localStorage.getItem("theme") || "system";
+				if (theme === "dark") {
+					document.documentElement.setAttribute("data-theme", "dark");
+				} else if (theme === "light") {
+					document.documentElement.setAttribute(
+						"data-theme",
+						"light",
+					);
+				} else {
+					document.documentElement.removeAttribute("data-theme");
+				}
+			})();
+		</script>
 	</head>
 	<body>
 		<Header title={pageTitle} showNav={showNav} />

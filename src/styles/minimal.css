@@ -13,7 +13,6 @@
   --accent-hover: #1d4ed8;
   --code: #0f172a;
   --pre-bg: #f8fafc;
-  --blockquote-border: #2563eb;
   
   /* Layout & Spacing */
   --header-height: 72px;
@@ -27,8 +26,30 @@
   --line-height: 1.6;
 }
 
+/* Dark theme variables */
+[data-theme='dark'] {
+  --bg: #0a0a0a;
+  --bg-soft: #121212;
+  --bg-translucent: rgba(10, 10, 10, 0.9);
+  --accent-bg: #171717;
+  --text: #f9fafb;
+  --text-muted: #9ca3af;
+  --text-light: #6b7280;
+  --border: #262626;
+  --border-muted: #171717;
+  --accent: #3b82f6;
+  --accent-hover: #60a5fa;
+  --code: #f1f5f9;
+  --pre-bg: #111827;
+}
+
+[data-theme='dark'] img {
+  filter: brightness(0.9) contrast(1.1);
+}
+
+/* System preference fallback when no data-theme is set */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     --bg: #0a0a0a;
     --bg-soft: #121212;
     --bg-translucent: rgba(10, 10, 10, 0.9);
@@ -42,10 +63,9 @@
     --accent-hover: #60a5fa;
     --code: #f1f5f9;
     --pre-bg: #111827;
-    --blockquote-border: #3b82f6;
   }
 
-  img {
+  :root:not([data-theme='light']) img {
     filter: brightness(0.9) contrast(1.1);
   }
 }
@@ -177,7 +197,7 @@ footer {
 blockquote {
   margin: 2.5rem 0;
   padding: 1rem 1.5rem;
-  border-left: 2px solid var(--blockquote-border);
+  border-left: 2px solid var(--accent);
   background: var(--bg-soft);
   font-style: normal;
   color: var(--text-muted);

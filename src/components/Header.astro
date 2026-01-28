@@ -9,6 +9,7 @@ export interface Props {
 const { title, showNav } = Astro.props;
 
 import { Icon } from "astro-icon/components";
+import ThemeToggle from "./ThemeToggle.astro";
 // data
 import { socials, rootNav } from "src/constants";
 
@@ -43,6 +44,7 @@ const pathName = Astro.url.pathname;
 					>
 						<Icon name={"simple-icons:github"} size={20} />
 					</a>
+					<ThemeToggle />
 				</nav>
 			)
 		}
@@ -103,6 +105,7 @@ const pathName = Astro.url.pathname;
 					<a href={`mailto:${socials.email}`} aria-label="Email">
 						<Icon name="lucide:mail" size={20} />
 					</a>
+					<ThemeToggle />
 				</div>
 			</nav>
 		</div>
