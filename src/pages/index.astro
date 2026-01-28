@@ -4,13 +4,18 @@ import PageLayout from "@layouts/PageLayout.astro";
 
 // Components
 import Skills from "@components/Skills.astro";
+import ProjectCard from "@components/ProjectCard.astro";
+import { getEntry } from "astro:content";
 
 // data
 import { socials } from "src/constants";
+const fetchedProjects = [];
+fetchedProjects.push(await getEntry("projects", "orbit"));
+fetchedProjects.push(await getEntry("projects", "audiophile"));
 ---
 
 <PageLayout tabTitle="Welcome!">
-	<h1>Hi I'm Avinash</h1>
+	<h1>Hello I'm Avinash 👋🏽</h1>
 	<p>
 		Welcome to my little corner of the Internet. Here I share my work,
 		thoughts, other places you can find me at.
@@ -19,10 +24,17 @@ import { socials } from "src/constants";
 	<h3>I Create</h3>
 	<p>
 		Webpages and Webapps. The main area of my focus is in front-end
-		development, building accessible, delightful interfaces. Check out
-		<a href="/projects/">projects</a>
-		I've built so far.
+		development, building accessible, delightful interfaces.
 	</p>
+
+	<h3>Things I've built</h3>
+	<div class="projects-container">
+		{
+			fetchedProjects.map((project) => {
+				return <ProjectCard project={project} />;
+			})
+		}
+	</div>
 
 	<h3>Languages and Tools</h3>
 	<Skills />
