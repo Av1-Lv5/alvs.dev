@@ -8,6 +8,7 @@ export interface Props {
 // props
 const { title, showNav } = Astro.props;
 
+import CuteCube from "./CuteCube.astro";
 import { Icon } from "astro-icon/components";
 import ThemeToggle from "./ThemeToggle.astro";
 // data
@@ -21,7 +22,8 @@ const pathName = Astro.url.pathname;
 		{
 			showNav && (
 				<a href="/">
-					<div class="home" />
+					{/* <div class="home" /> */}
+					<CuteCube />
 				</a>
 			)
 		}
