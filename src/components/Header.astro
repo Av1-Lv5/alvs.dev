@@ -28,31 +28,30 @@ const pathName = Astro.url.pathname;
 		{title && <h1>{title}</h1>}
 		{
 			showNav && (
-				<nav aria-label="main navigation" class="desktop-nav">
-					{rootNav.map((navItem) => (
+				<div class="nav-container">
+					<nav aria-label="main navigation" class="desktop-nav">
+						{rootNav.map((navItem) => (
+							<a
+								href={navItem.path}
+								class={
+									pathName === navItem.path ? "active" : ""
+								}
+							>
+								{navItem.title}
+							</a>
+						))}
 						<a
-							href={navItem.path}
-							class={pathName === navItem.path ? "active" : ""}
+							class="social"
+							href={`https://github.com/${socials.githubUsername}`}
+							target="_blank"
 						>
-							{navItem.title}
+							<Icon name={"simple-icons:github"} size={20} />
 						</a>
-					))}
-					<a
-						class="social"
-						href={`https://github.com/${socials.githubUsername}`}
-						target="_blank"
-					>
-						<Icon name={"simple-icons:github"} size={20} />
-					</a>
+					</nav>
 					<ThemeToggle />
-				</nav>
-			)
-		}
-
-		{
-			showNav && (
-				<div id="menu-btn" class="mobile-menu-btn">
-					<Icon name="lucide:menu" size={24} />
+					<div id="menu-btn" class="mobile-menu-btn">
+						<Icon name="lucide:menu" size={24} />
+					</div>
 				</div>
 			)
 		}
@@ -105,7 +104,6 @@ const pathName = Astro.url.pathname;
 					<a href={`mailto:${socials.email}`} aria-label="Email">
 						<Icon name="lucide:mail" size={20} />
 					</a>
-					<ThemeToggle />
 				</div>
 			</nav>
 		</div>
@@ -150,6 +148,12 @@ const pathName = Astro.url.pathname;
 		width: 24px;
 		background-color: var(--accent);
 		border-radius: 6px;
+	}
+
+	.nav-container {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
 	}
 
 	nav a.active {
@@ -246,7 +250,9 @@ const pathName = Astro.url.pathname;
 		}
 
 		.mobile-menu-btn {
-			display: block;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 	}
 </style>
