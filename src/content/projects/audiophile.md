@@ -13,7 +13,7 @@ featured: true
 
 ### Overview
 
-Audiophile is a fullstack e-commerce application built to explore real-world commerce flows beyond static frontend interactions. The project focuses on clean UI, structured data modeling, and realistic order lifecycles.
+Audiophile is a e-commerce application built to explore real-world commerce flows beyond static frontend interactions. The project focuses on clean UI, structured data modeling, and realistic order lifecycles.
 
 ### Key Features
 
@@ -21,7 +21,6 @@ Audiophile is a fullstack e-commerce application built to explore real-world com
 -   Add / remove products from cart
 -   Checkout flow with price breakdown
 -   Checkout form validation
--   Structured product, category, and content management via Sanity
 
 ### Technical Architecture
 
@@ -31,23 +30,21 @@ Audiophile is a fullstack e-commerce application built to explore real-world com
 
 ### Future Roadmap
 
--   Razorpay payment integration with webhook-based verification
+-   Razorpay payment integration with webhook-based verification.
 -   Order creation and lifecycle management (`created → paid → shipped → delivered`)
 -   Inventory tracking and stock updates
--   Authenticated user accounts via Clerk
+-   Authenticate via Clerk
 -   Order history and order detail pages
--   Courier service integration for shipment and tracking metadata
+-   Courier service integration for shipment and tracking metadata, atleast a mock implementation.
 -   Transactional emails for order confirmation, shipping, and delivery updates, using react-email and resend.
--   End-to-end tests for checkout and payment flows.
 
 ### Why This Project Exists
 
-This project goes beyond a typical Frontend Mentor implementation and is being used as a learning ground for:
+This project is a playground to go beyond a typical Frontend Mentor implementation and is being used as a learning ground for:
 
 -   Designing secure server-driven flows
 -   Handling payments and webhooks correctly
 -   Modeling real e-commerce state transitions
--   Understanding the trade-offs of using a headless CMS as a backend
 
 ### Attributions
 

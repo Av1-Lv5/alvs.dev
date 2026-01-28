@@ -31,7 +31,7 @@ featured: true
 ### Future Roadmap
 
 -   Able to select a different font.
--   Support for Code highlighting.
+-   Support for Syntax highlighting using [shiki](https://shiki.style/)
 
 ### Attributions
 

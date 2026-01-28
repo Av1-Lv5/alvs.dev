@@ -4,7 +4,7 @@ title: Orbit
 description: A daily budget app built with Next.js and Supabase.
 tags: ["next", "typescript", "supabase"]
 repoId: ""
-liveAt: "orbitbudget.com"
+liveAt: "www.orbitbudget.com"
 isDraft: false
 featured: true
 ---
@@ -29,7 +29,7 @@ Overall, this felt less like just shipping features and more like learning how t
 ### Key Features
 
 - **Daily Safe-to-Spend Limit**  
-  Automatically calculates what you can safely spend today based on your budget and the remaining days. Save today, get more for tomorrow.
+  Automatically calculates what you can safely spend today based on your budget and the remaining days. Save today, to spend more tomorrow.
 
 - **Zero Setup**  
   No bank connections to break. No complex categories to configure. Just set a budget and start tracking.
@@ -52,6 +52,6 @@ Also used Zustand + TanStack Query — one for UI state, one for server state. T
 
 ### Future Roadmap
 
-- Build Android and iOS apps  
-- Export data as CSV or PDF  
+- Build Android and iOS apps if user base grows 
+- Export data as CSV or PDF
 - Add your partner to a budget
