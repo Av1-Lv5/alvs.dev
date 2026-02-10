@@ -6,27 +6,111 @@ import PageLayout from "@layouts/PageLayout.astro";
 import ProjectCard from "@components/ProjectCard.astro";
 import { getEntry } from "astro:content";
 
-const fetchedProjects = [];
-fetchedProjects.push(await getEntry("projects", "orbit"));
-fetchedProjects.push(await getEntry("projects", "audiophile"));
-fetchedProjects.push(await getEntry("projects", "markdown-editor"));
-fetchedProjects.push(await getEntry("projects", "photosnap"));
+const featuredProjects = [];
+featuredProjects.push(await getEntry("projects", "orbit"));
+featuredProjects.push(await getEntry("projects", "audiophile"));
+featuredProjects.push(await getEntry("projects", "markdown-editor"));
+featuredProjects.push(await getEntry("projects", "photosnap"));
 ---
 
 <PageLayout tabTitle="Projects">
-	<h1>Things I've built</h1>
-	<div class="projects-container">
-		{
-			fetchedProjects.map((project) => {
-				return <ProjectCard project={project} />;
-			})
-		}
-	</div>
+	<section class="projects-hero">
+		<h1>Things I've built</h1>
+		<p class="hero-text">
+			Building on the web is my favorite way to learn. Each project is a
+			deep dive into specific problems, patterns, and technologies.
+		</p>
+	</section>
+
+	<section class="projects-section">
+		<h2 class="section-title">Featured</h2>
+		<div class="projects-list">
+			{
+				featuredProjects.map((project) => (
+					<ProjectCard project={project} />
+				))
+			}
+		</div>
+	</section>
+
+	<section class="projects-section">
+		<h2 class="section-title">Philosophy</h2>
+		<div class="note-content">
+			<p>
+				I'm an advocate for 'shipping' over 'polishing forever'. My
+				projects aren't always perfect, but they are always a reflection
+				of what I'm currently curious about.
+			</p>
+			<p class="note-footer">
+				Want to talk about a specific project? Feel free to <a
+					href="/connect">reach out</a
+				>.
+			</p>
+		</div>
+	</section>
 </PageLayout>
 
 <style>
-	.projects-container {
+	.projects-hero {
+		margin-bottom: 5rem;
+		margin-top: 2rem;
+	}
+
+	.hero-text {
+		font-size: 1.125rem;
+		line-height: 1.7;
+		max-width: 60ch;
+		color: var(--text-muted);
+	}
+
+	.projects-section {
+		margin-bottom: 5rem;
+	}
+
+	.section-title {
+		font-size: 0.875rem;
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		color: var(--text-light);
+		font-weight: 700;
+		margin-bottom: 2rem;
+		border-bottom: 1px solid var(--border-muted);
+		padding-bottom: 0.5rem;
+		display: block;
+	}
+
+	.projects-list {
 		display: flex;
 		flex-direction: column;
+		margin-top: -1.5rem; /* Offset project card padding */
+	}
+
+	.note-content p {
+		margin: 0;
+		font-size: 1rem;
+		line-height: 1.6;
+		color: var(--text-muted);
+		max-width: 65ch;
+	}
+
+	.note-footer {
+		color: var(--text-light);
+		font-style: italic;
+		font-size: 0.85rem !important;
+		margin-top: 1.5rem !important;
+	}
+
+	@media (max-width: 768px) {
+		.projects-hero {
+			margin-bottom: 3rem;
+		}
+
+		.projects-list {
+			margin-top: -1rem;
+		}
+
+		.projects-section {
+			margin-bottom: 4rem;
+		}
 	}
 </style>

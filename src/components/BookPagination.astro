@@ -8,7 +8,8 @@ interface Props {
 	prevUrl?: string;
 }
 
-const { currentPage, totalPages, hasNext, hasPrev, nextUrl, prevUrl } = Astro.props;
+const { currentPage, totalPages, hasNext, hasPrev, nextUrl, prevUrl } =
+	Astro.props;
 ---
 
 {
@@ -16,14 +17,16 @@ const { currentPage, totalPages, hasNext, hasPrev, nextUrl, prevUrl } = Astro.pr
 		<nav class="pagination">
 			{hasPrev && <a href={prevUrl}>← Previous</a>}
 
-			{Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
-				<a
-					href={pageNum === 1 ? "/books" : `/books/${pageNum}`}
-					class={pageNum === currentPage ? "current" : ""}
-				>
-					{pageNum}
-				</a>
-			))}
+			{Array.from({ length: totalPages }, (_, i) => i + 1).map(
+				(pageNum) => (
+					<a
+						href={pageNum === 1 ? "/books" : `/books/${pageNum}`}
+						class={pageNum === currentPage ? "current" : ""}
+					>
+						{pageNum}
+					</a>
+				),
+			)}
 
 			{hasNext && <a href={nextUrl}>Next →</a>}
 		</nav>

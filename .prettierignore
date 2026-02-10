@@ -1,0 +1,11 @@
+# Ignore build outputs
+dist/
+build/
+.astro/
+
+# Ignore dependencies
+node_modules/
+
+# Ignore lock files
+package-lock.json
+yarn.lock

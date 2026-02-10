@@ -2,69 +2,212 @@
 // layout
 import PageLayout from "@layouts/PageLayout.astro";
 
-import EmailSVG from "@icons/EmailSVG.astro";
+// Components
+import { Icon } from "astro-icon/components";
 
 // data
 import { socials } from "src/constants";
-import { Icon } from "astro-icon/components";
 ---
 
 <PageLayout tabTitle="Connect">
-	<h1>Get in touch</h1>
-	<b>
-		Got an interesting project you're working on, or just want to say hi?
-	</b>
-	<p>I'd love to hear from you! The best way to reach me is through email.</p>
+	<section class="connect-hero">
+		<h1>Get in touch</h1>
+		<p class="hero-text">
+			Got an interesting project you're working on, or just want to say
+			hi? I'd love to hear from you. The best way to reach me is through
+			email.
+		</p>
+	</section>
 
-	<h3 class="contact">
-		<!-- <EmailSVG /> -->
-		<Icon name={"lucide:mail"} size={24} />
-		<span>Email:</span>
-		<a href={`mailto:${socials.email}`}>{socials.email}</a>
-	</h3>
+	<section class="connect-section">
+		<h2 class="section-title">Direct</h2>
+		<div class="direct-contact">
+			<a href={`mailto:${socials.email}`} class="email-link">
+				{socials.email}
+			</a>
+			<p class="status-indicator">
+				<span class="dot"></span>
+				Typically responds within 24-48 hours
+			</p>
+		</div>
+	</section>
 
-	<p class="notice">
-		<b>Spam prevention:</b>
-		Above email address changes over time. Saving for future communication is
-		not recommended.
-	</p>
+	<section class="connect-section">
+		<h2 class="section-title">Presence</h2>
+		<nav class="social-nav">
+			<a href={socials.linkedin} target="_blank" rel="noopener">
+				<Icon name="simple-icons:linkedin" class="social-icon" />
+				LinkedIn
+			</a>
+			<a
+				href={`https://github.com/${socials.githubUsername}`}
+				target="_blank"
+				rel="noopener"
+			>
+				<Icon name="simple-icons:github" class="social-icon" />
+				GitHub
+			</a>
+			<a href={socials.mastodon} target="_blank" rel="noopener">
+				<Icon name="simple-icons:mastodon" class="social-icon" />
+				Mastodon
+			</a>
+		</nav>
+	</section>
 
-	<h3>What to Expect</h3>
-	<ul>
-		<li>Response within 24-48 hours</li>
-		<li>For project inquiries, include details and timeline</li>
-		<li>Open to collaboration and learning opportunities</li>
-	</ul>
+	<div class="connect-grid">
+		<section class="connect-section">
+			<h2 class="section-title">Expectations</h2>
+			<ul class="expectations-list">
+				<li>For project inquiries, include details and timeline</li>
+				<li>Open to collaboration and learning opportunities</li>
+				<li>Operating from IST (India Standard Time)</li>
+			</ul>
+		</section>
 
-	<h3>Find Me Online</h3>
-	<p>
-		<a href={socials.linkedin} target="_blank" rel="noopener">LinkedIn</a> •
-		<a
-			href={`https://github.com/${socials.githubUsername}`}
-			target="_blank"
-			rel="noopener">GitHub</a
-		> •
-		<a href={socials.mastodon} target="_blank" rel="noopener">Mastodon</a>
-	</p>
+		<section class="connect-section">
+			<h2 class="section-title">Note</h2>
+			<p class="spam-notice">
+				<b>Spam prevention:</b>
+				The email address above changes periodically. Saving it for long-term
+				communication is not recommended.
+			</p>
+		</section>
+	</div>
 </PageLayout>
 
 <style>
-	.contact {
+	.connect-hero {
+		margin-bottom: 4rem;
+	}
+
+	.hero-text {
+		font-size: 1.125rem;
+		line-height: 1.7;
+		max-width: 60ch;
+		color: var(--text-muted);
+	}
+
+	.connect-section {
+		margin-bottom: 4rem;
+	}
+
+	.section-title {
+		font-size: 0.875rem;
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		color: var(--text-light);
+		font-weight: 700;
+		margin-bottom: 1.5rem;
+		border-bottom: 1px solid var(--border-muted);
+		padding-bottom: 0.5rem;
+		display: block;
+	}
+
+	.email-link {
+		font-size: 1.75rem;
+		font-weight: 700;
+		color: var(--text);
+		text-decoration: none;
+		transition: var(--transition);
+		display: block;
+		margin-bottom: 1rem;
+	}
+
+	.email-link:hover {
+		color: var(--text);
+		text-decoration: underline;
+		text-underline-offset: 8px;
+	}
+
+	.status-indicator {
 		display: flex;
-		justify-content: center;
-		gap: 10px;
 		align-items: center;
+		gap: 0.75rem;
+		font-size: 0.875rem;
+		color: var(--text-muted);
+		margin: 0;
 	}
-	@media screen and (max-width: 650px) {
-		.contact :global(svg),
-		.contact span {
-			display: none;
+
+	.status-indicator .dot {
+		width: 8px;
+		height: 8px;
+		background: #10b981;
+		border-radius: 50%;
+		display: inline-block;
+		box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+	}
+
+	.social-nav {
+		display: flex;
+		gap: 2.5rem;
+		flex-wrap: wrap;
+	}
+
+	.social-nav a {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		font-weight: 600;
+		color: var(--text-muted);
+		transition: var(--transition);
+		text-decoration: none;
+	}
+
+	.social-nav a:hover {
+		color: var(--text);
+	}
+
+	.social-icon {
+		width: 20px;
+		height: 20px;
+		opacity: 0.8;
+	}
+
+	.connect-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+	}
+
+	.expectations-list {
+		margin: 0;
+		padding-left: 1rem;
+		color: var(--text-muted);
+		font-size: 0.95rem;
+		line-height: 1.6;
+	}
+
+	.expectations-list li {
+		margin-bottom: 0.75rem;
+	}
+
+	.spam-notice {
+		margin: 0;
+		font-size: 0.9rem;
+		color: var(--text-muted);
+		line-height: 1.6;
+		padding: 1.25rem;
+		background: var(--bg-soft);
+		border-radius: var(--radius);
+		border: 1px solid var(--border);
+	}
+
+	@media (max-width: 768px) {
+		.connect-hero {
+			margin-bottom: 3rem;
 		}
-	}
-	.notice {
-		background: var(--accent-bg);
-		border: 2px solid var(--border);
-		border-radius: 5px;
-		padding: 1.5rem;
+
+		.email-link {
+			font-size: 1.5rem;
+		}
+
+		.connect-grid {
+			grid-template-columns: 1fr;
+			gap: 0;
+		}
+
+		.social-nav {
+			gap: 1.5rem;
+		}
 	}
 </style>

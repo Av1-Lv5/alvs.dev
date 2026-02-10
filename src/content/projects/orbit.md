@@ -11,47 +11,39 @@ featured: true
 
 ![Project preview](/assets/img/orbit-thumb.png)
 
-### Overview
+### The Mission
 
-Orbit is a daily budget tracker. Instead of complex categories and flaky bank connections, it gives you a simple daily safe-to-spend limit.
+Solving financial anxiety through a zero-friction, daily spending limit. No bank connections, no complex categories—just a clear answer to "Can I spend this today?"
 
-You know exactly how much you can spend today without overthinking the future.
+### The Problem
 
-### Learnings
+Most budgeting apps are data-entry black holes. They require bank syncs that break, categorization that feels like a chore, and they focus on the future (monthly budgets) rather than the immediate present (daily decisions). This friction leads to abandonment and "finance fatigue."
 
-This project started with a real problem I actually cared about, which made everything that followed feel grounded. Going from “this is annoying” to “this actually works” was the most satisfying part.
+### The Solution: A Daily "Safe-to-Spend"
 
-I had to think through the product, the edge cases, and the UX while building everything end to end. A lot of decisions felt messy while making them, but clearer once the system started taking shape.
+Orbit flips the script. It focuses on a single, dynamic number: your daily allowance. By aggregating fixed expenses and goals, it tells you exactly what you can spend today without sabotaging tomorrow.
 
-Overall, this felt less like just shipping features and more like learning how to reason through a product from idea to implementation. Loved building this.
+- **Frictionless Entry**: Optimized for 5-second expense logging.
+- **Privacy First**: No bank data, no ads, no trackers.
+- **Dynamic Recalculation**: If you overspend today, your future's daily limit adjusts instantly to keep you on track.
 
+### Engineering Insights & Learnings
 
-### Key Features
+Building Orbit was a deep dive into **state management** and **product reasoning**.
 
-- **Daily Safe-to-Spend Limit**  
-  Automatically calculates what you can safely spend today based on your budget and the remaining days. Save today, to spend more tomorrow.
+- **State Hybridization**: I utilized **Zustand** for transient UI state (modals, local filters) and **TanStack Query** for persistent server state. This separation of concerns made the app significantly more predictable.
+- **Custom Auth Patterns**: Instead of using Clerk's pre-built UIs, I implemented custom auth flows using their SDK to have full control over the user experience and branding.
+- **Logic over CRUD**: The core of the app isn't just saving data; it's the calculation engine that handles overspending, carries totals forward, and adjusts for varying month lengths.
 
-- **Zero Setup**  
-  No bank connections to break. No complex categories to configure. Just set a budget and start tracking.
+### Technical Stack
 
-- **Quick Entry**  
-  A focused interface that lets you log expenses in seconds. Less friction, more consistency.
-
-- **Strictly Private**  
-  No ads. No selling data.
-
-### Technical Architecture
-
-Next.js, Tailwind CSS, shadcn/ui, TypeScript not very interesting stuff here since this has been my core stack for a while now.
-
-That said, this was the first project where I didn’t rely only on Clerk’s pre-built components. I built custom auth flows using the SDK.
-
-Midway through, it honestly felt like a step back. Too many things to think about, too many edge cases. But after spending time with it, things started to click. A lot of it felt like basic common sense in hindsight, which made it even more interesting.
-
-Also used Zustand + TanStack Query — one for UI state, one for server state. This project really helped me get a clear understanding of the difference and where each type of state should live.
+- **Framework**: Next.js (App Router)
+- **Language**: TypeScript
+- **Database/Auth**: Supabase + Clerk
+- **Styling**: Tailwind CSS + Shadcn UI
 
 ### Future Roadmap
 
-- Build Android and iOS apps if user base grows 
-- Export data as CSV or PDF
-- Add your partner to a budget
+- [ ] Native Android and iOS apps for even faster logging.
+- [ ] Data portability (CSV/PDF exports).
+- [ ] Shared budgets for partners.

@@ -17,8 +17,8 @@ Photosnap is a multi-page marketing site for a photo-sharing platform built with
 
 ### Learnings
 
--   Implementing the responsive design to the pricing, and features table took a bit of time to plan.
--   Got a bit more familiarised with [Astro](https://astro.build)
+- Implementing the responsive design to the pricing, and features table took a bit of time to plan.
+- Got a bit more familiarised with [Astro](https://astro.build)
 
 ### Attributions
 

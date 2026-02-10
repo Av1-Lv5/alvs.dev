@@ -9,28 +9,68 @@
 </div>
 
 <script>
+	const cube = document.getElementById("cute-cube");
 	const face = document.getElementById("cube-face");
+	const eyes = document.querySelectorAll(".eye");
 
-	function updateFacePosition(e: MouseEvent) {
-		if (!face) return;
+	let mouseX = 0;
+	let mouseY = 0;
+	let currentX = 0;
+	let currentY = 0;
+	let hasMoved = false;
 
-		const { clientX, clientY } = e;
-		const { innerWidth, innerHeight } = window;
+	function animate() {
+		if (!cube || !face) return;
 
-		// Calculate position relative to center (range -1 to 1)
-		const xPct = (clientX / innerWidth - 0.5) * 2;
-		const yPct = (clientY / innerHeight - 0.5) * 2;
+		const rect = cube.getBoundingClientRect();
+		const cubeCenterX = rect.left + rect.width / 2;
+		const cubeCenterY = rect.top + rect.height / 2;
 
-		// Limit movement to +/- 3px
-		const xMove = xPct * 3;
-		const yMove = yPct * 3;
+		// If mouse hasn't moved yet, look forward
+		if (!hasMoved) {
+			mouseX = cubeCenterX;
+			mouseY = cubeCenterY;
+		}
 
-		face.style.transform = `translate(${xMove}px, ${yMove}px)`;
+		// Calculate vectors from cube to mouse
+		const dx = mouseX - cubeCenterX;
+		const dy = mouseY - cubeCenterY;
+		const dist = Math.sqrt(dx * dx + dy * dy);
+		const angle = Math.atan2(dy, dx);
+
+		// Max movement range in pixels
+		const maxMove = 4;
+		const intensity = Math.min(dist / 400, 1);
+
+		const targetX = Math.cos(angle) * intensity * maxMove;
+		const targetY = Math.sin(angle) * intensity * maxMove;
+
+		// Smooth interpolation
+		currentX += (targetX - currentX) * 0.15;
+		currentY += (targetY - currentY) * 0.15;
+
+		face.style.transform = `translate(${currentX}px, ${currentY}px)`;
+
+		// Move eyes slightly more for a parallax effect
+		eyes.forEach((eye) => {
+			const eyeX = Math.cos(angle) * intensity * 2;
+			const eyeY = Math.sin(angle) * intensity * 2;
+			(eye as HTMLElement).style.transform =
+				`translate(${eyeX}px, ${eyeY}px)`;
+		});
+
+		requestAnimationFrame(animate);
 	}
 
-	// Only add listener if device supports hover (desktop)
 	if (window.matchMedia("(hover: hover)").matches) {
-		window.addEventListener("mousemove", updateFacePosition);
+		window.addEventListener("mousemove", (e) => {
+			mouseX = e.clientX;
+			mouseY = e.clientY;
+			hasMoved = true;
+		});
+
+		// Initial start
+		requestAnimationFrame(animate);
 	}
 </script>
 

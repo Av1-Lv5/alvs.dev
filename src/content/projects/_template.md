@@ -2,47 +2,43 @@
 id: project-id
 title: Project Title
 description: Brief description of the project.
-tags: ["tag1", "tag2"]
-repoId: "repo-name" # or "" if private/none
-liveAt: "project-url.com" # or "" if not deployed
+tags: ["tech", "stack"]
+repoId: "" # or "" if private/none
+liveAt: "" # or "" if not deployed
 isDraft: true
+featured: false
 ---
 
 ![Project preview](/assets/img/placeholder.png)
 
-### Overview
+### The Mission
 
-A brief overview of the project, its purpose, and the problem it solves.
+A one-sentence bold summary of what this project achieves and why it matters.
 
-### Key Features
+### The Problem
 
--   **Feature 1**: Description.
--   **Feature 2**: Description.
+What was the "pain point" that led to this project? Use this section to explain the context and the specific challenge you set out to solve.
+
+### The Solution
+
+How did you approach the problem? Highlight the core functionality and any unique ways you addressed the user's needs.
+
+### Engineering Insights & Learnings
+
+_This is the most important section._ What technical hurdles did you overcome? What did you learn about the architecture, the stack, or the product lifecycle?
+
+- **Insight A**: Details about a specific technical decision.
+- **Insight B**: Details about a learning or "aha" moment.
 
 ### Technical Architecture
 
--   **Frontend**: Tech stack details.
--   **Backend**: Tech stack details (if applicable).
+- **Framework**: e.g., Next.js
+- **Language**: e.g., TypeScript
+- **State Management**: e.g., Zustand
+- **Backend/Services**: e.g., Supabase, Clerk
 
 ### Future Roadmap
 
-<!--
-Choose a structure.
-Option 1: Simple List (for smaller projects)
-- [ ] Feature A
-- [ ] Feature B
-
-Option 2: Hierarchy (for larger plans)
-#### Phase 1: Immediate Improvements
-- [ ] Task A
-- [ ] Task B
-
-#### Phase 2: Long-term Goals
-- [ ] Task C
--->
-
--   [ ] Add your future plans here...
-
-### Attributions
-
--   Designs/Resources by...
+- [ ] Immediate next step
+- [ ] Long-term goal
+- [ ] "Nice to have" feature

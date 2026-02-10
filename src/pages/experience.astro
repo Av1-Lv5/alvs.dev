@@ -1,0 +1,40 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Experience from "@components/Experience.astro";
+---
+
+<PageLayout tabTitle="Experience">
+	<div class="experience-header">
+		<h1>Professional Journey</h1>
+		<p class="subtitle">
+			A timeline of my work, projects, and the things I've learned along
+			the way.
+		</p>
+	</div>
+
+	<Experience />
+
+	<section class="extra-info">
+		<h3>Looking for more?</h3>
+		<p>
+			You can also check out my <a href="/projects">projects</a> or read my
+			<a href="/resume/">resume</a>.
+		</p>
+	</section>
+</PageLayout>
+
+<style>
+	.experience-header {
+		margin-bottom: 3rem;
+	}
+
+	.subtitle {
+		font-size: 1.1rem;
+		max-width: 600px;
+		color: var(--text-muted);
+	}
+
+	.extra-info {
+		margin-top: 6rem;
+	}
+</style>

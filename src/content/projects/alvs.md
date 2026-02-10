@@ -1,35 +1,42 @@
 ---
-id: "personal-site-archive"
-title: "www.alvs.dev"
-description: "My personal/portfolio website"
+id: "personal-site"
+title: "alvs.dev"
+description: "A minimalist digital garden and portfolio."
 tags: ["astro"]
 repoId: "personal-site-archive"
 isDraft: false
 featured: false
 ---
 
-### Design decisions
+### The Philosophy
 
-I chose a classless CSS approach because it encourages semantic HTML and reduces the mental overhead of styling decisions. It forces cleaner, more meaningful markup while letting the content take center stage.
+**Base-level minimalism, scoped-level structure.** The site uses a classless stylesheet as a foundation to ensure semantic HTML looks good by default, layered with custom scoped styles only when specific structural patterns are needed.
 
-Sometimes I wonder, do I even like minimal design or am I just too lazy to create more custom. Probably a bit of both and surprisingly the combination has worked really well for this site.
+### Design Decisions: The Classless Journey
 
-### Technical architecture
+The decision to start with a **classless stylesheet** was about reducing the mental overhead of styling basic elements (like headings, lists, and links). It forces a focus on semantic HTML and content hierarchy.
 
-The site is built as a purely static site powered by Astro with no complex build steps or runtime dependencies just simple, fast, static output. 
+My journey into this approach began with discovering **Simple.css**—not as a heavy framework, but as an introduction to the concept that a pure stylesheet can create a functional, readable site with zero classes.
 
-I chose Astro (starting with v1 when it was gaining momentum) and have loved the framework ever since. It perfectly fits my goal of zero-friction content delivery.
+However, I don't use it exclusively. While the classless base handles the "look" of individual elements, I utilize **Astro's scoped styles** to build intentional layout structures—like the recursive "Split-Column" pattern—without polluting a global stylesheet.
 
-- Styling: No external CSS framework or heavy setup. Mostly classless CSS with only a handful of utility classes where needed. I started with simple.css until early 2025, then wrote my own lightweight classless stylesheet tailored to the site.
-- Content: No external CMS. Everything is written in pure Markdown (or MDX where slight interactivity helps), keeping maintenance trivial.
+### Technical Architecture: Why Astro?
+
+The site is a purely static entity. I chose **Astro** for its "zero-friction" content delivery and its ability to keep styles isolated where they belong.
+
+- **Styling**: A custom, lightweight classless stylesheet acts as the foundation. Specific layout grids and component-level refinements are handled via scoped CSS within Astro components.
+- **Content**: Pure Markdown/MDX. No external CMS. Everything is version-controlled and portable.
+- **Performance**: Zero client-side JavaScript by default, resulting in instant load times and perfect SEO scores.
+
+### The Evolution (Archives)
+
+1. **The Hardcoded Start**: A single-page HTML monolith.
+2. **The Gulp Era (2022)**: Using Pug templating and Gulp for source management.
+3. **The Classless Introduction**: Discovering pure stylesheets (Simple.css) and adopting a minimal-first mindset.
+4. **The Custom Standard (2025)**: Developing the current hybrid approach of classless base styles combined with custom scoped structures.
 
 ### Future Roadmap
 
--   Like to have a blog, to write about my learnings, personal endeavours, critical decisions, software comparisions, and my niche interests in web development (workflows, setups, tools, etc.)
-
-### Archives
-
-1. My very first draft was just plain HTML + CSS, I hard-coded the entire site in a single page, but later decided to turn it into a structured multi-page site.
-2. **[2022 jan - 2022 dec]** Used pug templating + gulp task runner for the ease of maintaining the source.
-  -> source code [@github repo](https://github.com/Av1-Lv5/personal-site-archive/tree/main/0)
-5. **[Until 2025 jan]** used [simple css](https://simplecss.org) a classless CSS foundation, later wrote my own custom classless stylesheet.
+- [ ] Integration of a dedicated Blog for technical deep-dives.
+- [ ] Interactive "Knowledge Graph" for public notes.
+- [ ] Advanced typography experimentation.

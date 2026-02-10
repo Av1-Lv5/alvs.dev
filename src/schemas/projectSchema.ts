@@ -4,7 +4,21 @@ export default {
 	id: z.string(),
 	title: z.string(),
 	description: z.string(),
-	tags: z.array(z.enum(["typescript", "javascript", "react", "preact", "astro", "next", "supabase", "html", "css"])).max(4),
+	tags: z
+		.array(
+			z.enum([
+				"typescript",
+				"javascript",
+				"react",
+				"preact",
+				"astro",
+				"next",
+				"supabase",
+				"html",
+				"css",
+			]),
+		)
+		.max(4),
 	repoId: z.string().optional(),
 	liveAt: z.string().optional(),
 	isDraft: z.boolean(),
