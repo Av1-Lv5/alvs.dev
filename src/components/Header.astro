@@ -14,7 +14,7 @@ import ThemeToggle from "./ThemeToggle.astro";
 // data
 import { socials, rootNav } from "src/constants";
 
-const pathName = Astro.url.pathname;
+// const pathName = Astro.url.pathname;
 ---
 
 <header aria-label="header">
@@ -35,9 +35,7 @@ const pathName = Astro.url.pathname;
 						{rootNav.map((navItem) => (
 							<a
 								href={navItem.path}
-								class={
-									pathName === navItem.path ? "active" : ""
-								}
+								data-astro-prefetch="viewport"
 							>
 								{navItem.title}
 							</a>
@@ -74,12 +72,7 @@ const pathName = Astro.url.pathname;
 
 			<nav class="mobile-nav">
 				{rootNav.map((navItem) => (
-					<a
-						href={navItem.path}
-						class={pathName === navItem.path ? "active" : ""}
-					>
-						{navItem.title}
-					</a>
+					<a href={navItem.path}>{navItem.title}</a>
 				))}
 				<div class="mobile-socials">
 					<a

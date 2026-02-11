@@ -5,17 +5,20 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-	markdown: {
-		rehypePlugins: [
-			[
-				rehypeExternalLinks,
-				{
-					target: "_blank",
-					rel: ["noopener", "noreferrer"],
-				},
-			],
-		],
-	},
-	integrations: [icon()],
-	site: "https://alvs.dev",
+  prefetch: {
+    defaultStrategy: "hover"
+  },
+  markdown: {
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        {
+          target: "_blank",
+          rel: ["noopener", "noreferrer"],
+        },
+      ],
+    ],
+  },
+  integrations: [icon()],
+  site: "https://alvs.dev",
 });
