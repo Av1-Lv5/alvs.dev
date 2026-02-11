@@ -29,6 +29,13 @@ const { pageTabTitle, pageTitle, categoryTabTitle, showNav } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<title>{`${pageTabTitle} • ${categoryTabTitle}`}</title>
+
+		<!-- Web analytics -->
+		<script
+			data-goatcounter="https://a-sh.goatcounter.com/count"
+			async
+			src="//gc.zgo.at/count.js"></script>
+
 		<script is:inline>
 			(function () {
 				const theme = localStorage.getItem("theme") || "system";
