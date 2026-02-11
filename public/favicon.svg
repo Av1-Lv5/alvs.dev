@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- 
+    Option Geo1: Iso-Cube
+    Rationale: A 3D isometric cube in accent blue. 
+    "Av" typography placed on the top face for a "building block" feel.
+    Stands out with depth and shadow.
+  -->
+  
+  <!-- Cube Faces -->
+  <!-- Top Face (Lighter Blue) -->
+  <path d="M16 2L28 8L16 14L4 8L16 2Z" fill="#3b82f6" stroke="#2563eb" stroke-width="1" stroke-linejoin="round"/>
+  <!-- Right Face (Darker Blue) -->
+  <path d="M28 8V20L16 26V14L28 8Z" fill="#1d4ed8" stroke="#2563eb" stroke-width="1" stroke-linejoin="round"/>
+  <!-- Left Face (Access Blue) -->
+  <path d="M4 8V20L16 26V14L4 8Z" fill="#2563eb" stroke="#2563eb" stroke-width="1" stroke-linejoin="round"/>
+  
+  <!-- Typography on Top Face -->
+  <!-- Transformed to match isometric plane -->
+  <g transform="translate(16, 8)"> 
+    <text x="0" y="0" font-family="'Inter', sans-serif" font-weight="800" font-size="8" fill="white" text-anchor="middle" dominant-baseline="middle" transform="scale(1, 0.5)">Av</text>
+  </g>
+</svg>

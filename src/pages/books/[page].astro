@@ -17,7 +17,10 @@ interface Props {
 const { page }: Props = Astro.props;
 ---
 
-<PageLayout tabTitle={`Books - Page ${page.currentPage}`}>
+<PageLayout
+	tabTitle={`Books - Page ${page.currentPage}`}
+	description={`Browse the books read by Avinash - Page ${page.currentPage}.`}
+>
 	<h1>Books I've read</h1>
 	<p>
 		A collection of books that have left an impression on me, along with my

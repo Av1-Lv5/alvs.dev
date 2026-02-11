@@ -23,3 +23,10 @@ export const socials = {
 	mastodon: "https://fosstodon.org/@Av1",
 	linkedin: "https://www.linkedin.com/in/av-sh/",
 };
+
+export const SITE_METADATA = {
+	title: "av-sh",
+	description: "Frontend web developer, building things in random.",
+	url: "https://alvs.dev",
+	image: "/assets/og-image.png",
+};

@@ -8,7 +8,10 @@ import PageLayout from "@layouts/PageLayout.astro";
 const allNotes = await getCollection("notes");
 ---
 
-<PageLayout tabTitle="Notes">
+<PageLayout
+	tabTitle="Notes"
+	description="A collection of public notes, thoughts, and ideas by Avinash. Often updated and occasionally unpolished."
+>
 	<h1>My public notes</h1>
 	<p>
 		The content in my notes gets often updated to my current opinions. Notes

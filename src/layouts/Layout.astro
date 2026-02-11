@@ -4,6 +4,7 @@
 // components
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import BaseHead from "@components/BaseHead.astro";
 
 // Types
 type Props = {
@@ -11,6 +12,8 @@ type Props = {
 	categoryTabTitle: string;
 	pageTitle?: string;
 	showNav: boolean;
+	description?: string;
+	image?: string;
 };
 
 // styles
@@ -18,17 +21,22 @@ import "@styles/minimal.css";
 import "@styles/custom.css";
 
 // props
-const { pageTabTitle, pageTitle, categoryTabTitle, showNav } = Astro.props;
+const {
+	pageTabTitle,
+	pageTitle,
+	categoryTabTitle,
+	showNav,
+	description,
+	image,
+} = Astro.props;
+
+const fullTitle = `${pageTabTitle} • ${categoryTabTitle}`;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<title>{`${pageTabTitle} • ${categoryTabTitle}`}</title>
+		<BaseHead title={fullTitle} description={description} image={image} />
 
 		<!-- Web analytics -->
 		<script

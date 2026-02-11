@@ -7,10 +7,8 @@
 			"@components/*": ["src/components/*"],
 			"@layouts/*": ["src/layouts/*"],
 			"@images/*": ["public/assets/img/*"],
-			"@devicons/*": ["public/assets/devIcons/*"],
-			"@icons/*": ["public/assets/icons/*"],
 			"@custom-types/*": ["src/types/*"],
-			"@data/*": ["src/data/*"],
+			"@constants/*": ["src/constants/*"],
 			"@styles/*": ["src/styles/*"],
 			"@schemas/*": ["src/schemas/*"]
 		}
