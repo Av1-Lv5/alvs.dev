@@ -14,7 +14,7 @@ import ThemeToggle from "./ThemeToggle.astro";
 // data
 import { socials, rootNav } from "src/constants";
 
-// const pathName = Astro.url.pathname;
+const pathName = Astro.url.pathname;
 ---
 
 <header aria-label="header">
@@ -22,7 +22,6 @@ import { socials, rootNav } from "src/constants";
 		{
 			showNav && (
 				<a href="/">
-					{/* <div class="home" /> */}
 					<CuteCube />
 				</a>
 			)
@@ -36,6 +35,9 @@ import { socials, rootNav } from "src/constants";
 							<a
 								href={navItem.path}
 								data-astro-prefetch="viewport"
+								class={
+									pathName === navItem.path ? "active" : ""
+								}
 							>
 								{navItem.title}
 							</a>
@@ -110,6 +112,8 @@ import { socials, rootNav } from "src/constants";
 	const closeBtn = document.getElementById("close-btn");
 	const overlay = document.getElementById("mobile-overlay");
 
+	overlay?.classList.remove("is-open");
+
 	function toggleMenu() {
 		if (overlay) {
 			// Toggle is-open class instead of hidden
@@ -127,12 +131,9 @@ import { socials, rootNav } from "src/constants";
 </script>
 
 <style>
-	header {
-		position: relative;
-	}
 	.header-container {
 		width: min(var(--max-width), 100%);
-		height: var(--header-height);
+		padding: 1.25rem 0;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -152,8 +153,7 @@ import { socials, rootNav } from "src/constants";
 	}
 
 	nav a.active {
-		color: var(--accent);
-		text-decoration: underline;
+		color: var(--text);
 	}
 
 	.desktop-nav {
@@ -219,11 +219,6 @@ import { socials, rootNav } from "src/constants";
 		gap: 1rem;
 		font-size: 1.2rem;
 		color: var(--text);
-	}
-
-	.mobile-nav a.active {
-		color: var(--accent);
-		text-decoration: none;
 	}
 
 	.mobile-socials {

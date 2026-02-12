@@ -1,0 +1,43 @@
+---
+import { getEntry } from "astro:content";
+
+// Components
+import ProjectCard from "@components/ProjectCard.astro";
+
+interface Props {
+	count?: number;
+}
+
+const { count } = Astro.props;
+
+const fetchedProjects = [];
+fetchedProjects.push(await getEntry("projects", "orbit"));
+fetchedProjects.push(await getEntry("projects", "audiophile"));
+fetchedProjects.push(await getEntry("projects", "markdown-editor"));
+fetchedProjects.push(await getEntry("projects", "photosnap"));
+
+const displayedProjects = count
+	? fetchedProjects.slice(0, count)
+	: fetchedProjects;
+---
+
+<div class="projects-list">
+	{
+		displayedProjects.map((project) => {
+			return <ProjectCard project={project} />;
+		})
+	}
+</div>
+
+<style>
+	.projects-list {
+		display: flex;
+		flex-direction: column;
+		margin-top: -1.5rem; /* Offset project card padding */
+	}
+	@media (max-width: 768px) {
+		.projects-list {
+			margin-top: -1rem;
+		}
+	}
+</style>

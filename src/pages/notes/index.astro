@@ -12,12 +12,14 @@ const allNotes = await getCollection("notes");
 	tabTitle="Notes"
 	description="A collection of public notes, thoughts, and ideas by Avinash. Often updated and occasionally unpolished."
 >
-	<h1>My public notes</h1>
-	<p>
-		The content in my notes gets often updated to my current opinions. Notes
-		may be unfinished, unpolished. I write to record my thoughts, ideas and
-		opinions.
-	</p>
+	<section class="hero">
+		<h1>My public notes</h1>
+		<p class="hero-text">
+			The content in my notes gets often updated to my current opinions.
+			Notes may be unfinished, unpolished. I write to record my thoughts,
+			ideas and opinions.
+		</p>
+	</section>
 	<ul>
 		{
 			allNotes.map((note) => {

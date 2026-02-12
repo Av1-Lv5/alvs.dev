@@ -2,7 +2,8 @@ export const experiences = [
 	{
 		company: "Freelance + break",
 		role: "Frontend Developer",
-		period: "Sep 2025 – Present",
+		period: "Sep 2025 - Present",
+		location: "Bangalore",
 		points: [
 			{
 				label: "Full-stack learning",
@@ -21,7 +22,8 @@ export const experiences = [
 	{
 		company: "1acre.in",
 		role: "Frontend Web Developer",
-		period: "Apr 2024 – Aug 2025",
+		period: "Apr 2024 - Aug 2025",
+		location: "Hyderabad",
 		points: [
 			{
 				label: "Stack upgrade",
@@ -48,7 +50,8 @@ export const experiences = [
 	{
 		company: "Freelance",
 		role: "Frontend Web Developer",
-		period: "Jun 2022 – Apr 2024",
+		period: "Jun 2022 - Apr 2024",
+		location: "Hyderabad",
 		points: [
 			{
 				label: "Client work",
@@ -67,7 +70,8 @@ export const experiences = [
 	{
 		company: "V Add Digi Solutions",
 		role: "Web Developer",
-		period: "Aug 2022 – Jun 2023",
+		period: "Aug 2022 - Jun 2023",
+		location: "Vizag",
 		points: [
 			{
 				label: "First online presence",

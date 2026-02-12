@@ -5,21 +5,17 @@ import PageLayout from "@layouts/PageLayout.astro";
 // Components
 import Skills from "@components/Skills.astro";
 import Experiences from "@components/Experiences.astro";
-import ProjectCard from "@components/ProjectCard.astro";
-import { getEntry } from "astro:content";
+import ProjectsList from "@components/ProjectsList.astro";
 
 // data
 import { socials } from "src/constants";
-const fetchedProjects = [];
-fetchedProjects.push(await getEntry("projects", "orbit"));
-fetchedProjects.push(await getEntry("projects", "audiophile"));
 ---
 
 <PageLayout
 	tabTitle="👋🏽"
 	description="Portfolio of Avinash, a frontend web developer focusing on minimal and functional web design."
 >
-	<section class="home-hero">
+	<section class="hero">
 		<h1>Hello I'm Avinash 👋🏽</h1>
 		<p class="hero-text">
 			Welcome to my slice of the web. I'm a frontend web developer. This
@@ -28,25 +24,17 @@ fetchedProjects.push(await getEntry("projects", "audiophile"));
 		</p>
 	</section>
 
-	<section class="home-section">
-		<h2 class="section-title">Selected Work</h2>
-		<div class="projects-list">
-			{
-				fetchedProjects.map((project) => {
-					return <ProjectCard project={project} />;
-				})
-			}
-		</div>
+	<section>
+		<h2>Selected Work</h2>
+		<ProjectsList count={2} />
 		<p class="section-footer">
 			<a href="/projects">View all projects &rarr;</a>
 		</p>
 	</section>
 
-	<section class="home-section">
-		<h2 class="section-title">Toolkit</h2>
-		<div class="skills-container">
-			<Skills />
-		</div>
+	<section>
+		<h2>Toolkit</h2>
+		<Skills />
 		<blockquote class="skills-note">
 			For an exhaustive list, read <a href="/notes/skills-and-tools"
 				>my public note on skills and tools.</a
@@ -54,13 +42,13 @@ fetchedProjects.push(await getEntry("projects", "audiophile"));
 		</blockquote>
 	</section>
 
-	<section class="home-section">
-		<h2 class="section-title">Experience</h2>
+	<section>
+		<h2>Experience</h2>
 		<Experiences count={2} />
 	</section>
 
-	<section class="home-section site-meta">
-		<h2 class="section-title">Site Meta</h2>
+	<section class="site-meta">
+		<h2>Site Meta</h2>
 		<div class="meta-grid">
 			<p>
 				Built with <a href="https://astro.build/" target="_blank"
@@ -87,40 +75,6 @@ fetchedProjects.push(await getEntry("projects", "audiophile"));
 </PageLayout>
 
 <style>
-	.home-hero {
-		margin-bottom: 6rem;
-		margin-top: 2rem;
-	}
-
-	.hero-text {
-		font-size: 1.25rem;
-		line-height: 1.7;
-		max-width: 65ch;
-		color: var(--text-muted);
-	}
-
-	.home-section {
-		margin-bottom: 5rem;
-	}
-
-	.section-title {
-		font-size: 0.875rem;
-		text-transform: uppercase;
-		letter-spacing: 0.15em;
-		color: var(--text-light);
-		font-weight: 700;
-		margin-bottom: 2rem;
-		border-bottom: 1px solid var(--border-muted);
-		padding-bottom: 0.5rem;
-		display: block;
-	}
-
-	.projects-list {
-		display: flex;
-		flex-direction: column;
-		margin-top: -1.5rem; /* Offset ProjectCard internal padding */
-	}
-
 	.section-footer {
 		margin-top: 1rem;
 		font-size: 0.95rem;
@@ -138,18 +92,9 @@ fetchedProjects.push(await getEntry("projects", "audiophile"));
 		border-bottom-color: var(--text);
 	}
 
-	.skills-container {
-		margin-left: -0.5rem;
-	}
-
-	.skills-container :global(#skills) {
-		justify-content: flex-start !important;
-	}
-
 	.skills-note {
 		margin: 1.5rem 0 0 0;
 		font-size: 0.9rem;
-		color: var(--text-muted);
 	}
 
 	.meta-grid {
@@ -174,21 +119,9 @@ fetchedProjects.push(await getEntry("projects", "audiophile"));
 	}
 
 	@media (max-width: 768px) {
-		.home-hero {
-			margin-bottom: 4rem;
-		}
-
-		.hero-text {
-			font-size: 1.125rem;
-		}
-
 		.meta-grid {
 			grid-template-columns: 1fr;
 			gap: 1.5rem;
-		}
-
-		.home-section {
-			margin-bottom: 4rem;
 		}
 	}
 </style>

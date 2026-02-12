@@ -7,17 +7,18 @@ import Experiences from "@components/Experiences.astro";
 	tabTitle="Experience"
 	description="Professional journey and experience of Avinash."
 >
-	<div class="experience-header">
+	<section class="hero">
 		<h1>Professional Journey</h1>
-		<p class="subtitle">
+		<p class="hero-text">
 			A timeline of my work, projects, and the things I've learned along
 			the way.
 		</p>
-	</div>
+	</section>
+	<section>
+		<Experiences />
+	</section>
 
-	<Experiences />
-
-	<section class="extra-info">
+	<section>
 		<h3>Looking for more?</h3>
 		<p>
 			You can also check out my <a href="/projects">projects</a> or read my
@@ -25,19 +26,3 @@ import Experiences from "@components/Experiences.astro";
 		</p>
 	</section>
 </PageLayout>
-
-<style>
-	.experience-header {
-		margin-bottom: 3rem;
-	}
-
-	.subtitle {
-		font-size: 1.1rem;
-		max-width: 600px;
-		color: var(--text-muted);
-	}
-
-	.extra-info {
-		margin-top: 6rem;
-	}
-</style>

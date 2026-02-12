@@ -19,3 +19,18 @@ a.nav-like:hover {
 	color: var(--accent);
 	background-color: var(--accent-bg);
 }
+
+section.hero {
+	margin-bottom: 5rem;
+	margin-top: 2rem;
+}
+
+p.hero-text {
+	font-size: 1.125rem;
+}
+
+@media (max-width: 768px) {
+	section.hero {
+		margin-bottom: 3rem;
+	}
+}

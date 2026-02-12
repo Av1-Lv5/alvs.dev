@@ -245,6 +245,22 @@ img {
 	border: 1px solid var(--border);
 }
 
+section {
+	margin-bottom: 5rem;
+}
+
+section > h2 {
+	font-size: 0.875rem;
+	text-transform: uppercase;
+	letter-spacing: 0.15em;
+	color: var(--text-light);
+	font-weight: 700;
+	margin-bottom: 2rem;
+	border-bottom: 1px solid var(--border-muted);
+	padding-bottom: 0.5rem;
+	display: block;
+}
+
 /* Tables */
 table {
 	width: 100%;
@@ -284,12 +300,15 @@ iframe {
 }
 
 /* Responsive Adjustments */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
 	h1 {
 		font-size: 2rem;
 	}
 	h2 {
 		font-size: 1.5rem;
+	}
+	section {
+		margin-bottom: 4rem;
 	}
 	footer {
 		flex-direction: column;
