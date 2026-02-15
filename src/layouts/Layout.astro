@@ -5,6 +5,9 @@
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import BaseHead from "@components/BaseHead.astro";
+// import "@fontsource-variable/space-grotesk";
+import "@fontsource-variable/geist";
+import "@fontsource-variable/geist-mono";
 
 // Types
 type Props = {
@@ -40,10 +43,12 @@ const fullTitle = `${pageTabTitle} • ${categoryTabTitle}`;
 
 		<!-- Web analytics -->
 		<script
+			is:inline
 			data-goatcounter="https://a-sh.goatcounter.com/count"
 			async
 			src="//gc.zgo.at/count.js"></script>
 
+		<!-- Theme -->
 		<script is:inline>
 			(function () {
 				const theme = localStorage.getItem("theme") || "system";
