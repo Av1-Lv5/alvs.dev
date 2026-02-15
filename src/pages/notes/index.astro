@@ -10,7 +10,7 @@ const allNotes = await getCollection("notes");
 
 <PageLayout
 	tabTitle="Notes"
-	description="A collection of public notes, thoughts, and ideas by Avinash. Often updated and occasionally unpolished."
+	description="Unfiltered thoughts. Updated as evolves"
 >
 	<section class="hero">
 		<h1>My public notes</h1>
@@ -19,16 +19,18 @@ const allNotes = await getCollection("notes");
 			Notes may be unfinished, unpolished. I write to record my thoughts,
 			ideas and opinions.
 		</p>
+		<ul>
+			{
+				allNotes.map((note) => {
+					return (
+						<li>
+							<a href={`/notes/${note.slug}`}>
+								{note.data.title}
+							</a>
+						</li>
+					);
+				})
+			}
+		</ul>
 	</section>
-	<ul>
-		{
-			allNotes.map((note) => {
-				return (
-					<li>
-						<a href={`/notes/${note.slug}`}>{note.data.title}</a>
-					</li>
-				);
-			})
-		}
-	</ul>
 </PageLayout>
