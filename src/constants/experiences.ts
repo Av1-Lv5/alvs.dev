@@ -1,21 +1,21 @@
 export const experiences = [
 	{
-		company: "Freelance + break",
+		company: "Freelance",
 		role: "Frontend Developer",
 		period: "Sep 2025 - Present",
 		location: "Bangalore",
 		points: [
 			{
 				label: "Full-stack learning",
-				text: "Going deeper into backend and databases. Enjoying it a lot.",
+				text: "Going deeper into backend and databases.",
 			},
 			{
 				label: "Side projects",
-				text: "Finally building ideas I've had for years. Pure fun.",
+				text: "Finally building ideas I've had for years.",
 			},
 			{
-				label: "Small biz sites",
-				text: "Making simple sites for local businesses. Convincing them it's worth it is the real challenge.",
+				label: "Small business solutions",
+				text: "Building high performance marketing sites for local businesses and lean web systems focused on speed and lead capture.",
 			},
 		],
 	},
@@ -50,7 +50,7 @@ export const experiences = [
 	{
 		company: "Freelance",
 		role: "Frontend Web Developer",
-		period: "Jun 2022 - Apr 2024",
+		period: "July 2023 - Apr 2024",
 		location: "Hyderabad",
 		points: [
 			{
@@ -76,6 +76,18 @@ export const experiences = [
 			{
 				label: "First online presence",
 				text: "Simple static sites with maps and leads for small businesses. Loved their excitement when live.",
+			},
+		],
+	},
+	{
+		company: "Freelance",
+		role: "Junior Web Developer",
+		period: "Nov 2021 - Jul 2022",
+		location: "Remote",
+		points: [
+			{
+				label: "Web consulting",
+				text: "Worked on WordPress optimization, technical SEO improvements, and performance tuning for small businesses.",
 			},
 		],
 	},
