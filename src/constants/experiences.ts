@@ -1,7 +1,7 @@
 export const experiences = [
 	{
-		company: "Freelance",
-		role: "Frontend Developer",
+		company: "Independent",
+		role: "Frontend Engineer",
 		period: "Sep 2025 - Present",
 		location: "Bangalore",
 		points: [
@@ -15,7 +15,7 @@ export const experiences = [
 			},
 			{
 				label: "Small business solutions",
-				text: "Building high performance marketing sites for local businesses and lean web systems focused on speed and lead capture.",
+				text: "Building high-performance marketing sites for local businesses and lean web systems focused on speed and lead capture.",
 			},
 		],
 	},
@@ -35,7 +35,7 @@ export const experiences = [
 			},
 			{
 				label: "Custom CMS",
-				text: "Built tool for team to upload KML/PDFs using Mapbox + Supabase + R2.",
+				text: "Built a tool for the team to upload KMLs/PDFs using Mapbox + Supabase + R2.",
 			},
 			{
 				label: "Team guidance",
@@ -43,7 +43,7 @@ export const experiences = [
 			},
 			{
 				label: "Roadmap ownership",
-				text: "Turned founder's vision into real product. Owned frontend from MVP onward.",
+				text: "Turned the vision into a real product. Owned the frontend from MVP onward.",
 			},
 		],
 	},
@@ -75,7 +75,7 @@ export const experiences = [
 		points: [
 			{
 				label: "First online presence",
-				text: "Simple static sites with maps and leads for small businesses. Loved their excitement when live.",
+				text: "Simple static sites with maps and leads for small businesses.",
 			},
 		],
 	},
@@ -87,7 +87,7 @@ export const experiences = [
 		points: [
 			{
 				label: "Web consulting",
-				text: "Worked on WordPress optimization, technical SEO improvements, and performance tuning for small businesses.",
+				text: "Worked on WordPress optimization, technical SEO improvements, and performance tuning.",
 			},
 		],
 	},

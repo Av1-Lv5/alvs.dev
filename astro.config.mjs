@@ -18,6 +18,10 @@ export default defineConfig({
         },
       ],
     ],
+
+    shikiConfig: {
+      theme: 'catppuccin-mocha',
+    },
   },
   integrations: [icon()],
   site: "https://alvs.dev",

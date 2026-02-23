@@ -2,12 +2,12 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import type { Page } from "astro";
 import PageLayout from "@layouts/PageLayout.astro";
-import BookList from "@components/BooksList.astro";
+import BookCard from "@components/BookCard.astro";
 import BookPagination from "@components/BookPagination.astro";
 
 export async function getStaticPaths({ paginate }: any) {
 	const allBooks = await getCollection("books");
-	return paginate(allBooks, { pageSize: 6 });
+	return paginate(allBooks, { pageSize: 12 });
 }
 
 interface Props {
@@ -22,12 +22,10 @@ const { page }: Props = Astro.props;
 	description={`Browse the books - Page ${page.currentPage}.`}
 >
 	<h1>Books I've read</h1>
-	<p>
-		A collection of books that have left an impression on me, along with my
-		thoughts about each one.
-	</p>
 
-	<BookList books={page.data} />
+	<div class="books-grid">
+		{page.data.map((book) => <BookCard book={book} />)}
+	</div>
 
 	<BookPagination
 		currentPage={page.currentPage}
@@ -43,3 +41,18 @@ const { page }: Props = Astro.props;
 		<a href="mailto:alvs.codee@slmail.me">email me</a>
 	</blockquote>
 </PageLayout>
+
+<style>
+	.books-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+		gap: 1.25rem;
+	}
+
+	@media (max-width: 640px) {
+		.books-grid {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 0.75rem;
+		}
+	}
+</style>

@@ -1,7 +1,7 @@
 ---
 id: colive-archive
 title: Colive Archive
-description: A community-driven platform for transparency and accountability in co-living spaces.
+description: A community-driven platform for transparency and accountability for co-live spaces.
 tags: ["react", "supabase"]
 repoId: ""
 liveAt: "https://colive-archive.netlify.app"

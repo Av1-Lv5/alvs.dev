@@ -5,7 +5,9 @@ import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 
 // fetching notes to display
-const allNotes = await getCollection("notes");
+const allNotes = await getCollection("notes", ({ data }) => {
+	return !data.draft;
+});
 ---
 
 <PageLayout

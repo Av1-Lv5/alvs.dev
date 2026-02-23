@@ -1,0 +1,30 @@
+<div class="coming-soon-wrapper">
+	<div class="coming-soon">Coming Soon</div>
+</div>
+
+<style>
+	.coming-soon-wrapper {
+		container-type: inline-size;
+		width: 100%;
+		display: grid;
+		place-items: center;
+		overflow: hidden;
+		padding: 6rem 0;
+	}
+
+	.coming-soon {
+		font-size: clamp(2rem, 14.2cqi, 20rem);
+		font-weight: 900;
+		text-transform: uppercase;
+		letter-spacing: -0.07em;
+		line-height: 0.8;
+		color: var(--text);
+		transform: rotate(-5deg);
+		text-align: center;
+		filter: drop-shadow(0.05em 0.05em 0 rgba(0, 0, 0, 0.15));
+		user-select: none;
+		white-space: nowrap;
+		margin: 0;
+		padding: 0;
+	}
+</style>

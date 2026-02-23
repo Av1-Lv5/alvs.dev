@@ -45,6 +45,11 @@ const { project } = Astro.props;
 		height: 250px;
 		width: 100%;
 		object-fit: cover;
-		object-position: top;
+		object-position: center;
+	}
+	@media (max-width: 768px) {
+		:global(img) {
+			height: 150px;
+		}
 	}
 </style>

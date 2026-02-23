@@ -8,14 +8,18 @@ import PageLayout from "@layouts/PageLayout.astro";
 		<h1>A bit about me</h1>
 		<div>
 			<p class="hero-text">
-				I disappear into web rabbit holes, moving from technical docs to
-				business case studies. I'm constantly curious about why certain
-				things work, what pain points are being solved, and how we can
-				use the web to build something meaningful.
+				I do web development for fun and as a profession too. I spend
+				most hours of the day on the web. One simple search and I'm
+				three hours deep, with a pile of open tabs.
 			</p>
-
 			<p class="hero-text">
-				Big fan of technology and open source software. I'm still
+				Beyond web development I enjoy <a href="/music"> music</a>,
+				going on bike rides for no reason at all, and am a huge
+				<a href="/movies"> movie buff</a>. Pretty general things done at
+				extremes.
+			</p>
+			<p class="hero-text">
+				Its really hard to describe one-self. So simply, I'm still
 				figuring out myself, evolving big time, and honestly enjoying
 				the journey.
 			</p>
@@ -23,90 +27,67 @@ import PageLayout from "@layouts/PageLayout.astro";
 	</section>
 
 	<section>
-		<h2>Lately</h2>
-		<div class="lately-content">
-			<p>
-				Shipping small, focused projects to sharpen the craft. Exploring
-				patterns that make things scale without the overhead. Always
-				learning something new.
-			</p>
-			<div class="next-up">
-				<span class="label">Next on my list:</span>
-				<code class="stack">Bun + Hono + Cloudflare</code>
-			</div>
-		</div>
-	</section>
-
-	<section>
 		<h2>Random bits</h2>
 		<div class="bits-grid">
-			<div class="bit-card">
+			<div class="bit-card card">
 				<p>Prefers chai over coffee (green tea is overrated)</p>
 			</div>
-			<div class="bit-card">
+			<div class="bit-card card">
 				<p>Team Android, always</p>
 			</div>
-			<div class="bit-card">
+			<div class="bit-card card">
 				<p>Main colors: black, white, blue, and gray</p>
 			</div>
-			<div class="bit-card">
+			<div class="bit-card card">
 				<p>
-					Types at <a
+					Types at
+					<a
 						target="_blank"
-						href="https://monkeytype.com/profile/Avi-Lvs">70wpm</a
+						href="https://monkeytype.com/profile/av-sh"
 					>
+						70wpm &#x2197;
+					</a>
 					<small>(best: 83wpm)</small>
 				</p>
 			</div>
-			<div class="bit-card wide">
-				<p>Advocate for 'shipping' over 'polishing forever'</p>
+			<div class="bit-card card wide">
+				<p>Advocate for 'shipping over polishing forever'</p>
 			</div>
 		</div>
 	</section>
 
 	<section>
-		<h2>Other</h2>
-		<p class="other-links">
-			Public notes <a href="/notes">here</a>. Books I've read + thoughts <a
-				href="/books">here</a
-			>
-		</p>
+		<h2>Discovery</h2>
+		<div class="discovery-grid">
+			<div class="discovery-item">
+				<h3>Writing & Reading</h3>
+				<p>
+					I keep a collection of <a href="/notes">public notes</a> on things
+					I want to share, and a list of <a href="/books">books</a> I've
+					read.
+				</p>
+			</div>
+			<div class="discovery-item">
+				<h3>Backstage</h3>
+				<p>
+					Curious about the <a href="/uses">gear and software</a> I use
+					daily? Or maybe the <a href="/feeds">RSS feeds</a> I follow to
+					stay updated.
+				</p>
+			</div>
+			<div class="discovery-item">
+				<h3>Social</h3>
+				<p>
+					Feel free to leave a message in my
+					<a href="/guestbook">guestbook</a>. It's like a digital
+					version of a coffee shop wall.
+				</p>
+			</div>
+		</div>
 	</section>
 </PageLayout>
 
 <style>
-	.lately-content {
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
-	}
-
-	.lately-content p {
-		margin: 0;
-		color: var(--text-muted);
-		line-height: 1.6;
-	}
-
-	.next-up {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-		font-size: 0.95rem;
-	}
-
-	.next-up .label {
-		color: var(--text-light);
-		font-weight: 500;
-	}
-
-	.stack {
-		background: var(--accent-bg);
-		color: var(--accent);
-		padding: 0.25rem 0.5rem;
-		border-radius: 4px;
-		font-weight: 600;
-	}
-
 	.bits-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -114,19 +95,9 @@ import PageLayout from "@layouts/PageLayout.astro";
 	}
 
 	.bit-card {
-		padding: 1.5rem;
-		background: var(--bg-soft);
-		border: 1px solid var(--border);
-		border-radius: var(--radius);
-		transition: var(--transition);
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-	}
-
-	.bit-card:hover {
-		border-color: var(--accent);
-		background: var(--bg);
 	}
 
 	.bit-card p {
@@ -140,9 +111,23 @@ import PageLayout from "@layouts/PageLayout.astro";
 		grid-column: span 2;
 	}
 
-	.other-links {
+	.discovery-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 2rem;
+	}
+
+	.discovery-item h3 {
 		font-size: 1rem;
-		color: var(--text-muted);
+		margin-top: 0;
+		margin-bottom: 0.5rem;
+		color: var(--text);
+	}
+
+	.discovery-item p {
+		font-size: 0.9rem;
+		margin: 0;
+		line-height: 1.5;
 	}
 
 	@media (max-width: 768px) {
@@ -152,6 +137,11 @@ import PageLayout from "@layouts/PageLayout.astro";
 
 		.bits-grid {
 			grid-template-columns: 1fr;
+		}
+
+		.discovery-grid {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
 		}
 	}
 </style>

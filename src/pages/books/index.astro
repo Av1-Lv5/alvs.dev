@@ -1,11 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
-import BookList from "@components/BooksList.astro";
 import BookPagination from "@components/BookPagination.astro";
+import BookCard from "@components/BookCard.astro";
 
 const allBooks = await getCollection("books");
-const booksPerPage = 6;
+const booksPerPage = 12;
 const totalPages = Math.ceil(allBooks.length / booksPerPage);
 const currentPage = 1;
 const startIndex = (currentPage - 1) * booksPerPage;
@@ -17,12 +17,14 @@ const booksToShow = allBooks.slice(startIndex, endIndex);
 	<section class="hero">
 		<h1>Books I've read</h1>
 		<p class="hero-text">
-			A collection of books that have left an impression on me, along with
-			my thoughts about each one.
+			Books I've read. If something here overlaps with your shelf, let's
+			talk.
 		</p>
 	</section>
 
-	<BookList books={booksToShow} />
+	<div class="books-grid">
+		{booksToShow.map((book) => <BookCard book={book} />)}
+	</div>
 
 	<BookPagination
 		currentPage={currentPage}
@@ -38,3 +40,18 @@ const booksToShow = allBooks.slice(startIndex, endIndex);
 		<a href="mailto:alvs.codee@slmail.me">email me</a>
 	</blockquote>
 </PageLayout>
+
+<style>
+	.books-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+		gap: 1.25rem;
+	}
+
+	@media (max-width: 640px) {
+		.books-grid {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 0.75rem;
+		}
+	}
+</style>

@@ -1,49 +1,42 @@
 ---
 id: orbit
 title: Orbit
-description: A daily budget app built with Next.js and Supabase.
+description: Orbit answers one thing well, "What is today's safe-to-spend?"
 tags: ["next", "typescript", "supabase"]
 repoId: ""
-liveAt: "www.orbitbudget.com"
+liveAt: "orbitbudget.com"
 isDraft: false
 featured: true
 ---
 
 ![Project preview](/assets/img/orbit-thumb.png)
 
-### The Mission
-
-Solving financial anxiety through a zero-friction, daily spending limit. No bank connections, no complex categories—just a clear answer to "Can I spend this today?"
-
 ### The Problem
 
-Most budgeting apps are data-entry black holes. They require bank syncs that break, categorization that feels like a chore, and they focus on the future (monthly budgets) rather than the immediate present (daily decisions). This friction leads to abandonment and "finance fatigue."
+Most budgeting tools are concentrated on monthly budgeting, figuring out where money is going, at the end of month. You don't see impact of overspending instantly.
 
-### The Solution: A Daily "Safe-to-Spend"
+And the overhead of organisation hell, nuances of does X bank is supported for auto-sync.
 
-Orbit flips the script. It focuses on a single, dynamic number: your daily allowance. By aggregating fixed expenses and goals, it tells you exactly what you can spend today without sabotaging tomorrow.
+### The solution
 
-- **Frictionless Entry**: Optimized for 5-second expense logging.
-- **Privacy First**: No bank data, no ads, no trackers.
-- **Dynamic Recalculation**: If you overspend today, your future's daily limit adjusts instantly to keep you on track.
+Orbit, stripped down to one action: enter an amount, add a note if you want. Your safe-to-spend drops instantly. Overspent? borrowed from tomorrow, your future budget adjusts automatically.
 
-### Engineering Insights & Learnings
+### Learnings
 
-Building Orbit was a deep dive into **state management** and **product reasoning**.
+Building Orbit was a deep dive into **product reasoning**.
 
-- **State Hybridization**: I utilized **Zustand** for transient UI state (modals, local filters) and **TanStack Query** for persistent server state. This separation of concerns made the app significantly more predictable.
-- **Custom Auth Patterns**: Instead of using Clerk's pre-built UIs, I implemented custom auth flows using their SDK to have full control over the user experience and branding.
-- **Logic over CRUD**: The core of the app isn't just saving data; it's the calculation engine that handles overspending, carries totals forward, and adjusts for varying month lengths.
+- **Custom Auth Patterns**: Instead of using Clerk's pre-built UIs, I implemented custom auth flows using their SDK, not just to have full control over the user experience and branding, but also to understand auth flows.
+- **Logic over CRUD**: The core of the app isn't just saving and retrieving data, it's the calculation that handles overspending, carries totals forward, and adjusts for varying budget cycles.
+- **Exploration of PWA** Project actually demands a mobile app but tried to come close by having a sticky notification of amount left for today, and a quick entry action.
 
-### Technical Stack
+### Technical sheet
 
-- **Framework**: Next.js (App Router)
-- **Language**: TypeScript
-- **Database/Auth**: Supabase + Clerk
-- **Styling**: Tailwind CSS + Shadcn UI
+- Built with Next.js, Typescript and Tailwind css
+- Shadcn UI and Motion
+- Auth handled by clerk, and managed postgres by supabase
+- Deployed on Vercel
 
 ### Future Roadmap
 
-- [ ] Native Android and iOS apps for even faster logging.
-- [ ] Data portability (CSV/PDF exports).
-- [ ] Shared budgets for partners.
+- Data portability (CSV/PDF exports).
+- Shared budgets for partners.

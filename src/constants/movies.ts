@@ -1,0 +1,58 @@
+export type MediaType = "movie" | "tv";
+
+export interface RecommendationItem {
+	tmdbId: number;
+	type: MediaType;
+	note?: string;
+}
+
+export interface MonthGroup {
+	/** e.g. "2026-02" */
+	monthId: string;
+	/** Human-readable label shown in the tab, e.g. "February 2026" */
+	label: string;
+	items: RecommendationItem[];
+}
+
+// TMDB IDs at https://www.themoviedb.org/
+export const recommendations: MonthGroup[] = [
+	{
+		monthId: "2026-02",
+		label: "February 2026",
+		items: [],
+	},
+	{
+		monthId: "2026-01",
+		label: "January 2026",
+		items: [
+			{
+				tmdbId: 589964, // Karuppudurai
+				type: "movie",
+			},
+			{
+				tmdbId: 95396, // severance
+				type: "tv",
+			},
+		],
+	},
+];
+
+export const watchlist: { tmdbId: number; type: MediaType }[] = [
+	{ tmdbId: 976121, type: "movie" }, // Romancham
+	{ tmdbId: 1317288, type: "movie" }, // Marty supreme
+	{ tmdbId: 1272837, type: "movie" }, // The bone temple
+	{ tmdbId: 701387, type: "movie" }, // Bugonia
+];
+
+export const favoriteActors: number[] = [
+	85034, // Ranbir Kapoor
+	1115225, // dulquer-salmaan
+	119891, // Puri Jagannadh
+	108215, // Allu Arjun
+	1473119, // Sai Pallavi
+	1072750, // Fahadh Faasil
+	90633, // Gal Gadot
+	1123766, //Vijay Sethupathi
+	123066, // Karthi
+	10859, // Ryan Reynolds
+];

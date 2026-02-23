@@ -1,127 +1,56 @@
 ---
 // layout
 import PageLayout from "@layouts/PageLayout.astro";
-
-// Components
-import Skills from "@components/Skills.astro";
-import Experiences from "@components/Experiences.astro";
-import ProjectsList from "@components/ProjectsList.astro";
-
-// data
-import { socials } from "src/constants";
+import Image from "astro/components/Image.astro";
 ---
 
 <PageLayout
 	tabTitle="Home"
-	description="Frontend developer. Builder of small things that compound"
+	description="Frontend Developer. Builder of small things that compound."
 >
-	<section class="hero">
-		<h1>Hello I'm Avinash 👋🏽</h1>
+	<section>
+		<h1>Hello, I'm Avinash 👋🏽</h1>
 		<p class="hero-text">
-			Welcome to my slice of the web. I'm a frontend web developer. This
-			is where I share my work, my thoughts, my plans, and eventually
-			everything else I want to put out into the world.
+			I'm a Frontend Developer who builds things and ships them.
+			<br />
+			Currently working on
+			<a href="https://www.orbitbudget.com" target="_blank">
+				Orbit - a daily budgeting app &#x2197;
+			</a>
+		</p>
+
+		<p>If you're exploring:</p>
+
+		<ul class="nav-list">
+			<li>What I'm up to right now - <a href="/now">/now</a></li>
+			<li>Things I've built - <a href="/projects">projects</a></li>
+			<li>A bit about who I am - <a href="/about">about me</a></li>
+			<li>
+				Currently available for freelance or full-time -
+				<a href="/hire-me">hire me</a>
+			</li>
+		</ul>
+
+		<p>
+			If you'd prefer a birds-eye view of everything on this site, feel
+			free to browse the <a href="/sitemap">Sitemap</a>.
 		</p>
 	</section>
 
 	<section>
-		<h2>Selected Work</h2>
-		<ProjectsList count={2} />
-		<p class="section-footer">
-			<a href="/projects">View all projects &rarr;</a>
+		<h2>Building Orbit</h2>
+		<p>
+			Orbit is a daily budget app focused on one number: your
+			safe-to-spend limit for today. By stripping away bank connections
+			and category overhead, it provides a clear daily allowance that
+			automatically adjusts to your goals and spendings.
 		</p>
-	</section>
-
-	<section>
-		<h2>Toolkit</h2>
-		<Skills />
-		<blockquote class="skills-note">
-			For an exhaustive list, read <a href="/notes/skills-and-tools"
-				>my public note on skills and tools.</a
-			>
-		</blockquote>
-	</section>
-
-	<section>
-		<h2>Experience</h2>
-		<Experiences count={2} />
-	</section>
-
-	<section class="site-meta">
-		<h2>Site Meta</h2>
-		<div class="meta-grid">
-			<p>
-				Built with <a href="https://astro.build/" target="_blank"
-					>Astro</a
-				>, themed with a custom minimal CSS foundation, and deployed on <a
-					href="https://netlify.com/"
-					target="_blank">Netlify</a
-				>.
-			</p>
-			<p>
-				The source is open <a
-					href={`https://github.com/${socials.githubUsername}/alvs.dev`}
-					target="_blank">@github</a
-				>. You can read more about the build process and future plans <a
-					href="./projects/alvs/">here</a
-				>.
-			</p>
-		</div>
-		<p class="meta-footer">
-			Every section of this site has long changelogs. I am completely
-			unsure of what goes in.
-		</p>
+		<a
+			href="https://www.orbitbudget.com"
+			target="_blank"
+			class="orbit-link"
+		>
+			Visit orbitbudget.com &#x2197;
+		</a>
 	</section>
 </PageLayout>
-
-<style>
-	.section-footer {
-		margin-top: 1rem;
-		font-size: 0.95rem;
-		font-weight: 600;
-	}
-
-	.section-footer a {
-		color: var(--text);
-		text-decoration: none;
-		border-bottom: 1px solid transparent;
-		transition: var(--transition);
-	}
-
-	.section-footer a:hover {
-		border-bottom-color: var(--text);
-	}
-
-	.skills-note {
-		margin: 1.5rem 0 0 0;
-		font-size: 0.9rem;
-	}
-
-	.meta-grid {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 3rem;
-		margin-bottom: 2rem;
-	}
-
-	.meta-grid p {
-		margin: 0;
-		font-size: 0.95rem;
-		line-height: 1.6;
-		color: var(--text-muted);
-	}
-
-	.meta-footer {
-		color: var(--text-light);
-		font-style: italic;
-		font-size: 0.85rem !important;
-		margin-top: 1rem;
-	}
-
-	@media (max-width: 768px) {
-		.meta-grid {
-			grid-template-columns: 1fr;
-			gap: 1.5rem;
-		}
-	}
-</style>

@@ -6,11 +6,12 @@
 	--accent-bg: hsl(216, 33%, 95%);
 	--text: #111111;
 	--text-muted: #4b5563;
-	--text-light: #6b7280;
+	--text-light: #646a78;
 	--border: hsl(220, 13%, 86%);
 	--border-muted: hsl(220, 14%, 90%);
-	--accent: #2563eb;
-	--accent-hover: #1d4ed8;
+	--accent: hsl(221, 83%, 53%);
+	--accent-hover: hsl(224, 76%, 48%);
+	--link-visited: #6d28d9;
 	--code: #0f172a;
 	--pre-bg: #f8fafc;
 
@@ -37,17 +38,18 @@
 /* System preference fallback when no data-theme is set */
 @media (prefers-color-scheme: dark) {
 	:root:not([data-theme="light"]) {
-		--bg: hsl(0, 0%, 4%);
-		--bg-soft: hsl(0, 0%, 7%);
-		--bg-translucent: rgba(10, 10, 10, 0.9);
+		--bg: hsl(0, 0%, 5%);
+		--bg-soft: hsl(0, 0%, 8%);
+		--bg-translucent: hsla(0, 0%, 5%, 0.8);
 		--accent-bg: #171717;
-		--text: #f0f2f5;
-		--text-muted: #8e96a4;
-		--text-light: #747c8b;
+		--text: hsl(220, 5%, 92%);
+		--text-muted: hsl(220, 7%, 65%);
+		--text-light: hsl(220, 3%, 55%);
 		--border: #262626;
 		--border-muted: #171717;
-		--accent: #3b82f6;
-		--accent-hover: #60a5fa;
+		--accent: hsl(220, 91%, 60%);
+		--accent-hover: hsl(210, 94%, 68%);
+		--link-visited: #a78bfa;
 		--code: #f1f5f9;
 		--pre-bg: #111827;
 	}
@@ -107,6 +109,7 @@ pre ::selection {
 
 a::selection {
 	text-decoration: underline;
+	text-underline-offset: 4px;
 }
 
 /* Typography */
@@ -147,12 +150,18 @@ p {
 a {
 	color: var(--accent);
 	text-decoration: none;
+	font-weight: 500;
 	transition: var(--transition);
+}
+
+strong a {
+	font-weight: bold;
 }
 
 a:hover {
 	color: var(--accent-hover);
 	text-decoration: underline;
+	text-underline-offset: 4px;
 }
 
 /* Header & Nav */
@@ -209,6 +218,9 @@ footer {
 	justify-content: space-between;
 }
 
+li blockquote {
+	margin: 1rem 0;
+}
 /* Elements */
 blockquote {
 	margin: 2.5rem 0;
@@ -291,6 +303,64 @@ th {
 /* lists */
 ul,
 ol {
+	margin-top: 0;
+	margin-bottom: 1.5rem;
+	color: var(--text-muted);
+}
+
+li {
+	margin-bottom: 0.5rem;
+	padding-left: 0.5rem;
+}
+
+li::marker {
+	font-weight: 600;
+}
+
+hr {
+	border: 1px solid var(--border);
+	margin: 1.8rem 0;
+}
+
+strong {
+	color: var(--text);
+}
+
+ul {
+	list-style-type: disc;
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+/* Nested lists */
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+	margin-top: 0.5rem;
+	margin-bottom: 0;
+}
+
+ul ul {
+	list-style-type: circle;
+}
+
+/* Description lists */
+dl {
+	margin-bottom: 1.5rem;
+}
+
+dt {
+	font-weight: 700;
+	color: var(--text);
+	margin-top: 1rem;
+}
+
+dd {
+	margin-left: 1.25rem;
+	margin-bottom: 0.5rem;
 	color: var(--text-muted);
 }
 

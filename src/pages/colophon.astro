@@ -1,0 +1,126 @@
+---
+// layout
+import PageLayout from "@layouts/PageLayout.astro";
+import { Icon } from "astro-icon/components";
+
+// data
+import { socials } from "@constants/index";
+import { stack } from "@constants/colophon-stack";
+---
+
+<PageLayout
+	tabTitle="Colophon"
+	description="Details about the tech stack and design of this website."
+>
+	<section>
+		<h1>/colophon</h1>
+		<p class="hero-text">This site is a digital garden and a portfolio.</p>
+	</section>
+
+	<section>
+		<h2 class="section-title">The Stack</h2>
+		<div class="stack-grid">
+			{
+				stack.map((item) => (
+					<a href={item.link} target="_blank" class="stack-card card">
+						<div class="stack-icon-wrapper">
+							<Icon name={item.icon} class="stack-icon" />
+						</div>
+						<div class="stack-content">
+							<h3>{item.name}</h3>
+							<p>{item.description}</p>
+						</div>
+					</a>
+				))
+			}
+		</div>
+	</section>
+
+	<section>
+		<h2>Open Source</h2>
+		<p>
+			The entire source code of this website is available on <a
+				href={`https://github.com/${socials.githubUsername}/alvs.dev`}
+				target="_blank"
+			>
+				@github
+			</a>. You can read more about the
+			<a href="/projects/alvs/">build process and future plans</a>.
+		</p>
+	</section>
+
+	<blockquote>
+		<h3>What is a colophon?</h3>
+		<p>
+			Traditionally, it's the page in a book that lists printing details:
+			typeface, paper, and printer. In the digital world, it has evolved
+			into a space to credit the tools and people behind the work.
+		</p>
+		<p>
+			Consider this my version of that: a transparent look at the
+			foundation this site stands on.
+		</p>
+	</blockquote>
+
+	<div class="colophon-footer">
+		<p>Last updated: February 2026</p>
+		<p>This site is heavily under construction. Here be dragons.</p>
+	</div>
+</PageLayout>
+<style>
+	.stack-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 1.5rem;
+	}
+
+	.stack-card {
+		display: flex;
+		gap: 1.25rem;
+		text-decoration: none;
+		align-items: center;
+	}
+
+	.stack-icon-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 48px;
+		height: 48px;
+		background: var(--bg);
+		border: 1px solid var(--border);
+		border-radius: 10px;
+		flex-shrink: 0;
+	}
+
+	.stack-icon {
+		width: 24px;
+		height: 24px;
+		color: var(--text);
+	}
+
+	.stack-content h3 {
+		margin: 0;
+		font-size: 1.1rem;
+	}
+
+	.stack-content p {
+		margin: 0.25rem 0 0 0;
+		font-size: 0.9rem;
+		line-height: 1.4;
+	}
+
+	.colophon-footer {
+		color: var(--text-light);
+		font-size: 0.875rem;
+	}
+	.colophon-footer p {
+		margin: 0px;
+	}
+
+	@media (max-width: 768px) {
+		.stack-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

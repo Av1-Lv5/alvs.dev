@@ -1,0 +1,94 @@
+---
+import type { SpotifyArtist } from "@utils/spotify";
+
+interface Props {
+	artist: SpotifyArtist;
+	rank: number;
+}
+
+const { artist, rank } = Astro.props;
+---
+
+<div class="artist-item">
+	<span class="rank">{rank}</span>
+	<img
+		src={artist.image}
+		alt={artist.name}
+		width="52"
+		height="52"
+		loading="lazy"
+		class="artist-img"
+	/>
+	<div class="artist-info">
+		<a href={artist.url} target="_blank" rel="noopener noreferrer" class="artist-name">
+			{artist.name}
+		</a>
+		{artist.genres.length > 0 && (
+			<span class="genres">{artist.genres.join(", ")}</span>
+		)}
+	</div>
+</div>
+
+<style>
+	.artist-item {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		padding: 0.75rem 0;
+		border-bottom: 1px solid var(--border-muted);
+	}
+
+	.artist-item:last-child {
+		border-bottom: none;
+	}
+
+	.rank {
+		font-size: 0.75rem;
+		color: var(--text-light);
+		font-family: var(--mono);
+		width: 1.25rem;
+		text-align: right;
+		flex-shrink: 0;
+	}
+
+	.artist-img {
+		width: 52px;
+		height: 52px;
+		border-radius: 50%;
+		object-fit: cover;
+		flex-shrink: 0;
+		border: 1px solid var(--border);
+	}
+
+	.artist-info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+		min-width: 0;
+	}
+
+	.artist-name {
+		color: var(--text);
+		font-weight: 500;
+		font-size: 0.9375rem;
+		text-decoration: none;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		transition: var(--transition);
+	}
+
+	.artist-name:hover {
+		color: var(--accent);
+		text-decoration: none;
+	}
+
+	.genres {
+		font-size: 0.75rem;
+		color: var(--text-light);
+		font-family: var(--mono);
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+</style>

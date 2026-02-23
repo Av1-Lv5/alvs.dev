@@ -10,7 +10,8 @@
 			"@custom-types/*": ["src/types/*"],
 			"@constants/*": ["src/constants/*"],
 			"@styles/*": ["src/styles/*"],
-			"@schemas/*": ["src/schemas/*"]
+			"@schemas/*": ["src/schemas/*"],
+			"@utils/*": ["src/utils/*"]
 		}
 	}
 }

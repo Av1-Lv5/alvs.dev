@@ -1,0 +1,40 @@
+---
+import { getEntry } from "astro:content";
+
+// Components
+import ProductCard from "@components/ProductCard.astro";
+
+interface Props {
+	count?: number;
+}
+
+const { count } = Astro.props;
+
+const fetchedProducts = [];
+fetchedProducts.push(await getEntry("projects", "orbit"));
+
+const displayedProducts = count
+	? fetchedProducts.slice(0, count)
+	: fetchedProducts;
+---
+
+<div class="products-list">
+	{
+		displayedProducts.map((project) => {
+			return <ProductCard project={project} />;
+		})
+	}
+</div>
+
+<style>
+	.products-list {
+		display: flex;
+		flex-direction: column;
+		margin-top: -1.5rem; /* Offset project card padding */
+	}
+	@media (max-width: 768px) {
+		.products-list {
+			margin-top: -1rem;
+		}
+	}
+</style>

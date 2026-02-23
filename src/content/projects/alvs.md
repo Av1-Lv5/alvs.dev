@@ -10,7 +10,7 @@ featured: false
 
 ### The Philosophy
 
-**Base-level minimalism, scoped-level structure.** The site uses a classless stylesheet as a foundation to ensure semantic HTML looks good by default, layered with custom scoped styles only when specific structural patterns are needed.
+The site uses a classless stylesheet as a foundation to ensure semantic HTML looks good by default, layered with custom scoped styles only when specific structural patterns are needed.
 
 ### Design Decisions: The Classless Journey
 
@@ -37,6 +37,6 @@ The site is a purely static entity. I chose **Astro** for its "zero-friction" co
 
 ### Future Roadmap
 
-- [ ] Integration of a dedicated Blog for technical deep-dives.
-- [ ] Interactive "Knowledge Graph" for public notes.
-- [ ] Advanced typography experimentation.
+- Integration of a dedicated Blog for technical deep-dives.
+- Interactive "Knowledge Graph" for public notes.
+- Advanced typography experimentation.

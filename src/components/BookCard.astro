@@ -9,40 +9,49 @@ const { book } = Astro.props;
 ---
 
 <div class="book-card">
-	<h3 class="book-title">{book.data.title}</h3>
-	<p class="book-author">
-		by {book.data.author}
-	</p>
 	<img
 		src={book.data.cover}
 		alt={`${book.data.title} cover`}
-		width="120"
 		loading="lazy"
-		class="book-cover"
+		class="cover"
 	/>
-	<p>{book.data.thoughts}</p>
+	<p class="title">{book.data.title}</p>
+	<p class="author">{book.data.author}</p>
 </div>
 
 <style>
 	.book-card {
-		display: flow-root;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
 	}
 
-	.book-title {
-		margin: 0px;
+	.cover {
+		width: 100%;
+		aspect-ratio: 2 / 3;
+		object-fit: cover;
+		border-radius: 4px;
+		border: 1px solid var(--border-muted);
+		display: block;
 	}
 
-	.book-author {
-		font-style: italic;
-		opacity: 80%;
+	.title {
+		margin: 0;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: var(--text);
+		line-height: 1.3;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		min-height: calc(1.3em * 2);
 	}
 
-	.book-cover {
-		float: left;
-		margin-right: 24px;
-		width: 120px;
-		height: auto;
-		border-radius: 2px;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	.author {
+		margin: 0;
+		font-size: 0.75rem;
+		font-family: var(--mono);
+		color: var(--text-light);
 	}
 </style>

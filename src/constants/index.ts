@@ -1,15 +1,15 @@
 export const rootNav = [
 	{
-		path: "/projects/",
-		title: "Projects",
-	},
-	{
-		path: "/experience/",
-		title: "Experience",
-	},
-	{
 		path: "/about/",
 		title: "About",
+	},
+	{
+		path: "/now/",
+		title: "Now",
+	},
+	{
+		path: "/projects/",
+		title: "Projects",
 	},
 	{
 		path: "/connect/",

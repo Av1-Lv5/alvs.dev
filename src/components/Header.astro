@@ -8,7 +8,6 @@ export interface Props {
 // props
 const { title, showNav } = Astro.props;
 
-import CuteCube from "./CuteCube.astro";
 import { Icon } from "astro-icon/components";
 import ThemeToggle from "./ThemeToggle.astro";
 // data
@@ -21,8 +20,8 @@ const pathName = Astro.url.pathname;
 	<div class="header-container">
 		{
 			showNav && (
-				<a href="/">
-					<CuteCube />
+				<a href="/" class="logo-link">
+					<img src="/favicon.svg" alt="Logo" class="logo" />
 				</a>
 			)
 		}
@@ -144,6 +143,23 @@ const pathName = Astro.url.pathname;
 		width: 24px;
 		background-color: var(--accent);
 		border-radius: 6px;
+	}
+
+	.logo-link {
+		display: flex;
+		align-items: center;
+		transition: opacity 0.2s ease;
+	}
+
+	.logo-link:hover {
+		opacity: 0.8;
+	}
+
+	.logo {
+		height: 32px;
+		width: 32px;
+		display: block;
+		border: none;
 	}
 
 	.nav-container {
