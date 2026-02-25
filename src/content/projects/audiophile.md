@@ -30,4 +30,4 @@ Audiophile is a e-commerce application built to explore real-world commerce flow
 ### Attributions
 
 - The designs are from a [frontend mentor challenge &#x2197;](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx)
-    > Frontendmentor is a platform offering, some free and paywalled professional designs for frontend developers to create stunning projects to showcase in their portfolios.
+  > Frontendmentor is a platform offering, some free and paywalled professional designs for frontend developers to create stunning projects to showcase in their portfolios.

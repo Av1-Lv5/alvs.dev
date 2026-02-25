@@ -4,144 +4,138 @@ import PageLayout from "@layouts/PageLayout.astro";
 ---
 
 <PageLayout tabTitle="About" description="More context. Fewer buzzwords.">
-	<section class="hero">
-		<h1>A bit about me</h1>
-		<div>
-			<p class="hero-text">
-				I do web development for fun and as a profession too. I spend
-				most hours of the day on the web. One simple search and I'm
-				three hours deep, with a pile of open tabs.
-			</p>
-			<p class="hero-text">
-				Beyond web development I enjoy <a href="/music"> music</a>,
-				going on bike rides for no reason at all, and am a huge
-				<a href="/movies"> movie buff</a>. Pretty general things done at
-				extremes.
-			</p>
-			<p class="hero-text">
-				Its really hard to describe one-self. So simply, I'm still
-				figuring out myself, evolving big time, and honestly enjoying
-				the journey.
-			</p>
-		</div>
-	</section>
+  <section class="hero">
+    <h1>A bit about me</h1>
+    <div>
+      <p class="hero-text">
+        I do web development for fun and as a profession too. I spend most hours
+        of the day on the web. One simple search and I'm three hours deep, with
+        a pile of open tabs.
+      </p>
+      <p class="hero-text">
+        Beyond web development I enjoy <a href="/music"> music</a>, going on
+        bike rides for no reason at all, and am a huge
+        <a href="/movies"> movie buff</a>. Pretty general things done at
+        extremes.
+      </p>
+      <p class="hero-text">
+        Its really hard to describe one-self. So simply, I'm still figuring out
+        myself, evolving big time, and honestly enjoying the journey.
+      </p>
+    </div>
+  </section>
 
-	<section>
-		<h2>Random bits</h2>
-		<div class="bits-grid">
-			<div class="bit-card card">
-				<p>Prefers chai over coffee (green tea is overrated)</p>
-			</div>
-			<div class="bit-card card">
-				<p>Team Android, always</p>
-			</div>
-			<div class="bit-card card">
-				<p>Main colors: black, white, blue, and gray</p>
-			</div>
-			<div class="bit-card card">
-				<p>
-					Types at
-					<a
-						target="_blank"
-						href="https://monkeytype.com/profile/av-sh"
-					>
-						70wpm &#x2197;
-					</a>
-					<small>(best: 83wpm)</small>
-				</p>
-			</div>
-			<div class="bit-card card wide">
-				<p>Advocate for 'shipping over polishing forever'</p>
-			</div>
-		</div>
-	</section>
+  <section>
+    <h2>Random bits</h2>
+    <div class="bits-grid">
+      <div class="bit-card card">
+        <p>Prefers chai over coffee (green tea is overrated)</p>
+      </div>
+      <div class="bit-card card">
+        <p>Team Android, always</p>
+      </div>
+      <div class="bit-card card">
+        <p>Main colors: black, white, blue, and gray</p>
+      </div>
+      <div class="bit-card card">
+        <p>
+          Types at
+          <a target="_blank" href="https://monkeytype.com/profile/av-sh">
+            70wpm &#x2197;
+          </a>
+          <small>(best: 83wpm)</small>
+        </p>
+      </div>
+      <div class="bit-card card wide">
+        <p>Advocate for 'shipping over polishing forever'</p>
+      </div>
+    </div>
+  </section>
 
-	<section>
-		<h2>Discovery</h2>
-		<div class="discovery-grid">
-			<div class="discovery-item">
-				<h3>Writing & Reading</h3>
-				<p>
-					I keep a collection of <a href="/notes">public notes</a> on things
-					I want to share, and a list of <a href="/books">books</a> I've
-					read.
-				</p>
-			</div>
-			<div class="discovery-item">
-				<h3>Backstage</h3>
-				<p>
-					Curious about the <a href="/uses">gear and software</a> I use
-					daily? Or maybe the <a href="/feeds">RSS feeds</a> I follow to
-					stay updated.
-				</p>
-			</div>
-			<div class="discovery-item">
-				<h3>Social</h3>
-				<p>
-					Feel free to leave a message in my
-					<a href="/guestbook">guestbook</a>. It's like a digital
-					version of a coffee shop wall.
-				</p>
-			</div>
-		</div>
-	</section>
+  <section>
+    <h2>Discovery</h2>
+    <div class="discovery-grid">
+      <div class="discovery-item">
+        <h3>Writing & Reading</h3>
+        <p>
+          I keep a collection of <a href="/notes">public notes</a> on things I want
+          to share, and a list of <a href="/books">books</a> I've read.
+        </p>
+      </div>
+      <div class="discovery-item">
+        <h3>Backstage</h3>
+        <p>
+          Curious about the <a href="/uses">gear and software</a> I use daily? Or
+          maybe the <a href="/feeds">RSS feeds</a> I follow to stay updated.
+        </p>
+      </div>
+      <div class="discovery-item">
+        <h3>Social</h3>
+        <p>
+          Feel free to leave a message in my
+          <a href="/guestbook">guestbook</a>. It's like a digital version of a
+          coffee shop wall.
+        </p>
+      </div>
+    </div>
+  </section>
 </PageLayout>
 
 <style>
-	.bits-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-		gap: 1.25rem;
-	}
+  .bits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
 
-	.bit-card {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
+  .bit-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-	.bit-card p {
-		font-size: 0.95rem;
-		margin: 0;
-		color: var(--text-muted);
-		line-height: 1.5;
-	}
+  .bit-card p {
+    font-size: 0.95rem;
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
 
-	.bit-card.wide {
-		grid-column: span 2;
-	}
+  .bit-card.wide {
+    grid-column: span 2;
+  }
 
-	.discovery-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-		gap: 2rem;
-	}
+  .discovery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
 
-	.discovery-item h3 {
-		font-size: 1rem;
-		margin-top: 0;
-		margin-bottom: 0.5rem;
-		color: var(--text);
-	}
+  .discovery-item h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
 
-	.discovery-item p {
-		font-size: 0.9rem;
-		margin: 0;
-		line-height: 1.5;
-	}
+  .discovery-item p {
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+  }
 
-	@media (max-width: 768px) {
-		.bit-card.wide {
-			grid-column: span 1;
-		}
+  @media (max-width: 768px) {
+    .bit-card.wide {
+      grid-column: span 1;
+    }
 
-		.bits-grid {
-			grid-template-columns: 1fr;
-		}
+    .bits-grid {
+      grid-template-columns: 1fr;
+    }
 
-		.discovery-grid {
-			grid-template-columns: 1fr;
-			gap: 1.5rem;
-		}
-	}
+    .discovery-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
 </style>

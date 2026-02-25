@@ -7,96 +7,96 @@ import { uses } from "@constants/uses";
 ---
 
 <PageLayout
-	tabTitle="Uses"
-	description="The tools, hardware, and software I use daily."
+  tabTitle="Uses"
+  description="The tools, hardware, and software I use daily."
 >
-	<section class="hero">
-		<h1>/uses</h1>
-		<p class="hero-text">
-			A living document of the gear and software that helps me build
-			things and stay productive. This page is inspired by <a
-				href="https://uses.tech"
-				target="_blank"
-				rel="noopener noreferrer">uses.tech</a
-			>, a collection of /uses pages from folks all over the web.
-		</p>
-		<p class="hero-text">
-			Think of it as a transparent look at the tools I rely on daily: no
-			unnecessary fluff, just the essentials that get the job done.
-		</p>
-	</section>
+  <section class="hero">
+    <h1>/uses</h1>
+    <p class="hero-text">
+      A living document of the gear and software that helps me build things and
+      stay productive. This page is inspired by <a
+        href="https://uses.tech"
+        target="_blank"
+        rel="noopener noreferrer">uses.tech</a
+      >, a collection of /uses pages from folks all over the web.
+    </p>
+    <p class="hero-text">
+      Think of it as a transparent look at the tools I rely on daily: no
+      unnecessary fluff, just the essentials that get the job done.
+    </p>
+  </section>
 
-	{
-		uses.map((category) => (
-			<section>
-				<h2>{category.title}</h2>
-				<ul class="uses-grid">
-					{category.items.map((item) => (
-						<li>
-							{item.link ? (
-								<a
-									href={item.link}
-									target="_blank"
-									class="card"
-									rel="noopener noreferrer"
-								>
-									<strong>{item.name}</strong>
-									{item.description}
-								</a>
-							) : (
-								<div class="card-content card">
-									<strong>{item.name}</strong>
-									{item.description}
-								</div>
-							)}
-						</li>
-					))}
-				</ul>
-			</section>
-		))
-	}
+  {
+    uses.map((category) => (
+      <section>
+        <h2>{category.title}</h2>
+        <ul class="uses-grid">
+          {category.items.map((item) => (
+            <li>
+              {item.link ? (
+                <a
+                  href={item.link}
+                  target="_blank"
+                  class="card"
+                  rel="noopener noreferrer"
+                >
+                  <strong>{item.name}</strong>
+                  {item.description}
+                </a>
+              ) : (
+                <div class="card-content card">
+                  <strong>{item.name}</strong>
+                  {item.description}
+                </div>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
 </PageLayout>
 
 <style>
-	.uses-grid {
-		list-style: none;
-		padding: 0;
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 1.25rem;
-	}
+  .uses-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
 
-	.uses-grid li {
-		margin: 0;
-		color: var(--text-muted);
-		font-size: 0.95rem;
-		line-height: 1.5;
-		padding: 0; /* Let the link handle padding */
-	}
+  .uses-grid li {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0; /* Let the link handle padding */
+  }
 
-	.uses-grid li a,
-	.uses-grid li .card-content {
-		display: block;
-		height: 100%;
-		padding: 1.5rem;
-		text-decoration: none;
-		color: inherit;
-	}
+  .uses-grid li a,
+  .uses-grid li .card-content {
+    display: block;
+    height: 100%;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+  }
 
-	.uses-grid li a:hover {
-		text-decoration: none;
-	}
+  .uses-grid li a:hover {
+    text-decoration: none;
+  }
 
-	.uses-grid li strong {
-		color: var(--text);
-		display: block;
-		margin-bottom: 0.25rem;
-		font-size: 1.1rem;
-	}
+  .uses-grid li strong {
+    color: var(--text);
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 1.1rem;
+  }
 
-	@media (min-width: 640px) {
-		.uses-grid {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
+  @media (min-width: 640px) {
+    .uses-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 </style>

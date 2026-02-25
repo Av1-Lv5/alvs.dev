@@ -1,17 +1,17 @@
 {
-	"extends": "astro/tsconfigs/strict",
-	"compilerOptions": {
-		"baseUrl": ".",
-		"paths": {
-			"@docs/*": ["public/assets/docs/*"],
-			"@components/*": ["src/components/*"],
-			"@layouts/*": ["src/layouts/*"],
-			"@images/*": ["public/assets/img/*"],
-			"@custom-types/*": ["src/types/*"],
-			"@constants/*": ["src/constants/*"],
-			"@styles/*": ["src/styles/*"],
-			"@schemas/*": ["src/schemas/*"],
-			"@utils/*": ["src/utils/*"]
-		}
-	}
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@docs/*": ["public/assets/docs/*"],
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@images/*": ["public/assets/img/*"],
+      "@custom-types/*": ["src/types/*"],
+      "@constants/*": ["src/constants/*"],
+      "@styles/*": ["src/styles/*"],
+      "@schemas/*": ["src/schemas/*"],
+      "@utils/*": ["src/utils/*"]
+    }
+  }
 }

@@ -6,7 +6,7 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   prefetch: {
-    defaultStrategy: "hover"
+    defaultStrategy: "hover",
   },
   markdown: {
     rehypePlugins: [
@@ -20,7 +20,7 @@ export default defineConfig({
     ],
 
     shikiConfig: {
-      theme: 'catppuccin-mocha',
+      theme: "catppuccin-mocha",
     },
   },
   integrations: [icon()],

@@ -6,7 +6,7 @@ import Layout from "@layouts/Layout.astro";
 import BackInHistory from "@components/BackInHistory.astro";
 
 type Props = {
-	note: CollectionEntry<"notes">;
+  note: CollectionEntry<"notes">;
 };
 
 // props
@@ -14,35 +14,35 @@ const { note } = Astro.props;
 ---
 
 <Layout
-	categoryTabTitle="Note"
-	pageTabTitle={note.data.title}
-	pageTitle={note.data.title}
-	showNav={false}
-	description={note.data.description}
+  categoryTabTitle="Note"
+  pageTabTitle={note.data.title}
+  pageTitle={note.data.title}
+  showNav={false}
+  description={note.data.description}
 >
-	<div class="sub-navigation">
-		<BackInHistory />
-		<div class="links-container">
-			<a href="/" class="nav-like">Home</a>
-			<a href="/notes" class="nav-like">Notes</a>
-		</div>
-	</div>
-	<slot />
+  <div class="sub-navigation">
+    <BackInHistory />
+    <div class="links-container">
+      <a href="/" class="nav-like">Home</a>
+      <a href="/notes" class="nav-like">Notes</a>
+    </div>
+  </div>
+  <slot />
 </Layout>
 
 <style>
-	.sub-navigation {
-		display: flex;
-		justify-content: space-between;
-		margin: 1.5rem 0;
-	}
-	.links-container {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
-	a.nav-like {
-		border-color: var(--accent);
-		color: var(--accent);
-	}
+  .sub-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 0;
+  }
+  .links-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  a.nav-like {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
 </style>

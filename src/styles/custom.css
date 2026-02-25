@@ -1,122 +1,122 @@
 a.nav-like {
-	border: 1px solid var(--border);
-	border-radius: var(--radius);
-	color: var(--text);
-	display: inline-block;
-	padding: 0.25rem 1rem;
-	font-family: var(--mono);
-	text-decoration: none;
-	font-size: 0.875rem;
-	font-weight: 500;
-	transition: var(--transition);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  font-family: var(--mono);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: var(--transition);
 }
 
 a.nav-like:hover {
-	border-color: var(--accent);
-	color: var(--accent);
-	background-color: var(--accent-bg);
+  border-color: var(--accent);
+  color: var(--accent);
+  background-color: var(--accent-bg);
 }
 
 section.hero {
-	margin-bottom: 5rem;
-	margin-top: 2rem;
+  margin-bottom: 5rem;
+  margin-top: 2rem;
 }
 
 p.hero-text {
-	font-size: 1.125rem;
+  font-size: 1.125rem;
 }
 
 .card {
-	padding: 1.5rem;
-	border-radius: var(--radius);
-	border: 1px solid var(--border);
-	transition: var(--transition);
-	background: var(--bg-soft);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+  background: var(--bg-soft);
 }
 .card:hover {
-	box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
 }
 
 a.card:hover {
-	border-color: var(--accent);
-	background: var(--bg);
+  border-color: var(--accent);
+  background: var(--bg);
 }
 
 blockquote h3 {
-	margin-top: 0px;
-	font-size: 1.2rem;
+  margin-top: 0px;
+  font-size: 1.2rem;
 }
 
 @media (max-width: 768px) {
-	section.hero {
-		margin-bottom: 3rem;
-	}
+  section.hero {
+    margin-bottom: 3rem;
+  }
 }
 
 /* ---- Tabs ---- */
 .tabs-list {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.25rem;
-	background: var(--accent-bg);
-	padding: 0.25rem;
-	border-radius: 12px;
-	border: 1px solid var(--border);
-	width: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  background: var(--accent-bg);
+  padding: 0.25rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  width: fit-content;
 }
 
 .tab-button {
-	padding: 0.5rem 1.25rem;
-	border-radius: 8px;
-	border: none;
-	background: transparent;
-	color: var(--text-light);
-	font-size: 0.875rem;
-	font-weight: 500;
-	cursor: pointer;
-	transition: all 0.2s ease;
-	text-transform: capitalize;
-	margin: 0 !important;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--text-light);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: capitalize;
+  margin: 0 !important;
 }
 
 .tab-button:hover {
-	color: var(--text);
-	background: rgba(0, 0, 0, 0.05);
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .tab-button[aria-selected="true"] {
-	background: var(--bg);
-	color: var(--accent);
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: var(--bg);
+  color: var(--accent);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .tab-panel {
-	animation: fadeIn 0.3s ease-out;
-	margin-top: 2rem;
+  animation: fadeIn 0.3s ease-out;
+  margin-top: 2rem;
 }
 
 .tab-panel[hidden] {
-	display: none;
+  display: none;
 }
 
 @keyframes fadeIn {
-	from {
-		opacity: 0;
-		transform: translateY(8px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 640px) {
-	.tabs-list {
-		width: 100%;
-	}
+  .tabs-list {
+    width: 100%;
+  }
 
-	.tab-button {
-		flex: 1;
-		text-align: center;
-	}
+  .tab-button {
+    flex: 1;
+    text-align: center;
+  }
 }

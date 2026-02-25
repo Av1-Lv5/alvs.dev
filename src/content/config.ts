@@ -4,22 +4,22 @@ import noteSchema from "@schemas/noteSchema";
 import bookSchema from "@schemas/bookSchema";
 
 const projectsCollection = defineCollection({
-	type: "content",
-	schema: z.object(projectSchema),
+  type: "content",
+  schema: z.object(projectSchema),
 });
 
 const notesCollection = defineCollection({
-	type: "content",
-	schema: z.object(noteSchema),
+  type: "content",
+  schema: z.object(noteSchema),
 });
 
 const booksCollection = defineCollection({
-	type: "content",
-	schema: z.object(bookSchema),
+  type: "content",
+  schema: z.object(bookSchema),
 });
 
 export const collections = {
-	projects: projectsCollection,
-	notes: notesCollection,
-	books: booksCollection,
+  projects: projectsCollection,
+  notes: notesCollection,
+  books: booksCollection,
 };

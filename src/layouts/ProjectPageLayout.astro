@@ -7,7 +7,7 @@ import BackInHistory from "@components/BackInHistory.astro";
 import ProjectLinks from "@components/ProjectLinks.astro";
 
 type Props = {
-	project: CollectionEntry<"projects">;
+  project: CollectionEntry<"projects">;
 };
 
 // props
@@ -15,41 +15,41 @@ const { project } = Astro.props;
 ---
 
 <Layout
-	categoryTabTitle="Projects"
-	pageTabTitle={project.data.title}
-	pageTitle={project.data.title}
-	showNav={false}
-	description={project.data.description}
+  categoryTabTitle="Projects"
+  pageTabTitle={project.data.title}
+  pageTitle={project.data.title}
+  showNav={false}
+  description={project.data.description}
 >
-	<div>
-		<BackInHistory />
-		<ProjectLinks
-			projectLiveAt={project.data.liveAt}
-			projectRepoId={project.data.repoId}
-		/>
-	</div>
-	<slot />
+  <div>
+    <BackInHistory />
+    <ProjectLinks
+      projectLiveAt={project.data.liveAt}
+      projectRepoId={project.data.repoId}
+    />
+  </div>
+  <slot />
 </Layout>
 
 <style>
-	div {
-		display: flex;
-		margin: 1.5rem 0;
-		justify-content: space-between;
-	}
-	:global(a.nav-like) {
-		border-color: var(--accent);
-		color: var(--accent);
-	}
-	:global(img) {
-		height: 250px;
-		width: 100%;
-		object-fit: cover;
-		object-position: center;
-	}
-	@media (max-width: 768px) {
-		:global(img) {
-			height: 150px;
-		}
-	}
+  div {
+    display: flex;
+    margin: 1.5rem 0;
+    justify-content: space-between;
+  }
+  :global(a.nav-like) {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  :global(img) {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  @media (max-width: 768px) {
+    :global(img) {
+      height: 150px;
+    }
+  }
 </style>

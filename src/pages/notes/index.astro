@@ -6,33 +6,31 @@ import PageLayout from "@layouts/PageLayout.astro";
 
 // fetching notes to display
 const allNotes = await getCollection("notes", ({ data }) => {
-	return !data.draft;
+  return !data.draft;
 });
 ---
 
 <PageLayout
-	tabTitle="Notes"
-	description="Unfiltered thoughts. Updated as evolves"
+  tabTitle="Notes"
+  description="Unfiltered thoughts. Updated as evolves"
 >
-	<section class="hero">
-		<h1>My public notes</h1>
-		<p class="hero-text">
-			The content in my notes gets often updated to my current opinions.
-			Notes may be unfinished, unpolished. I write to record my thoughts,
-			ideas and opinions.
-		</p>
-		<ul>
-			{
-				allNotes.map((note) => {
-					return (
-						<li>
-							<a href={`/notes/${note.slug}`}>
-								{note.data.title}
-							</a>
-						</li>
-					);
-				})
-			}
-		</ul>
-	</section>
+  <section class="hero">
+    <h1>My public notes</h1>
+    <p class="hero-text">
+      The content in my notes gets often updated to my current opinions. Notes
+      may be unfinished, unpolished. I write to record my thoughts, ideas and
+      opinions.
+    </p>
+    <ul>
+      {
+        allNotes.map((note) => {
+          return (
+            <li>
+              <a href={`/notes/${note.slug}`}>{note.data.title}</a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
 </PageLayout>

@@ -10,45 +10,41 @@ import TrackCard from "@components/TrackCard.astro";
 import { getTopArtists, getTopTracks } from "@utils/spotify";
 
 const [artists, tracks] = await Promise.all([
-	getTopArtists(10),
-	getTopTracks(10),
+  getTopArtists(10),
+  getTopTracks(10),
 ]);
 ---
 
 <PageLayout
-	tabTitle="Music"
-	description="My top artists and tracks on Spotify."
+  tabTitle="Music"
+  description="My top artists and tracks on Spotify."
 >
-	<section>
-		<h1>What's currently on repeat</h1>
-		<p class="hero-text">
-			A real-time look at the soundtracks and artists currently fueling my
-			workflow
-		</p>
-	</section>
+  <section>
+    <h1>What's currently on repeat</h1>
+    <p class="hero-text">
+      A real-time look at the soundtracks and artists currently fueling my
+      workflow
+    </p>
+  </section>
 
-	<section>
-		<h2>Most Streamed Artists</h2>
-		<div class="list">
-			{
-				artists.map((artist, i) => (
-					<ArtistCard artist={artist} rank={i + 1} />
-				))
-			}
-		</div>
-	</section>
+  <section>
+    <h2>Most Streamed Artists</h2>
+    <div class="list">
+      {artists.map((artist, i) => <ArtistCard artist={artist} rank={i + 1} />)}
+    </div>
+  </section>
 
-	<section>
-		<h2>Top Tracks</h2>
-		<div class="list">
-			{tracks.map((track, i) => <TrackCard track={track} rank={i + 1} />)}
-		</div>
-	</section>
+  <section>
+    <h2>Top Tracks</h2>
+    <div class="list">
+      {tracks.map((track, i) => <TrackCard track={track} rank={i + 1} />)}
+    </div>
+  </section>
 </PageLayout>
 
 <style>
-	.list {
-		display: flex;
-		flex-direction: column;
-	}
+  .list {
+    display: flex;
+    flex-direction: column;
+  }
 </style>

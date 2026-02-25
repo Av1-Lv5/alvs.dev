@@ -3,24 +3,24 @@ import { Icon } from "astro-icon/components";
 ---
 
 <a id="back-in-history" class="nav-like">
-	<Icon name={"lucide:arrow-left"} size={16} />
+  <Icon name={"lucide:arrow-left"} size={16} />
 </a>
 
 <script is:inline>
-	document
-		.getElementById("back-in-history")
-		.addEventListener("click", () => history.back());
+  document
+    .getElementById("back-in-history")
+    .addEventListener("click", () => history.back());
 </script>
 
 <style>
-	#back-in-history {
-		cursor: pointer;
-	}
-	a.nav-like {
-		border-color: var(--accent);
-		color: var(--accent);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
+  #back-in-history {
+    cursor: pointer;
+  }
+  a.nav-like {
+    border-color: var(--accent);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 </style>

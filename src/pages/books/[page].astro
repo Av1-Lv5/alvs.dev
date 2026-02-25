@@ -6,53 +6,53 @@ import BookCard from "@components/BookCard.astro";
 import BookPagination from "@components/BookPagination.astro";
 
 export async function getStaticPaths({ paginate }: any) {
-	const allBooks = await getCollection("books");
-	return paginate(allBooks, { pageSize: 12 });
+  const allBooks = await getCollection("books");
+  return paginate(allBooks, { pageSize: 12 });
 }
 
 interface Props {
-	page: Page<CollectionEntry<"books">>;
+  page: Page<CollectionEntry<"books">>;
 }
 
 const { page }: Props = Astro.props;
 ---
 
 <PageLayout
-	tabTitle={`Books - Page ${page.currentPage}`}
-	description={`Browse the books - Page ${page.currentPage}.`}
+  tabTitle={`Books - Page ${page.currentPage}`}
+  description={`Browse the books - Page ${page.currentPage}.`}
 >
-	<h1>Books I've read</h1>
+  <h1>Books I've read</h1>
 
-	<div class="books-grid">
-		{page.data.map((book) => <BookCard book={book} />)}
-	</div>
+  <div class="books-grid">
+    {page.data.map((book) => <BookCard book={book} />)}
+  </div>
 
-	<BookPagination
-		currentPage={page.currentPage}
-		totalPages={page.lastPage}
-		hasNext={!!page.url.next}
-		hasPrev={!!page.url.prev}
-		nextUrl={page.url.next}
-		prevUrl={page.url.prev}
-	/>
+  <BookPagination
+    currentPage={page.currentPage}
+    totalPages={page.lastPage}
+    hasNext={!!page.url.next}
+    hasPrev={!!page.url.prev}
+    nextUrl={page.url.next}
+    prevUrl={page.url.prev}
+  />
 
-	<blockquote>
-		If you have recommendations based on what you see here, feel free to
-		<a href="mailto:alvs.codee@slmail.me">email me</a>
-	</blockquote>
+  <blockquote>
+    If you have recommendations based on what you see here, feel free to
+    <a href="mailto:alvs.codee@slmail.me">email me</a>
+  </blockquote>
 </PageLayout>
 
 <style>
-	.books-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-		gap: 1.25rem;
-	}
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.25rem;
+  }
 
-	@media (max-width: 640px) {
-		.books-grid {
-			grid-template-columns: repeat(3, 1fr);
-			gap: 0.75rem;
-		}
-	}
+  @media (max-width: 640px) {
+    .books-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+  }
 </style>

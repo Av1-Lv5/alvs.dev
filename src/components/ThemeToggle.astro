@@ -3,81 +3,81 @@ import { Icon } from "astro-icon/components";
 ---
 
 <div class="theme-toggle-container">
-	<button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
-		<Icon name="lucide:sun" class="sun-icon" size={20} />
-		<Icon name="lucide:moon" class="moon-icon" size={20} />
-		<Icon name="lucide:monitor" class="system-icon" size={20} />
-	</button>
+  <button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+    <Icon name="lucide:sun" class="sun-icon" size={20} />
+    <Icon name="lucide:moon" class="moon-icon" size={20} />
+    <Icon name="lucide:monitor" class="system-icon" size={20} />
+  </button>
 </div>
 
 <script>
-	const toggle = document.getElementById("theme-toggle");
+  const toggle = document.getElementById("theme-toggle");
 
-	const getTheme = () => {
-		return localStorage.getItem("theme") || "system";
-	};
+  const getTheme = () => {
+    return localStorage.getItem("theme") || "system";
+  };
 
-	const setTheme = (theme: string) => {
-		localStorage.setItem("theme", theme);
-		if (theme === "dark") {
-			document.documentElement.setAttribute("data-theme", "dark");
-		} else if (theme === "light") {
-			document.documentElement.setAttribute("data-theme", "light");
-		} else {
-			document.documentElement.removeAttribute("data-theme");
-		}
-	};
+  const setTheme = (theme: string) => {
+    localStorage.setItem("theme", theme);
+    if (theme === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else if (theme === "light") {
+      document.documentElement.setAttribute("data-theme", "light");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+  };
 
-	toggle?.addEventListener("click", () => {
-		const currentTheme = getTheme();
-		let nextTheme = "system";
+  toggle?.addEventListener("click", () => {
+    const currentTheme = getTheme();
+    let nextTheme = "system";
 
-		if (currentTheme === "system") {
-			nextTheme = "light";
-		} else if (currentTheme === "light") {
-			nextTheme = "dark";
-		} else {
-			nextTheme = "system";
-		}
+    if (currentTheme === "system") {
+      nextTheme = "light";
+    } else if (currentTheme === "light") {
+      nextTheme = "dark";
+    } else {
+      nextTheme = "system";
+    }
 
-		setTheme(nextTheme);
-	});
+    setTheme(nextTheme);
+  });
 </script>
 
 <style>
-	.theme-toggle-container {
-		display: flex;
-		align-items: center;
-	}
+  .theme-toggle-container {
+    display: flex;
+    align-items: center;
+  }
 
-	button {
-		background: none;
-		border: none;
-		cursor: pointer;
-		padding: 8px;
-		color: var(--text-muted);
-		transition: var(--transition);
-		padding: 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: var(--text-muted);
+    transition: var(--transition);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-	button:hover {
-		color: var(--text);
-	}
+  button:hover {
+    color: var(--text);
+  }
 
-	button svg {
-		display: none;
-	}
+  button svg {
+    display: none;
+  }
 
-	:global(:root:not([data-theme])) .system-icon {
-		display: block;
-	}
-	:global(:root[data-theme="light"]) .sun-icon {
-		display: block;
-	}
-	:global(:root[data-theme="dark"]) .moon-icon {
-		display: block;
-	}
+  :global(:root:not([data-theme])) .system-icon {
+    display: block;
+  }
+  :global(:root[data-theme="light"]) .sun-icon {
+    display: block;
+  }
+  :global(:root[data-theme="dark"]) .moon-icon {
+    display: block;
+  }
 </style>

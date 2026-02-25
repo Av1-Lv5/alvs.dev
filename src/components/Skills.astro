@@ -4,45 +4,45 @@ import { skills } from "@constants/skills";
 ---
 
 <div id="skills">
-	{
-		skills.map((skill) => (
-			<div class="skill">
-				<Icon name={skill.icon} class="icon" />
-				<span>{skill.name}</span>
-			</div>
-		))
-	}
+  {
+    skills.map((skill) => (
+      <div class="skill">
+        <Icon name={skill.icon} class="icon" />
+        <span>{skill.name}</span>
+      </div>
+    ))
+  }
 </div>
 
 <style>
-	#skills {
-		display: flex;
-		justify-content: start;
-		flex-wrap: wrap;
-		gap: 12px;
-	}
+  #skills {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
 
-	.skill {
-		display: flex;
-		align-items: center;
-		gap: 8px;
-		user-select: none;
-		padding: 8px 16px;
-		border: 1px solid var(--border);
-		border-radius: 6px;
-		font-size: 0.9rem;
-		transition: all 0.2s ease;
-		background-color: var(--overlay-bg, transparent);
-	}
+  .skill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    background-color: var(--overlay-bg, transparent);
+  }
 
-	.skill:hover {
-		background-color: var(--bg-soft);
-		border-color: var(--text-color);
-	}
+  .skill:hover {
+    background-color: var(--bg-soft);
+    border-color: var(--text-color);
+  }
 
-	.icon {
-		width: 18px;
-		height: 18px;
-		color: var(--text-color);
-	}
+  .icon {
+    width: 18px;
+    height: 18px;
+    color: var(--text-color);
+  }
 </style>

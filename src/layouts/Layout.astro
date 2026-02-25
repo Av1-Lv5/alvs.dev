@@ -11,12 +11,12 @@ import "@fontsource-variable/geist-mono";
 
 // Types
 type Props = {
-	pageTabTitle: string;
-	categoryTabTitle: string;
-	pageTitle?: string;
-	showNav: boolean;
-	description?: string;
-	image?: string;
+  pageTabTitle: string;
+  categoryTabTitle: string;
+  pageTitle?: string;
+  showNav: boolean;
+  description?: string;
+  image?: string;
 };
 
 // styles
@@ -25,12 +25,12 @@ import "@styles/custom.css";
 
 // props
 const {
-	pageTabTitle,
-	pageTitle,
-	categoryTabTitle,
-	showNav,
-	description,
-	image,
+  pageTabTitle,
+  pageTitle,
+  categoryTabTitle,
+  showNav,
+  description,
+  image,
 } = Astro.props;
 
 const fullTitle = `${pageTabTitle} • ${categoryTabTitle}`;
@@ -38,38 +38,35 @@ const fullTitle = `${pageTabTitle} • ${categoryTabTitle}`;
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={fullTitle} description={description} image={image} />
+  <head>
+    <BaseHead title={fullTitle} description={description} image={image} />
 
-		<!-- Web analytics -->
-		<script
-			is:inline
-			data-goatcounter="https://a-sh.goatcounter.com/count"
-			async
-			src="//gc.zgo.at/count.js"></script>
+    <!-- Web analytics -->
+    <script
+      is:inline
+      data-goatcounter="https://a-sh.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"></script>
 
-		<!-- Theme -->
-		<script is:inline>
-			(function () {
-				const theme = localStorage.getItem("theme") || "system";
-				if (theme === "dark") {
-					document.documentElement.setAttribute("data-theme", "dark");
-				} else if (theme === "light") {
-					document.documentElement.setAttribute(
-						"data-theme",
-						"light",
-					);
-				} else {
-					document.documentElement.removeAttribute("data-theme");
-				}
-			})();
-		</script>
-	</head>
-	<body>
-		<Header title={pageTitle} showNav={showNav} />
-		<main>
-			<slot />
-		</main>
-		<Footer />
-	</body>
+    <!-- Theme -->
+    <script is:inline>
+      (function () {
+        const theme = localStorage.getItem("theme") || "system";
+        if (theme === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else if (theme === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+        } else {
+          document.documentElement.removeAttribute("data-theme");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <Header title={pageTitle} showNav={showNav} />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>

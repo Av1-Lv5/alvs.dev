@@ -5,7 +5,7 @@ import { getEntry } from "astro:content";
 import ProductCard from "@components/ProductCard.astro";
 
 interface Props {
-	count?: number;
+  count?: number;
 }
 
 const { count } = Astro.props;
@@ -14,27 +14,27 @@ const fetchedProducts = [];
 fetchedProducts.push(await getEntry("projects", "orbit"));
 
 const displayedProducts = count
-	? fetchedProducts.slice(0, count)
-	: fetchedProducts;
+  ? fetchedProducts.slice(0, count)
+  : fetchedProducts;
 ---
 
 <div class="products-list">
-	{
-		displayedProducts.map((project) => {
-			return <ProductCard project={project} />;
-		})
-	}
+  {
+    displayedProducts.map((project) => {
+      return <ProductCard project={project} />;
+    })
+  }
 </div>
 
 <style>
-	.products-list {
-		display: flex;
-		flex-direction: column;
-		margin-top: -1.5rem; /* Offset project card padding */
-	}
-	@media (max-width: 768px) {
-		.products-list {
-			margin-top: -1rem;
-		}
-	}
+  .products-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: -1.5rem; /* Offset project card padding */
+  }
+  @media (max-width: 768px) {
+    .products-list {
+      margin-top: -1rem;
+    }
+  }
 </style>

@@ -10,211 +10,210 @@ import { socials } from "src/constants";
 ---
 
 <PageLayout tabTitle="Connect" description="Reach out">
-	<section class="hero">
-		<h1>Get in touch</h1>
-		<p class="hero-text">
-			Got an interesting project you're working on, or just want to say
-			hi? <br /> I'd love to hear from you. The best way to reach me is through
-			email.
-		</p>
+  <section class="hero">
+    <h1>Get in touch</h1>
+    <p class="hero-text">
+      Got an interesting project you're working on, or just want to say hi? <br
+      /> I'd love to hear from you. The best way to reach me is through email.
+    </p>
 
-		<div>
-			<a href={`mailto:${socials.email}`} class="email-link">
-				{socials.email}
-			</a>
-			<p class="status-indicator">
-				<span class="dot"></span>
-				Typically responds within 24-48 hours
-			</p>
-			<!-- <p class="informal-note">
+    <div>
+      <a href={`mailto:${socials.email}`} class="email-link">
+        {socials.email}
+      </a>
+      <p class="status-indicator">
+        <span class="dot"></span>
+        Typically responds within 24-48 hours
+      </p>
+      <!-- <p class="informal-note">
 				Prefer something less formal?
 				<a href="/guestbook">Sign my guestbook</a>.
 			</p> -->
-		</div>
-	</section>
+    </div>
+  </section>
 
-	<section>
-		<h2>Presence</h2>
-		<nav class="social-nav">
-			<a href={socials.linkedin} target="_blank" rel="noopener">
-				<Icon name="simple-icons:linkedin" class="social-icon" />
-				LinkedIn
-			</a>
-			<a
-				href={`https://github.com/${socials.githubUsername}`}
-				target="_blank"
-				rel="noopener"
-			>
-				<Icon name="simple-icons:github" class="social-icon" />
-				GitHub
-			</a>
-			<a href={socials.mastodon} target="_blank" rel="noopener">
-				<Icon name="simple-icons:mastodon" class="social-icon" />
-				Mastodon
-			</a>
-		</nav>
-	</section>
+  <section>
+    <h2>Presence</h2>
+    <nav class="social-nav">
+      <a href={socials.linkedin} target="_blank" rel="noopener">
+        <Icon name="simple-icons:linkedin" class="social-icon" />
+        LinkedIn
+      </a>
+      <a
+        href={`https://github.com/${socials.githubUsername}`}
+        target="_blank"
+        rel="noopener"
+      >
+        <Icon name="simple-icons:github" class="social-icon" />
+        GitHub
+      </a>
+      <a href={socials.mastodon} target="_blank" rel="noopener">
+        <Icon name="simple-icons:mastodon" class="social-icon" />
+        Mastodon
+      </a>
+    </nav>
+  </section>
 
-	<div class="connect-grid">
-		<section>
-			<h2>A few things</h2>
-			<ul class="expectations-list">
-				<li>For project inquiries, include details and timeline</li>
-				<li>Open for a friendly game of chess</li>
-				<li>Open to collaboration</li>
-				<li>
-					<a href="https://useplaintext.email/" target="_blank">
-						Plain-text emails are encouraged &#x2197;
-					</a>
-				</li>
-				<li>
-					Operating from IST <span id="currentTimeIst"></span>
-				</li>
-			</ul>
-		</section>
+  <div class="connect-grid">
+    <section>
+      <h2>A few things</h2>
+      <ul class="expectations-list">
+        <li>For project inquiries, include details and timeline</li>
+        <li>Open for a friendly game of chess</li>
+        <li>Open to collaboration</li>
+        <li>
+          <a href="https://useplaintext.email/" target="_blank">
+            Plain-text emails are encouraged &#x2197;
+          </a>
+        </li>
+        <li>
+          Operating from IST <span id="currentTimeIst"></span>
+        </li>
+      </ul>
+    </section>
 
-		<section>
-			<h2>Note</h2>
-			<p class="spam-notice">
-				<b>Spam prevention:</b>
-				The email address above changes periodically. Saving it for long-term
-				communication is not recommended.
-			</p>
-		</section>
-	</div>
+    <section>
+      <h2>Note</h2>
+      <p class="spam-notice">
+        <b>Spam prevention:</b>
+        The email address above changes periodically. Saving it for long-term communication
+        is not recommended.
+      </p>
+    </section>
+  </div>
 </PageLayout>
 
 <script>
-	function updateIST() {
-		const currentTimeEl = document.getElementById("currentTimeIst");
+  function updateIST() {
+    const currentTimeEl = document.getElementById("currentTimeIst");
 
-		if (currentTimeEl) {
-			const now = new Date();
-			// Format to IST specifically
-			const istString = now.toLocaleTimeString("en-IN", {
-				timeZone: "Asia/Kolkata",
-				hour: "2-digit",
-				minute: "2-digit",
-				second: "2-digit",
-				hour12: true,
-			});
+    if (currentTimeEl) {
+      const now = new Date();
+      // Format to IST specifically
+      const istString = now.toLocaleTimeString("en-IN", {
+        timeZone: "Asia/Kolkata",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      });
 
-			currentTimeEl.innerText = istString;
-		}
-	}
+      currentTimeEl.innerText = istString;
+    }
+  }
 
-	updateIST();
+  updateIST();
 
-	setInterval(updateIST, 1000);
+  setInterval(updateIST, 1000);
 </script>
 
 <style>
-	.email-link {
-		font-size: 1.75rem;
-		font-weight: 700;
-		color: var(--text);
-		text-decoration: none;
-		transition: var(--transition);
-		display: inline-block;
-		margin-bottom: 1rem;
-	}
+  .email-link {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    transition: var(--transition);
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
 
-	.email-link:hover {
-		color: var(--text);
-		text-decoration: underline;
-		text-underline-offset: 8px;
-	}
+  .email-link:hover {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 8px;
+  }
 
-	.status-indicator {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-		font-size: 0.875rem;
-		color: var(--text-muted);
-		margin: 0;
-	}
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
 
-	.informal-note {
-		margin-top: 1.5rem;
-		font-size: 0.95rem;
-		color: var(--text-muted);
-	}
+  .informal-note {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
 
-	.status-indicator .dot {
-		width: 8px;
-		height: 8px;
-		background: #10b981;
-		border-radius: 50%;
-		display: inline-block;
-		box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
-	}
+  .status-indicator .dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+  }
 
-	.social-nav {
-		display: flex;
-		gap: 2rem;
-		flex-wrap: wrap;
-	}
+  .social-nav {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
 
-	.social-nav a {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		font-weight: 600;
-		color: var(--text-muted);
-		transition: var(--transition);
-		text-decoration: none;
-	}
+  .social-nav a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: var(--transition);
+    text-decoration: none;
+  }
 
-	.social-nav a:hover {
-		color: var(--text);
-	}
+  .social-nav a:hover {
+    color: var(--text);
+  }
 
-	.social-icon {
-		width: 18px;
-		height: 18px;
-		opacity: 0.8;
-	}
+  .social-icon {
+    width: 18px;
+    height: 18px;
+    opacity: 0.8;
+  }
 
-	.connect-grid {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 4rem;
-	}
+  .connect-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
 
-	.expectations-list {
-		margin: 0;
-		padding-left: 1rem;
-		color: var(--text-muted);
-		font-size: 0.95rem;
-		line-height: 1.6;
-	}
+  .expectations-list {
+    margin: 0;
+    padding-left: 1rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
 
-	.expectations-list li {
-		margin-bottom: 0.75rem;
-	}
+  .expectations-list li {
+    margin-bottom: 0.75rem;
+  }
 
-	.spam-notice {
-		margin: 0;
-		font-size: 0.9rem;
-		color: var(--text-muted);
-		line-height: 1.6;
-		padding: 1.25rem;
-		background: var(--bg-soft);
-		border-radius: var(--radius);
-		border: 1px solid var(--border);
-	}
+  .spam-notice {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    padding: 1.25rem;
+    background: var(--bg-soft);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
 
-	@media (max-width: 768px) {
-		.email-link {
-			font-size: 1.5rem;
-		}
+  @media (max-width: 768px) {
+    .email-link {
+      font-size: 1.5rem;
+    }
 
-		.connect-grid {
-			grid-template-columns: 1fr;
-			gap: 0;
-		}
-		.social-nav {
-			gap: 1.5rem;
-		}
-	}
+    .connect-grid {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .social-nav {
+      gap: 1.5rem;
+    }
+  }
 </style>

@@ -3,7 +3,7 @@ import { experiences as allExperiences } from "../constants/experiences";
 import { Icon } from "astro-icon/components";
 
 interface Props {
-	count?: number;
+  count?: number;
 }
 
 const { count } = Astro.props;
@@ -12,372 +12,368 @@ const hasMore = count ? allExperiences.length > count : false;
 ---
 
 <div class={`experience-container ${hasMore ? "has-more" : ""}`}>
-	{
-		experiences.map((exp) => (
-			<div class="experience-entry">
-				<div class="timeline">
-					<div class="dot" />
-					<div class="line" />
-				</div>
-				<div class="content">
-					<div class="header">
-						<div class="main-info">
-							<div class="company-group">
-								<h4 class="company">{exp.company}</h4>
-								{exp.location && (
-									<div class="location">
-										<Icon name="lucide:map-pin" size={12} />
-										<span>{exp.location}</span>
-									</div>
-								)}
-							</div>
-							<span class="role">{exp.role}</span>
-						</div>
-						<div class="period-pill">{exp.period}</div>
-					</div>
-					<div class="points-list">
-						{exp.points.map((point) => (
-							<div class="point-item">
-								<span class="label">{point.label}</span>
-								<p class="description">{point.text}</p>
-							</div>
-						))}
-					</div>
-				</div>
-			</div>
-		))
-	}
+  {
+    experiences.map((exp) => (
+      <div class="experience-entry">
+        <div class="timeline">
+          <div class="dot" />
+          <div class="line" />
+        </div>
+        <div class="content">
+          <div class="header">
+            <div class="main-info">
+              <div class="company-group">
+                <h4 class="company">{exp.company}</h4>
+                {exp.location && (
+                  <div class="location">
+                    <Icon name="lucide:map-pin" size={12} />
+                    <span>{exp.location}</span>
+                  </div>
+                )}
+              </div>
+              <span class="role">{exp.role}</span>
+            </div>
+            <div class="period-pill">{exp.period}</div>
+          </div>
+          <div class="points-list">
+            {exp.points.map((point) => (
+              <div class="point-item">
+                <span class="label">{point.label}</span>
+                <p class="description">{point.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    ))
+  }
 
-	{
-		hasMore && (
-			<div class="timeline-cta-wrapper">
-				<a href="/experience" class="timeline-cta">
-					<div class="cta-timeline">
-						<div class="cta-dot-outer">
-							<div class="cta-dot-inner" />
-						</div>
-						<div class="cta-line" />
-					</div>
-					<div class="cta-body">
-						<div class="cta-content">
-							<span class="cta-title">See the full journey</span>
-							<p class="cta-description">
-								Every role, every pivot, and the long road of
-								figuring things out along the way.
-							</p>
-						</div>
-						<div class="cta-arrow">
-							<Icon
-								name="lucide:arrow-right"
-								size={20}
-								stroke-width={2.5}
-							/>
-						</div>
-					</div>
-				</a>
-			</div>
-		)
-	}
+  {
+    hasMore && (
+      <div class="timeline-cta-wrapper">
+        <a href="/experience" class="timeline-cta">
+          <div class="cta-timeline">
+            <div class="cta-dot-outer">
+              <div class="cta-dot-inner" />
+            </div>
+            <div class="cta-line" />
+          </div>
+          <div class="cta-body">
+            <div class="cta-content">
+              <span class="cta-title">See the full journey</span>
+              <p class="cta-description">
+                Every role, every pivot, and the long road of figuring things
+                out along the way.
+              </p>
+            </div>
+            <div class="cta-arrow">
+              <Icon name="lucide:arrow-right" size={20} stroke-width={2.5} />
+            </div>
+          </div>
+        </a>
+      </div>
+    )
+  }
 </div>
 
 <style>
-	.experience-container {
-		display: flex;
-		flex-direction: column;
-		gap: 0;
-		margin: 2rem 0;
-	}
+  .experience-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 2rem 0;
+  }
 
-	.experience-entry {
-		display: flex;
-		gap: 1.5rem;
-	}
+  .experience-entry {
+    display: flex;
+    gap: 1.5rem;
+  }
 
-	/* Timeline track */
-	.timeline {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		flex-shrink: 0;
-		width: 20px;
-	}
+  /* Timeline track */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 20px;
+  }
 
-	.dot {
-		width: 10px;
-		height: 10px;
-		border-radius: 50%;
-		background-color: var(--accent);
-		margin-top: 0.6rem;
-		z-index: 1;
-		border: 2px solid var(--bg);
-		box-shadow: 0 0 0 1px var(--accent);
-	}
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    margin-top: 0.6rem;
+    z-index: 1;
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
 
-	.line {
-		flex-grow: 1;
-		width: 1px;
-		background-color: var(--border);
-		margin-bottom: -0.6rem; /* Connect to next dot */
-	}
+  .line {
+    flex-grow: 1;
+    width: 1px;
+    background-color: var(--border);
+    margin-bottom: -0.6rem; /* Connect to next dot */
+  }
 
-	.experience-entry:last-child .line {
-		display: none;
-	}
+  .experience-entry:last-child .line {
+    display: none;
+  }
 
-	/* CTA Specific Timeline logic */
-	.has-more .experience-entry:last-child .line {
-		display: block;
-		background: linear-gradient(to bottom, var(--border), var(--border));
-	}
+  /* CTA Specific Timeline logic */
+  .has-more .experience-entry:last-child .line {
+    display: block;
+    background: linear-gradient(to bottom, var(--border), var(--border));
+  }
 
-	/* Content card */
-	.content {
-		flex-grow: 1;
-		padding-bottom: 3rem;
-	}
+  /* Content card */
+  .content {
+    flex-grow: 1;
+    padding-bottom: 3rem;
+  }
 
-	.experience-entry:last-child .content {
-		padding-bottom: 0;
-	}
+  .experience-entry:last-child .content {
+    padding-bottom: 0;
+  }
 
-	.header {
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-start;
-		margin-bottom: 1.25rem;
-		gap: 1rem;
-	}
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.25rem;
+    gap: 1rem;
+  }
 
-	.main-info {
-		display: flex;
-		flex-direction: column;
-		gap: 0.25rem;
-	}
+  .main-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
 
-	.company {
-		margin: 0;
-		font-size: 1.25rem;
-		font-weight: 700;
-		color: var(--text);
-		line-height: 1.2;
-	}
+  .company {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
 
-	.company-group {
-		display: flex;
-		align-items: baseline;
-		gap: 1.125rem;
-		flex-wrap: wrap;
-	}
+  .company-group {
+    display: flex;
+    align-items: baseline;
+    gap: 1.125rem;
+    flex-wrap: wrap;
+  }
 
-	.role {
-		font-size: 0.9rem;
-		font-weight: 600;
-		color: var(--accent);
-		letter-spacing: 0.02em;
-	}
+  .role {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
 
-	.location {
-		display: flex;
-		align-items: center;
-		gap: 0.2rem;
-		font-size: 0.8rem;
-		color: var(--text-muted);
-		font-weight: 500;
-	}
+  .location {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
 
-	.period-pill {
-		font-size: 0.75rem;
-		font-family: var(--mono);
-		background: var(--bg-soft);
-		color: var(--text-light);
-		padding: 0.25rem 0.75rem;
-		border-radius: 99px;
-		border: 1px solid var(--border);
-		white-space: nowrap;
-	}
+  .period-pill {
+    font-size: 0.75rem;
+    font-family: var(--mono);
+    background: var(--bg-soft);
+    color: var(--text-light);
+    padding: 0.25rem 0.75rem;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+    white-space: nowrap;
+  }
 
-	/* Points */
-	.points-list {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 1.5rem;
-	}
+  /* Points */
+  .points-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
 
-	.point-item {
-		display: flex;
-		flex-direction: column;
-		gap: 0.4rem;
-	}
+  .point-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
 
-	.label {
-		font-size: 0.8rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-		color: var(--text-light);
-		opacity: 0.8;
-	}
+  .label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-light);
+    opacity: 0.8;
+  }
 
-	.description {
-		margin: 0;
-		font-size: 0.95rem;
-		line-height: 1.5;
-		color: var(--text-muted);
-	}
+  .description {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
 
-	/* Timeline CTA Styles */
-	.timeline-cta-wrapper {
-		margin-top: -0.5rem;
-	}
+  /* Timeline CTA Styles */
+  .timeline-cta-wrapper {
+    margin-top: -0.5rem;
+  }
 
-	.timeline-cta {
-		display: flex;
-		gap: 1.5rem;
-		text-decoration: none;
-		color: inherit;
-		transition: var(--transition);
-	}
+  .timeline-cta {
+    display: flex;
+    gap: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+  }
 
-	.cta-timeline {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		flex-shrink: 0;
-		width: 20px;
-	}
+  .cta-timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 20px;
+  }
 
-	.cta-dot-outer {
-		width: 14px;
-		height: 14px;
-		border-radius: 50%;
-		border: 2px dashed var(--border);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: var(--bg);
-		transition: var(--transition);
-		z-index: 1;
-		margin-top: 0.5rem;
-		animation: pulse-dashed 4s infinite linear;
-	}
+  .cta-dot-outer {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px dashed var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    transition: var(--transition);
+    z-index: 1;
+    margin-top: 0.5rem;
+    animation: pulse-dashed 4s infinite linear;
+  }
 
-	@keyframes pulse-dashed {
-		0% {
-			transform: rotate(0deg);
-		}
-		100% {
-			transform: rotate(360deg);
-		}
-	}
+  @keyframes pulse-dashed {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 
-	.cta-dot-inner {
-		width: 6px;
-		height: 6px;
-		border-radius: 50%;
-		background: transparent;
-		transition: var(--transition);
-	}
+  .cta-dot-inner {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: transparent;
+    transition: var(--transition);
+  }
 
-	.cta-line {
-		flex-grow: 1;
-		width: 1px;
-		background: linear-gradient(to bottom, var(--border), transparent);
-		min-height: 40px;
-	}
+  .cta-line {
+    flex-grow: 1;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--border), transparent);
+    min-height: 40px;
+  }
 
-	.cta-body {
-		flex-grow: 1;
-		display: flex;
-		justify-content: space-between;
-		align-items: first baseline;
-		gap: 2rem;
-		padding: 1.5rem;
-		background: var(--bg-soft);
-		border: 1px solid var(--border);
-		border-radius: 16px;
-		transition: var(--transition);
-		margin-bottom: 1rem;
-	}
+  .cta-body {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: first baseline;
+    gap: 2rem;
+    padding: 1.5rem;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transition: var(--transition);
+    margin-bottom: 1rem;
+  }
 
-	.cta-content {
-		display: flex;
-		flex-direction: column;
-		gap: 0.25rem;
-	}
+  .cta-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
 
-	.cta-title {
-		font-weight: 700;
-		font-size: 1.1rem;
-		color: var(--text);
-		transition: var(--transition);
-	}
+  .cta-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text);
+    transition: var(--transition);
+  }
 
-	.cta-description {
-		margin: 0;
-		font-size: 0.85rem;
-		color: var(--text-muted);
-		line-height: 1.4;
-	}
+  .cta-description {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
 
-	.cta-arrow {
-		color: var(--text-light);
-		transition: var(--transition);
-		display: flex;
-		align-items: center;
-	}
+  .cta-arrow {
+    color: var(--text-light);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+  }
 
-	/* Hover Effects */
-	.timeline-cta:hover .cta-body {
-		border-color: var(--accent);
-		background: var(--bg);
-	}
+  /* Hover Effects */
+  .timeline-cta:hover .cta-body {
+    border-color: var(--accent);
+    background: var(--bg);
+  }
 
-	.timeline-cta:hover .cta-dot-outer {
-		border-style: solid;
-		border-color: var(--accent);
-		transform: scale(1.2);
-	}
+  .timeline-cta:hover .cta-dot-outer {
+    border-style: solid;
+    border-color: var(--accent);
+    transform: scale(1.2);
+  }
 
-	.timeline-cta:hover .cta-dot-inner {
-		background: var(--accent);
-	}
+  .timeline-cta:hover .cta-dot-inner {
+    background: var(--accent);
+  }
 
-	.timeline-cta:hover .cta-title {
-		color: var(--accent);
-	}
+  .timeline-cta:hover .cta-title {
+    color: var(--accent);
+  }
 
-	.timeline-cta:hover .cta-arrow {
-		color: var(--accent);
-	}
+  .timeline-cta:hover .cta-arrow {
+    color: var(--accent);
+  }
 
-	@media (max-width: 768px) {
-		.header {
-			flex-direction: column;
-			align-items: flex-start;
-		}
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
 
-		.points-list {
-			grid-template-columns: 1fr;
-		}
+    .points-list {
+      grid-template-columns: 1fr;
+    }
 
-		.content {
-			padding-bottom: 2.5rem;
-		}
+    .content {
+      padding-bottom: 2.5rem;
+    }
 
-		.timeline-cta {
-			gap: 1rem;
-		}
+    .timeline-cta {
+      gap: 1rem;
+    }
 
-		.cta-body {
-			padding: 1.25rem;
-		}
+    .cta-body {
+      padding: 1.25rem;
+    }
 
-		.cta-description {
-			display: none;
-		}
+    .cta-description {
+      display: none;
+    }
 
-		.cta-title {
-			font-size: 1rem;
-		}
-	}
+    .cta-title {
+      font-size: 1rem;
+    }
+  }
 </style>

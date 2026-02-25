@@ -1,94 +1,90 @@
 ---
 interface Props {
-	tabs: {
-		id: string;
-		label: string;
-	}[];
-	defaultTab?: string;
-	class?: string;
+  tabs: {
+    id: string;
+    label: string;
+  }[];
+  defaultTab?: string;
+  class?: string;
 }
 
 const { tabs, defaultTab, class: className } = Astro.props;
 const initialTab = defaultTab || tabs[0]?.id;
 
 const tabItems = await Promise.all(
-	tabs.map(async (tab) => ({
-		...tab,
-		content: await Astro.slots.render(tab.id),
-	})),
+  tabs.map(async (tab) => ({
+    ...tab,
+    content: await Astro.slots.render(tab.id),
+  })),
 );
 ---
 
 <div class:list={["tabs-container", className]}>
-	<div class="tabs-list" role="tablist">
-		{
-			tabItems.map((tab) => (
-				<button
-					type="button"
-					role="tab"
-					aria-selected={tab.id === initialTab ? "true" : "false"}
-					aria-controls={`panel-${tab.id}`}
-					id={`tab-${tab.id}`}
-					class="tab-button"
-					data-tab={tab.id}
-				>
-					{tab.label}
-				</button>
-			))
-		}
-	</div>
+  <div class="tabs-list" role="tablist">
+    {
+      tabItems.map((tab) => (
+        <button
+          type="button"
+          role="tab"
+          aria-selected={tab.id === initialTab ? "true" : "false"}
+          aria-controls={`panel-${tab.id}`}
+          id={`tab-${tab.id}`}
+          class="tab-button"
+          data-tab={tab.id}
+        >
+          {tab.label}
+        </button>
+      ))
+    }
+  </div>
 
-	<div class="tabs-content">
-		{
-			tabItems.map((tab) => (
-				<div
-					id={`panel-${tab.id}`}
-					role="tabpanel"
-					aria-labelledby={`tab-${tab.id}`}
-					class="tab-panel"
-					hidden={tab.id !== initialTab}
-					set:html={tab.content}
-				/>
-			))
-		}
-	</div>
+  <div class="tabs-content">
+    {
+      tabItems.map((tab) => (
+        <div
+          id={`panel-${tab.id}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${tab.id}`}
+          class="tab-panel"
+          hidden={tab.id !== initialTab}
+          set:html={tab.content}
+        />
+      ))
+    }
+  </div>
 </div>
 
 <script>
-	const initTabs = () => {
-		const containers = document.querySelectorAll(".tabs-container");
+  const initTabs = () => {
+    const containers = document.querySelectorAll(".tabs-container");
 
-		containers.forEach((container) => {
-			const buttons = container.querySelectorAll(".tab-button");
-			const panels = container.querySelectorAll(".tab-panel");
+    containers.forEach((container) => {
+      const buttons = container.querySelectorAll(".tab-button");
+      const panels = container.querySelectorAll(".tab-panel");
 
-			buttons.forEach((button) => {
-				button.addEventListener("click", () => {
-					const tabId = button.getAttribute("data-tab");
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const tabId = button.getAttribute("data-tab");
 
-					// Update buttons in this container
-					buttons.forEach((btn) => {
-						const isSelected =
-							btn.getAttribute("data-tab") === tabId;
-						btn.setAttribute(
-							"aria-selected",
-							isSelected.toString(),
-						);
-					});
+          // Update buttons in this container
+          buttons.forEach((btn) => {
+            const isSelected = btn.getAttribute("data-tab") === tabId;
+            btn.setAttribute("aria-selected", isSelected.toString());
+          });
 
-					// Update panels in this container
-					panels.forEach((panel) => {
-						const isMatch = panel.id === `panel-${tabId}`;
-						panel.hidden = !isMatch;
-					});
-				});
-			});
-		});
-	};
+          // Update panels in this container
+          panels.forEach((panel) => {
+            const isMatch = panel.id === `panel-${tabId}`;
+            panel.hidden = !isMatch;
+          });
+        });
+      });
+    });
+  };
 
-	// Initialize on first load
-	initTabs();
+  // Initialize on first load
+  initTabs();
 
-	// Support Astro View Transitions
-	document.addEventListener("astro:page-load", initTabs);
+  // Support Astro View Transitions
+  document.addEventListener("astro:page-load", initTabs);
 </script>

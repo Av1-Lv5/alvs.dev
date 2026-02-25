@@ -11,119 +11,114 @@ import { Icon } from "astro-icon/components";
 ---
 
 <PageLayout
-	tabTitle="Hire Me"
-	description="Frontend developer available for freelance, contract, or full-time work."
+  tabTitle="Hire Me"
+  description="Frontend developer available for freelance, contract, or full-time work."
 >
-	<section>
-		<h1>Available for hire</h1>
-		<p class="hero-text">
-			I'm a frontend developer, 4 years in. My stack centers on Next.js,
-			TypeScript, and React. I've shipped real estate platforms, budgeting
-			tools in production. I can reach into backend and infrastructure
-			when the project needs it.
-		</p>
-		<p class="hero-text">
-			Currently <strong>available</strong> for freelance, contract, or full-time
-			work.
-		</p>
-	</section>
+  <section>
+    <h1>Available for hire</h1>
+    <p class="hero-text">
+      I'm a frontend developer, 4 years in. My stack centers on Next.js,
+      TypeScript, and React. I've shipped real estate platforms, budgeting tools
+      in production. I can reach into backend and infrastructure when the
+      project needs it.
+    </p>
+    <p class="hero-text">
+      Currently <strong>available</strong> for freelance, contract, or full-time work.
+    </p>
+  </section>
 
-	<section>
-		<h2>Experience</h2>
-		<Experiences count={2} />
-	</section>
+  <section>
+    <h2>Experience</h2>
+    <Experiences count={2} />
+  </section>
 
-	<section>
-		<h2>Core stack</h2>
-		<Skills />
-		<blockquote class="skills-note">
-			For a comprehensive breakdown, check out
-			<a href="/notes/skills-and-tools">
-				my public note on skills and tools
-			</a>.
-		</blockquote>
-	</section>
+  <section>
+    <h2>Core stack</h2>
+    <Skills />
+    <blockquote class="skills-note">
+      For a comprehensive breakdown, check out
+      <a href="/notes/skills-and-tools">
+        my public note on skills and tools
+      </a>.
+    </blockquote>
+  </section>
 
-	<section>
-		<h2>Projects</h2>
-		<ProjectsList count={4} />
-	</section>
+  <section>
+    <h2>Projects</h2>
+    <ProjectsList count={4} />
+  </section>
 
-	<section>
-		<h2>Contact</h2>
-		<p>
-			If you have a role or project that seems like a fit, email is the
-			best way to reach me. I reply within 24-48 hours.
-		</p>
-		<div class="contact-links">
-			<a href={`mailto:${socials.email}`}>
-				<Icon name="lucide:mail" />
-				Send an email
-			</a>
-			<span class="sep">·</span>
-			<a href="/resume">
-				<Icon name="lucide:file-text" />
-				View Resume
-			</a>
-			<span class="sep">·</span>
-			<a
-				href={socials.linkedin}
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<Icon name="lucide:linkedin" />
-				LinkedIn
-			</a>
-			<span class="sep">·</span>
-			<a
-				href={`https://github.com/${socials.githubUsername}`}
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<Icon name="lucide:github" />
-				GitHub
-			</a>
-		</div>
-	</section>
+  <section>
+    <h2>Contact</h2>
+    <p>
+      If you have a role or project that seems like a fit, email is the best way
+      to reach me. I reply within 24-48 hours.
+    </p>
+    <div class="contact-links">
+      <a href={`mailto:${socials.email}`}>
+        <Icon name="lucide:mail" />
+        Send an email
+      </a>
+      <span class="sep">·</span>
+      <a href="/resume">
+        <Icon name="lucide:file-text" />
+        View Resume
+      </a>
+      <span class="sep">·</span>
+      <a href={socials.linkedin} target="_blank" rel="noopener noreferrer">
+        <Icon name="lucide:linkedin" />
+        LinkedIn
+      </a>
+      <span class="sep">·</span>
+      <a
+        href={`https://github.com/${socials.githubUsername}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="lucide:github" />
+        GitHub
+      </a>
+    </div>
+  </section>
 </PageLayout>
 
 <style>
-	.skills-note {
-		margin: 1.5rem 0 0 0;
-		font-size: 0.9rem;
-	}
+  .skills-note {
+    margin: 1.5rem 0 0 0;
+    font-size: 0.9rem;
+  }
 
-	.contact-links {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-		flex-wrap: wrap;
-		font-size: 0.95rem;
-	}
+  .contact-links {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+  }
 
-	.contact-links a {
-		display: flex;
-		align-items: center;
-		gap: 0.4rem;
-		color: var(--text-muted);
-		text-decoration: none;
-		font-weight: 500;
-		transition: var(--transition);
-	}
+  .contact-links a {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+  }
 
-	.contact-links a:hover {
-		color: var(--text);
-	}
+  .contact-links a:hover {
+    color: var(--text);
+  }
 
-	.contact-links svg {
-		width: 16px;
-		height: 16px;
-		flex-shrink: 0;
-	}
+  .contact-links svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
 
-	.sep {
-		color: var(--text-muted);
-		font-size: 1.2rem;
-		user-select: none;
-	}
+  .sep {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    user-select: none;
+  }
 </style>

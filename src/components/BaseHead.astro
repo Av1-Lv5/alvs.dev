@@ -2,20 +2,20 @@
 import { SITE_METADATA } from "@constants/index";
 
 interface Props {
-	title?: string;
-	description?: string;
-	image?: string;
+  title?: string;
+  description?: string;
+  image?: string;
 }
 
 const canonicalURL = new URL(
-	Astro.url.pathname,
-	Astro.site || SITE_METADATA.url,
+  Astro.url.pathname,
+  Astro.site || SITE_METADATA.url,
 );
 
 const {
-	title = SITE_METADATA.title,
-	description = SITE_METADATA.description,
-	image = SITE_METADATA.image,
+  title = SITE_METADATA.title,
+  description = SITE_METADATA.description,
+  image = SITE_METADATA.image,
 } = Astro.props;
 ---
 

@@ -1,41 +1,37 @@
 ---
 import { socials } from "src/constants/index";
 export interface Props {
-	projectRepoId?: string;
-	projectLiveAt?: string;
+  projectRepoId?: string;
+  projectLiveAt?: string;
 }
 const { projectRepoId, projectLiveAt } = Astro.props;
 ---
 
 <div class="project-links">
-	{
-		projectRepoId && (
-			<a
-				class="nav-like"
-				href={`https://github.com/${socials.githubUsername}/${projectRepoId}`}
-				target="_blank"
-			>
-				Code
-			</a>
-		)
-	}
-	{
-		projectLiveAt && (
-			<a
-				class="nav-like"
-				href={`https://${projectLiveAt}`}
-				target="_blank"
-			>
-				Live
-			</a>
-		)
-	}
+  {
+    projectRepoId && (
+      <a
+        class="nav-like"
+        href={`https://github.com/${socials.githubUsername}/${projectRepoId}`}
+        target="_blank"
+      >
+        Code
+      </a>
+    )
+  }
+  {
+    projectLiveAt && (
+      <a class="nav-like" href={`https://${projectLiveAt}`} target="_blank">
+        Live
+      </a>
+    )
+  }
 </div>
 
 <style>
-	.project-links {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
+  .project-links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 </style>

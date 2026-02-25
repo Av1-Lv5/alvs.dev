@@ -6,222 +6,220 @@ import ActorCard from "@components/ActorCard.astro";
 
 import { recommendations, watchlist, favoriteActors } from "@constants/movies";
 import {
-	getMovieById,
-	getShowById,
-	getPersonById,
-	flushCache,
-	type TMDBMedia,
+  getMovieById,
+  getShowById,
+  getPersonById,
+  flushCache,
+  type TMDBMedia,
 } from "@utils/tmdb";
 
 const allItems = recommendations.flatMap((m) => m.items);
 
 const mediaResults = await Promise.all(
-	allItems.map((item) =>
-		item.type === "movie"
-			? getMovieById(item.tmdbId)
-			: getShowById(item.tmdbId),
-	),
+  allItems.map((item) =>
+    item.type === "movie"
+      ? getMovieById(item.tmdbId)
+      : getShowById(item.tmdbId),
+  ),
 );
 
 const watchlistMedia = await Promise.all(
-	watchlist.map((item) =>
-		item.type === "movie"
-			? getMovieById(item.tmdbId)
-			: getShowById(item.tmdbId),
-	),
+  watchlist.map((item) =>
+    item.type === "movie"
+      ? getMovieById(item.tmdbId)
+      : getShowById(item.tmdbId),
+  ),
 );
 
-const people = (await Promise.all(
-	favoriteActors.map((id) => getPersonById(id)),
-)).sort(() => Math.random() - 0.5);
+const people = (
+  await Promise.all(favoriteActors.map((id) => getPersonById(id)))
+).sort(() => Math.random() - 0.5);
 
 flushCache();
 
 const mediaMap = new Map<number, TMDBMedia>();
 mediaResults.forEach((media) => {
-	if (media) mediaMap.set(media.id, media);
+  if (media) mediaMap.set(media.id, media);
 });
 
 const months = recommendations.map((month) => ({
-	...month,
-	items: month.items
-		.map((item) => ({
-			media: mediaMap.get(item.tmdbId),
-			note: item.note,
-		}))
-		.filter(
-			(e): e is { media: TMDBMedia; note: string | undefined } =>
-				e.media !== undefined,
-		),
+  ...month,
+  items: month.items
+    .map((item) => ({
+      media: mediaMap.get(item.tmdbId),
+      note: item.note,
+    }))
+    .filter(
+      (e): e is { media: TMDBMedia; note: string | undefined } =>
+        e.media !== undefined,
+    ),
 }));
 
 const now = new Date();
 const prevMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
 const prevMonthId = `${prevMonth.getFullYear()}-${String(prevMonth.getMonth() + 1).padStart(2, "0")}`;
-const defaultIndex = Math.max(months.findIndex((m) => m.monthId === prevMonthId), 0);
+const defaultIndex = Math.max(
+  months.findIndex((m) => m.monthId === prevMonthId),
+  0,
+);
 ---
 
 <PageLayout
-	tabTitle="Movies"
-	description="Films and shows I've been watching, a running watchlist, and actors whose work I keep coming back to."
+  tabTitle="Movies"
+  description="Films and shows I've been watching, a running watchlist, and actors whose work I keep coming back to."
 >
-	<section class="hero">
-		<h1>Movies</h1>
-		<p class="hero-text">
-			What I've been watching lately, what's up next, and the people whose
-			work I follow.
-		</p>
-	</section>
+  <section class="hero">
+    <h1>Movies</h1>
+    <p class="hero-text">
+      What I've been watching lately, what's up next, and the people whose work
+      I follow.
+    </p>
+  </section>
 
-	<section>
-		<h2>Recommendations</h2>
-		<p>
-			Films and shows I recently watched and think are worth your time,
-			every month I recall something to share
-		</p>
+  <section>
+    <h2>Recommendations</h2>
+    <p>
+      Films and shows I recently watched and think are worth your time, every
+      month I recall something to share
+    </p>
 
-		<div class="month-tabs">
-			<div class="tabs-list" role="tablist">
-				{
-					recommendations.map((month, i) => (
-						<button
-							type="button"
-							role="tab"
-							aria-selected={i === defaultIndex ? "true" : "false"}
-							aria-controls={`panel-${month.monthId}`}
-							id={`tab-${month.monthId}`}
-							class="tab-button"
-							data-tab={month.monthId}
-						>
-							{month.label}
-						</button>
-					))
-				}
-			</div>
+    <div class="month-tabs">
+      <div class="tabs-list" role="tablist">
+        {
+          recommendations.map((month, i) => (
+            <button
+              type="button"
+              role="tab"
+              aria-selected={i === defaultIndex ? "true" : "false"}
+              aria-controls={`panel-${month.monthId}`}
+              id={`tab-${month.monthId}`}
+              class="tab-button"
+              data-tab={month.monthId}
+            >
+              {month.label}
+            </button>
+          ))
+        }
+      </div>
 
-			{
-				months.map((month, i) => (
-					<div
-						id={`panel-${month.monthId}`}
-						role="tabpanel"
-						aria-labelledby={`tab-${month.monthId}`}
-						class="tab-panel"
-						hidden={i !== defaultIndex}
-					>
-						{month.items.length === 0 ? (
-							<p class="empty-month">Nothing logged for this month yet.</p>
-						) : (
-							<div class="movies-grid">
-								{month.items.map(({ media, note }) => (
-									<MovieCard media={media} note={note} />
-								))}
-							</div>
-						)}
-					</div>
-				))
-			}
-		</div>
-	</section>
+      {
+        months.map((month, i) => (
+          <div
+            id={`panel-${month.monthId}`}
+            role="tabpanel"
+            aria-labelledby={`tab-${month.monthId}`}
+            class="tab-panel"
+            hidden={i !== defaultIndex}
+          >
+            {month.items.length === 0 ? (
+              <p class="empty-month">Nothing logged for this month yet.</p>
+            ) : (
+              <div class="movies-grid">
+                {month.items.map(({ media, note }) => (
+                  <MovieCard media={media} note={note} />
+                ))}
+              </div>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </section>
 
-	<section>
-		<h2>Watchlist</h2>
-		<div class="watchlist">
-			{
-				watchlistMedia
-					.filter(Boolean)
-					.map((media) => <WatchlistCard media={media!} />)
-			}
-		</div>
-	</section>
+  <section>
+    <h2>Watchlist</h2>
+    <div class="watchlist">
+      {
+        watchlistMedia
+          .filter(Boolean)
+          .map((media) => <WatchlistCard media={media!} />)
+      }
+    </div>
+  </section>
 
-	<section>
-		<h2>Follow the Craft</h2>
-		<p>
-			People from the film world whose next project goes straight to my
-			queue, no synopsis needed.
-		</p>
+  <section>
+    <h2>Follow the Craft</h2>
+    <p>
+      People from the film world whose next project goes straight to my queue,
+      no synopsis needed.
+    </p>
 
-		<div class="actors-list">
-			{
-				people
-					.filter(Boolean)
-					.map((person) => <ActorCard person={person!} />)
-			}
-		</div>
-		<p class="honest-note">
-			The real list clears three digits easy. Consider this a highlights
-			reel
-		</p>
-	</section>
+    <div class="actors-list">
+      {people.filter(Boolean).map((person) => <ActorCard person={person!} />)}
+    </div>
+    <p class="honest-note">
+      The real list clears three digits easy. Consider this a highlights reel
+    </p>
+  </section>
 </PageLayout>
 
 <script>
-	const initTabs = () => {
-		const container = document.querySelector(".month-tabs");
-		if (!container) return;
+  const initTabs = () => {
+    const container = document.querySelector(".month-tabs");
+    if (!container) return;
 
-		const buttons =
-			container.querySelectorAll<HTMLButtonElement>(".tab-button");
-		const panels = container.querySelectorAll<HTMLElement>(".tab-panel");
+    const buttons =
+      container.querySelectorAll<HTMLButtonElement>(".tab-button");
+    const panels = container.querySelectorAll<HTMLElement>(".tab-panel");
 
-		buttons.forEach((button) => {
-			button.addEventListener("click", () => {
-				const tabId = button.getAttribute("data-tab");
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const tabId = button.getAttribute("data-tab");
 
-				buttons.forEach((btn) => {
-					btn.setAttribute(
-						"aria-selected",
-						(btn.getAttribute("data-tab") === tabId).toString(),
-					);
-				});
+        buttons.forEach((btn) => {
+          btn.setAttribute(
+            "aria-selected",
+            (btn.getAttribute("data-tab") === tabId).toString(),
+          );
+        });
 
-				panels.forEach((panel) => {
-					panel.hidden = panel.id !== `panel-${tabId}`;
-				});
-			});
-		});
-	};
+        panels.forEach((panel) => {
+          panel.hidden = panel.id !== `panel-${tabId}`;
+        });
+      });
+    });
+  };
 
-	initTabs();
-	document.addEventListener("astro:page-load", initTabs);
+  initTabs();
+  document.addEventListener("astro:page-load", initTabs);
 </script>
 
 <style>
-	.movies-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-		gap: 1.25rem;
-	}
+  .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.25rem;
+  }
 
-	.watchlist {
-		display: flex;
-		flex-direction: column;
-		margin-top: 1.5rem;
-	}
+  .watchlist {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+  }
 
-	.empty-month {
-		font-size: 0.9rem;
-		color: var(--text-light);
-		padding: 2rem 0;
-	}
+  .empty-month {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    padding: 2rem 0;
+  }
 
-	.honest-note {
-		font-size: 0.8rem;
-		font-style: italic;
-		color: var(--text-light);
-		margin-top: 0.25rem;
-	}
+  .honest-note {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--text-light);
+    margin-top: 0.25rem;
+  }
 
-	.actors-list {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-		gap: 1rem;
-		margin-top: 1.5rem;
-	}
+  .actors-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
 
-	@media (max-width: 640px) {
-		.movies-grid {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
+  @media (max-width: 640px) {
+    .movies-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 </style>

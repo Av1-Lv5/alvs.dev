@@ -26,9 +26,9 @@ Colive Archive is a anonymous open platform designed to bridge the gap between t
 
 - Built with React, bootstrapped with Vite.
 - **Backend & Database**: Utilizes **Supabase** for a serverless architecture, handling:
-    - **Authentication**: Secure user management and invite validation.
-    - **Database**: PostgreSQL for structured data and complex queries.
-    - **Storage**: Scalable object storage for user-submitted media.
+  - **Authentication**: Secure user management and invite validation.
+  - **Database**: PostgreSQL for structured data and complex queries.
+  - **Storage**: Scalable object storage for user-submitted media.
 - **Security**: Implements Row Level Security (RLS) policies to ensure data privacy and integrity.
 
 ### The Challenge & Solution

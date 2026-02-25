@@ -5,53 +5,53 @@ import PageLayout from "@layouts/PageLayout.astro";
 ---
 
 <PageLayout
-	tabTitle="Projects"
-	description="Products, experiments, implementations."
+  tabTitle="Projects"
+  description="Products, experiments, implementations."
 >
-	<section class="hero">
-		<h1>Things I've built</h1>
-		<p class="hero-text">
-			Building is my favorite way to learn. Each project is a deep dive
-			into specific problems, patterns, and technologies.
-		</p>
-		<p><a href="/hire-me">Currently available for work →</a></p>
-	</section>
+  <section class="hero">
+    <h1>Things I've built</h1>
+    <p class="hero-text">
+      Building is my favorite way to learn. Each project is a deep dive into
+      specific problems, patterns, and technologies.
+    </p>
+    <p><a href="/hire-me">Currently available for work →</a></p>
+  </section>
 
-	<section>
-		<h2>Featured</h2>
-		<ProjectsList />
-	</section>
+  <section>
+    <h2>Featured</h2>
+    <ProjectsList />
+  </section>
 
-	<section>
-		<h2>Philosophy</h2>
-		<div class="note-content">
-			<p>
-				I'm an advocate for 'shipping' over 'polishing forever'. I don't
-				wait for perfection to launch, I launch to perfect the product
-				in the real world.
-			</p>
-			<p class="note-footer">
-				Want to talk about a specific project? Feel free to <a
-					href="/connect">reach out</a
-				>.
-			</p>
-		</div>
-	</section>
+  <section>
+    <h2>Philosophy</h2>
+    <div class="note-content">
+      <p>
+        I'm an advocate for 'shipping' over 'polishing forever'. I don't wait
+        for perfection to launch, I launch to perfect the product in the real
+        world.
+      </p>
+      <p class="note-footer">
+        Want to talk about a specific project? Feel free to <a href="/connect"
+          >reach out</a
+        >.
+      </p>
+    </div>
+  </section>
 </PageLayout>
 
 <style>
-	.note-content p {
-		margin: 0;
-		font-size: 1rem;
-		line-height: 1.6;
-		color: var(--text-muted);
-		max-width: 65ch;
-	}
+  .note-content p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 65ch;
+  }
 
-	.note-footer {
-		color: var(--text-light);
-		font-style: italic;
-		font-size: 0.85rem !important;
-		margin-top: 1.5rem !important;
-	}
+  .note-footer {
+    color: var(--text-light);
+    font-style: italic;
+    font-size: 0.85rem !important;
+    margin-top: 1.5rem !important;
+  }
 </style>

@@ -11,149 +11,145 @@ import { followFeeds } from "@constants/feeds";
 ---
 
 <PageLayout
-	tabTitle="Feeds"
-	description="Follow the pulse. Public activity feeds."
+  tabTitle="Feeds"
+  description="Follow the pulse. Public activity feeds."
 >
-	<section class="hero">
-		<h1>/feeds</h1>
-		<p class="hero-text">
-			This page lists all the current feeds you can use to follow my
-			public activity. As well as feeds i personally follow.
-		</p>
-		<p>
-			Read
-			<a
-				href="https://marcus.io/blog/making-rss-more-visible-again-with-slash-feeds"
-				target="_blank"
-			>
-				the original post &#x2197;
-			</a> where this kind of page is suggested. And this is my version of it.
-		</p>
+  <section class="hero">
+    <h1>/feeds</h1>
+    <p class="hero-text">
+      This page lists all the current feeds you can use to follow my public
+      activity. As well as feeds i personally follow.
+    </p>
+    <p>
+      Read
+      <a
+        href="https://marcus.io/blog/making-rss-more-visible-again-with-slash-feeds"
+        target="_blank"
+      >
+        the original post &#x2197;
+      </a> where this kind of page is suggested. And this is my version of it.
+    </p>
 
-		<blockquote>
-			<p>
-				<strong>New to feeds?</strong> Check out
-				<a href="https://aboutfeeds.com/" target="_blank">
-					aboutfeeds.com &#x2197;
-				</a> to learn how they work and how to get started.
-				<br />
-				I personally use
-				<a href="https://netnewswire.com/" target="_blank">
-					NetNewsWire &#x2197;
-				</a> as my primary feed reader, and
-				<a href="https://github.com/spacecowboy/Feeder">
-					Feeder &#x2197;
-				</a> on android.
-			</p>
-		</blockquote>
-	</section>
+    <blockquote>
+      <p>
+        <strong>New to feeds?</strong> Check out
+        <a href="https://aboutfeeds.com/" target="_blank">
+          aboutfeeds.com &#x2197;
+        </a> to learn how they work and how to get started.
+        <br />
+        I personally use
+        <a href="https://netnewswire.com/" target="_blank">
+          NetNewsWire &#x2197;
+        </a> as my primary feed reader, and
+        <a href="https://github.com/spacecowboy/Feeder"> Feeder &#x2197; </a> on android.
+      </p>
+    </blockquote>
+  </section>
 
-	<section>
-		<h2>My Public Activity</h2>
-		<div class="feed-grid">
-			<a
-				href={`${socials.mastodon}.rss`}
-				target="_blank"
-				class="card feed-card"
-			>
-				<Icon name="simple-icons:mastodon" size={20} />
-				<div class="card-content">
-					<h3>Mastodon</h3>
-					<p>Follow my public posts on the Fediverse.</p>
-				</div>
-			</a>
-			<a
-				href={`https://github.com/${socials.githubUsername}.atom`}
-				target="_blank"
-				class="card feed-card"
-			>
-				<Icon name="simple-icons:github" size={20} />
-				<div class="card-content">
-					<h3>GitHub</h3>
-					<p>
-						Follow my code activity and open source contributions.
-					</p>
-				</div>
-			</a>
-		</div>
-	</section>
+  <section>
+    <h2>My Public Activity</h2>
+    <div class="feed-grid">
+      <a
+        href={`${socials.mastodon}.rss`}
+        target="_blank"
+        class="card feed-card"
+      >
+        <Icon name="simple-icons:mastodon" size={20} />
+        <div class="card-content">
+          <h3>Mastodon</h3>
+          <p>Follow my public posts on the Fediverse.</p>
+        </div>
+      </a>
+      <a
+        href={`https://github.com/${socials.githubUsername}.atom`}
+        target="_blank"
+        class="card feed-card"
+      >
+        <Icon name="simple-icons:github" size={20} />
+        <div class="card-content">
+          <h3>GitHub</h3>
+          <p>Follow my code activity and open source contributions.</p>
+        </div>
+      </a>
+    </div>
+  </section>
 
-	<section>
-		<h2>Feeds I Follow</h2>
-		<Tabs
-			tabs={[
-				{ id: "technical", label: "Technical" },
-				{ id: "news", label: "News & Policy" },
-				{ id: "personal", label: "Personal" },
-			]}
-		>
-			<div slot="technical">
-				<div class="feed-grid">
-					{
-						followFeeds
-							.find((feed) => feed.category === "technical")
-							?.feeds.map((feed) => <FeedFollowCard {...feed} />)
-					}
-				</div>
-			</div>
+  <section>
+    <h2>Feeds I Follow</h2>
+    <Tabs
+      tabs={[
+        { id: "technical", label: "Technical" },
+        { id: "news", label: "News & Policy" },
+        { id: "personal", label: "Personal" },
+      ]}
+    >
+      <div slot="technical">
+        <div class="feed-grid">
+          {
+            followFeeds
+              .find((feed) => feed.category === "technical")
+              ?.feeds.map((feed) => <FeedFollowCard {...feed} />)
+          }
+        </div>
+      </div>
 
-			<div slot="news">
-				<div class="feed-grid">
-					{
-						followFeeds
-							.find((feed) => feed.category === "news & policy")
-							?.feeds.map((feed) => <FeedFollowCard {...feed} />)
-					}
-				</div>
-			</div>
+      <div slot="news">
+        <div class="feed-grid">
+          {
+            followFeeds
+              .find((feed) => feed.category === "news & policy")
+              ?.feeds.map((feed) => <FeedFollowCard {...feed} />)
+          }
+        </div>
+      </div>
 
-			<div slot="personal">
-				<div class="feed-grid">
-					{
-						followFeeds
-							.find((feed) => feed.category === "personal")
-							?.feeds.map((feed) => <FeedFollowCard {...feed} />)
-					}
-				</div>
-			</div>
-		</Tabs>
-	</section>
+      <div slot="personal">
+        <div class="feed-grid">
+          {
+            followFeeds
+              .find((feed) => feed.category === "personal")
+              ?.feeds.map((feed) => <FeedFollowCard {...feed} />)
+          }
+        </div>
+      </div>
+    </Tabs>
+  </section>
 </PageLayout>
 
 <style>
-	.feed-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-		gap: 1.5rem;
-		margin-top: 1.5rem;
-	}
+  .feed-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
 
-	.feed-card {
-		display: flex;
-		align-items: start;
-		gap: 1rem;
-		text-decoration: none !important;
-		color: inherit;
-	}
+  .feed-card {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    text-decoration: none !important;
+    color: inherit;
+  }
 
-	.feed-card svg {
-		margin-top: 3px;
-		flex-shrink: 0;
-	}
-	.feed-card h3 {
-		margin: 0;
-		font-size: 1.25rem;
-	}
+  .feed-card svg {
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+  .feed-card h3 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
 
-	.feed-card p {
-		margin: 0.25rem 0 0;
-		font-size: 0.9rem;
-		line-height: 1.4;
-	}
+  .feed-card p {
+    margin: 0.25rem 0 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
 
-	@media (max-width: 640px) {
-		.feed-grid {
-			grid-template-columns: 1fr;
-		}
-	}
+  @media (max-width: 640px) {
+    .feed-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>

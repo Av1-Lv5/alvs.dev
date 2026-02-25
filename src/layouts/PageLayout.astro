@@ -4,9 +4,9 @@ import Layout from "@layouts/Layout.astro";
 
 // types
 type Props = {
-	tabTitle: string;
-	description?: string;
-	image?: string;
+  tabTitle: string;
+  description?: string;
+  image?: string;
 };
 
 // props
@@ -14,11 +14,11 @@ const { tabTitle, description, image } = Astro.props;
 ---
 
 <Layout
-	categoryTabTitle="avi"
-	pageTabTitle={tabTitle}
-	showNav={true}
-	description={description}
-	image={image}
+  categoryTabTitle="avi"
+  pageTabTitle={tabTitle}
+  showNav={true}
+  description={description}
+  image={image}
 >
-	<slot />
+  <slot />
 </Layout>

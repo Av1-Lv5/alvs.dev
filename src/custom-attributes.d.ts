@@ -1,6 +1,6 @@
 declare namespace astroHTML.JSX {
-	interface HTMLAttributes {
-		netlify?: true;
-		tags?: string;
-	}
+  interface HTMLAttributes {
+    netlify?: true;
+    tags?: string;
+  }
 }

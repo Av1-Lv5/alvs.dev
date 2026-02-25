@@ -2,144 +2,144 @@
 import type { TMDBPerson } from "@utils/tmdb";
 
 interface Props {
-	person: TMDBPerson;
+  person: TMDBPerson;
 }
 
 const { person } = Astro.props;
 ---
 
 <a
-	href={person.tmdbUrl}
-	target="_blank"
-	rel="noopener noreferrer"
-	class="film-card"
-	title={person.name}
+  href={person.tmdbUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="film-card"
+  title={person.name}
 >
-	{
-		person.profileUrl ? (
-			<img
-				src={person.profileUrl}
-				alt={person.name}
-				loading="lazy"
-				class="film-img"
-			/>
-		) : (
-			<div class="film-img placeholder" aria-hidden="true" />
-		)
-	}
+  {
+    person.profileUrl ? (
+      <img
+        src={person.profileUrl}
+        alt={person.name}
+        loading="lazy"
+        class="film-img"
+      />
+    ) : (
+      <div class="film-img placeholder" aria-hidden="true" />
+    )
+  }
 
-	<!-- Progressive blur layers — each covers full card, mask controls zone -->
-	<div class="blur-layer blur-1" aria-hidden="true"></div>
-	<div class="blur-layer blur-2" aria-hidden="true"></div>
-	<div class="blur-layer blur-3" aria-hidden="true"></div>
-	<div class="blur-layer blur-4" aria-hidden="true"></div>
+  <!-- Progressive blur layers — each covers full card, mask controls zone -->
+  <div class="blur-layer blur-1" aria-hidden="true"></div>
+  <div class="blur-layer blur-2" aria-hidden="true"></div>
+  <div class="blur-layer blur-3" aria-hidden="true"></div>
+  <div class="blur-layer blur-4" aria-hidden="true"></div>
 
-	<!-- Dark gradient scrim on top of blur -->
-	<div class="scrim" aria-hidden="true"></div>
+  <!-- Dark gradient scrim on top of blur -->
+  <div class="scrim" aria-hidden="true"></div>
 
-	<div class="film-info">
-		<span class="film-name">{person.name}</span>
-	</div>
+  <div class="film-info">
+    <span class="film-name">{person.name}</span>
+  </div>
 </a>
 
 <style>
-	.film-card {
-		position: relative;
-		display: block;
-		border-radius: 10px;
-		overflow: hidden;
-		aspect-ratio: 2 / 3;
-		background: var(--bg-soft);
-		box-shadow: inset 0 0 0 1px var(--border);
-		text-decoration: none;
-		transition:
-			transform 0.2s ease,
-			box-shadow 0.2s ease;
-	}
+  .film-card {
+    position: relative;
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 2 / 3;
+    background: var(--bg-soft);
+    box-shadow: inset 0 0 0 1px var(--border);
+    text-decoration: none;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
 
-	.film-card:hover {
-		transform: translateY(-3px);
-		box-shadow:
-			inset 0 0 0 1px var(--border),
-			0 10px 28px rgba(0, 0, 0, 0.2);
-	}
+  .film-card:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      inset 0 0 0 1px var(--border),
+      0 10px 28px rgba(0, 0, 0, 0.2);
+  }
 
-	.film-img {
-		position: absolute;
-		inset: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		object-position: top center;
-		display: block;
-	}
+  .film-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
 
-	.placeholder {
-		background: var(--bg-soft);
-	}
+  .placeholder {
+    background: var(--bg-soft);
+  }
 
-	/* Progressive blur — each layer uses mask-image to confine its blur zone */
-	.blur-layer {
-		position: absolute;
-		inset: 0;
-		-webkit-mask-repeat: no-repeat;
-		mask-repeat: no-repeat;
-		-webkit-mask-size: 100% 100%;
-		mask-size: 100% 100%;
-	}
+  /* Progressive blur — each layer uses mask-image to confine its blur zone */
+  .blur-layer {
+    position: absolute;
+    inset: 0;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+  }
 
-	.blur-1 {
-		backdrop-filter: blur(2px);
-		-webkit-mask-image: linear-gradient(to top, black 0%, transparent 38%);
-		mask-image: linear-gradient(to top, black 0%, transparent 38%);
-	}
+  .blur-1 {
+    backdrop-filter: blur(2px);
+    -webkit-mask-image: linear-gradient(to top, black 0%, transparent 38%);
+    mask-image: linear-gradient(to top, black 0%, transparent 38%);
+  }
 
-	.blur-2 {
-		backdrop-filter: blur(5px);
-		-webkit-mask-image: linear-gradient(to top, black 0%, transparent 28%);
-		mask-image: linear-gradient(to top, black 0%, transparent 28%);
-	}
+  .blur-2 {
+    backdrop-filter: blur(5px);
+    -webkit-mask-image: linear-gradient(to top, black 0%, transparent 28%);
+    mask-image: linear-gradient(to top, black 0%, transparent 28%);
+  }
 
-	.blur-3 {
-		backdrop-filter: blur(10px);
-		-webkit-mask-image: linear-gradient(to top, black 0%, transparent 18%);
-		mask-image: linear-gradient(to top, black 0%, transparent 18%);
-	}
+  .blur-3 {
+    backdrop-filter: blur(10px);
+    -webkit-mask-image: linear-gradient(to top, black 0%, transparent 18%);
+    mask-image: linear-gradient(to top, black 0%, transparent 18%);
+  }
 
-	.blur-4 {
-		backdrop-filter: blur(18px);
-		-webkit-mask-image: linear-gradient(to top, black 0%, transparent 10%);
-		mask-image: linear-gradient(to top, black 0%, transparent 10%);
-	}
+  .blur-4 {
+    backdrop-filter: blur(18px);
+    -webkit-mask-image: linear-gradient(to top, black 0%, transparent 10%);
+    mask-image: linear-gradient(to top, black 0%, transparent 10%);
+  }
 
-	/* Dark color overlay above the blur */
-	.scrim {
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(
-			to top,
-			rgba(0, 0, 0, 0.7) 0%,
-			rgba(0, 0, 0, 0.1) 40%,
-			transparent 60%
-		);
-	}
+  /* Dark color overlay above the blur */
+  .scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.1) 40%,
+      transparent 60%
+    );
+  }
 
-	.film-info {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		padding: 0.875rem;
-		display: flex;
-		flex-direction: column;
-		gap: 0.15rem;
-	}
+  .film-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.875rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
 
-	.film-name {
-		color: #fff;
-		font-size: 0.875rem;
-		font-weight: 600;
-		line-height: 1.2;
-		letter-spacing: 0.01em;
-	}
+  .film-name {
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+  }
 </style>

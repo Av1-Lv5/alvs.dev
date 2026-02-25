@@ -37,4 +37,4 @@ featured: true
 
 - All the icons used in the project are from [Remix icons &#x2197;](https://remixicon.com/)
 - The designs are from a [frontend mentor challenge &#x2197;](https://www.frontendmentor.io/challenges/inbrowser-markdown-editor-r16TrrQX9)
-    > Frontendmentor is a platform offering, some free and paywalled professional designs for frontend developers to create stunning projects to showcase in their portfolios.
+  > Frontendmentor is a platform offering, some free and paywalled professional designs for frontend developers to create stunning projects to showcase in their portfolios.

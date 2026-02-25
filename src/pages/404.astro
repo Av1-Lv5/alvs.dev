@@ -3,123 +3,123 @@ import PageLayout from "@layouts/PageLayout.astro";
 ---
 
 <PageLayout tabTitle="404" description="Page not found">
-	<section class="error-section">
-		<div class="status-badge">Error 404</div>
-		<h1 class="error-title">Page Not Found</h1>
-		<p class="error-desc">
-			The resource you're looking for has vanished into the void. It might
-			have been moved, deleted, or never existed in the first place.
-		</p>
+  <section class="error-section">
+    <div class="status-badge">Error 404</div>
+    <h1 class="error-title">Page Not Found</h1>
+    <p class="error-desc">
+      The resource you're looking for has vanished into the void. It might have
+      been moved, deleted, or never existed in the first place.
+    </p>
 
-		<div class="path-display">
-			<span class="label">address:</span>
-			<span class="path" id="current-path">/page-not-found</span>
-		</div>
+    <div class="path-display">
+      <span class="label">address:</span>
+      <span class="path" id="current-path">/page-not-found</span>
+    </div>
 
-		<div id="not-found-action">
-			<a href="/" class="nav-like">Return Home</a>
-		</div>
-	</section>
+    <div id="not-found-action">
+      <a href="/" class="nav-like">Return Home</a>
+    </div>
+  </section>
 </PageLayout>
 
 <script>
-	const pathname = window.location.pathname;
-	const actionContainer = document.getElementById("not-found-action");
-	const pathDisplay = document.getElementById("current-path");
+  const pathname = window.location.pathname;
+  const actionContainer = document.getElementById("not-found-action");
+  const pathDisplay = document.getElementById("current-path");
 
-	if (pathDisplay) {
-		pathDisplay.textContent = pathname;
-	}
+  if (pathDisplay) {
+    pathDisplay.textContent = pathname;
+  }
 
-	if (actionContainer) {
-		if (pathname.startsWith("/notes/")) {
-			actionContainer.innerHTML = `
+  if (actionContainer) {
+    if (pathname.startsWith("/notes/")) {
+      actionContainer.innerHTML = `
 				<a href="/notes" class="nav-like">Go to Notes &rarr;</a>
 			`;
-		} else if (pathname.startsWith("/projects/")) {
-			actionContainer.innerHTML = `
+    } else if (pathname.startsWith("/projects/")) {
+      actionContainer.innerHTML = `
 				<a href="/projects" class="nav-like">Go to Projects &rarr;</a>
 			`;
-		}
-	}
+    }
+  }
 </script>
 
 <style>
-	.error-section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		min-height: 50vh;
-		padding: 4rem 0;
-	}
+  .error-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 50vh;
+    padding: 4rem 0;
+  }
 
-	.status-badge {
-		font-family: var(--mono);
-		font-size: 0.75rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		color: var(--accent);
-		background: var(--accent-bg);
-		padding: 0.25rem 0.6rem;
-		border-radius: 4px;
-		width: fit-content;
-		margin-bottom: 1.5rem;
-		font-weight: 600;
-	}
+  .status-badge {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    background: var(--accent-bg);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    width: fit-content;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
 
-	.error-title {
-		margin: 0 0 1rem 0;
-		font-size: 2.5rem;
-		border-bottom: none;
-		padding-bottom: 0;
-	}
+  .error-title {
+    margin: 0 0 1rem 0;
+    font-size: 2.5rem;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
 
-	.error-desc {
-		font-size: 1.125rem;
-		color: var(--text-muted);
-		max-width: 500px;
-		margin-bottom: 2.5rem;
-		line-height: 1.6;
-	}
+  .error-desc {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    max-width: 500px;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
 
-	.path-display {
-		font-family: var(--mono);
-		background: var(--bg-soft);
-		padding: 1rem 1.25rem;
-		border-radius: var(--radius);
-		border: 1px solid var(--border);
-		font-size: 0.9rem;
-		margin-bottom: 2.5rem;
-		display: flex;
-		gap: 0.75rem;
-		width: fit-content;
-	}
+  .path-display {
+    font-family: var(--mono);
+    background: var(--bg-soft);
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    font-size: 0.9rem;
+    margin-bottom: 2.5rem;
+    display: flex;
+    gap: 0.75rem;
+    width: fit-content;
+  }
 
-	.label {
-		color: var(--text-light);
-		user-select: none;
-	}
+  .label {
+    color: var(--text-light);
+    user-select: none;
+  }
 
-	.path {
-		color: var(--accent);
-		word-break: break-all;
-	}
+  .path {
+    color: var(--accent);
+    word-break: break-all;
+  }
 
-	#not-found-action {
-		display: flex;
-		gap: 0.75rem;
-	}
+  #not-found-action {
+    display: flex;
+    gap: 0.75rem;
+  }
 
-	@media (max-width: 768px) {
-		.error-section {
-			padding: 2rem 0;
-		}
-		.error-title {
-			font-size: 2rem;
-		}
-		.path-display {
-			font-size: 0.8rem;
-			padding: 0.75rem;
-		}
-	}
+  @media (max-width: 768px) {
+    .error-section {
+      padding: 2rem 0;
+    }
+    .error-title {
+      font-size: 2rem;
+    }
+    .path-display {
+      font-size: 0.8rem;
+      padding: 0.75rem;
+    }
+  }
 </style>
