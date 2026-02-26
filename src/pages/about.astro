@@ -25,14 +25,19 @@ import PageLayout from "@layouts/PageLayout.astro";
     </div>
   </section>
 
-  <section>
+  <section id="random-bits">
     <h2>Random bits</h2>
     <div class="bits-grid">
       <div class="bit-card card">
         <p>Prefers chai over coffee (green tea is overrated)</p>
       </div>
+
       <div class="bit-card card">
         <p>Team Android, always</p>
+        <script
+          is:inline
+          src="https://keepandroidopen.org/banner.js?link=https://keepandroidopen.org/&hidebutton=off&id=random-bits"
+        ></script>
       </div>
       <div class="bit-card card">
         <p>Main colors: black, white, blue, and gray</p>
@@ -86,6 +91,7 @@ import PageLayout from "@layouts/PageLayout.astro";
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 1.25rem;
+    margin-bottom: 2rem;
   }
 
   .bit-card {
