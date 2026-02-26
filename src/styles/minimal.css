@@ -1,9 +1,10 @@
 :root {
   /* Palette: Blue, Gray, Black, White */
-  --bg: hsl(0, 0%, 98%);
-  --bg-soft: hsl(0, 0%, 95%);
-  --bg-translucent: hsla(0, 0%, 98%, 0.8);
+  --bg: hsl(40, 20%, 98%);
+  --bg-soft: hsl(40, 14%, 95%);
+  --bg-translucent: hsla(40, 20%, 98%, 0.8);
   --accent-bg: hsl(216, 33%, 95%);
+  --dot: rgba(0, 0, 0, 0.07);
   --text: #111111;
   --text-muted: #4b5563;
   --text-light: #646a78;
@@ -37,10 +38,11 @@
 /* System preference fallback when no data-theme is set */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: hsl(0, 0%, 5%);
-    --bg-soft: hsl(0, 0%, 8%);
-    --bg-translucent: hsla(0, 0%, 5%, 0.8);
+    --bg: hsl(220, 18%, 5%);
+    --bg-soft: hsl(220, 15%, 8%);
+    --bg-translucent: hsla(220, 18%, 5%, 0.8);
     --accent-bg: #171717;
+    --dot: rgba(255, 255, 255, 0.04);
     --text: hsl(220, 5%, 92%);
     --text-muted: hsl(220, 7%, 65%);
     --text-light: hsl(220, 3%, 55%);
@@ -63,6 +65,8 @@ html {
   font-family: var(--sans);
   line-height: var(--line-height);
   background-color: var(--bg);
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+  background-size: 24px 24px;
   color: var(--text);
   box-sizing: border-box;
   font-size: 16px;
