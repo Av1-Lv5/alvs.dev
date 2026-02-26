@@ -28,7 +28,9 @@ const { project } = Astro.props;
       projectRepoId={project.data.repoId}
     />
   </div>
-  <slot />
+  <div id="project-content">
+    <slot />
+  </div>
 </Layout>
 
 <style>
@@ -37,18 +39,18 @@ const { project } = Astro.props;
     margin: 1.5rem 0;
     justify-content: space-between;
   }
-  :global(a.nav-like) {
+  #project-content :global(a.nav-like) {
     border-color: var(--accent);
     color: var(--accent);
   }
-  :global(img) {
+  #project-content :global(img) {
     height: 250px;
     width: 100%;
     object-fit: cover;
     object-position: center;
   }
   @media (max-width: 768px) {
-    :global(img) {
+    #project-content :global(img) {
       height: 150px;
     }
   }
