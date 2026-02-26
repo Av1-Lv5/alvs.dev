@@ -6,15 +6,22 @@ import { Icon } from "astro-icon/components";
   <button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
     <Icon name="lucide:sun" class="sun-icon" size={20} />
     <Icon name="lucide:moon" class="moon-icon" size={20} />
-    <Icon name="lucide:monitor" class="system-icon" size={20} />
+    <!-- <Icon name="lucide:monitor" class="system-icon" size={20} /> -->
   </button>
 </div>
 
 <script>
+  import { switchOffSound } from "@utils/sound/switch-off.ts";
+  import { playSound } from "@utils/sound/sound-engine.ts";
+
+  if (localStorage.getItem("theme") === "system") {
+    localStorage.removeItem("theme");
+  }
+
   const toggle = document.getElementById("theme-toggle");
 
   const getTheme = () => {
-    return localStorage.getItem("theme") || "system";
+    return localStorage.getItem("theme") || "dark";
   };
 
   const setTheme = (theme: string) => {
@@ -24,23 +31,27 @@ import { Icon } from "astro-icon/components";
     } else if (theme === "light") {
       document.documentElement.setAttribute("data-theme", "light");
     } else {
-      document.documentElement.removeAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", "dark");
     }
   };
 
-  toggle?.addEventListener("click", () => {
+  toggle?.addEventListener("click", async () => {
+    await playSound(switchOffSound.dataUri, { volume: 0.04 });
     const currentTheme = getTheme();
-    let nextTheme = "system";
+    const nextTheme = currentTheme === "dark" ? "light" : "dark";
 
-    if (currentTheme === "system") {
-      nextTheme = "light";
-    } else if (currentTheme === "light") {
-      nextTheme = "dark";
-    } else {
-      nextTheme = "system";
+    if (!("startViewTransition" in document)) {
+      setTheme(nextTheme);
+      return;
     }
 
-    setTheme(nextTheme);
+    document.documentElement.classList.add("theme-transitioning");
+    const transition = (document as any).startViewTransition(() => {
+      setTheme(nextTheme);
+    });
+    transition.finished.finally(() => {
+      document.documentElement.classList.remove("theme-transitioning");
+    });
   });
 </script>
 
@@ -79,5 +90,29 @@ import { Icon } from "astro-icon/components";
   }
   :global(:root[data-theme="dark"]) .moon-icon {
     display: block;
+  }
+</style>
+
+<style is:global>
+  @keyframes theme-reveal-down {
+    from {
+      clip-path: inset(0 0 100% 0);
+    }
+    to {
+      clip-path: inset(0 0 0% 0);
+    }
+  }
+
+  ::view-transition-old(root) {
+    animation: none;
+  }
+
+  ::view-transition-new(root) {
+    animation: theme-reveal-down 0.45s ease forwards;
+  }
+
+  html.theme-transitioning * {
+    user-select: none !important;
+    pointer-events: none !important;
   }
 </style>
