@@ -21,7 +21,7 @@ const { project } = Astro.props;
   showNav={false}
   description={project.data.description}
 >
-  <div>
+  <div class="actions-container">
     <BackInHistory />
     <ProjectLinks
       projectLiveAt={project.data.liveAt}
@@ -34,12 +34,12 @@ const { project } = Astro.props;
 </Layout>
 
 <style>
-  div {
+  .actions-container {
     display: flex;
     margin: 1.5rem 0;
     justify-content: space-between;
   }
-  #project-content :global(a.nav-like) {
+  .actions-container :global(a.nav-like) {
     border-color: var(--accent);
     color: var(--accent);
   }
