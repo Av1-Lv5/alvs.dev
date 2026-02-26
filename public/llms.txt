@@ -21,7 +21,7 @@ I build focused web projects to learn and solve real problems. Passionate about 
 - Now: https://alvs.dev/now - Current activities and focus 
 - Connect: https://alvs.dev/connect - Contact info and collaboration inquiries
 
-- Hire me: https://alvs.dev/hire-me - 
+- Hire me: https://alvs.dev/Resume - Things recruiters look for.
 - Projects: https://alvs.dev/projects - Featured projects (Orbit, Audiophile, etc.)
 - Experience: https://alvs.dev/experience - Professional timeline from 2021-present
 
@@ -29,7 +29,7 @@ I build focused web projects to learn and solve real problems. Passionate about 
 - Books: https://alvs.dev/books - Reading list and thoughts
 
 - Music: https://alvs.dev/music - Lists top artists and top tracks
-- Movies: https://alvs.dev/movies - 
+- Movies: https://alvs.dev/movies - My watchlist and recommendations
 
 - Uses: https://alvs.dev/uses - Tools and setup 
 - Feeds: https://alvs.dev/feeds - to follow my public activity. As well as feeds i personally follow

@@ -11,19 +11,19 @@ import { Icon } from "astro-icon/components";
 ---
 
 <PageLayout
-  tabTitle="Hire Me"
+  tabTitle="Resume"
   description="Frontend developer available for freelance, contract, or full-time work."
 >
   <section>
-    <h1>Available for hire</h1>
+    <h1>Resume</h1>
     <p class="hero-text">
-      I'm a frontend developer, 4 years in. My stack centers on Next.js,
-      TypeScript, and React. I've shipped real estate platforms, budgeting tools
-      in production. I can reach into backend and infrastructure when the
-      project needs it.
+      I'm Avinash a frontend developer, 4 years in. My core stack centers on
+      Next.js, TypeScript, and Tailwind CSS. I've shipped real estate platforms,
+      budgeting tools in production. I can reach into backend and infrastructure
+      when the project needs it.
     </p>
     <p class="hero-text">
-      Currently <strong>available</strong> for freelance, contract, or full-time work.
+      <strong>Currently available</strong> for freelance, contract, or full-time work.
     </p>
   </section>
 
@@ -60,9 +60,11 @@ import { Icon } from "astro-icon/components";
         Send an email
       </a>
       <span class="sep">·</span>
-      <a href="/resume">
-        <Icon name="lucide:file-text" />
-        View Resume
+      <a
+        href="https://docs.google.com/document/d/18bA86UaDA-uf2K0nV5dYiv23MMp_YkEjvkvXBcwXH6M/export?format=pdf"
+      >
+        <Icon name="lucide:download" />
+        Resume
       </a>
       <span class="sep">·</span>
       <a href={socials.linkedin} target="_blank" rel="noopener noreferrer">
