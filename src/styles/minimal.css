@@ -218,7 +218,9 @@ footer {
   font-size: 0.875rem;
   text-align: center;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 12px;
+  /* justify-content: space-between; */
 }
 
 li blockquote {
