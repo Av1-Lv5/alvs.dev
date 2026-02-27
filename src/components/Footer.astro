@@ -32,8 +32,10 @@ import AvRunner from "@components/AvRunner.astro";
   .footer-container {
     display: flex;
     align-items: center;
+    flex-direction: row;
     justify-content: space-between;
   }
+
   .footer-left {
     text-align: left;
   }
@@ -71,6 +73,10 @@ import AvRunner from "@components/AvRunner.astro";
       flex-direction: column;
       align-items: center;
       text-align: center;
+    }
+
+    .footer-container {
+      flex-direction: column;
     }
 
     .footer-meta {
