@@ -20,29 +20,64 @@ const hasMore = count ? allExperiences.length > count : false;
           <div class="line" />
         </div>
         <div class="content">
-          <div class="header">
-            <div class="main-info">
-              <div class="company-group">
-                <h4 class="company">{exp.company}</h4>
-                {exp.location && (
-                  <div class="location">
-                    <Icon name="lucide:map-pin" size={12} />
-                    <span>{exp.location}</span>
+          {hasMore ? (
+            <details class="points-toggle">
+              <summary class="header">
+                <div class="main-info">
+                  <div class="company-group">
+                    <h4 class="company">{exp.company}</h4>
+                    {exp.location && (
+                      <div class="location">
+                        <Icon name="lucide:map-pin" size={12} />
+                        <span>{exp.location}</span>
+                      </div>
+                    )}
                   </div>
-                )}
+                  <span class="role">{exp.role}</span>
+                </div>
+                <div class="header-right">
+                  <div class="period-pill">{exp.period}</div>
+                  <Icon name="lucide:chevron-down" class="toggle-chevron" size={16} />
+                </div>
+              </summary>
+              <div class="points-body">
+                <div class="points-list">
+                  {exp.points.map((point) => (
+                    <div class="point-item">
+                      <span class="label">{point.label}</span>
+                      <p class="description">{point.text}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <span class="role">{exp.role}</span>
-            </div>
-            <div class="period-pill">{exp.period}</div>
-          </div>
-          <div class="points-list">
-            {exp.points.map((point) => (
-              <div class="point-item">
-                <span class="label">{point.label}</span>
-                <p class="description">{point.text}</p>
+            </details>
+          ) : (
+            <>
+              <div class="header">
+                <div class="main-info">
+                  <div class="company-group">
+                    <h4 class="company">{exp.company}</h4>
+                    {exp.location && (
+                      <div class="location">
+                        <Icon name="lucide:map-pin" size={12} />
+                        <span>{exp.location}</span>
+                      </div>
+                    )}
+                  </div>
+                  <span class="role">{exp.role}</span>
+                </div>
+                <div class="period-pill">{exp.period}</div>
               </div>
-            ))}
-          </div>
+              <div class="points-list">
+                {exp.points.map((point) => (
+                  <div class="point-item">
+                    <span class="label">{point.label}</span>
+                    <p class="description">{point.text}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
     ))
@@ -87,6 +122,19 @@ const hasMore = count ? allExperiences.length > count : false;
   .experience-entry {
     display: flex;
     gap: 1.5rem;
+    transition: opacity 0.25s ease, filter 0.25s ease;
+  }
+
+  .timeline-cta-wrapper {
+    transition: opacity 0.25s ease, filter 0.25s ease;
+  }
+
+  /* Blur siblings when any summary is hovered */
+  .experience-container:has(summary.header:hover) .experience-entry:not(:has(summary.header:hover)),
+  .experience-container:has(summary.header:hover) .timeline-cta-wrapper {
+    opacity: 0.35;
+    filter: blur(1.5px);
+    transition: opacity 0.4s ease 150ms, filter 0.4s ease 150ms;
   }
 
   /* Timeline track */
@@ -136,12 +184,24 @@ const hasMore = count ? allExperiences.length > count : false;
     padding-bottom: 0;
   }
 
+  /* Shared header layout — applies to both div.header and summary.header */
   .header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 1.25rem;
     gap: 1rem;
+  }
+
+  /* summary resets */
+  summary.header {
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  summary.header::-webkit-details-marker {
+    display: none;
   }
 
   .main-info {
@@ -192,11 +252,39 @@ const hasMore = count ? allExperiences.length > count : false;
     white-space: nowrap;
   }
 
+  /* Collapsible header right side (period + chevron) */
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .toggle-chevron {
+    color: var(--text-light);
+    transition: transform 0.25s ease, color var(--transition);
+    flex-shrink: 0;
+  }
+
+  .points-toggle.is-open .toggle-chevron {
+    transform: rotate(180deg);
+  }
+
+  summary.header:hover .toggle-chevron {
+    color: var(--accent);
+  }
+
+  /* Collapsible body wrapper */
+  .points-body {
+    overflow: hidden;
+  }
+
   /* Points */
   .points-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
+    margin-top: 1.25rem;
   }
 
   .point-item {
@@ -377,3 +465,48 @@ const hasMore = count ? allExperiences.length > count : false;
     }
   }
 </style>
+
+<script>
+  document.querySelectorAll<HTMLDetailsElement>(".points-toggle").forEach((details) => {
+    const summary = details.querySelector("summary")!;
+    const body = details.querySelector<HTMLElement>(".points-body")!;
+    let currentAnim: Animation | null = null;
+
+    summary.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      // Commit and cancel any in-progress animation so we read the real height
+      if (currentAnim) {
+        currentAnim.commitStyles();
+        currentAnim.cancel();
+        currentAnim = null;
+      }
+
+      if (details.open) {
+        // — Close —
+        details.classList.remove("is-open");
+        currentAnim = body.animate(
+          [{ height: body.offsetHeight + "px" }, { height: "0px" }],
+          { duration: 250, easing: "ease" }
+        );
+        currentAnim.onfinish = () => {
+          details.removeAttribute("open");
+          body.style.height = "";
+          currentAnim = null;
+        };
+      } else {
+        // — Open —
+        details.setAttribute("open", "");
+        details.classList.add("is-open");
+        const targetHeight = body.scrollHeight + "px";
+        currentAnim = body.animate(
+          [{ height: "0px" }, { height: targetHeight }],
+          { duration: 250, easing: "ease" }
+        );
+        currentAnim.onfinish = () => {
+          currentAnim = null;
+        };
+      }
+    });
+  });
+</script>
