@@ -1,12 +1,22 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
 <div class="av-runner" id="av-runner">
   <canvas id="av-runner-canvas"></canvas>
   <div class="av-runner-hud">
     <span class="av-runner-hint" id="av-runner-hint">press space to play</span>
     <span class="av-runner-score" id="av-runner-score"></span>
   </div>
+  <button class="av-runner-mute" id="av-runner-mute" aria-label="Toggle sound">
+    <Icon name="lucide:volume-2" class="icon-sound" size={13} />
+    <Icon name="lucide:volume-x" class="icon-muted" size={13} />
+  </button>
 </div>
 
 <script>
+  import { synthJump, synthDoubleJump, synthDeath, synthUnmute, isMuted, setMuted } from "@utils/sound/synth-engine.ts";
+
   // Selectors
   const container = document.getElementById("av-runner")!;
   const canvas = document.getElementById(
@@ -513,10 +523,12 @@
       canDoubleJump = true;
       lastJumpTime = now;
       spawnJumpParticles();
+      synthJump();
     } else if (canDoubleJump && now - lastJumpTime < DOUBLE_JUMP_WINDOW) {
       playerVY = JUMP_VEL * 0.85;
       canDoubleJump = false;
       spawnJumpParticles();
+      synthDoubleJump();
     }
   }
 
@@ -635,6 +647,7 @@
         // Game over
         state = "gameover";
         spawnDeathParticles();
+        synthDeath();
         if (score > bestScore) {
           bestScore = score;
           localStorage.setItem("av-runner-best", String(bestScore));
@@ -883,6 +896,21 @@
     { passive: false },
   );
 
+  // Mute toggle
+  const muteBtn = document.getElementById("av-runner-mute")!;
+  const savedMute = localStorage.getItem("av-runner-muted") === "1";
+  setMuted(savedMute);
+  muteBtn.dataset.muted = String(savedMute);
+
+  muteBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const next = !isMuted();
+    setMuted(next);
+    if (!next) synthUnmute();
+    muteBtn.dataset.muted = String(next);
+    localStorage.setItem("av-runner-muted", next ? "1" : "0");
+  });
+
   // Initial score display
   if (bestScore > 0) {
     scoreEl.textContent = `best: ${String(bestScore).padStart(4, "0")}m`;
@@ -934,6 +962,39 @@
     font-size: 0.65rem;
     color: var(--text-light);
     opacity: 0.6;
+  }
+
+  .av-runner-mute {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: var(--text-light);
+    opacity: 0.4;
+    transition: opacity 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+  }
+
+  .av-runner-mute:hover {
+    opacity: 0.8;
+  }
+
+  .av-runner-mute .icon-muted {
+    display: none;
+  }
+
+  .av-runner-mute[data-muted="true"] .icon-sound {
+    display: none;
+  }
+
+  .av-runner-mute[data-muted="true"] .icon-muted {
+    display: block;
   }
 
   @media (max-width: 768px) {
