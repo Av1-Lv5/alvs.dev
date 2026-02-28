@@ -1,0 +1,201 @@
+---
+import { socials } from "../constants/index";
+
+type Day = { date: string; count: number; level: number };
+
+let weeks: Day[][] = [];
+let totalContributions = 0;
+let fetchError = false;
+
+const CELL = 12; // px
+const GAP = 3; // px
+const COL_WIDTH = CELL + GAP;
+
+try {
+  const res = await fetch(
+    `https://github-contributions-api.jogruber.de/v4/${socials.githubUsername}?y=last`,
+    { signal: AbortSignal.timeout(5000) }
+  );
+  if (res.ok) {
+    const data = await res.json();
+    const days: Day[] = data.contributions;
+    totalContributions = days.reduce((s, d) => s + d.count, 0);
+    for (let i = 0; i < days.length; i += 7) {
+      weeks.push(days.slice(i, i + 7));
+    }
+  } else {
+    fetchError = true;
+  }
+} catch {
+  fetchError = true;
+}
+
+const monthLabels: { label: string; left: number }[] = [];
+weeks.forEach((week, i) => {
+  const firstDay = week[0];
+  if (!firstDay) return;
+  const d = new Date(firstDay.date + "T00:00:00");
+  if (d.getDate() <= 7) {
+    monthLabels.push({
+      label: d.toLocaleString("en-US", { month: "short" }),
+      left: i * COL_WIDTH,
+    });
+  }
+});
+---
+
+<div class="graph-wrap">
+  {
+    fetchError ? (
+      <p class="graph-error">Could not load contribution data.</p>
+    ) : (
+      <div class="graph-scroll">
+        <div class="month-row">
+          {monthLabels.map(({ label, left }) => (
+            <span class="month-label" style={`left: ${left}px`}>
+              {label}
+            </span>
+          ))}
+        </div>
+        <div class="weeks-row">
+          {weeks.map((week) => (
+            <div class="week">
+              {week.map((day) => (
+                <div
+                  class={`cell level-${day.level}`}
+                  title={`${day.count} contribution${day.count !== 1 ? "s" : ""} on ${new Date(day.date + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}`}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="legend">
+        <span>Less</span>
+        <div class="legend-cells">
+          {[0, 1, 2, 3, 4].map((l) => (
+            <div class={`cell level-${l}`} />
+          ))}
+        </div>
+        <span>More</span>
+      </div>
+    )
+  }
+  <p class="caption">
+    All personal projects, no day job in the mix. Gaps may contain 2,000-line
+    'fat ass' commits or unpushed work rotting in a local branch, dense areas
+    may just be me fixing a semicolon. View for the vibes, not the metrics.
+  </p>
+</div>
+
+<style>
+  .graph-wrap {
+    width: 100%;
+  }
+
+  .graph-scroll {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .graph-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Month labels */
+  .month-row {
+    position: relative;
+    height: 16px;
+    margin-bottom: 4px;
+  }
+
+  .month-label {
+    position: absolute;
+    top: 0;
+    font-size: 0.65rem;
+    color: var(--text-light);
+    font-family: var(--mono);
+    white-space: nowrap;
+    line-height: 16px;
+  }
+
+  /* Cell grid */
+  .weeks-row {
+    display: flex;
+    gap: 3px;
+  }
+
+  .week {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .cell {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .cell.level-0 {
+    background: var(--bg-soft);
+    border: 1px solid var(--border-muted);
+  }
+
+  .cell.level-1 {
+    background: color-mix(in srgb, var(--accent) 25%, var(--bg-soft));
+  }
+
+  .cell.level-2 {
+    background: color-mix(in srgb, var(--accent) 50%, var(--bg-soft));
+  }
+
+  .cell.level-3 {
+    background: color-mix(in srgb, var(--accent) 75%, var(--bg-soft));
+  }
+
+  .cell.level-4 {
+    background: var(--accent);
+  }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 6px;
+    justify-content: flex-end;
+  }
+
+  .legend span {
+    font-size: 0.65rem;
+    color: var(--text-light);
+    font-family: var(--mono);
+  }
+
+  .legend-cells {
+    display: flex;
+    gap: 3px;
+  }
+
+  /* Caption */
+  .caption {
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .graph-error {
+    color: var(--text-light);
+    font-size: 0.875rem;
+  }
+</style>
+
+<script>
+  const el = document.querySelector<HTMLElement>(".graph-scroll");
+  if (el) el.scrollLeft = el.scrollWidth;
+</script>

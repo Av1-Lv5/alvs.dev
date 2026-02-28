@@ -6,6 +6,7 @@ import PageLayout from "@layouts/PageLayout.astro";
 import Skills from "@components/Skills.astro";
 import Experiences from "@components/Experiences.astro";
 import ProjectsList from "@components/ProjectsList.astro";
+import GithubCommitGraph from "@components/GithubCommitGraph.astro";
 import { socials } from "@constants/index";
 import { Icon } from "astro-icon/components";
 ---
@@ -46,6 +47,11 @@ import { Icon } from "astro-icon/components";
   <section>
     <h2>Projects</h2>
     <ProjectsList count={4} />
+  </section>
+
+  <section>
+    <h2>Activity</h2>
+    <GithubCommitGraph />
   </section>
 
   <section>
