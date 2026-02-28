@@ -51,7 +51,7 @@ const fullTitle = `${pageTabTitle} • ${categoryTabTitle}`;
     <!-- Theme -->
     <script is:inline>
       (function () {
-        const theme = localStorage.getItem("theme") || "system";
+        const theme = localStorage.getItem("theme") || "dark";
         if (theme === "dark") {
           document.documentElement.setAttribute("data-theme", "dark");
         } else if (theme === "light") {
