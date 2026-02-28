@@ -13,12 +13,13 @@
     "av-runner-canvas",
   ) as HTMLCanvasElement;
   const ctx = canvas.getContext("2d")!;
+
   const hintEl = document.getElementById("av-runner-hint")!;
   const scoreEl = document.getElementById("av-runner-score")!;
 
   // Constants
   const CANVAS_H = 150;
-  const GROUND_Y = CANVAS_H - 20;
+  let GROUND_Y = CANVAS_H - 20;
   const CUBE_SIZE = 22;
   const PLAYER_X = 60;
   const GRAVITY = 0.6;
@@ -40,12 +41,12 @@
   };
 
   function readThemeColors() {
-    const s = getComputedStyle(document.documentElement);
-    colors.bg = s.getPropertyValue("--bg").trim() || colors.bg;
-    colors.ground = s.getPropertyValue("--border").trim() || colors.ground;
-    colors.text = s.getPropertyValue("--text").trim() || colors.text;
+    const styles = getComputedStyle(document.documentElement);
+    colors.bg = styles.getPropertyValue("--bg").trim() || colors.bg;
+    colors.ground = styles.getPropertyValue("--border").trim() || colors.ground;
+    colors.text = styles.getPropertyValue("--text").trim() || colors.text;
     colors.textLight =
-      s.getPropertyValue("--text-light").trim() || colors.textLight;
+      styles.getPropertyValue("--text-light").trim() || colors.textLight;
     const isDark =
       document.documentElement.getAttribute("data-theme") === "dark";
     colors.obstacle = isDark ? "hsl(220, 15%, 35%)" : "hsl(220, 10%, 55%)";
@@ -53,9 +54,11 @@
   }
 
   readThemeColors();
+
   // Watch theme changes
-  const observer = new MutationObserver(() => readThemeColors());
-  observer.observe(document.documentElement, {
+  const themeObserver = new MutationObserver(() => readThemeColors());
+
+  themeObserver.observe(document.documentElement, {
     attributes: true,
     attributeFilter: ["data-theme"],
   });
@@ -66,7 +69,6 @@
   let bestScore = parseInt(localStorage.getItem("av-runner-best") || "0", 10);
   let speed = BASE_SPEED;
   let frameCount = 0;
-  // lastTime = 0 is used as a sentinel meaning "no previous frame yet, use dt=1"
   let lastTime = 0;
   let focused = false;
 
@@ -150,6 +152,8 @@
     canvas.style.width = `${w}px`;
     canvas.style.height = `${h}px`;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    GROUND_Y = h - 20;
+    if (onGround) playerY = GROUND_Y;
 
     // Update hint for mobile
     if (state === "idle") {
