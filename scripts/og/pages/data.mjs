@@ -31,12 +31,14 @@ export async function fetchImageDataUri(url) {
 // recommendations data, reusing the TMDB cache already in the repo so no
 // API key / network call to TMDB itself is needed for already-seen ids.
 export async function loadFeaturedPosters(count = 6) {
-  const { recommendations } = await import(path.join(ROOT, "src/data/movies.ts"));
+  const { recommendations } = await import(
+    path.join(ROOT, "src/data/movies.ts")
+  );
   const cache = JSON.parse(
     await readFile(path.join(ROOT, ".cache/tmdb.json"), "utf-8"),
   );
 
-  const items = recommendations.flatMap((group) => group.items);
+  const items = recommendations;
   const withPosters = [];
 
   for (const item of items) {
@@ -91,7 +93,11 @@ export async function loadProjectThumbs() {
   const withThumbs = [];
   for (const project of projects) {
     if (project.isDraft) continue;
-    const thumbPath = path.join(ROOT, "public/assets/img", `${project.id}-thumb.png`);
+    const thumbPath = path.join(
+      ROOT,
+      "public/assets/img",
+      `${project.id}-thumb.png`,
+    );
     if (!existsSync(thumbPath)) continue;
     const buffer = await readFile(thumbPath);
     withThumbs.push({
