@@ -12,6 +12,8 @@ export interface TMDBMovie {
   overview: string;
   posterUrl: string;
   year: number;
+  /** Full release date, "YYYY-MM-DD" ("" when unknown). */
+  releaseDate: string;
   rating: number;
   genres: string[];
   tmdbUrl: string;
@@ -24,6 +26,8 @@ export interface TMDBShow {
   overview: string;
   posterUrl: string;
   year: number;
+  /** First air date, "YYYY-MM-DD" ("" when unknown). */
+  releaseDate: string;
   rating: number;
   genres: string[];
   tmdbUrl: string;
@@ -113,6 +117,7 @@ export async function getMovieById(id: number): Promise<TMDBMovie | null> {
       overview: data.overview,
       posterUrl: data.poster_path ? `${IMG_BASE}${data.poster_path}` : "",
       year: data.release_date ? parseInt(data.release_date.slice(0, 4)) : 0,
+      releaseDate: data.release_date ?? "",
       rating: Math.round(data.vote_average * 10) / 10,
       genres:
         data.genres?.slice(0, 3).map((g: { name: string }) => g.name) ?? [],
@@ -150,6 +155,7 @@ export async function getShowById(id: number): Promise<TMDBShow | null> {
       overview: data.overview,
       posterUrl: data.poster_path ? `${IMG_BASE}${data.poster_path}` : "",
       year: data.first_air_date ? parseInt(data.first_air_date.slice(0, 4)) : 0,
+      releaseDate: data.first_air_date ?? "",
       rating: Math.round(data.vote_average * 10) / 10,
       genres:
         data.genres?.slice(0, 3).map((g: { name: string }) => g.name) ?? [],

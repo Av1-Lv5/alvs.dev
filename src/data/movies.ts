@@ -6,82 +6,26 @@ export interface RecommendationItem {
   note?: string;
 }
 
-export interface MonthGroup {
-  /** e.g. "2026-02" */
-  monthId: string;
-  /** Human-readable label shown in the tab, e.g. "February 2026" */
-  label: string;
-  items: RecommendationItem[];
-}
-
 // TMDB IDs at https://www.themoviedb.org/
-export const recommendations: MonthGroup[] = [
-  {
-    monthId: "2026-07",
-    label: "July 2026",
-    items: [
-      { tmdbId: 243206, type: "tv" }, // Pritam and Pedro
-      { tmdbId: 1443961, type: "movie" }, // Rao Bahadur
-    ],
-  },
-  {
-    monthId: "2026-06",
-    label: "June 2026",
-    items: [
-      { tmdbId: 61889, type: "tv" }, // Daredevil
-      { tmdbId: 1007757, type: "movie" }, // Swapped
-    ],
-  },
-  {
-    monthId: "2026-05",
-    label: "May 2026",
-    items: [
-      { tmdbId: 1189518, type: "movie" }, // Vaarzha
-      { tmdbId: 1336770, type: "movie" }, // Vaarzha II
-      { tmdbId: 1022789, type: "movie" }, // Inside out 2
-      { tmdbId: 687163, type: "movie" }, // Project hail mary
-    ],
-  },
-  {
-    monthId: "2026-04",
-    label: "April 2026",
-    items: [
-      { tmdbId: 980477, type: "movie" }, // ne zha 2
-      { tmdbId: 1136423, type: "movie" }, // Meiyazhagan
-      { tmdbId: 1473354, type: "movie" }, // Sarvam maya
-      { tmdbId: 84105, type: "tv" }, // Mirzapur
-    ],
-  },
-  {
-    monthId: "2026-03",
-    label: "March 2026",
-    items: [
-      { tmdbId: 37165, type: "movie" }, // The truman show
-      { tmdbId: 1136867, type: "movie" }, // Materialists
-      { tmdbId: 786345, type: "movie" }, // Viduthalai
-      { tmdbId: 1368166, type: "movie" }, // The housemaid
-    ],
-  },
-  {
-    monthId: "2026-02",
-    label: "February 2026",
-    items: [
-      { tmdbId: 122906, type: "movie" }, // About time
-      { tmdbId: 80752, type: "tv" }, // See
-      { tmdbId: 701387, type: "movie" }, // Bugonia
-      { tmdbId: 752, type: "movie" }, // v for vendetta
-    ],
-  },
-  {
-    monthId: "2026-01",
-    label: "January 2026",
-    items: [
-      { tmdbId: 250658, type: "movie" }, // The internet's own boy: The story of Aaron Swartz
-      { tmdbId: 589964, type: "movie" }, // Karuppudurai
-      { tmdbId: 95396, type: "tv" }, // severance
-      { tmdbId: 1062722, type: "movie" }, // frankenstein
-    ],
-  },
+export const recommendations: RecommendationItem[] = [
+  { tmdbId: 1443961, type: "movie" }, // Rao Bahadur
+  { tmdbId: 61889, type: "tv" }, // Daredevil
+  { tmdbId: 1007757, type: "movie" }, // Swapped
+  { tmdbId: 1189518, type: "movie" }, // Vaarzha
+  { tmdbId: 1022789, type: "movie" }, // Inside out 2
+  { tmdbId: 687163, type: "movie" }, // Project hail mary
+  { tmdbId: 1136423, type: "movie" }, // Meiyazhagan
+  { tmdbId: 37165, type: "movie" }, // The truman show
+  { tmdbId: 1136867, type: "movie" }, // Materialists
+  { tmdbId: 786345, type: "movie" }, // Viduthalai
+  { tmdbId: 122906, type: "movie" }, // About time
+  { tmdbId: 80752, type: "tv" }, // See
+  { tmdbId: 701387, type: "movie" }, // Bugonia
+  { tmdbId: 752, type: "movie" }, // v for vendetta
+  { tmdbId: 250658, type: "movie" }, // The internet's own boy: The story of Aaron Swartz
+  { tmdbId: 589964, type: "movie" }, // Karuppudurai
+  { tmdbId: 95396, type: "tv" }, // severance
+  { tmdbId: 1062722, type: "movie" }, // frankenstein
 ];
 
 export const watchlist: { tmdbId: number; type: MediaType }[] = [

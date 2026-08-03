@@ -14,10 +14,8 @@ import {
 } from "@utils/tmdb";
 import { getGeneratedOgImage } from "@utils/og-image";
 
-const allItems = recommendations.flatMap((m) => m.items);
-
 const mediaResults = await Promise.all(
-  allItems.map((item) =>
+  recommendations.map((item) =>
     item.type === "movie"
       ? getMovieById(item.tmdbId)
       : getShowById(item.tmdbId),
@@ -43,26 +41,14 @@ mediaResults.forEach((media) => {
   if (media) mediaMap.set(media.id, media);
 });
 
-const months = recommendations.map((month) => ({
-  ...month,
-  items: month.items
-    .map((item) => ({
-      media: mediaMap.get(item.tmdbId),
-      note: item.note,
-    }))
-    .filter(
-      (e): e is { media: TMDBMedia; note: string | undefined } =>
-        e.media !== undefined,
-    ),
-}));
 
-const now = new Date();
-const prevMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
-const prevMonthId = `${prevMonth.getFullYear()}-${String(prevMonth.getMonth() + 1).padStart(2, "0")}`;
-const defaultIndex = Math.max(
-  months.findIndex((m) => m.monthId === prevMonthId),
-  0,
-);
+const releaseKey = (media: TMDBMedia) =>
+  media.releaseDate || (media.year ? `${media.year}-00-00` : "");
+
+const recItems = recommendations
+  .map((item) => mediaMap.get(item.tmdbId))
+  .filter((media): media is TMDBMedia => media !== undefined)
+  .sort((a, b) => releaseKey(b).localeCompare(releaseKey(a)));
 
 const ogImage = getGeneratedOgImage("pages", "movies");
 ---
@@ -82,51 +68,10 @@ const ogImage = getGeneratedOgImage("pages", "movies");
 
   <section>
     <h2>Recommendations</h2>
-    <p>
-      Films and shows I watched and think are worth your time, every month I
-      recall something to share
-    </p>
+    <p>Films and shows I watched and think are worth your time.</p>
 
-    <div class="month-tabs">
-      <div class="tabs-list" role="tablist">
-        {
-          recommendations.map((month, i) => (
-            <button
-              type="button"
-              role="tab"
-              aria-selected={i === defaultIndex ? "true" : "false"}
-              aria-controls={`panel-${month.monthId}`}
-              id={`tab-${month.monthId}`}
-              class="tab-button"
-              data-tab={month.monthId}
-            >
-              {month.label}
-            </button>
-          ))
-        }
-      </div>
-
-      {
-        months.map((month, i) => (
-          <div
-            id={`panel-${month.monthId}`}
-            role="tabpanel"
-            aria-labelledby={`tab-${month.monthId}`}
-            class="tab-panel"
-            hidden={i !== defaultIndex}
-          >
-            {month.items.length === 0 ? (
-              <p class="empty-month">Nothing logged for this month yet.</p>
-            ) : (
-              <div class="movies-grid">
-                {month.items.map(({ media, note }) => (
-                  <MovieCard media={media} note={note} />
-                ))}
-              </div>
-            )}
-          </div>
-        ))
-      }
+    <div class="movies-grid">
+      {recItems.map((media) => <MovieCard media={media} />)}
     </div>
   </section>
 
@@ -157,37 +102,6 @@ const ogImage = getGeneratedOgImage("pages", "movies");
   </section>
 </PageLayout>
 
-<script>
-  const initTabs = () => {
-    const container = document.querySelector(".month-tabs");
-    if (!container) return;
-
-    const buttons =
-      container.querySelectorAll<HTMLButtonElement>(".tab-button");
-    const panels = container.querySelectorAll<HTMLElement>(".tab-panel");
-
-    buttons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const tabId = button.getAttribute("data-tab");
-
-        buttons.forEach((btn) => {
-          btn.setAttribute(
-            "aria-selected",
-            (btn.getAttribute("data-tab") === tabId).toString(),
-          );
-        });
-
-        panels.forEach((panel) => {
-          panel.hidden = panel.id !== `panel-${tabId}`;
-        });
-      });
-    });
-  };
-
-  initTabs();
-  document.addEventListener("astro:page-load", initTabs);
-</script>
-
 <style>
   .movies-grid {
     display: grid;
@@ -199,12 +113,6 @@ const ogImage = getGeneratedOgImage("pages", "movies");
     display: flex;
     flex-direction: column;
     margin-top: 1.5rem;
-  }
-
-  .empty-month {
-    font-size: 0.9rem;
-    color: var(--text-light);
-    padding: 2rem 0;
   }
 
   .honest-note {
