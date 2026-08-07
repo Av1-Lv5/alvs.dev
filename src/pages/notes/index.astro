@@ -4,9 +4,9 @@ import { getCollection } from "astro:content";
 // layout
 import PageLayout from "@layouts/PageLayout.astro";
 
-// fetching notes to display
+// fetching notes to display; drafts are shown in dev only
 const allNotes = (await getCollection("notes", ({ data }) => {
-  return !data.draft;
+  return !data.draft || import.meta.env.DEV;
 })).sort((a, b) => {
   const dateA = a.data.publishedAt ?? "";
   const dateB = b.data.publishedAt ?? "";
@@ -31,6 +31,7 @@ const allNotes = (await getCollection("notes", ({ data }) => {
           return (
             <li>
               <a href={`/notes/${note.id}`}>{note.data.title}</a>
+              {note.data.draft && <span class="draft-tag">draft</span>}
               {note.data.updatedAt && (
                 <span class="updated-at">Updated {note.data.updatedAt}</span>
               )}
@@ -57,5 +58,13 @@ const allNotes = (await getCollection("notes", ({ data }) => {
     opacity: 0.4;
     flex-shrink: 0;
     margin-left: 1rem;
+  }
+  .draft-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    flex-shrink: 0;
+    margin-left: 0.6rem;
   }
 </style>
