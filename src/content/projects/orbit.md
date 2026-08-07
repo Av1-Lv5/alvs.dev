@@ -8,6 +8,11 @@ liveAt: "orbitbudget.com"
 year: 2026
 isDraft: false
 featured: true
+relatedNotes:
+  - installable-everywhere-means-three-different-things
+  - push-notifications-on-web
+  - one-zod-schema-cant-do-three-jobs
+  - words-first-code-later
 ---
 
 ![Project preview](/assets/img/orbit-thumb.png)

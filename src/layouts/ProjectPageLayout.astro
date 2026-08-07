@@ -1,5 +1,5 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 
 // Components
@@ -12,6 +12,21 @@ type Props = {
 
 // props
 const { project } = Astro.props;
+
+// related notes, in the order declared on the project; drafts shown in dev only
+const relatedSlugs = project.data.relatedNotes ?? [];
+const notesById = new Map(
+  (
+    await getCollection(
+      "notes",
+      ({ id, data }) =>
+        relatedSlugs.includes(id) && (!data.draft || import.meta.env.DEV),
+    )
+  ).map((note) => [note.id, note]),
+);
+const relatedNotes = relatedSlugs
+  .map((slug) => notesById.get(slug))
+  .filter((note): note is CollectionEntry<"notes"> => note !== undefined);
 ---
 
 <Layout
@@ -31,6 +46,21 @@ const { project } = Astro.props;
   <div id="project-content">
     <slot />
   </div>
+  {
+    relatedNotes.length > 0 && (
+      <aside class="related-notes">
+        <p class="related-label">Related notes</p>
+        <ul>
+          {relatedNotes.map((note) => (
+            <li>
+              <a href={`/notes/${note.id}`}>{note.data.title}</a>
+              {note.data.draft && <span class="draft-tag">draft</span>}
+            </li>
+          ))}
+        </ul>
+      </aside>
+    )
+  }
 </Layout>
 
 <style>
@@ -53,5 +83,41 @@ const { project } = Astro.props;
     #project-content :global(img) {
       height: 150px;
     }
+  }
+  .related-notes {
+    margin-top: 4rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--border-muted);
+  }
+  .related-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-light);
+    margin: 0 0 1rem;
+  }
+  .related-notes ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+  }
+  .related-notes li {
+    margin: 0 0 0.4rem;
+    padding: 0;
+  }
+  .related-notes a {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+  .related-notes a:hover {
+    color: var(--accent);
+  }
+  .related-notes .draft-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-left: 0.5rem;
   }
 </style>

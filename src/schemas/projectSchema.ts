@@ -26,4 +26,5 @@ export default {
   year: z.number(),
   isDraft: z.boolean(),
   featured: z.boolean().optional(),
+  relatedNotes: z.array(z.string()).optional(),
 };
