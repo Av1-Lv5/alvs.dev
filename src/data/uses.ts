@@ -25,26 +25,32 @@ export const uses: UseCategory[] = [
     title: "Development",
     items: [
       {
-        name: "Cursor",
+        name: "Zed",
         description: "My primary code editor.",
-        link: "https://www.cursor.com/",
+        link: "https://zed.dev/",
       },
       {
         name: "Open Code",
         description:
-          "My coding agent of choice, when I want to move fast and run multiple experiments in parallel.",
+          "My coding agent of choice when I want to move fast and run multiple experiments in parallel.",
         link: "https://opencode.ai/",
       },
       {
+        name: "AI Models",
+        description:
+          "I've been using Claude models for a long time, Sonnet being the default. Since switching to OpenCode, I use the open models GLM 5.2 for UI, DeepSeek v4 Flash for text generation, and Kimi K2.7 for planning, alongside GPT 5.6 Terra and Luna.",
+      },
+      {
         name: "Ghostty",
-        description: "Smooth, fast, and stays out of the way.",
+        description:
+          "Not a big terminal user, but for the little work I do on it, Ghostty fits my workflows better than anything else I've tried.",
         link: "https://ghostty.org/",
       },
       {
         name: "Helium",
         description:
           "My main browser. Minimal, distraction-free, and stays out of the way.",
-        link: "https://heliumBrowser.com/",
+        link: "https://heliumbrowser.com/",
       },
     ],
   },
@@ -60,7 +66,7 @@ export const uses: UseCategory[] = [
       {
         name: "Anytype",
         description:
-          "A local-first personal database for tracking contacts, companies, and freelance clients.",
+          "A local-first personal database which I use for tracking contacts, companies, and freelance clients.",
         link: "https://anytype.io/",
       },
       {
@@ -84,7 +90,7 @@ export const uses: UseCategory[] = [
       {
         name: "AntennaPod",
         description:
-          "The feature rich podcast manager for Android. Simple, no tracking, no algorithms.",
+          "The feature-rich podcast manager for Android. Simple, no tracking, no algorithms.",
         link: "https://antennapod.org/",
       },
       {
