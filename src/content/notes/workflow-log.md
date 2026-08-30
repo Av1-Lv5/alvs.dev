@@ -1,0 +1,55 @@
+---
+title: "Workflow log"
+tags: ["workflow"]
+publishedAt: "2026-08-31"
+draft: false
+updatedAt: "August 2026"
+---
+
+_A record of the workflows I have tried and kept. This is not a prescription or a claim that this is the right way to work. It is just a log of what made sense to me at a particular point in time._
+
+## Current setup
+
+At the moment, my setup is deliberately small: one Ghostty window, one Zed window, and, when I am doing frontend work, one Helium window.
+
+- **Ghostty:** My terminal workspace. The first tab is the main project and is available with `Cmd+1`. Other projects and separate codebases get their own tabs.
+- **OpenCode:** My main coding agent, kept in project-specific Ghostty tabs.
+- **Obsidian:** An OpenCode instance runs in its own persistent Ghostty tab with my Obsidian vault as its working folder. It uses a lower model for capturing thoughts, lightweight note changes, and end-of-day review.
+- **Development servers:** A second persistent Ghostty tab, arranged in project rows with terminal splits.
+- **Zed:** My code editor. I use one window and switch projects inside it instead of opening a window for every codebase.
+- **Dictation:** Hex with the local Parakeet model.
+- **Browser:** Helium when I am working on frontend interfaces.
+
+## Workflow log
+
+### August 2026
+
+#### Ghostty is the workspace
+
+Ghostty is where I keep the projects and the coding agents. Each project gets its own tab, usually named after the project followed by `| OpenCode`. The main project I am working on stays in the first tab, so `Cmd+1` takes me straight to it. Other projects I am working on in parallel get their own tabs.
+
+If a product has separate codebases, such as a frontend and a backend, those can have separate tabs too. The tab is about the codebase I need to work in, not necessarily the product as a whole.
+
+Two tabs are usually always present. One has an OpenCode instance opened with my Obsidian vault as its working folder. The other is for development servers. The Obsidian OpenCode session uses a lower model and is intentionally lightweight. I use it to quickly speak out ideas, capture things that come to mind, and make small changes to my notes rather than turning every thought into a proper writing session.
+
+The dev-server tab is arranged in rows, one row per project. Each row usually has two splits. The rightmost split runs the development server, while the other is available for tests, scripts, or whatever else that project needs. Sometimes I add a third split, for example when a project has separate frontend and backend processes.
+
+Development servers produce a lot of output that I rarely need to watch. Keeping them in a smaller split gives them enough space to be useful without giving them more space than they deserve. When something goes wrong, I can resize the split and inspect it immediately.
+
+At night, I review the Obsidian notes to see what work was completed, what I had been thinking about during the day, and what I want to do next.
+
+#### Zed stays as one window
+
+Zed is where most of my actual coding happens. I keep only one Zed window open instead of opening a separate window for every project. When I need to check another codebase, inspect backend changes while working on a frontend, or make a manual edit somewhere else, I switch the project in that same window.
+
+Zed is fast enough that this does not create much friction. Keeping one window also makes the setup feel less cluttered. I have tried using Zed's AI as my main coding agent, including Zed AI and OpenCode through ACP, and it works well. But I prefer keeping OpenCode in its own Ghostty tab. The larger terminal space is better when an agent is reading through a codebase, and it keeps the editor available for the code itself.
+
+#### Dictation and the browser
+
+Hex is my dictation app. It uses the local Parakeet model, which lets me get thoughts into the workflow without stopping to type everything out.
+
+When I am doing frontend work, Helium is usually the only other window I need. The browser, Zed, and Ghostty cover most of the loop: seeing the result, changing the code, and working with the agent or the development server.
+
+The common thread is keeping the number of windows small while still giving each project and each kind of work a clear place to live.
+
+Future entries will record only meaningful changes. The current setup above will be updated when necessary, while this log will preserve what changed and why.
