@@ -353,7 +353,7 @@ const pages = getSitePages();
       left: 0;
       right: 0;
       bottom: 0;
-      height: 120px;
+      height: var(--mobile-dock-fade-height);
       z-index: 1450;
       pointer-events: none;
     }
@@ -410,7 +410,7 @@ const pages = getSitePages();
 
     :global(main) {
       min-height: calc(100vh - 96px);
-      padding-bottom: 5rem;
+      padding-block-end: var(--mobile-dock-clearance);
     }
   }
 

@@ -20,6 +20,10 @@
   --max-width: 48rem;
   --radius: 8px;
   --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --mobile-dock-fade-height: 120px;
+  --mobile-dock-clearance: calc(
+    var(--mobile-dock-fade-height) + 1rem + env(safe-area-inset-bottom)
+  );
 
   /* Typography */
   --sans:
