@@ -63,6 +63,12 @@ const fullTitle = `${pageTabTitle} • ${categoryTabTitle}`;
         }
       })();
     </script>
+
+    <script is:inline>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/sw.js");
+      }
+    </script>
   </head>
   <body>
     <Header title={pageTitle} showNav={showNav} />
