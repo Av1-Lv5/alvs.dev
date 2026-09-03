@@ -53,14 +53,47 @@ const fullTitle = `${pageTabTitle} • ${categoryTabTitle}`;
     <!-- Theme -->
     <script is:inline>
       (function () {
-        const theme = localStorage.getItem("theme");
-        if (theme === "dark") {
-          document.documentElement.setAttribute("data-theme", "dark");
-        } else if (theme === "light") {
-          document.documentElement.setAttribute("data-theme", "light");
-        } else {
-          document.documentElement.removeAttribute("data-theme");
+        var LIGHT = "#f3f4f6";
+        var DARK = "#090a0c";
+        function syncThemeColor(theme) {
+          var resolved = theme;
+          if (!resolved) {
+            resolved = window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          }
+          var color = resolved === "light" ? LIGHT : DARK;
+          var meta = document.querySelector(
+            'meta[name="theme-color"]:not([media])',
+          );
+          if (!meta) {
+            meta = document.createElement("meta");
+            meta.setAttribute("name", "theme-color");
+            document.head.appendChild(meta);
+          }
+          meta.setAttribute("content", color);
+          // Remove media metas once we have an explicit override so the
+          // manual toggle wins over the OS preference.
+          document
+            .querySelectorAll('meta[name="theme-color"][media]')
+            .forEach(function (m) {
+              m.remove();
+            });
         }
+        try {
+          var theme = localStorage.getItem("theme");
+          if (theme === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+            syncThemeColor("dark");
+          } else if (theme === "light") {
+            document.documentElement.setAttribute("data-theme", "light");
+            syncThemeColor("light");
+          } else {
+            document.documentElement.removeAttribute("data-theme");
+            // No override: keep the media-based <meta> tags from BaseHead.
+          }
+          window.__syncThemeColor = syncThemeColor;
+        } catch (e) {}
       })();
     </script>
 

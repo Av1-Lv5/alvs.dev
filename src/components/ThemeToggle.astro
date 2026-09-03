@@ -33,6 +33,9 @@ import { Icon } from "astro-icon/components";
     } else {
       document.documentElement.setAttribute("data-theme", "dark");
     }
+    // Keep the PWA / browser chrome in sync with the manual toggle.
+    // (The media-based <meta name="theme-color"> tags only follow the OS.)
+    (window as any).__syncThemeColor?.(theme);
   };
 
   toggle?.addEventListener("click", async () => {

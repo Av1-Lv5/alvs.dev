@@ -24,8 +24,16 @@ const {
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="manifest" href="/manifest.webmanifest" />
-<meta name="theme-color" content="#3b82f6" />
+<!--
+  theme-color controls the installed PWA / browser chrome
+  (status bar, address bar, task switcher), NOT the page itself.
+  It must match your page background (--bg), not the accent blue,
+  otherwise you get a sticking-out stripe.
+-->
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f3f4f6" />
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#090a0c" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico" /> -->
 <meta name="generator" content={Astro.generator} />

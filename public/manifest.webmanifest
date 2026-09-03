@@ -1,12 +1,12 @@
 {
-  "name": "Avinash's Portfolio",
-  "short_name": "av-sh",
+  "name": "Av-sh",
+  "short_name": "Av-sh",
   "description": "Frontend web developer, building things in random.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#f3f4f7",
-  "theme_color": "#3b82f6",
+  "background_color": "#f3f4f6",
+  "theme_color": "#f3f4f6",
   "icons": [
     {
       "src": "/pwa-192.png",
