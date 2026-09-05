@@ -63,6 +63,11 @@ const ogImage = getGeneratedOgImage("pages", "changelog");
       Monthly updates to this site: what changed, what was added, what was
       removed.
     </p>
+    <p class="hero-note">
+      Honestly, this page is mostly for me. A small summary of what I did each
+      month, so that someday I can scroll through years of it and remember how
+      this place came together.
+    </p>
 
     <div class="year-tabs" role="tablist" aria-label="Filter by year">
       {
@@ -133,6 +138,12 @@ const ogImage = getGeneratedOgImage("pages", "changelog");
 <style>
   .hero {
     padding-top: 3rem;
+  }
+
+  .hero-note {
+    margin-top: -0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
   }
 
   .year-tabs {

@@ -11,6 +11,26 @@ export type Changelog = {
 
 export const changelog: Changelog = {
   2026: {
+    8: {
+      title: "Mostly me talking to myself",
+      content:
+        "Barely shipped anything. Wrote a bunch of notes instead: words before code, PWAs, web push, Zod, and one about how performance is a choice you keep deferring. Linked notes to projects because future me will otherwise forget they exist. Refreshed the uses page and flattened the movies page, which had somehow grown three different layouts when I wasn't looking.",
+    },
+    7: {
+      title: "Went a bit overboard",
+      content:
+        "I don't know what got into me this month. Built a command palette for desktop and a bottom dock for mobile, mostly because using my own site felt too much like work. Added a radar page to track which tech I'm currently wrong about, and a podcasts page for what's in my ears. Rewrote the about page, figured out dynamic OG images, and somehow still had time to bump Astro to 7.",
+    },
+    6: {
+      title: "Echoes and small stuff",
+      content:
+        "Shipped /echoes, which is just lines I liked with a copy button, no deeper meaning. Gave notes real dates and sorting, and projects a year grouping so the timeline reads better. Killed the dot grid background, it was getting on my nerves. Also jumped Astro a few major versions at once and nothing broke, which is either luck or the site being simpler than I think.",
+    },
+    5: {
+      title: "Barely counts",
+      content:
+        "Honestly not much here. Poked at some copy and updated Astro across a few majors in one go, probably against someone's advice. Zero visual changes, which visitors won't notice and I will forget about in a month. Keeping the entry anyway, so future me knows May wasn't skipped.",
+    },
     4: {
       title: "Editing mode",
       content:
