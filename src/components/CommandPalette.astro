@@ -6,7 +6,7 @@
 // model for a command palette.
 
 import { Icon } from "astro-icon/components";
-import { getSitePages } from "@utils/pageSearch";
+import { getSitePages, serializePageData } from "@utils/pageSearch";
 
 const pages = getSitePages();
 ---
@@ -41,7 +41,13 @@ const pages = getSitePages();
     </div>
 
     <div class="cmdk-results-scroll" id="cmdk-results-scroll">
-      <div class="cmdk-results" id="cmdk-results" role="listbox" aria-label="Pages"></div>
+      <div
+        class="cmdk-results"
+        id="cmdk-results"
+        role="listbox"
+        aria-label="Pages"
+      >
+      </div>
       <p class="cmdk-empty" id="cmdk-empty" role="status" hidden>
         No pages match that.
       </p>
@@ -60,7 +66,7 @@ const pages = getSitePages();
 <script
   id="cmdk-data"
   type="application/json"
-  set:html={JSON.stringify(pages)}
+  set:html={serializePageData(pages)}
 />
 
 <script>
@@ -96,10 +102,13 @@ const pages = getSitePages();
     link.id = `cmdk-option-${index}`;
     link.setAttribute("role", "option");
     link.setAttribute("aria-selected", "false");
-    link.addEventListener("mouseenter", () => {
-      const links = getResultLinks();
-      setActive(links.indexOf(link));
-    });
+    const activate = () => {
+      setActive(getResultLinks().indexOf(link));
+    };
+    link.addEventListener("mouseenter", activate);
+    // The focus trap can Tab onto links directly; keep the selection in
+    // sync so Enter (which targets the selection) matches what's focused.
+    link.addEventListener("focus", activate);
     return link;
   }
 
@@ -158,7 +167,9 @@ const pages = getSitePages();
     if (!resultsEl) return;
     resultsEl.classList.add("is-flat");
     resultsEl.innerHTML = "";
-    items.forEach((entry, i) => resultsEl.appendChild(makeResultLink(entry, i)));
+    items.forEach((entry, i) =>
+      resultsEl.appendChild(makeResultLink(entry, i)),
+    );
   }
 
   function update(query: string) {
@@ -168,10 +179,10 @@ const pages = getSitePages();
       if (emptyEl) emptyEl.hidden = true;
       renderList(pages);
     } else {
-      // Fuzzy-ranked: title matches always outrank description matches,
-      // which always outrank category matches (see rankPages). The
-      // palette reads top-to-bottom with the input at the top, so the
-      // best match renders first.
+      // Fuzzy-ranked: title matches always outrank keyword matches,
+      // which outrank description matches, which outrank category
+      // matches (see rankPages). The palette reads top-to-bottom with
+      // the input at the top, so the best match renders first.
       const ranked = rankPages(pages, trimmed);
       if (emptyEl) emptyEl.hidden = ranked.length > 0;
       renderFlatList(ranked);
@@ -232,12 +243,18 @@ const pages = getSitePages();
     } else if (e.key === "Enter") {
       e.preventDefault();
       const links = getResultLinks();
-      links[activeIndex]?.click();
+      // Prefer the actually-focused link (Tab can land on one directly);
+      // fall back to the selection for the common input-focused case.
+      const focusedIndex = links.indexOf(
+        document.activeElement as HTMLAnchorElement,
+      );
+      const target = focusedIndex !== -1 ? focusedIndex : activeIndex;
+      links[target]?.click();
     } else if (e.key === "Tab") {
       // Modal: keep Tab focus within the panel. Focus order here is just
       // the input and the result links; cycle between the two ends.
       const focusable = [input, ...getResultLinks()].filter(
-        (el): el is HTMLElement => !!el,
+        (el): el is HTMLInputElement | HTMLAnchorElement => !!el,
       );
       if (focusable.length === 0) return;
       const first = focusable[0];
@@ -281,7 +298,10 @@ const pages = getSitePages();
     }
   }
 
-  @media (min-width: 769px) {
+  /* Complement of MobileDock's `max-width: 768px`. A fractional value
+     closes the 1px gap at 768–769px where neither quick-nav rendered,
+     which could lock page scroll with no palette visible. */
+  @media (min-width: 768.01px) {
     .cmdk-scrim {
       display: block;
       position: fixed;
@@ -371,7 +391,7 @@ const pages = getSitePages();
 
   .cmdk-results-scroll {
     overflow-y: auto;
-    padding: 0 0.75rem 0.5rem 0.75rem;
+    padding: 0 0.75rem 0.875rem 0.75rem;
     scrollbar-width: thin;
     scrollbar-color: var(--border-muted) transparent;
   }
@@ -431,7 +451,7 @@ const pages = getSitePages();
     flex-direction: column;
     gap: 0.1rem;
     padding: 0.5rem 0.6rem;
-    border-radius: 8px;
+    border-radius: 10px;
     transition: var(--transition);
   }
 

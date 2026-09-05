@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import { getSitePages } from "@utils/pageSearch";
+import { getSitePages, serializePageData } from "@utils/pageSearch";
 
 const pathName = Astro.url.pathname;
 
@@ -114,7 +114,6 @@ const pages = getSitePages();
       placeholder="Search pages..."
       aria-label="Search pages"
       autocomplete="off"
-      autofocus="false"
       enterkeyhint="search"
       inputmode="search"
     />
@@ -180,6 +179,20 @@ const pages = getSitePages();
     }
   }
 
+  /**
+   * Marks the best-ranked result as the one Enter will activate. The
+   * flat list renders weakest-first (best match nearest the input at
+   * the bottom), so that's the last link in the DOM.
+   */
+  function markBestResult() {
+    if (!resultsEl) return;
+    resultsEl
+      .querySelectorAll("a.dock-result-link.is-best")
+      .forEach((link) => link.classList.remove("is-best"));
+    const links = resultsEl.querySelectorAll("a.dock-result-link");
+    links[links.length - 1]?.classList.add("is-best");
+  }
+
   function updateFadeVisibility() {
     if (!panelScroll || !panelFade) return;
     const atBottom =
@@ -199,8 +212,9 @@ const pages = getSitePages();
       if (panelScroll) panelScroll.scrollTop = 0;
       if (statusEl) statusEl.textContent = `${pages.length} pages`;
     } else {
-      // Fuzzy-ranked: title matches always outrank description matches,
-      // which always outrank category matches (see rankPages).
+      // Fuzzy-ranked: title matches always outrank keyword matches,
+      // which outrank description matches, which outrank category
+      // matches (see rankPages).
       const ranked = rankPages(pages, trimmed);
       if (emptyEl) emptyEl.hidden = ranked.length > 0;
       // The search input sits at the bottom of the screen, so the best
@@ -208,6 +222,7 @@ const pages = getSitePages();
       // top match ends up last (nearest the input), and default-scroll
       // to the bottom to reveal it without the user having to scroll up.
       renderFlatList([...ranked].reverse());
+      markBestResult();
       if (panelScroll) panelScroll.scrollTop = panelScroll.scrollHeight;
       if (statusEl)
         statusEl.textContent = ranked.length
@@ -291,6 +306,21 @@ const pages = getSitePages();
   input?.addEventListener("input", (e) =>
     debouncedUpdate((e.target as HTMLInputElement).value),
   );
+  // Enter on the touch keyboard (Gboard etc.) activates the best-ranked
+  // result directly — ranked synchronously here rather than reading the
+  // rendered list, so it's correct even when the user hits Enter before
+  // the debounced render has caught up. No query → nothing to activate.
+  input?.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter") return;
+    const trimmed = input.value.trim();
+    if (!trimmed) return;
+    e.preventDefault(); // also stops the type=search implicit "search" event
+    const best = rankPages(pages, trimmed)[0];
+    if (!best) return;
+    // Blur so the keyboard starts collapsing before the page navigates.
+    input.blur();
+    window.location.href = best.path;
+  });
   panelScroll?.addEventListener("scroll", updateFadeVisibility);
 
   document.addEventListener("keydown", (e) => {
@@ -312,7 +342,7 @@ const pages = getSitePages();
 <script
   id="dock-data"
   type="application/json"
-  set:html={JSON.stringify(pages)}
+  set:html={serializePageData(pages)}
 />
 
 <style>
@@ -460,7 +490,7 @@ const pages = getSitePages();
   }
 
   .dock-results {
-    padding: 0 0.75rem 0.5rem 0.75rem;
+    padding: 0 0.75rem 0.875rem 0.75rem;
   }
 
   .dock-results.is-flat {
@@ -503,9 +533,19 @@ const pages = getSitePages();
     display: flex;
     flex-direction: column;
     gap: 0.1rem;
-    padding: 0.45rem 0.5rem;
-    border-radius: 6px;
+    padding: 0.45rem 0.6rem;
+    border-radius: 10px;
     transition: var(--transition);
+  }
+
+  /* The result the Enter key on the touch keyboard will activate —
+     styled like the palette's .is-active selection row. */
+  :global(.dock-result-link.is-best) {
+    background: var(--accent-bg);
+  }
+
+  :global(.dock-result-link.is-best .dock-result-title) {
+    color: var(--accent);
   }
 
   :global(.dock-result-link:hover) {
