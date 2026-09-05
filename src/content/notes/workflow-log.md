@@ -3,7 +3,7 @@ title: "Workflow log"
 tags: ["workflow"]
 publishedAt: "2026-08-31"
 draft: false
-updatedAt: "August 2026"
+updatedAt: "September 2026"
 ---
 
 _A record of the workflows I have tried and kept. This is not a prescription or a claim that this is the right way to work. It is just a log of what made sense to me at a particular point in time._
@@ -14,6 +14,7 @@ At the moment, my setup is deliberately small: one Ghostty window, one Zed windo
 
 - **Ghostty:** My terminal workspace. The first tab is the main project and is available with `Cmd+1`. Other projects and separate codebases get their own tabs.
 - **OpenCode:** My main coding agent, kept in project-specific Ghostty tabs.
+- **Codex:** The desktop app has become a serious part of my coding workflow, especially for frontend work and codebase refactors.
 - **Obsidian:** An OpenCode instance runs in its own persistent Ghostty tab with my Obsidian vault as its working folder. It uses a lower model for capturing thoughts, lightweight note changes, and end-of-day review.
 - **Development servers:** A second persistent Ghostty tab, arranged in project rows with terminal splits.
 - **Zed:** My code editor. I use one window and switch projects inside it instead of opening a window for every codebase.
@@ -21,6 +22,16 @@ At the moment, my setup is deliberately small: one Ghostty window, one Zed windo
 - **Browser:** Helium when I am working on frontend interfaces.
 
 ## Workflow log
+
+### September 2026
+
+#### Codex became a place to stay for the whole loop
+
+I used the Codex desktop app occasionally before, but recently it has become one of the main places I work. The workflow feels unusually natural: I can annotate the interface, annotate the code, inspect the file manager, review a diff, and keep moving through the same task without constantly switching into an IDE.
+
+This is especially good for frontend work. I can look at a UI, explain what needs to change, make the change, and review the result in the same flow. The annotations make it easy to be precise about both visual details and the code behind them. The file manager is good enough that navigating a project does not feel like a compromise, and the diff view is clear enough to make reviewing changes comfortable.
+
+It has also changed how I approach refactoring. For many tasks, I am staying inside Codex from the first inspection through editing, refactoring, UI review, and final diff review. I am not opening an IDE for most of that work anymore. I used to feel that way about another desktop coding app, but found it clunky and laggy. Codex feels much more polished and responsive, so it has earned a permanent place alongside OpenCode in the setup.
 
 ### August 2026
 
