@@ -111,6 +111,11 @@ export const radar: string[] = [
   "Fumadocs",
   "Cloudinary",
   "TanStack Form",
+  "Hex",
+  "Paper",
+  "T3 Code",
+  "lazygit",
+  "herdr",
 ];
 
 /**
