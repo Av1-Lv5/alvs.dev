@@ -1,5 +1,6 @@
 :root {
   /* Palette: Blue, Gray, Black, White */
+  color-scheme: light dark;
   --bg: hsl(220, 15%, 96%);
   --bg-soft: hsl(220, 12%, 94%);
   --bg-translucent: hsla(220, 12%, 95%, 0.8);
@@ -32,6 +33,14 @@
   --mono:
     "Geist Mono Variable", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --line-height: 1.6;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
 }
 
 [data-theme="dark"] img {

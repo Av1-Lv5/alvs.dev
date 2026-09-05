@@ -25,15 +25,18 @@ const {
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="manifest" href="/manifest.webmanifest" />
 <!--
-  theme-color controls the installed PWA / browser chrome
-  (status bar, address bar, task switcher), NOT the page itself.
-  It must match your page background (--bg), not the accent blue,
-  otherwise you get a sticking-out stripe.
+  No <meta name="theme-color"> here on purpose. Chrome on Android derives
+  the PWA status bar color from the page background when the page declares
+  a color-scheme, so it follows light/dark automatically (same approach as
+  duckduckgo.com). Explicit theme-color values override that adaptive
+  behavior and lock the bar to a static color.
 -->
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f3f4f6" />
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#090a0c" />
+<meta name="color-scheme" content="light dark" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta
+  name="apple-mobile-web-app-status-bar-style"
+  content="black-translucent"
+/>
 
 <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico" /> -->
 <meta name="generator" content={Astro.generator} />
