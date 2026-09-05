@@ -64,22 +64,19 @@ const fullTitle = `${pageTabTitle} • ${categoryTabTitle}`;
               : "light";
           }
           var color = resolved === "light" ? LIGHT : DARK;
-          var meta = document.querySelector(
-            'meta[name="theme-color"]:not([media])',
-          );
-          if (!meta) {
-            meta = document.createElement("meta");
-            meta.setAttribute("name", "theme-color");
-            document.head.appendChild(meta);
-          }
-          meta.setAttribute("content", color);
-          // Remove media metas once we have an explicit override so the
-          // manual toggle wins over the OS preference.
+          // Chrome on Android ignores setAttribute() on an existing
+          // theme-color meta, so remove every node and create a fresh one.
+          // This also drops the media-based metas so the manual toggle
+          // wins over the OS preference.
           document
-            .querySelectorAll('meta[name="theme-color"][media]')
+            .querySelectorAll('meta[name="theme-color"]')
             .forEach(function (m) {
               m.remove();
             });
+          var meta = document.createElement("meta");
+          meta.setAttribute("name", "theme-color");
+          meta.setAttribute("content", color);
+          document.head.appendChild(meta);
         }
         try {
           var theme = localStorage.getItem("theme");
