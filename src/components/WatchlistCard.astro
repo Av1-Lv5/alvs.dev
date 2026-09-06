@@ -1,5 +1,6 @@
 ---
 import type { TMDBMedia } from "@utils/tmdb";
+import { Icon } from "astro-icon/components";
 
 interface Props {
   media: TMDBMedia;
@@ -62,7 +63,9 @@ const typeLabel = media.mediaType === "movie" ? "Film" : "Show";
     </div>
   </div>
 
-  <span class="arrow" aria-hidden="true">&#x2197;</span>
+  <span class="arrow" aria-hidden="true">
+    <Icon name="lucide:arrow-up-right" size={16} />
+  </span>
 </a>
 
 <style>

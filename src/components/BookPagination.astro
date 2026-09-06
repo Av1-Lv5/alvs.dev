@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 interface Props {
   currentPage: number;
   totalPages: number;
@@ -15,7 +17,11 @@ const { currentPage, totalPages, hasNext, hasPrev, nextUrl, prevUrl } =
 {
   totalPages > 1 && (
     <nav class="pagination">
-      {hasPrev && <a href={prevUrl}>← Previous</a>}
+      {hasPrev && (
+        <a href={prevUrl} class="pag-link">
+          <Icon name="lucide:arrow-left" size={16} /> Previous
+        </a>
+      )}
 
       {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
         <a
@@ -26,7 +32,11 @@ const { currentPage, totalPages, hasNext, hasPrev, nextUrl, prevUrl } =
         </a>
       ))}
 
-      {hasNext && <a href={nextUrl}>Next →</a>}
+      {hasNext && (
+        <a href={nextUrl} class="pag-link">
+          Next <Icon name="lucide:arrow-right" size={16} />
+        </a>
+      )}
     </nav>
   )
 }
@@ -49,6 +59,12 @@ const { currentPage, totalPages, hasNext, hasPrev, nextUrl, prevUrl } =
     background: transparent;
     color: var(--text-light);
     border-radius: 8px;
+  }
+
+  .pag-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
   }
 
   .pagination a:hover,

@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import { unified } from "@astrojs/markdown-remark";
 import rehypeExternalLinks from "rehype-external-links";
+import rehypeExternalArrow from "./src/utils/rehype-external-arrow.mjs";
 
 import icon from "astro-icon";
 
@@ -21,6 +22,7 @@ export default defineConfig({
             rel: ["noopener", "noreferrer"],
           },
         ],
+        rehypeExternalArrow,
       ],
     }),
 

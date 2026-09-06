@@ -1,6 +1,7 @@
 ---
 // layout
 import PageLayout from "@layouts/PageLayout.astro";
+import { Icon } from "astro-icon/components";
 import { getGeneratedOgImage } from "@utils/og-image";
 
 const ogImage = getGeneratedOgImage("pages", "home");
@@ -43,7 +44,20 @@ const ogImage = getGeneratedOgImage("pages", "home");
       goals and spendings.
     </p>
     <a href="https://www.orbitbudget.com" target="_blank" class="orbit-link">
-      Visit orbitbudget.com &#x2197;
+      Visit orbitbudget.com
+      <Icon name="lucide:arrow-up-right" size={16} class="arrow-icon" />
     </a>
   </section>
 </PageLayout>
+
+<style>
+  .orbit-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .orbit-link :global(svg) {
+    translate: 0 1px;
+  }
+</style>

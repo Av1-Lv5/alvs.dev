@@ -83,6 +83,12 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Inline icons that replace text arrows (Geist has no arrow glyphs) */
+.ext-arrow svg,
+svg.ext-arrow {
+  vertical-align: -0.125em;
+}
+
 *,
 *:before,
 *:after {

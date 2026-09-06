@@ -2,6 +2,7 @@
 // layout
 import ProjectsList from "@components/ProjectsList.astro";
 import PageLayout from "@layouts/PageLayout.astro";
+import { Icon } from "astro-icon/components";
 import { getGeneratedOgImage } from "@utils/og-image";
 
 const ogImage = getGeneratedOgImage("pages", "projects");
@@ -18,7 +19,12 @@ const ogImage = getGeneratedOgImage("pages", "projects");
       Building is my favorite way to learn. Each project is a deep dive into
       specific problems, patterns, and technologies.
     </p>
-    <p><a href="/hire-me">Currently available for work →</a></p>
+    <p>
+      <a href="/hire-me" class="cta-link"
+        >Currently available for work
+        <Icon name="lucide:arrow-right" size={18} /></a
+      >
+    </p>
   </section>
 
   <section>
@@ -45,6 +51,21 @@ const ogImage = getGeneratedOgImage("pages", "projects");
 </PageLayout>
 
 <style>
+  .cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .cta-link :global(svg) {
+    color: var(--accent);
+    transition: var(--transition);
+  }
+
+  .cta-link:hover :global(svg) {
+    translate: 3px 0;
+  }
+
   .note-content p {
     margin: 0;
     font-size: 1rem;
