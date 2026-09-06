@@ -87,8 +87,10 @@
     transition: transform 0.2s ease;
   }
 
-  .cute-cube:hover {
-    transform: scale(1.1);
+  @media (hover: hover) and (pointer: fine) {
+    .cute-cube:hover {
+      transform: scale(1.1);
+    }
   }
 
   .face {
@@ -139,9 +141,11 @@
       border-bottom 0.2s;
   }
 
-  .cute-cube:hover .mouth {
-    height: 5px;
-    border-bottom-width: 2px;
+  @media (hover: hover) and (pointer: fine) {
+    .cute-cube:hover .mouth {
+      height: 5px;
+      border-bottom-width: 2px;
+    }
   }
 
   .cheeks {

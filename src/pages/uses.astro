@@ -1,6 +1,7 @@
 ---
 // layout
 import PageLayout from "@layouts/PageLayout.astro";
+import { Icon } from "astro-icon/components";
 
 // constants
 import { uses } from "@data/uses";
@@ -21,7 +22,12 @@ const ogImage = getGeneratedOgImage("pages", "uses");
       stay productive. This page is inspired by <a
         href="https://uses.tech"
         target="_blank"
-        rel="noopener noreferrer">uses.tech</a
+        rel="noopener noreferrer"
+        >uses.tech<Icon
+          name="lucide:arrow-up-right"
+          size={14}
+          class="ext-arrow"
+        /></a
       >, a collection of /uses pages from folks all over the web.
     </p>
     <p class="hero-text">
@@ -44,13 +50,11 @@ const ogImage = getGeneratedOgImage("pages", "uses");
                   class="card"
                   rel="noopener noreferrer"
                 >
-                  <strong>{item.name}</strong>
-                  {item.description}
+                  <strong>{item.name}</strong> {item.description}
                 </a>
               ) : (
                 <div class="card-content card">
-                  <strong>{item.name}</strong>
-                  {item.description}
+                  <strong>{item.name}</strong> {item.description}
                 </div>
               )}
             </li>
@@ -87,8 +91,10 @@ const ogImage = getGeneratedOgImage("pages", "uses");
     color: inherit;
   }
 
-  .uses-grid li a:hover {
-    text-decoration: none;
+  @media (hover: hover) and (pointer: fine) {
+    .uses-grid li a:hover {
+      text-decoration: none;
+    }
   }
 
   .uses-grid li strong {

@@ -87,6 +87,12 @@ html {
 .ext-arrow svg,
 svg.ext-arrow {
   vertical-align: -0.125em;
+  margin-inline-start: 0.25em;
+}
+
+svg.ext-arrow--tight,
+.ext-arrow--tight svg {
+  margin-inline-start: 0;
 }
 
 *,
@@ -111,6 +117,41 @@ main {
 ::selection {
   background-color: color-mix(in srgb, var(--accent) 25%, var(--bg));
   color: var(--text);
+}
+
+/* Utility for decorative non-text UI that is not inherently interactive. */
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Interaction baseline. Keep these browser-normalization rules here so new
+   controls do not need a utility class. Links keep long-press text selection;
+   buttons and disclosure controls do not. */
+:where(a, button, summary, [role="button"]) {
+  /* !important keeps this baseline intact when a custom control uses
+     `all: unset`, which otherwise resets these properties later in the
+     component stylesheet. */
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+:where(button, summary, [role="button"]) {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+}
+
+/* Touch or mouse focus should not leave a browser ring behind; keyboard users
+   still get a consistent, visible focus indicator. */
+:where(a, button, summary, [role="button"]):focus:not(:focus-visible) {
+  outline: none !important;
+}
+
+:where(a, button, summary, [role="button"]):focus-visible {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 4px !important;
 }
 
 pre ::selection {
@@ -169,10 +210,12 @@ strong a {
   font-weight: bold;
 }
 
-a:hover {
-  color: var(--accent-hover);
-  text-decoration: underline;
-  text-underline-offset: 4px;
+@media (hover: hover) and (pointer: fine) {
+  a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
 }
 
 /* Header & Nav */
@@ -211,9 +254,11 @@ nav a {
   font-weight: 600;
 }
 
-nav a:hover {
-  color: var(--text);
-  text-decoration: none;
+@media (hover: hover) and (pointer: fine) {
+  nav a:hover {
+    color: var(--text);
+    text-decoration: none;
+  }
 }
 
 /* Footer */

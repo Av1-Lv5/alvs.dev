@@ -95,11 +95,13 @@ const { project } = Astro.props as Props;
     background-color: transparent;
   }
 
-  .meta-link:hover {
-    color: var(--text);
-    border-color: var(--accent);
-    background-color: rgba(var(--accent-rgb, 100, 100, 100), 0.05);
-    transform: scale(1.05);
+  @media (hover: hover) and (pointer: fine) {
+    .meta-link:hover {
+      color: var(--text);
+      border-color: var(--accent);
+      background-color: rgba(var(--accent-rgb, 100, 100, 100), 0.05);
+      transform: scale(1.05);
+    }
   }
 
   @media (max-width: 768px) {

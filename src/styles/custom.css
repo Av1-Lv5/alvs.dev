@@ -31,10 +31,12 @@ a.nav-like {
   transition: var(--transition);
 }
 
-a.nav-like:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background-color: var(--accent-bg);
+@media (hover: hover) and (pointer: fine) {
+  a.nav-like:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background-color: var(--accent-bg);
+  }
 }
 
 section.hero {
@@ -53,13 +55,15 @@ p.hero-text {
   transition: var(--transition);
   background: var(--bg-soft);
 }
-.card:hover {
-  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
-}
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
+  }
 
-a.card:hover {
-  border-color: var(--accent);
-  background: var(--bg);
+  a.card:hover {
+    border-color: var(--accent);
+    background: var(--bg);
+  }
 }
 
 blockquote h3 {
@@ -104,9 +108,11 @@ blockquote h3 {
   margin: 0 !important;
 }
 
-.tab-button:hover {
-  color: var(--text);
-  background: rgba(0, 0, 0, 0.05);
+@media (hover: hover) and (pointer: fine) {
+  .tab-button:hover {
+    color: var(--text);
+    background: rgba(0, 0, 0, 0.05);
+  }
 }
 
 .tab-button[aria-selected="true"] {

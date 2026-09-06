@@ -110,8 +110,10 @@ const relatedNotes = relatedSlugs
     font-weight: 400;
     color: var(--text-muted);
   }
-  .related-notes a:hover {
-    color: var(--accent);
+  @media (hover: hover) and (pointer: fine) {
+    .related-notes a:hover {
+      color: var(--accent);
+    }
   }
   .related-notes .draft-tag {
     font-size: 0.7rem;

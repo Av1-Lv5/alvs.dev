@@ -21,7 +21,7 @@ const pathName = Astro.url.pathname;
   <div class="header-container">
     {
       showNav && (
-        <a href="/" class="logo-link">
+        <a href="/" class="logo-link no-select">
           <img src="/favicon.svg" alt="Logo" class="logo" />
         </a>
       )
@@ -41,7 +41,7 @@ const pathName = Astro.url.pathname;
               </a>
             ))}
             <a
-              class="social"
+              class="social no-select"
               href={`https://github.com/${socials.githubUsername}`}
               target="_blank"
             >
@@ -60,7 +60,7 @@ const pathName = Astro.url.pathname;
             </button>
           </nav>
           <ThemeToggle />
-          <div id="menu-btn" class="mobile-menu-btn">
+          <div id="menu-btn" class="mobile-menu-btn no-select">
             <Icon name="lucide:menu" size={24} />
           </div>
         </div>
@@ -73,7 +73,7 @@ const pathName = Astro.url.pathname;
 {
   showNav && (
     <div id="mobile-overlay" class="mobile-overlay">
-      <div id="close-btn" aria-label="Close mobile menu" class="close-btn">
+      <div id="close-btn" aria-label="Close mobile menu" class="close-btn no-select">
         <Icon name="lucide:x" size={24} />
       </div>
 
@@ -86,16 +86,18 @@ const pathName = Astro.url.pathname;
             href={`https://github.com/${socials.githubUsername}`}
             target="_blank"
             aria-label="GitHub"
+            class="no-select"
           >
             <Icon name="simple-icons:github" size={20} />
           </a>
-          <a href={socials.mastodon} target="_blank" aria-label="Mastodon">
+          <a href={socials.mastodon} target="_blank" aria-label="Mastodon" class="no-select">
             <Icon name="simple-icons:mastodon" size={20} />
           </a>
           <a
             href={`https://linkedin.com/${socials.linkedin}`}
             target="_blank"
             aria-label="Linkedin"
+            class="no-select"
           >
             <Icon name="simple-icons:linkedin" size={20} />
           </a>
@@ -103,6 +105,7 @@ const pathName = Astro.url.pathname;
             target="_blank"
             href={`mailto:${socials.email}`}
             aria-label="E-mail"
+            class="no-select"
           >
             <Icon name="lucide:mail" size={20} class="icon-mail" />
           </a>
@@ -155,11 +158,12 @@ const pathName = Astro.url.pathname;
     display: flex;
     align-items: center;
     transition: opacity 0.2s ease;
-    user-select: none;
   }
 
-  .logo-link:hover {
-    opacity: 0.8;
+  @media (hover: hover) and (pointer: fine) {
+    .logo-link:hover {
+      opacity: 0.8;
+    }
   }
 
   .logo {
@@ -207,9 +211,11 @@ const pathName = Astro.url.pathname;
     font: inherit;
   }
 
-  .cmdk-trigger:hover {
-    border-color: var(--text-muted);
-    color: var(--text);
+  @media (hover: hover) and (pointer: fine) {
+    .cmdk-trigger:hover {
+      border-color: var(--text-muted);
+      color: var(--text);
+    }
   }
 
   .cmdk-keys {

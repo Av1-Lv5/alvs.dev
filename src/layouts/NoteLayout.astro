@@ -128,7 +128,9 @@ const ogImage = getGeneratedOgImage("notes", note.id);
     display: flex;
     align-items: center;
   }
-  .note-content :global(.copy-btn:hover) {
-    opacity: 0.8;
+  @media (hover: hover) and (pointer: fine) {
+    .note-content :global(.copy-btn:hover) {
+      opacity: 0.8;
+    }
   }
 </style>

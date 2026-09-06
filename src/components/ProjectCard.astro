@@ -90,8 +90,10 @@ const { project } = Astro.props as Props;
     transition: color 0.2s ease;
   }
 
-  .title a:hover {
-    color: var(--accent);
+  @media (hover: hover) and (pointer: fine) {
+    .title a:hover {
+      color: var(--accent);
+    }
   }
 
   .project-meta {
@@ -133,13 +135,17 @@ const { project } = Astro.props as Props;
     transition: transform 0.2s ease-out;
   }
 
-  .meta-link:hover {
-    color: var(--text);
+  @media (hover: hover) and (pointer: fine) {
+    .meta-link:hover {
+      color: var(--text);
+    }
   }
 
-  .meta-link:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+  @media (hover: hover) and (pointer: fine) {
+    .meta-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
   }
 
   /* Right Column: Details */

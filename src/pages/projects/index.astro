@@ -62,8 +62,10 @@ const ogImage = getGeneratedOgImage("pages", "projects");
     transition: var(--transition);
   }
 
-  .cta-link:hover :global(svg) {
-    translate: 3px 0;
+  @media (hover: hover) and (pointer: fine) {
+    .cta-link:hover :global(svg) {
+      translate: 3px 0;
+    }
   }
 
   .note-content p {

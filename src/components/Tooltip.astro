@@ -49,7 +49,16 @@ const { text, class: className } = Astro.props;
     border-top-color: var(--text);
   }
 
-  .tooltip-wrapper:hover .tooltip-text,
+  /* Hover tooltip only on real hover+fine-pointer devices. iOS Safari matches
+     (hover: hover) for touch too, so also require (pointer: fine) to avoid the
+     sticky-hover "Click to copy" flash after tapping. */
+  @media (hover: hover) and (pointer: fine) {
+    .tooltip-wrapper:hover .tooltip-text {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+
   .tooltip-wrapper.show-tooltip .tooltip-text {
     opacity: 1;
     transform: translateX(-50%) translateY(0);

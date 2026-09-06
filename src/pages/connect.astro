@@ -44,7 +44,7 @@ import { socials } from "src/constants";
   <section>
     <h2>Presence</h2>
     <nav class="social-nav">
-      <a href={socials.linkedin} target="_blank" rel="noopener">
+      <a href={socials.linkedin} target="_blank" rel="noopener" class="no-select">
         <Icon name="simple-icons:linkedin" class="social-icon" />
         LinkedIn
       </a>
@@ -52,11 +52,12 @@ import { socials } from "src/constants";
         href={`https://github.com/${socials.githubUsername}`}
         target="_blank"
         rel="noopener"
+        class="no-select"
       >
         <Icon name="simple-icons:github" class="social-icon" />
         GitHub
       </a>
-      <a href={socials.mastodon} target="_blank" rel="noopener">
+      <a href={socials.mastodon} target="_blank" rel="noopener" class="no-select">
         <Icon name="simple-icons:mastodon" class="social-icon" />
         Mastodon
       </a>
@@ -72,8 +73,11 @@ import { socials } from "src/constants";
         <li>Open to collaboration</li>
         <li>
           <a href="https://useplaintext.email/" target="_blank">
-            Plain-text emails are encouraged
-            <Icon name="lucide:arrow-up-right" size={14} class="ext-arrow" />
+            Plain-text emails are encouraged<Icon
+              name="lucide:arrow-up-right"
+              size={14}
+              class="ext-arrow"
+            />
           </a>
         </li>
         <li>
@@ -104,6 +108,8 @@ import { socials } from "src/constants";
 </PageLayout>
 
 <script>
+  import { setupCopyButton } from "@utils/clipboard";
+
   function updateIST() {
     const currentTimeEl = document.getElementById("currentTimeIst");
 
@@ -128,29 +134,7 @@ import { socials } from "src/constants";
 
   // Copy email
   const emailBtn = document.querySelector<HTMLButtonElement>(".email-link")!;
-  let timeout: ReturnType<typeof setTimeout> | null = null;
-
-  emailBtn.addEventListener("click", async () => {
-    const email = emailBtn.dataset.email!;
-    const successMsg = emailBtn.dataset.success!;
-    const wrapper = emailBtn.closest<HTMLElement>(".tooltip-wrapper")!;
-    const tooltip = wrapper.querySelector<HTMLElement>(".tooltip-text")!;
-
-    await navigator.clipboard.writeText(email);
-
-    if (timeout) clearTimeout(timeout);
-
-    emailBtn.classList.add("copied");
-    wrapper.classList.add("show-tooltip", "tooltip-success");
-    tooltip.textContent = successMsg;
-
-    timeout = setTimeout(() => {
-      emailBtn.classList.remove("copied");
-      wrapper.classList.remove("show-tooltip", "tooltip-success");
-      tooltip.textContent = "Click to copy";
-      timeout = null;
-    }, 2000);
-  });
+  setupCopyButton(emailBtn);
 </script>
 
 <style>
@@ -165,6 +149,10 @@ import { socials } from "src/constants";
     color: var(--text);
     transition: var(--transition);
     margin-bottom: 1rem;
+  }
+
+  .email-link:active {
+    background: transparent;
   }
 
   .email-tooltip {
@@ -231,8 +219,10 @@ import { socials } from "src/constants";
     text-decoration: none;
   }
 
-  .social-nav a:hover {
-    color: var(--text);
+  @media (hover: hover) and (pointer: fine) {
+    .social-nav a:hover {
+      color: var(--text);
+    }
   }
 
   .social-icon {

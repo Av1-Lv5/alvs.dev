@@ -162,9 +162,11 @@ const lang = "astro";
     color: var(--text-muted);
     transition: var(--transition);
   }
-  .source-link:hover {
-    border-color: var(--text-muted);
-    color: var(--text);
+  @media (hover: hover) and (pointer: fine) {
+    .source-link:hover {
+      border-color: var(--text-muted);
+      color: var(--text);
+    }
   }
 
   .code-wrapper {
@@ -207,8 +209,10 @@ const lang = "astro";
     text-align: center;
     transition: opacity 200ms ease;
   }
-  .expand-btn:hover {
-    opacity: 1;
+  @media (hover: hover) and (pointer: fine) {
+    .expand-btn:hover {
+      opacity: 1;
+    }
   }
 
   .lang-label {
@@ -238,8 +242,10 @@ const lang = "astro";
     display: flex;
     align-items: center;
   }
-  .copy-btn:hover {
-    opacity: 0.8;
+  @media (hover: hover) and (pointer: fine) {
+    .copy-btn:hover {
+      opacity: 0.8;
+    }
   }
   .icon-check {
     display: none;
@@ -266,8 +272,10 @@ const lang = "astro";
     transition: opacity 200ms ease;
     max-width: 45%;
   }
-  .nav-entry:hover {
-    opacity: 1;
+  @media (hover: hover) and (pointer: fine) {
+    .nav-entry:hover {
+      opacity: 1;
+    }
   }
   .nav-next {
     margin-left: auto;

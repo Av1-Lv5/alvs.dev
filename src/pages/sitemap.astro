@@ -50,7 +50,9 @@ import { sitemapSections } from "@data/sitemap";
     transition: var(--transition);
   }
 
-  .sitemap-list a:hover {
-    color: var(--text-muted);
+  @media (hover: hover) and (pointer: fine) {
+    .sitemap-list a:hover {
+      color: var(--text-muted);
+    }
   }
 </style>

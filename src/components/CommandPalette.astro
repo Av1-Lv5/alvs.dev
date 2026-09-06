@@ -411,9 +411,11 @@ const pages = getSitePages();
     background-clip: padding-box;
   }
 
-  .cmdk-results-scroll::-webkit-scrollbar-thumb:hover {
-    background: var(--text-light);
-    background-clip: padding-box;
+  @media (hover: hover) and (pointer: fine) {
+    .cmdk-results-scroll::-webkit-scrollbar-thumb:hover {
+      background: var(--text-light);
+      background-clip: padding-box;
+    }
   }
 
   .cmdk-results.is-flat {
@@ -472,8 +474,10 @@ const pages = getSitePages();
    * so .is-active (kept in sync with hover via mouseenter in the script)
    * is the only thing that ever paints a highlight.
    */
-  :global(.cmdk-result-link:hover) {
-    text-decoration: none;
+  @media (hover: hover) and (pointer: fine) {
+    :global(.cmdk-result-link:hover) {
+      text-decoration: none;
+    }
   }
 
   :global(.cmdk-result-title) {
@@ -482,8 +486,10 @@ const pages = getSitePages();
     font-size: 0.9rem;
   }
 
-  :global(.cmdk-result-link:hover .cmdk-result-title) {
-    color: var(--text);
+  @media (hover: hover) and (pointer: fine) {
+    :global(.cmdk-result-link:hover .cmdk-result-title) {
+      color: var(--text);
+    }
   }
 
   :global(.cmdk-result-desc) {
@@ -491,14 +497,18 @@ const pages = getSitePages();
     font-size: 0.8rem;
   }
 
-  :global(.cmdk-result-link:hover .cmdk-result-desc) {
-    color: var(--text-light);
+  @media (hover: hover) and (pointer: fine) {
+    :global(.cmdk-result-link:hover .cmdk-result-desc) {
+      color: var(--text-light);
+    }
   }
 
   /* Same specificity as the hover-neutralizer above, so when the mouse
      happens to be resting on the active row, .is-active must still win. */
-  :global(.cmdk-result-link.is-active:hover .cmdk-result-title) {
-    color: var(--accent);
+  @media (hover: hover) and (pointer: fine) {
+    :global(.cmdk-result-link.is-active:hover .cmdk-result-title) {
+      color: var(--accent);
+    }
   }
 
   .cmdk-empty {

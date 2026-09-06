@@ -64,7 +64,7 @@ const pages = getSitePages();
   <div class="dock-bar">
     <a
       href="/"
-      class="dock-icon-btn dock-logo"
+      class="dock-icon-btn dock-logo no-select"
       data-role="collapsed"
       aria-label="Home"
     >
@@ -74,14 +74,14 @@ const pages = getSitePages();
     <div class="dock-actions" data-role="collapsed">
       <a
         href="/projects/"
-        class={`dock-icon-btn ${pathName.startsWith("/projects") ? "active" : ""}`}
+        class={`dock-icon-btn no-select ${pathName.startsWith("/projects") ? "active" : ""}`}
         aria-label="Projects"
       >
         <Icon name="lucide:code-2" size={20} />
       </a>
       <a
         href="/connect/"
-        class={`dock-icon-btn ${pathName === "/connect/" ? "active" : ""}`}
+        class={`dock-icon-btn no-select ${pathName === "/connect/" ? "active" : ""}`}
         aria-label="Connect"
       >
         <Icon name="lucide:at-sign" size={20} />
@@ -548,9 +548,11 @@ const pages = getSitePages();
     color: var(--accent);
   }
 
-  :global(.dock-result-link:hover) {
-    background: var(--bg-soft);
-    text-decoration: none;
+  @media (hover: hover) and (pointer: fine) {
+    :global(.dock-result-link:hover) {
+      background: var(--bg-soft);
+      text-decoration: none;
+    }
   }
 
   :global(.dock-result-link:active) {
@@ -612,9 +614,11 @@ const pages = getSitePages();
     transition: var(--transition);
   }
 
-  .dock-icon-btn:hover {
-    background: var(--bg-soft);
-    color: var(--text);
+  @media (hover: hover) and (pointer: fine) {
+    .dock-icon-btn:hover {
+      background: var(--bg-soft);
+      color: var(--text);
+    }
   }
 
   .dock-icon-btn.active {

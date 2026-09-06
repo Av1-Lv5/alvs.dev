@@ -51,7 +51,7 @@ const hasMore = count ? allExperiences.length > count : false;
                       <span class="label">{point.label}</span>
                       <p class="description">{point.text}</p>
                       {point.href && (
-                        <a href={point.href} class="point-link">
+                        <a href={point.href} class="point-link no-select">
                           Read more
                           <Icon name="lucide:arrow-right" size={12} />
                         </a>
@@ -203,7 +203,6 @@ const hasMore = count ? allExperiences.length > count : false;
   summary.header {
     list-style: none;
     cursor: pointer;
-    user-select: none;
   }
 
   summary.header::-webkit-details-marker {
@@ -278,8 +277,10 @@ const hasMore = count ? allExperiences.length > count : false;
     transform: rotate(180deg);
   }
 
-  summary.header:hover .toggle-chevron {
-    color: var(--accent);
+  @media (hover: hover) and (pointer: fine) {
+    summary.header:hover .toggle-chevron {
+      color: var(--accent);
+    }
   }
 
   /* Collapsible body wrapper */
@@ -330,8 +331,10 @@ const hasMore = count ? allExperiences.length > count : false;
     transition: var(--transition);
   }
 
-  .point-link:hover {
-    text-decoration: underline;
+  @media (hover: hover) and (pointer: fine) {
+    .point-link:hover {
+      text-decoration: underline;
+    }
   }
 
   /* Timeline CTA Styles */
@@ -436,27 +439,29 @@ const hasMore = count ? allExperiences.length > count : false;
   }
 
   /* Hover Effects */
-  .timeline-cta:hover .cta-body {
-    border-color: var(--accent);
-    background: var(--bg);
-  }
+  @media (hover: hover) and (pointer: fine) {
+    .timeline-cta:hover .cta-body {
+      border-color: var(--accent);
+      background: var(--bg);
+    }
 
-  .timeline-cta:hover .cta-dot-outer {
-    border-style: solid;
-    border-color: var(--accent);
-    transform: scale(1.2);
-  }
+    .timeline-cta:hover .cta-dot-outer {
+      border-style: solid;
+      border-color: var(--accent);
+      transform: scale(1.2);
+    }
 
-  .timeline-cta:hover .cta-dot-inner {
-    background: var(--accent);
-  }
+    .timeline-cta:hover .cta-dot-inner {
+      background: var(--accent);
+    }
 
-  .timeline-cta:hover .cta-title {
-    color: var(--accent);
-  }
+    .timeline-cta:hover .cta-title {
+      color: var(--accent);
+    }
 
-  .timeline-cta:hover .cta-arrow {
-    color: var(--accent);
+    .timeline-cta:hover .cta-arrow {
+      color: var(--accent);
+    }
   }
 
   @media (max-width: 768px) {

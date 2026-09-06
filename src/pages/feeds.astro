@@ -25,30 +25,44 @@ const ogImage = getGeneratedOgImage("pages", "feeds");
       activity. As well as feeds i personally follow.
     </p>
     <p>
-      Read
+      Read{" "}
       <a
         href="https://marcus.io/blog/making-rss-more-visible-again-with-slash-feeds"
         target="_blank"
       >
-        the original post{" "}
+        the original post
         <Icon name="lucide:arrow-up-right" size={14} class="ext-arrow" />
-      </a> where this kind of page is suggested. And this is my version of it.
+      </a>{" "}where this kind of page is suggested. And this is my version of
+      it.
     </p>
 
     <blockquote>
       <p>
         <strong>New to feeds?</strong> Check out{" "}
         <a href="https://aboutfeeds.com/" target="_blank">
-          aboutfeeds.com <Icon name="lucide:arrow-up-right" size={14} class="ext-arrow" />
-        </a> to learn how they work and how to get started.
-        <br />
-        I personally use{" "}
-        <a href="https://netnewswire.com/" target="_blank">
-          NetNewsWire <Icon name="lucide:arrow-up-right" size={14} class="ext-arrow" />
-        </a> as my primary feed reader, and{" "}
-        <a href="https://capyreader.com/" target="_blank">
-          Capy Reader <Icon name="lucide:arrow-up-right" size={14} class="ext-arrow" />
-        </a>{" "}on android.
+          aboutfeeds.com<Icon
+            name="lucide:arrow-up-right"
+            size={14}
+            class="ext-arrow"
+          />
+        </a>{" "}to learn how they work and how to get started.
+        <span class="feed-note-secondary">
+          I personally use{" "}
+          <a href="https://netnewswire.com/" target="_blank">
+            NetNewsWire<Icon
+              name="lucide:arrow-up-right"
+              size={14}
+              class="ext-arrow"
+            />
+          </a>{" "}as my primary feed reader, and{" "}
+          <a href="https://capyreader.com/" target="_blank">
+            Capy Reader<Icon
+              name="lucide:arrow-up-right"
+              size={14}
+              class="ext-arrow"
+            />
+          </a>{" "}on android.
+        </span>
       </p>
     </blockquote>
   </section>
@@ -152,6 +166,11 @@ const ogImage = getGeneratedOgImage("pages", "feeds");
     margin: 0.25rem 0 0;
     font-size: 0.9rem;
     line-height: 1.4;
+  }
+
+  .feed-note-secondary {
+    display: block;
+    margin-block-start: 0.35em;
   }
 
   @media (max-width: 640px) {

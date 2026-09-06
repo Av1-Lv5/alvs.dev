@@ -57,11 +57,13 @@ const typeLabel = media.mediaType === "movie" ? "Film" : "Show";
       box-shadow 0.2s ease;
   }
 
-  .movie-card:hover {
-    transform: translateY(-3px);
-    box-shadow:
-      inset 0 0 0 1px var(--border),
-      0 8px 24px rgba(0, 0, 0, 0.18);
+  @media (hover: hover) and (pointer: fine) {
+    .movie-card:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        inset 0 0 0 1px var(--border),
+        0 8px 24px rgba(0, 0, 0, 0.18);
+    }
   }
 
   .poster {

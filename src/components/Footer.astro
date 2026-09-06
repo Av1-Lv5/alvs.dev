@@ -53,9 +53,11 @@ import AvRunner from "@components/AvRunner.astro";
     transition: var(--transition);
   }
 
-  .footer-meta a:hover {
-    color: var(--text);
-    text-decoration: underline;
+  @media (hover: hover) and (pointer: fine) {
+    .footer-meta a:hover {
+      color: var(--text);
+      text-decoration: underline;
+    }
   }
 
   .footer-right {

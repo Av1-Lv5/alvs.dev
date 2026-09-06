@@ -143,8 +143,10 @@ a:visited {
   transition: border-color 0.2s ease;
   color: var(--accent);
 }
-a:hover {
-  border-bottom-color: var(--accent);
+@media (hover: hover) and (pointer: fine) {
+  a:hover {
+    border-bottom-color: var(--accent);
+  }
 }
 [role="button"],
 button,
@@ -184,19 +186,25 @@ abbr {
   cursor: help;
 }
 [role="button"]:focus,
-[role="button"]:not([aria-disabled="true"]):hover,
-button:enabled:hover,
 button:focus,
-input[type="button"]:enabled:hover,
 input[type="button"]:focus,
-input[type="reset"]:enabled:hover,
 input[type="reset"]:focus,
-input[type="submit"]:enabled:hover,
 input[type="submit"]:focus,
-label[type="button"]:focus,
-label[type="button"]:hover {
+label[type="button"]:focus {
   filter: brightness(1.2);
   cursor: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [role="button"]:not([aria-disabled="true"]):hover,
+  button:enabled:hover,
+  input[type="button"]:enabled:hover,
+  input[type="reset"]:enabled:hover,
+  input[type="submit"]:enabled:hover,
+  label[type="button"]:hover {
+    filter: brightness(1.2);
+    cursor: pointer;
+  }
 }
 header > nav {
   font-size: 1rem;
@@ -229,9 +237,11 @@ header > nav a:visited {
   padding: 0.1rem 1rem;
   text-decoration: none;
 }
-header > nav a:hover {
-  filter: brightness(1.2);
-  cursor: pointer;
+@media (hover: hover) and (pointer: fine) {
+  header > nav a:hover {
+    filter: brightness(1.2);
+    cursor: pointer;
+  }
 }
 @media only screen and (max-width: 720px) {
   header > nav a {

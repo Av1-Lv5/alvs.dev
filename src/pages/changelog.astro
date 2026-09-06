@@ -166,9 +166,11 @@ const ogImage = getGeneratedOgImage("pages", "changelog");
     font-weight: 500;
   }
 
-  .year-tab:hover {
-    border-color: var(--accent);
-    color: var(--text);
+  @media (hover: hover) and (pointer: fine) {
+    .year-tab:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
   }
 
   .year-tab[aria-selected="true"] {

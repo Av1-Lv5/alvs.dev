@@ -82,10 +82,12 @@ const typeLabel = media.mediaType === "movie" ? "Film" : "Show";
     background: transparent;
   }
 
-  .watchlist-card:hover {
-    border-color: var(--accent);
-    background: var(--accent-bg);
-    text-decoration: none;
+  @media (hover: hover) and (pointer: fine) {
+    .watchlist-card:hover {
+      border-color: var(--accent);
+      background: var(--accent-bg);
+      text-decoration: none;
+    }
   }
 
   .watchlist-card + .watchlist-card {
@@ -138,8 +140,10 @@ const typeLabel = media.mediaType === "movie" ? "Film" : "Show";
     transition: var(--transition);
   }
 
-  .watchlist-card:hover .title {
-    color: var(--accent);
+  @media (hover: hover) and (pointer: fine) {
+    .watchlist-card:hover .title {
+      color: var(--accent);
+    }
   }
 
   .type-badge {
@@ -171,7 +175,9 @@ const typeLabel = media.mediaType === "movie" ? "Film" : "Show";
     transition: var(--transition);
   }
 
-  .watchlist-card:hover .arrow {
-    color: var(--accent);
+  @media (hover: hover) and (pointer: fine) {
+    .watchlist-card:hover .arrow {
+      color: var(--accent);
+    }
   }
 </style>

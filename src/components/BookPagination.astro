@@ -67,11 +67,18 @@ const { currentPage, totalPages, hasNext, hasPrev, nextUrl, prevUrl } =
     gap: 0.25rem;
   }
 
-  .pagination a:hover,
   .pagination a.current {
     color: var(--accent);
     background: var(--bg-alt);
     transform: translateY(-1px);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .pagination a:hover {
+      color: var(--accent);
+      background: var(--bg-alt);
+      transform: translateY(-1px);
+    }
   }
 
   /* Mobile Responsive */

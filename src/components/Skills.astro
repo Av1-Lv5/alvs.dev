@@ -35,9 +35,11 @@ import { skills } from "@data/skills";
     background-color: var(--overlay-bg, transparent);
   }
 
-  .skill:hover {
-    background-color: var(--bg-soft);
-    border-color: var(--text-color);
+  @media (hover: hover) and (pointer: fine) {
+    .skill:hover {
+      background-color: var(--bg-soft);
+      border-color: var(--text-color);
+    }
   }
 
   .icon {

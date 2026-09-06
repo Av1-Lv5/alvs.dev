@@ -48,11 +48,13 @@ const { person } = Astro.props;
       box-shadow 0.2s ease;
   }
 
-  .film-card:hover {
-    transform: translateY(-3px);
-    box-shadow:
-      inset 0 0 0 1px var(--border),
-      0 10px 28px rgba(0, 0, 0, 0.2);
+  @media (hover: hover) and (pointer: fine) {
+    .film-card:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        inset 0 0 0 1px var(--border),
+        0 10px 28px rgba(0, 0, 0, 0.2);
+    }
   }
 
   .film-img {

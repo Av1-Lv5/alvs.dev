@@ -81,9 +81,11 @@ const { track, rank } = Astro.props;
     transition: var(--transition);
   }
 
-  .track-name:hover {
-    color: var(--accent);
-    text-decoration: none;
+  @media (hover: hover) and (pointer: fine) {
+    .track-name:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
   }
 
   .track-artists {

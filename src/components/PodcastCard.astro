@@ -100,9 +100,11 @@ const {
     transition: var(--transition);
   }
 
-  .podcast-card:hover {
-    border-color: var(--accent);
-    background: var(--accent-bg);
+  @media (hover: hover) and (pointer: fine) {
+    .podcast-card:hover {
+      border-color: var(--accent);
+      background: var(--accent-bg);
+    }
   }
 
   .thumb {
@@ -170,8 +172,10 @@ const {
     transition: var(--transition);
   }
 
-  .icon-links a:hover {
-    color: var(--accent);
+  @media (hover: hover) and (pointer: fine) {
+    .icon-links a:hover {
+      color: var(--accent);
+    }
   }
 
   @media (pointer: coarse) {
